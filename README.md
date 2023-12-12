@@ -18,7 +18,8 @@
 <br><br>
 
 <!-- project color palette -->
-<img src="./readme/Color Palette.png"/>
+### Color Palette
+<img src="./readme/Color Palette.png" height="400px"/>
 
 <br><br>
 
