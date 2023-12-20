@@ -15,11 +15,6 @@
 -   As a user, I want to customize my order, so I can add or remove ingredients according to my preferences.
 -   As a user, I want to pay for my order through the app, so I can avoid waiting in line at the store.
 
-<br><br>
-
-<!-- project color palette -->
-### Color Palette
-<img src="./readme/Color Palette.png" height="400px"/>
 
 <br><br>
 
