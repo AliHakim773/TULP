@@ -5,15 +5,20 @@
 <!-- project philosophy -->
 <img src="./readme/title2.svg"/>
 
-> A mobile app for ordering coffee on-the-go, making it easier for coffee lovers to get their favorite beverages without waiting in line.
+> A Web App for teaching and taking online classes, making it easier for people to get/give knowlage online.
 >
-> Coffee Express aims to streamline the coffee-ordering process by providing a user-friendly platform for customers to place orders and pick up their coffee at their convenience. We believe in enhancing the coffee experience by saving time and ensuring customer satisfaction.
+> TULP aims to making the ultimate E-learning platform by providing a user-friendly interface that makes learning simple with no extra complications. We believe in enhancing the learning expirience so that instructors can focus on instructing and studnets can focus on learning.
 
 ### User Stories
 
--   As a user, I want to browse the menu, so I can find my favorite coffee drinks.
--   As a user, I want to customize my order, so I can add or remove ingredients according to my preferences.
--   As a user, I want to pay for my order through the app, so I can avoid waiting in line at the store.
+-   As an Instructor I want a good platform to teach online, so that I can follow my passion of teaching.
+-   As an Instructor I want to easily find instructors online, so that I can build my team faster.
+-   As an Instructor I want to communicate with others on the same platform, so that I don't have to downloads/use extra application.
+-   As an Instructor I want to easily manage my class, so that I have more time to prepare for the content.
+-   As an Instructor I want to have tools to help me teach, so that I can give a better learning experience.
+-   As a student I want to join an online class, so that I can study more effectively.
+-   As a student I want to have an easy to manage class information, so that i can focus on my studies more.
+-   As an admin I want to an admin pannel, so that I can easily manage the website users/content.
 
 
 <br><br>
