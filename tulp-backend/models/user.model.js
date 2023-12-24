@@ -1,4 +1,5 @@
 const { default: mongoose } = require("mongoose")
+const bcrypt = require("bcrypt")
 
 const validateBirth = (birth) => {
   return birth < Date.now()
@@ -85,6 +86,17 @@ const UserSchema = new mongoose.Schema({
   // socialMediaLinks: [],
   // classes: [],
   // enrolledClasses: [],
+})
+
+UserSchema.pre("save", async function (next) {
+  try {
+    const salt = await bcrypt.genSalt(10)
+    this.password = await bcrypt.hash(this.password, salt)
+    next()
+  } catch (error) {
+    console.log("Error in Hasing Password")
+    next(error)
+  }
 })
 
 const User = mongoose.model("User", UserSchema)
