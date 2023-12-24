@@ -1,8 +1,9 @@
 const { default: mongoose } = require("mongoose")
 const bcrypt = require("bcrypt")
+const dateFormater = require("../helpers/dateFormater")
 
 const validateBirth = (birth) => {
-  return birth < Date.now()
+  return birth <= dateFormater(Date.now())
 }
 const validateRole = (role) => {
   return role_enum.includes(role)
@@ -14,15 +15,12 @@ const UserSchema = new mongoose.Schema({
   username: {
     type: String,
     required: [true, "Username is required"],
-    unique: [true, "Username must be unique"],
-    minlength: [
-      3,
-      "Username length must be more than 3, current length: {VALUE}",
-    ],
-    maxlength: [
-      40,
-      "Username length must be less than 40, current length: {VALUE}",
-    ],
+    unique: {
+      index: true,
+      message: "username must be unique.", // Customize the unique constraint error message
+    },
+    minlength: [3, "Username length must be more than 3"],
+    maxlength: [40, "Username length must be less than 40"],
     trim: true,
   },
   email: {
@@ -31,7 +29,7 @@ const UserSchema = new mongoose.Schema({
     required: [true, "Email address is required"],
     match: [
       /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
-      "Please fill a valid email address",
+      "Please fill a valid email address, {VALUE} is not a valid email",
     ],
     trim: true,
     lowercase: true,
@@ -39,32 +37,23 @@ const UserSchema = new mongoose.Schema({
   password: {
     type: String,
     required: [true, "Password is required"],
-    minlength: [
-      6,
-      "Password length must be more than 6, current length: {VALUE}",
-    ],
+    minlength: [6, "Password length must be more than 6"],
     trim: true,
   },
   firstName: {
     type: String,
     required: "First name is required",
-    minlength: [
-      2,
-      "First Name length must be more than 2, current length: {VALUE}",
-    ],
+    minlength: [2, "First Name length must be more than 2"],
     trim: true,
   },
   lastName: {
     type: String,
     required: "Last name is required",
-    minlength: [
-      2,
-      "Last Name length must be more than 2, current length: {VALUE}",
-    ],
+    minlength: [2, "Last Name length must be more than 2"],
     trim: true,
   },
   birth: {
-    type: Date,
+    type: String,
     validate: [validateBirth, "You haven't been born yet"],
   },
   role: {
