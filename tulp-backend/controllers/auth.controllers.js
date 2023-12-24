@@ -36,3 +36,7 @@ const register = async (rep, res) => {
     res.status(500).send({ error: e })
   }
 }
+
+module.exports = {
+  register,
+}
