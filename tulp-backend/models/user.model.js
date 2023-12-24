@@ -47,7 +47,7 @@ const UserSchema = new mongoose.Schema({
   },
   firstName: {
     type: String,
-    required: true,
+    required: "First name is required",
     minlength: [
       2,
       "First Name length must be more than 2, current length: {VALUE}",
@@ -56,7 +56,7 @@ const UserSchema = new mongoose.Schema({
   },
   lastName: {
     type: String,
-    required: true,
+    required: "Last name is required",
     minlength: [
       2,
       "Last Name length must be more than 2, current length: {VALUE}",
