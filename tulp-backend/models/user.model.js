@@ -78,13 +78,15 @@ const UserSchema = new mongoose.Schema({
 })
 
 UserSchema.pre("save", async function (next) {
-  try {
-    const salt = await bcrypt.genSalt(10)
-    this.password = await bcrypt.hash(this.password, salt)
-    next()
-  } catch (error) {
-    console.log("Error in Hasing Password")
-    next(error)
+  if (this.isModified("password") || this.isNew) {
+    try {
+      const salt = await bcrypt.genSalt(10)
+      this.password = await bcrypt.hash(this.password, salt)
+      next()
+    } catch (error) {
+      console.log("Error in Hasing Password")
+      next(error)
+    }
   }
 })
 
