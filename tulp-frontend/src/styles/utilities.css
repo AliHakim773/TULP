@@ -49,6 +49,12 @@ img {
 .h-50 {
   height: 50%;
 }
+.semi-bold {
+  font-weight: 600;
+}
+.bold {
+  font-weight: 800;
+}
 .section,
 .section-header,
 .section-body {
