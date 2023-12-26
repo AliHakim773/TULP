@@ -21,7 +21,7 @@ const ClassSchema = new mongoose.Schema({
     maxlength: [400, "Cant have a long description can we? max chars is 400"],
     trim: true,
   },
-  imageUrl: {
+  logoUrl: {
     type: String,
     default: "uploads/defualt.png",
   },
