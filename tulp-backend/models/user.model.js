@@ -1,6 +1,7 @@
 const { default: mongoose } = require("mongoose")
 const bcrypt = require("bcrypt")
 const dateFormater = require("../helpers/dateFormater")
+const EducationSchema = require("./education.model")
 
 const validateBirth = (birth) => {
   return birth <= dateFormater(Date.now())
@@ -71,10 +72,23 @@ const UserSchema = new mongoose.Schema({
     maxlength: [400, "About me can't be more than 400 chars"],
     trim: true,
   },
-  // education: [],
-  // socialMediaLinks: [],
-  // classes: [],
-  // enrolledClasses: [],
+  education: [EducationSchema],
+  socialMediaLinks: {
+    type: Map,
+    of: String,
+  },
+  classes: [
+    {
+      type: mongoose.Types.ObjectId,
+      ref: "Class",
+    },
+  ],
+  enrolledClasses: [
+    {
+      type: mongoose.Types.ObjectId,
+      ref: "Class",
+    },
+  ],
 })
 
 UserSchema.pre("save", async function (next) {
