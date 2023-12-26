@@ -6,9 +6,7 @@ const authMiddleware = async (req, res, next) => {
   if (!token) res.status(403).send("Forbidden")
   else {
     const decode = jwt.verify(token, process.env.JWT_SECRET)
-    const user = await User.findOne({ username: decode.username }).select(
-      "-password"
-    )
+    const user = await User.findOne({ _id: decode._id }).select("-password")
     req.user = user
     next()
   }
