@@ -24,7 +24,7 @@ const editUser = async (req, res) => {
 
   await user.save()
 
-  if (oldImageUrl) {
+  if (oldImageUrl && oldImageUrl !== "uploads/defualt.png") {
     await fs.unlink(oldImageUrl)
   }
 

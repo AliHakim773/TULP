@@ -64,7 +64,7 @@ const UserSchema = new mongoose.Schema({
   },
   imageUrl: {
     type: String,
-    default: "uploads\\defualt.png",
+    default: "uploads/defualt.png",
   },
   aboutMe: {
     type: String,
