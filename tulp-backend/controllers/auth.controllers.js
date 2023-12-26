@@ -84,7 +84,34 @@ const register = async (rep, res) => {
   }
 }
 
+const refresh = async (req, res) => {
+  try {
+    const user = await User.findOne({ username: req.user.username })
+    if (!user)
+      return res.status(200).send({ message: "logged out", isLoggedIn: false })
+
+    const { password: hashedPassword, _id, ...userDetails } = user.toJSON()
+
+    const token = jwt.sign(
+      {
+        ...userDetails,
+      },
+      process.env.JWT_SECRET,
+      { expiresIn: "30 days" }
+    )
+
+    res.status(200).send({
+      user: userDetails,
+      isLoggedIn: true,
+      token,
+    })
+  } catch (e) {
+    return res.status(200).send({ message: "logged out", isLoggedIn: false })
+  }
+}
+
 module.exports = {
   login,
   register,
+  refresh,
 }
