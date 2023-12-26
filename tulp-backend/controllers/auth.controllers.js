@@ -1,7 +1,6 @@
 const User = require("../models/user.model")
 const jwt = require("jsonwebtoken")
 const bcrypt = require("bcrypt")
-const dateFormater = require("../helpers/dateFormater")
 
 const register = async (rep, res) => {
   const { username, password, firstName, lastName, email, role } = rep.body
@@ -21,11 +20,11 @@ const register = async (rep, res) => {
   try {
     const uniqueNameCheck = await User.findOne({ username })
     if (uniqueNameCheck)
-      return res.status(403).send({ error: "Username is taken" })
+      return res.status(400).send({ error: "Username is taken" })
 
     const uniqueEmailCheck = await User.findOne({ email })
     if (uniqueEmailCheck)
-      return res.status(403).send({ error: "Email is taken" })
+      return res.status(400).send({ error: "Email is taken" })
 
     const user = await User.create({
       username,
