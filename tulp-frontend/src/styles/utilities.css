@@ -37,6 +37,18 @@ img {
 .blue-border-bottom {
   border-bottom: 1px solid var(--blue-3);
 }
+.w-100 {
+  width: 100%;
+}
+.w-50 {
+  width: 50%;
+}
+.h-100 {
+  height: 100%;
+}
+.h-50 {
+  height: 50%;
+}
 .section,
 .section-header,
 .section-body {
