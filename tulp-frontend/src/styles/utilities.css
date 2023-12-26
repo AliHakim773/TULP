@@ -34,7 +34,9 @@ img {
 .rounded-2 {
   border-radius: 10px;
 }
-
+.blue-border-bottom {
+  border-bottom: 1px solid var(--blue-3);
+}
 .section,
 .section-header,
 .section-body {
