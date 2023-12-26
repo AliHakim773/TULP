@@ -55,4 +55,16 @@ const getCurrentUser = async (req, res) => {
   }
 }
 
-module.exports = { editUser, getCurrentUser }
+const getUserById = async (req, res) => {
+  const { id } = req.params
+  try {
+    const user = await User.findById(id)
+    const { password: hashedPassword, ...userDetails } = user.toJSON()
+
+    res.status(200).send({ user: userDetails })
+  } catch (e) {
+    res.status(500).send({ message: "Something went wrong: " + e })
+  }
+}
+
+module.exports = { editUser, getCurrentUser, getUserById }
