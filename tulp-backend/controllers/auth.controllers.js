@@ -19,7 +19,7 @@ const login = async (rep, res) => {
     if (!isValidPassword)
       res.status(400).send({ message: "Wrong username or password" })
 
-    const { password: hashedPassword, _id, ...userDetails } = user.toJSON()
+    const { password: hashedPassword, ...userDetails } = user.toJSON()
 
     const token = jwt.sign(
       {
@@ -68,7 +68,7 @@ const register = async (rep, res) => {
       role: role || "student",
     })
 
-    const { password: hashedPassword, _id, ...userDetails } = user.toJSON()
+    const { password: hashedPassword, ...userDetails } = user.toJSON()
 
     const token = jwt.sign(
       {
@@ -90,7 +90,7 @@ const refresh = async (req, res) => {
     if (!user)
       return res.status(200).send({ message: "logged out", isLoggedIn: false })
 
-    const { password: hashedPassword, _id, ...userDetails } = user.toJSON()
+    const { password: hashedPassword, ...userDetails } = user.toJSON()
 
     const token = jwt.sign(
       {
