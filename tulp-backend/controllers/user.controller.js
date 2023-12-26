@@ -44,4 +44,15 @@ const editUser = async (req, res) => {
   }
 }
 
-module.exports = editUser
+const getCurrentUser = async (req, res) => {
+  try {
+    const user = await User.findOne({ _id: req.user._id })
+    const { password: hashedPassword, ...userDetails } = user.toJSON()
+
+    res.status(200).send({ user: userDetails })
+  } catch (e) {
+    res.status(500).send({ message: "Something went wrong: " + e })
+  }
+}
+
+module.exports = { editUser, getCurrentUser }
