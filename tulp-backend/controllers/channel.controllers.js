@@ -66,9 +66,20 @@ const updateChannel = async (req, res) => {
   }
 }
 
+const deleteChannel = async (req, res) => {
+  const { channelId } = req.params
+  try {
+    const channel = await Channel.findByIdAndDelete(channelId)
+    res.status(200).send(channel)
+  } catch (error) {
+    res.status(500).send(error)
+  }
+}
+
 module.exports = {
   addChannel,
   getClassChannels,
   getChannel,
   updateChannel,
+  deleteChannel,
 }
