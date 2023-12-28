@@ -1,3 +1,5 @@
+const { sendMessage } = require("../controllers/message.controllers")
+
 const registerChatHandler = (io, socket) => {
   const joinRoom = (room, cb) => {
     socket.join(room)
@@ -11,8 +13,14 @@ const registerChatHandler = (io, socket) => {
     socket.emit("chat:leave-room", room)
   }
 
+  const sendChatMessage = (room, senderId, message) => {
+    sendMessage(room, senderId, message)
+    socket.to(room).emit("chat:message", message)
+  }
+
   socket.on("chat:join-room", joinRoom)
   socket.on("chat:leave-room", leaveRoom)
+  socket.on("chat:send-message", sendChatMessage)
 }
 
 module.exports = registerChatHandler
