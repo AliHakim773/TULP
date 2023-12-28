@@ -37,6 +37,7 @@ const getClassChannels = async (req, res) => {
   }
 }
 
+// TODO: check read permissions
 const getChannel = async (req, res) => {
   const { channelId } = req.params
   try {
