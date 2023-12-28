@@ -5,7 +5,7 @@ const validatePermission = (permission) => {
   return permission_enum.includes(permission)
 }
 
-const permission_enum = ["instructor", "student"]
+const permission_enum = ["instructor", "student", "all"]
 
 const ChannelSchema = mongoose.Schema({
   classId: {
@@ -18,11 +18,17 @@ const ChannelSchema = mongoose.Schema({
     minlength: [3, "Name length must be more than 3"],
     maxlength: [40, "Name length must be less than 40"],
   },
-  permission: {
+  readPermission: {
     type: String,
     enum: permission_enum,
     validate: [validatePermission, "{VALUE} permission doesnt exist"],
-    default: "student",
+    default: "all",
+  },
+  writePermission: {
+    type: String,
+    enum: permission_enum,
+    validate: [validatePermission, "{VALUE} permission doesnt exist"],
+    default: "all",
   },
   messages: [MessageSchema],
 })

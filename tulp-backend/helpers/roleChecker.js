@@ -5,9 +5,7 @@ const roleChecker = async (arr, role) => {
   await Promise.all(
     arr.map(async (id) => {
       const user = await User.findById(id)
-      console.log(user.role)
       if (role !== user.role) rejected.push(id)
-      console.log(rejected)
     })
   )
   if (rejected.length === 0) return { result: true }

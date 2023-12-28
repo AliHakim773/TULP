@@ -1,6 +1,7 @@
 const Class = require("../models/class.model")
 const roleChecker = require("../helpers/roleChecker")
 const populateUsersArray = require("../helpers/populateUsersArray")
+const Channel = require("../models/channel.model")
 
 const addClass = async (req, res) => {
   const id = req.user._id
@@ -31,6 +32,35 @@ const addClass = async (req, res) => {
       logoUrl,
       instructors: instructors?.map((id) => id),
     })
+
+    const channel1 = new Channel({
+      classId: classObject._id,
+      name: "General",
+      readPermission: "all",
+      writePermission: "all",
+    })
+    const channel2 = new Channel({
+      classId: classObject._id,
+      name: "Staff",
+      readPermission: "instructor",
+      writePermission: "instructor",
+    })
+
+    const channel3 = new Channel({
+      classId: classObject._id,
+      name: "Announcements",
+      readPermission: "all",
+      writePermission: "instructor",
+    })
+
+    const channels = await Channel.create([channel1, channel2, channel3])
+
+    channels.forEach((channel) => {
+      classObject.channels.push(channel)
+    })
+
+    await classObject.save()
+
     res
       .status(200)
       .send({ class: classObject, message: "Class created successfully" })
