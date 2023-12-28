@@ -27,6 +27,17 @@ const addChannel = async (req, res) => {
   }
 }
 
+const getClassChannels = async (req, res) => {
+  const { classId } = req.params
+  try {
+    const channels = await Channel.find({ classId })
+    res.status(200).send(channels)
+  } catch (error) {
+    res.status(500).send(error)
+  }
+}
+
 module.exports = {
   addChannel,
+  getClassChannels,
 }
