@@ -17,6 +17,10 @@ const AssignmentSchema = new mongoose.Schema({
     type: mongoose.Types.ObjectId,
     requiered: "Sernder ID is requiered",
   },
+  dueDate: {
+    type: String,
+    // TODO: add datetime formating
+  },
   files: [
     {
       type: String,
