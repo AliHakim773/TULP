@@ -70,6 +70,12 @@ const deleteChannel = async (req, res) => {
   const { channelId } = req.params
   try {
     const channel = await Channel.findByIdAndDelete(channelId)
+
+    const classObject = await Class.findById(channel.classId)
+    classObject.channels.pull(channel._id)
+
+    await classObject.save()
+
     res.status(200).send(channel)
   } catch (error) {
     res.status(500).send(error)
