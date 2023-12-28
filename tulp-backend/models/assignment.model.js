@@ -1,7 +1,7 @@
 const { default: mongoose } = require("mongoose")
 const SubmissionSchema = require("./submission.model")
 
-const AssignmentSchema = mongoose.Schema({
+const AssignmentSchema = new mongoose.Schema({
   title: {
     type: String,
     required: "Assignments must have a title",

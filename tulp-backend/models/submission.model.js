@@ -1,6 +1,6 @@
 const { default: mongoose } = require("mongoose")
 
-const SubmissionSchema = mongoose.Schema({
+const SubmissionSchema = new mongoose.Schema({
   sender: {
     type: mongoose.Types.ObjectId,
     requiered: "Sernder ID is requiered",
