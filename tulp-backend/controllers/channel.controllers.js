@@ -47,8 +47,28 @@ const getChannel = async (req, res) => {
   }
 }
 
+const updateChannel = async (req, res) => {
+  const { channelId } = req.params
+  const { name, readPermission, writePermission } = req.body
+  try {
+    const channel = await Channel.findByIdAndUpdate(
+      channelId,
+      {
+        name,
+        readPermission,
+        writePermission,
+      },
+      { new: true }
+    )
+    res.status(200).send(channel)
+  } catch (error) {
+    res.status(500).send(error)
+  }
+}
+
 module.exports = {
   addChannel,
   getClassChannels,
   getChannel,
+  updateChannel,
 }
