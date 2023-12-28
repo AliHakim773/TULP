@@ -7,7 +7,7 @@ const {
 const upload = require("../middlewares/multer.middleware")
 const router = express.Router()
 
-router.put("/", upload.single("image"), editUser)
+router.patch("/", upload.single("image"), editUser)
 router.get("/:id", getUserById)
 router.get("/", getCurrentUser)
 
