@@ -7,7 +7,7 @@ const validatePermission = (permission) => {
 
 const permission_enum = ["instructor", "student", "all"]
 
-const ChannelSchema = mongoose.Schema({
+const ChannelSchema = new mongoose.Schema({
   classId: {
     type: mongoose.Types.ObjectId,
     ref: "Class",
