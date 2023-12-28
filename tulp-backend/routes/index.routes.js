@@ -1,7 +1,9 @@
 const authMiddleware = require("../middlewares/auth.middleware")
+const instructorMiddleware = require("../middlewares/instructor.middleware")
 const authRoutes = require("./auth.routes")
 const userRoutes = require("./user.routes")
 const classRoutes = require("./class.routes")
+const channelRoutes = require("./channel.routes")
 
 const siteRoutes = async (app) => {
   //auth routes
@@ -10,6 +12,8 @@ const siteRoutes = async (app) => {
   app.use("/user", authMiddleware, userRoutes)
   //class routes
   app.use("/class", authMiddleware, classRoutes)
+  //channel routes
+  app.use("/channel", authMiddleware, instructorMiddleware, channelRoutes)
 }
 
 module.exports = siteRoutes
