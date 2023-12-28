@@ -4,10 +4,13 @@ const express = require("express")
 const cors = require("cors")
 const connectToMongoDB = require("./configs/db.config")
 const siteRoutes = require("./routes/index.routes")
+const onConnection = require("./sockets")
+const { Server } = require("socket.io")
 
 const app = express()
-app.use(express.json())
+
 app.use(cors())
+app.use(express.json())
 app.use("/uploads", express.static(path.join(__dirname, "uploads")))
 
 siteRoutes(app)
@@ -18,3 +21,6 @@ app.listen(port, () => {
 
   connectToMongoDB()
 })
+
+const io = new Server(app)
+io.on("connection", onConnection)
