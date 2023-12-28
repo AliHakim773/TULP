@@ -2,6 +2,7 @@ const Class = require("../models/class.model")
 const roleChecker = require("../helpers/roleChecker")
 const populateUsersArray = require("../helpers/populateUsersArray")
 const Channel = require("../models/channel.model")
+const User = require("../models/user.model")
 
 const addClass = async (req, res) => {
   const id = req.user._id
@@ -32,6 +33,10 @@ const addClass = async (req, res) => {
       logoUrl,
       instructors: instructors?.map((id) => id),
     })
+
+    const user = await User.findById(id)
+    user.classes.push(classObject._id)
+    await user.save()
 
     const channel1 = new Channel({
       classId: classObject._id,
