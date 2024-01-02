@@ -1,8 +1,14 @@
 import { useState } from "react"
 import { errorBlink } from "../../core/helpers/errorBlink"
 import { authAPI } from "../../core/api/auth"
+import { local } from "../../core/helpers/localstorage"
+import { useNavigate } from "react-router-dom"
+import { setUser } from "../../core/redux/userSlice"
+import { useDispatch } from "react-redux"
 
 const useRegisterLogic = () => {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
   const [error, setError] = useState({ msg: "", hidden: true })
 
   const [values, setValues] = useState({
@@ -79,12 +85,15 @@ const useRegisterLogic = () => {
       return
     }
     try {
-      console.log(values)
       const res = await authAPI.register(values)
 
-      console.log(res)
+      const token = `Bearer ${res.token}`
+      local("token", token)
+
+      dispatch(setUser(res.user))
+      navigate("/")
     } catch (e) {
-      console.log(e)
+      errorBlink(setError, e.response.data.error)
     }
   }
 
