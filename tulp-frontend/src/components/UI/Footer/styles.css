@@ -1,0 +1,29 @@
+.footer-item {
+  gap: 0.5rem;
+  color: white;
+  width: 250px;
+}
+.footer-item-title {
+  text-decoration: underline;
+}
+footer {
+  padding: 2rem 0 0 0;
+  gap: 100px;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.footer-item-link:hover {
+  text-decoration: underline;
+}
+.footer-item-text {
+  text-align: justify;
+  line-height: 120%;
+}
+.copy-right {
+  width: 100%;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 0.75rem;
+}
