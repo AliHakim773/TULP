@@ -78,6 +78,15 @@ img {
   display: flex;
   flex-direction: column;
 }
+.note {
+  color: var(--grey-2);
+  font-size: 12px;
+  font-weight: 600;
+}
+.link:hover {
+  cursor: pointer;
+  color: var(--blue-3);
+}
 @media only screen and (max-width: 992px) {
   :root {
     --section-block-p: 2.5rem;
