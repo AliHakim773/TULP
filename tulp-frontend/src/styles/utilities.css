@@ -35,8 +35,8 @@ img {
 .rounded-2 {
   border-radius: 10px;
 }
-.blue-border-bottom {
-  border-bottom: 1px solid var(--blue-3);
+.border-bottom {
+  border-bottom: 1px solid var(--black);
 }
 .w-100 {
   width: 100%;

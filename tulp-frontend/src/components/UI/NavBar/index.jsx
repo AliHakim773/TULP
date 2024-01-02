@@ -5,7 +5,7 @@ import "./styles.css"
 
 const NavBar = () => {
   return (
-    <nav className='home-nav flex center blue-border-bottom'>
+    <nav className='home-nav flex center border-bottom'>
       <div className='home-nav-wrapper flex'>
         <div className='home-logo h-100'>
           <Link to={"/"} className='h-100'>
