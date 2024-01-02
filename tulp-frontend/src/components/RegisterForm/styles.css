@@ -1,0 +1,19 @@
+.register-form {
+  width: 400px;
+}
+
+.register-inputs > * {
+  margin-top: 5px;
+}
+
+.register-section {
+  padding-block: 5rem;
+  height: max(calc(100vh - 410px), 500px);
+}
+
+.register-submit {
+  margin-top: 0.75rem;
+}
+.register-submit-btn {
+  width: 70%;
+}
