@@ -1,0 +1,19 @@
+.login-form {
+  width: 400px;
+}
+
+.login-inputs > * {
+  margin-top: 5px;
+}
+
+.login-section {
+  padding-block: 3rem;
+  height: calc(100vh - 358px);
+}
+
+.login-submit {
+  margin-top: 0.75rem;
+}
+.login-submit-btn {
+  width: 70%;
+}
