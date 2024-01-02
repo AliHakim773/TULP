@@ -5,7 +5,10 @@ const SubmitButton = ({ text = "submit", handleOnClick }) => {
   return (
     <button
       type='submit'
-      onClick={handleOnClick}
+      onClick={(e) => {
+        e.preventDefault()
+        handleOnClick()
+      }}
       className='submit-btn w-100 semi-bold'>
       {text}
     </button>
