@@ -1,13 +1,12 @@
 import React from "react"
 import Logo from "../../../assets/images/logo.png"
-import { Link, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 import "./styles.css"
 import useNavBarLogic from "./useNavBarLogic"
-import { clearUser } from "../../../core/redux/userSlice"
+import PfpDropDown from "./PfpDropDown"
 
 const NavBar = () => {
-  const navigate = useNavigate()
-  const { user, isLoggedIn, dispatch } = useNavBarLogic()
+  const { user, isLoggedIn, isHidden, handleOnClickProfile } = useNavBarLogic()
 
   return (
     <nav className='home-nav flex center border-bottom'>
@@ -38,15 +37,20 @@ const NavBar = () => {
           ) : (
             <>
               <li className='h-100'>
-                <p
-                  onClick={() => {
-                    localStorage.removeItem("token")
-                    dispatch(clearUser())
-                    navigate("/")
-                  }}
+                <Link
+                  to={"/"}
                   className='nav-link h-100 flex center blue-3-txt semi-bold'>
-                  Logout
-                </p>
+                  My Classes
+                </Link>
+              </li>
+              <li className='h-100 flex center'>
+                <div className='pfp-img' onClick={handleOnClickProfile}>
+                  <img
+                    src={`http://localhost:8000/${user.imageUrl}`}
+                    alt={user.username}
+                  />
+                  <PfpDropDown isHidden={isHidden} />
+                </div>
               </li>
             </>
           )}
