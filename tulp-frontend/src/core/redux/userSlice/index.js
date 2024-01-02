@@ -1,40 +1,40 @@
 import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
-  id: "",
+  _id: "",
   username: "",
   firstName: "",
   lastName: "",
   email: "",
   role: "",
-  img_url: "",
+  imageUrl: "",
 }
 export const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
     setUser(state, action) {
-      const { id, username, firstName, lastName, email, role_id, img_url } =
+      const { _id, username, firstName, lastName, email, role, imageUrl } =
         action.payload
       return {
-        id,
+        _id,
         username,
         firstName,
         lastName,
         email,
-        role_id,
-        img_url,
+        role,
+        imageUrl,
       }
     },
     clearUser(state, action) {
       return {
-        id: "",
+        _id: "",
         username: "",
         firstName: "",
         lastName: "",
         email: "",
-        role_id: "",
-        img_url: "",
+        role: "",
+        imageUrl: "",
       }
     },
   },
