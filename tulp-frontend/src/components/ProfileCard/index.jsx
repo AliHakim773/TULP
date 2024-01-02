@@ -3,6 +3,11 @@ import "./styles.css"
 import { useSelector } from "react-redux"
 import { extractUserSlice } from "../../core/redux/userSlice"
 import { Link } from "react-router-dom"
+import facebook from "../../assets/svgs/facebook.svg"
+import github from "../../assets/svgs/github.svg"
+import instagram from "../../assets/svgs/instagram.svg"
+import twitter from "../../assets/svgs/twitter.svg"
+import linkedin from "../../assets/svgs/linkedin.svg"
 
 const ProfileCard = () => {
   const userSlice = useSelector(extractUserSlice)
@@ -30,7 +35,26 @@ const ProfileCard = () => {
           <div className='profile-item'>Graduated At: John Hassan Doe</div>
           <div className='profile-item'>Degree: John Hassan Doe</div>
           <div className='profile-item'>Birth Date: 2000/1/1</div>
-          <div className='profile-social-media-links'>Social Media Links:</div>
+          <div className='profile-social-media-links'>
+            Social Media Links:
+            <div className='profile-links flex row'>
+              <Link className='sml-icon'>
+                <img src={github} alt='github' />
+              </Link>
+              <Link className='sml-icon'>
+                <img src={linkedin} alt='linkedin' />
+              </Link>
+              <Link className='sml-icon'>
+                <img src={instagram} alt='instagram' />
+              </Link>
+              <Link className='sml-icon'>
+                <img src={twitter} alt='twitter' />
+              </Link>
+              <Link className='sml-icon'>
+                <img src={facebook} alt='facebook' />
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </div>
