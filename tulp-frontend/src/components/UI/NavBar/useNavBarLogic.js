@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { authAPI } from "../../../core/api/auth"
 import { local } from "../../../core/helpers/localstorage"
 import { useDispatch, useSelector } from "react-redux"
@@ -6,6 +6,10 @@ import { extractUserSlice, setUser } from "../../../core/redux/userSlice"
 
 const useNavBarLogic = () => {
   const dispatch = useDispatch()
+  const [isHidden, setIsHidden] = useState(true)
+  const handleOnClickProfile = () => {
+    setIsHidden((prev) => !prev)
+  }
   const user = useSelector(extractUserSlice)
   let isLoggedIn =
     local("token") == null || local("token") == undefined ? false : true
@@ -24,7 +28,7 @@ const useNavBarLogic = () => {
     }
     refresh()
   }, [])
-  return { user, isLoggedIn, dispatch }
+  return { user, isLoggedIn, isHidden, handleOnClickProfile }
 }
 
 export default useNavBarLogic
