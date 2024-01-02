@@ -1,0 +1,49 @@
+.profile-card {
+  width: 280px;
+  border: 1px solid var(--black);
+  background-color: var(--grey-5);
+  border-radius: 5px;
+}
+.profile-role {
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: capitalize;
+  margin-block: 0.5rem 1rem;
+}
+.profile-img,
+.profile-img img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+.profile-username {
+  font-size: 18px;
+  font-weight: 600;
+}
+.profile-line {
+  width: 100%;
+  background-color: var(--black);
+  height: 1px;
+  margin-block: 1.5rem;
+}
+.profile-card-2-btn {
+  width: 200px;
+  height: 30px;
+  border-radius: 5px;
+  border: none;
+  background-color: var(--blue-2);
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+.profile-card-2-btn:hover {
+  background-color: var(--blue-3);
+}
+.profile-info {
+  gap: 4px;
+  width: 200px;
+  font-size: 14px;
+}
