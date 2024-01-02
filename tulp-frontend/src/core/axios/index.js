@@ -8,8 +8,6 @@ export const sendRequest = async ({ route, method = "GET", body }) => {
 
   const authorizationHeader = token
 
-  console.log(authorizationHeader)
-
   const response = await axios.request({
     url: route,
     method,
