@@ -1,12 +1,15 @@
-import React, { useState } from "react"
+import React from "react"
 import "./styles.css"
 import InputField from "../Base/InputField"
 import SubmitButton from "../Base/SubmitButton"
 import { Link } from "react-router-dom"
 import useRegisterLogic from "./useRegisterLogic"
+import Error from "../Base/Error"
+import RoleSelect from "./RoleSelect"
 
 const RegisterForm = () => {
-  const { inputs, HandleOnInputChange, HandleOnSubmit } = useRegisterLogic()
+  const { inputs, error, HandleOnInputChange, HandleOnSubmit } =
+    useRegisterLogic()
 
   return (
     <section className='register-section w-100 flex column center'>
@@ -26,6 +29,8 @@ const RegisterForm = () => {
               />
             )
           })}
+          <RoleSelect onChange={HandleOnInputChange} />
+          <Error msg={error.msg} hidden={error.hidden} />
         </div>
         <div className='register-submit flex column center w-100'>
           <div className='register-submit-btn'>

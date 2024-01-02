@@ -7,8 +7,7 @@
 }
 
 .register-section {
-  padding-block: 5rem;
-  height: max(calc(100vh - 410px), 500px);
+  padding-block: 3rem;
 }
 
 .register-submit {
