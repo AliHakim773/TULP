@@ -1,8 +1,14 @@
 import React from "react"
 import "./styles.css"
+import BasicLayout from "../../components/UI/BasicLayout"
+import RegisterForm from "../../components/RegisterForm"
 
 const RegisterPage = () => {
-  return <div></div>
+  return (
+    <BasicLayout>
+      <RegisterForm />
+    </BasicLayout>
+  )
 }
 
 export default RegisterPage
