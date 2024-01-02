@@ -8,9 +8,8 @@
 }
 footer {
   padding: 2rem 0 0 0;
-  gap: 100px;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: space-evenly;
   flex-wrap: wrap;
 }
 .footer-item-link:hover {
@@ -21,6 +20,7 @@ footer {
   line-height: 120%;
 }
 .copy-right {
+  margin-top: 3rem;
   width: 100%;
   color: #ffffff;
   font-size: 10px;
