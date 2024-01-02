@@ -3,20 +3,10 @@ import "./styles.css"
 import InputField from "../Base/InputField"
 import SubmitButton from "../Base/SubmitButton"
 import { Link } from "react-router-dom"
+import useRegisterLogic from "./useRegisterLogic"
 
 const RegisterForm = () => {
-  const [elements, setElements] = useState({
-    username: "",
-    password: "",
-    confirmPassword: "",
-    email: "",
-  })
-  const HandleOnInputChange = (e) => {
-    setValues({ ...values, [e.target.id]: e.target.value })
-  }
-  const HandleOnSubmit = (e) => {
-    console.log(elements)
-  }
+  const { inputs, HandleOnInputChange, HandleOnSubmit } = useRegisterLogic()
 
   return (
     <section className='register-section w-100 flex column center'>
@@ -31,13 +21,15 @@ const RegisterForm = () => {
                 type={input.type}
                 placeholder={input.placeholder}
                 key={input.id}
+                value={input.value}
+                handleOnChange={HandleOnInputChange}
               />
             )
           })}
         </div>
         <div className='register-submit flex column center w-100'>
           <div className='register-submit-btn'>
-            <SubmitButton />
+            <SubmitButton text='Register' handleOnClick={HandleOnSubmit} />
           </div>
           <span className='note'>
             Have an account?{" "}
@@ -50,32 +42,5 @@ const RegisterForm = () => {
     </section>
   )
 }
-
-const inputs = [
-  {
-    text: "Username",
-    id: "username",
-    type: "text",
-    placeholder: "username",
-  },
-  {
-    text: "Password",
-    id: "password",
-    type: "password",
-    placeholder: "------------",
-  },
-  {
-    text: "Confirm Password",
-    id: "confirmPassword",
-    type: "password",
-    placeholder: "------------",
-  },
-  {
-    text: "Email",
-    id: "email",
-    type: "email",
-    placeholder: "example@email.com",
-  },
-]
 
 export default RegisterForm
