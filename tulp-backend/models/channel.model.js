@@ -24,12 +24,14 @@ const ChannelSchema = new mongoose.Schema({
     validate: [validatePermission, "{VALUE} permission doesnt exist"],
     default: "all",
   },
+  // TODO: array of read permissions
   writePermission: {
     type: String,
     enum: permission_enum,
     validate: [validatePermission, "{VALUE} permission doesnt exist"],
     default: "all",
   },
+  // TODO: array of write permissions
   messages: [MessageSchema],
 })
 
