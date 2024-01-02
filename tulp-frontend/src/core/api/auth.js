@@ -10,11 +10,17 @@ export const authAPI = {
     return response
   },
   register: async (data) => {
-    console.log(data)
     const response = await sendRequest({
       route: "auth/register",
       method: "POST",
-      body: { ...data },
+      body: data,
+    })
+    return response
+  },
+  refresh: async () => {
+    const response = await sendRequest({
+      route: "auth",
+      method: "GET",
     })
     return response
   },
