@@ -2,7 +2,7 @@
   height: 60px;
   align-items: center;
   justify-content: space-between;
-  width: min(100%, 1340px);
+  width: min(100%, 1600px);
 }
 .home-logo {
   padding: 5px 15px 5px;
@@ -13,4 +13,14 @@
 .nav-link:hover {
   cursor: pointer;
   background-color: var(--grey-5);
+}
+.pfp-img {
+  width: 45px;
+  height: 45px;
+  margin-right: 15px;
+  position: relative;
+}
+.pfp-img img {
+  border-radius: 50%;
+  object-fit: cover;
 }
