@@ -6,7 +6,11 @@ import ProfileCard from "../../components/ProfileCard"
 const EditProfile = () => {
   return (
     <BasicLayout>
-      <ProfileCard />
+      <div className='main-edit section-content flex'>
+        <aside className='edit-aside'>
+          <ProfileCard />
+        </aside>
+      </div>
     </BasicLayout>
   )
 }
