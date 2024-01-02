@@ -26,7 +26,7 @@
 <!-- Prototyping -->
 <img src="./readme/title3.svg"/>
 
-> We designed Coffee Express using wireframes and mockups, iterating on the design until we reached the ideal layout for easy navigation and a seamless user experience.
+> I designed TULP using wireframes and mockups, iterating on the design until I reached the ideal layout for easy navigation and a seamless user experience.
 
 ### Wireframes
 
