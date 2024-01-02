@@ -17,7 +17,7 @@ const login = async (rep, res) => {
 
     const isValidPassword = await bcrypt.compare(password, user.password)
     if (!isValidPassword)
-      res.status(400).send({ message: "Wrong username or password" })
+      return res.status(400).send({ message: "Wrong username or password" })
 
     const { password: hashedPassword, ...userDetails } = user.toJSON()
 
