@@ -16,12 +16,7 @@ const siteRoutes = async (app) => {
   //channel routes
   app.use("/channel", authMiddleware, instructorMiddleware, channelRoutes)
   //assignment routes
-  app.user(
-    "/assignment",
-    authMiddleware,
-    instructorMiddleware,
-    assignmentRoutes
-  )
+  app.use("/assignment", authMiddleware, instructorMiddleware, assignmentRoutes)
 }
 
 module.exports = siteRoutes

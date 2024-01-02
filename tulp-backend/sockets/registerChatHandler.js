@@ -14,8 +14,9 @@ const registerChatHandler = (io, socket) => {
   }
 
   const sendChatMessage = (room, senderId, message) => {
+    console.log("in sendChatMessage")
     sendMessage(room, senderId, message)
-    socket.to(room).emit("chat:message", message)
+    socket.to(room).emit("chat:send-message", message)
   }
 
   socket.on("chat:join-room", joinRoom)
