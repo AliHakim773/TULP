@@ -1,0 +1,16 @@
+.input-field {
+  gap: 0.25rem;
+}
+.input-field > label {
+  color: var(--black);
+  font-size: 16px;
+  font-weight: 600;
+}
+.input-field > input {
+  padding: 0.75rem;
+  height: 45px;
+  color: var(--black);
+  background-color: none;
+  border: 1px solid var(--black);
+  border-radius: 0.5rem;
+}
