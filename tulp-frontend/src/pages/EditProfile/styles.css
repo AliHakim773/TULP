@@ -1,6 +1,7 @@
 .main-edit {
   justify-content: space-between;
   width: min(100%, 1600px);
+  gap: 3rem;
 }
 .edit-section {
   justify-content: center;
