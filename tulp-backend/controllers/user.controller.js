@@ -4,42 +4,91 @@ const User = require("../models/user.model")
 
 const editUser = async (req, res) => {
   const id = req.user._id
-  const { username, password, email, firstName, lastName, birth, aboutMe } =
-    req.body
+  const {
+    username,
+    password,
+    email,
+    firstName,
+    lastName,
+    birth,
+    aboutMe,
+    education,
+    socialMediaLinks,
+  } = req.body
 
   try {
-    const user = await User.findOne({ _id: id })
+    // let oldImageUrl = user.imageUrl
+    // let imageUrl = user.imageUrl
+    // let removeImage = false
 
-    let oldImageUrl = user.imageUrl
-    let imageUrl = user.imageUrl
-    let removeImage = false
+    // if (req.file) {
+    //   imageUrl = req.file.path
+    //   removeImage = true
+    // } else if (req.body.removeImage) {
+    //   imageUrl = "uploads/default.png"
+    //   removeImage = true
+    // }
 
-    if (req.file) {
-      imageUrl = req.file.path
-      removeImage = true
-    } else if (req.body.removeImage) {
-      imageUrl = "uploads/default.png"
-      removeImage = true
+    // if (removeImage) {
+    //   if (oldImageUrl !== "uploads/default.png") {
+    //     fs.unlink(oldImageUrl, (err) => {
+    //       if (err) res.status(404).send({ error: e })
+    //     })
+    //   }
+    // }
+
+    const prevUser = await User.findById(id)
+    const degree = education.degree || prevUser.education.degree
+    const university = education.university || prevUser.education.university
+    const dateOfGraduation =
+      education.dateOfGraduation || prevUser.education.dateOfGraduation
+
+    const newEducation = {
+      degree,
+      university,
+      dateOfGraduation,
+    }
+    const github = socialMediaLinks.github || prevUser.socialMediaLinks.github
+    const twitter =
+      socialMediaLinks.twitter || prevUser.socialMediaLinks.twitter
+    const linkedin =
+      socialMediaLinks.linkedin || prevUser.socialMediaLinks.linkedin
+    const facebook =
+      socialMediaLinks.facebook || prevUser.socialMediaLinks.facebook
+    const instagram =
+      socialMediaLinks.instagram || prevUser.socialMediaLinks.instagram
+
+    const newLinks = {
+      github,
+      twitter,
+      linkedin,
+      facebook,
+      instagram,
     }
 
-    if (removeImage) {
-      if (oldImageUrl !== "uploads/default.png") {
-        fs.unlink(oldImageUrl, (err) => {
-          if (err) res.status(404).send({ error: e })
-        })
-      }
-    }
+    const newUsername = username || prevUser.username
+    const newPassword = password || prevUser.password
+    const newEmail = email || prevUser.email
+    const newFirstName = firstName || prevUser.firstName
+    const newLastName = lastName || prevUser.lastName
+    const newBirth = birth || prevUser.birth
+    const newAboutMe = aboutMe || prevUser.aboutMe
 
-    user.username = username || user.username
-    user.password = password || user.password
-    user.email = email || user.email
-    user.firstName = firstName || user.firstName
-    user.lastName = lastName || user.lastName
-    user.birth = birth || user.birth
-    user.aboutMe = aboutMe || user.aboutMe
-    user.imageUrl = imageUrl || user.imageUrl
-
-    await user.save()
+    const user = await User.findByIdAndUpdate(
+      id,
+      {
+        username: newUsername,
+        password: newPassword,
+        email: newEmail,
+        firstName: newFirstName,
+        lastName: newLastName,
+        birth: newBirth,
+        aboutMe: newAboutMe,
+        education: newEducation,
+        socialMediaLinks: newLinks,
+      },
+      { new: true }
+    )
 
     const { password: hashedPassword, ...userDetails } = user.toJSON()
     const token = jwt.sign(
