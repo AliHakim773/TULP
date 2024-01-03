@@ -31,6 +31,7 @@ const ProfileCard = () => {
     }
     upload()
   }, [file])
+
   return (
     <div className='profile-card'>
       <div className='profile-card-1 flex column center w-100'>
@@ -64,13 +65,20 @@ const ProfileCard = () => {
           <div className='profile-item'>
             Full Name: {userSlice.firstName} {userSlice.lastName}
           </div>
-          <div className='profile-item'>Graduated At: John Hassan Doe</div>
-          <div className='profile-item'>Degree: John Hassan Doe</div>
-          <div className='profile-item'>Birth Date: 2000/1/1</div>
+          <div className='profile-item'>Birth Date: {userSlice.birth}</div>
+          <div className='profile-item'>
+            University: {userSlice.education.university}
+          </div>
+          <div className='profile-item'>
+            Graduation Date: {userSlice.education.dateOfGraduation}
+          </div>
+          <div className='profile-item'>
+            Degree: {userSlice.education.degree}
+          </div>
           <div className='profile-social-media-links'>
             Social Media Links:
             <div className='profile-links flex row'>
-              <Link className='sml-icon'>
+              <Link to={userSlice.socialMedialLinks} className='sml-icon'>
                 <img src={github} alt='github' />
               </Link>
               <Link className='sml-icon'>
