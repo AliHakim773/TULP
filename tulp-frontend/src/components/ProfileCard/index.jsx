@@ -6,7 +6,7 @@ import { Link } from "react-router-dom"
 import facebook from "../../assets/svgs/facebook.svg"
 import github from "../../assets/svgs/github.svg"
 import instagram from "../../assets/svgs/instagram.svg"
-import twitter from "../../assets/svgs/twitter.svg"
+import twitter from "../../assets/svgs/x-twitter.svg"
 import linkedin from "../../assets/svgs/linkedin.svg"
 
 const ProfileCard = () => {
