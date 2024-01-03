@@ -1,0 +1,14 @@
+.edit-inputs > * {
+  margin-top: 10px;
+}
+
+.edit-social-media > h4 {
+  margin-block: 1rem;
+}
+.edit-social-media > *:not(:first-child) {
+  margin-top: 10px;
+}
+.edit-submit-btn {
+  margin-top: 1rem;
+  width: 10rem;
+}
