@@ -1,17 +1,36 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import "./styles.css"
-import { useSelector } from "react-redux"
-import { extractUserSlice } from "../../core/redux/userSlice"
+import { useDispatch, useSelector } from "react-redux"
+import { changeImage, extractUserSlice } from "../../core/redux/userSlice"
 import { Link } from "react-router-dom"
 import facebook from "../../assets/svgs/facebook.svg"
 import github from "../../assets/svgs/github.svg"
 import instagram from "../../assets/svgs/instagram.svg"
 import twitter from "../../assets/svgs/x-twitter.svg"
 import linkedin from "../../assets/svgs/linkedin.svg"
+import { userApi } from "../../core/api/user"
 
 const ProfileCard = () => {
+  const dispatch = useDispatch()
   const userSlice = useSelector(extractUserSlice)
+  const [file, setFile] = useState("")
 
+  const handleOnChange = async (e) => {
+    setFile(e.target.files[0])
+  }
+  useEffect(() => {
+    const upload = async () => {
+      const formData = new FormData()
+      formData.append("image", file)
+      try {
+        const res = await userApi.upload(formData)
+        dispatch(changeImage(res))
+      } catch (e) {
+        console.log(e)
+      }
+    }
+    upload()
+  }, [file])
   return (
     <div className='profile-card'>
       <div className='profile-card-1 flex column center w-100'>
@@ -23,11 +42,24 @@ const ProfileCard = () => {
       </div>
       <div className='profile-line' />
       <div className='profile-card-2 flex column center w-100'>
-        {window.location.pathname !== "/edit-profile" && (
+        {window.location.pathname !== "/edit-profile" ? (
           <Link to={"/edit-profile"} className='profile-card-2-btn semi-bold'>
             Edit Profile
           </Link>
+        ) : (
+          <form className='profile-card-2-btn upload-pic semi-bold flex center'>
+            <input
+              onChange={(e) => {
+                e.preventDefault()
+                handleOnChange(e)
+              }}
+              type='file'
+              className='profile-card-2-btn upload-pic semi-bold flex center'
+            />
+            Uplaod Pic
+          </form>
         )}
+
         <div className='profile-info flex column'>
           <div className='profile-item'>
             Full Name: {userSlice.firstName} {userSlice.lastName}
