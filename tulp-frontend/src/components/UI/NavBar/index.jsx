@@ -43,6 +43,11 @@ const NavBar = () => {
                   My Classes
                 </Link>
               </li>
+              <li className='h-100'>
+                <p className='nav-username h-100 flex center blue-3-txt semi-bold'>
+                  {user.username}
+                </p>
+              </li>
               <li className='h-100 flex center'>
                 <div className='pfp-img' onClick={handleOnClickProfile}>
                   <img

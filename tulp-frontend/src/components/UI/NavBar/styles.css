@@ -24,3 +24,7 @@
   border-radius: 50%;
   object-fit: cover;
 }
+.nav-username {
+  margin-inline-end: 0.25rem;
+  padding-inline: 0.25rem;
+}
