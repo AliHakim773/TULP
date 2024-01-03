@@ -2,6 +2,7 @@ const { default: mongoose } = require("mongoose")
 const bcrypt = require("bcrypt")
 const dateFormater = require("../helpers/dateFormater")
 const EducationSchema = require("./education.model")
+const SocialMediaSchema = require("./socialMedial.model")
 
 const validateBirth = (birth) => {
   return birth <= dateFormater(Date.now())
@@ -72,11 +73,8 @@ const UserSchema = new mongoose.Schema({
     maxlength: [400, "About me can't be more than 400 chars"],
     trim: true,
   },
-  education: [EducationSchema],
-  socialMediaLinks: {
-    type: Map,
-    of: String,
-  },
+  education: { type: EducationSchema },
+  socialMediaLinks: { type: SocialMediaSchema },
   classes: [
     {
       type: mongoose.Types.ObjectId,
