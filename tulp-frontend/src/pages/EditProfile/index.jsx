@@ -12,7 +12,7 @@ const EditProfile = () => {
           <aside className='edit-aside'>
             <ProfileCard />
           </aside>
-          <section className='edit-form-section'>
+          <section className='edit-form-section w-100'>
             <EditProfileForm />
           </section>
         </div>
