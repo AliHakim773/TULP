@@ -1,3 +1,9 @@
 .main-edit {
   justify-content: space-between;
+  width: min(100%, 1600px);
+}
+.edit-section {
+  justify-content: center;
+  margin-block: 5rem;
+  padding-inline: 1rem;
 }
