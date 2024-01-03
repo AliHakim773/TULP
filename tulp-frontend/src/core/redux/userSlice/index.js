@@ -8,14 +8,29 @@ const initialState = {
   email: "",
   role: "",
   imageUrl: "",
+  aboutMe: "",
+  birth: "",
+  socialMediaLinks: {},
+  education: {},
 }
 export const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
     setUser(state, action) {
-      const { _id, username, firstName, lastName, email, role, imageUrl } =
-        action.payload
+      const {
+        _id,
+        username,
+        firstName,
+        lastName,
+        email,
+        role,
+        imageUrl,
+        aboutMe,
+        socialMediaLinks,
+        education,
+        birth,
+      } = action.payload
       return {
         _id,
         username,
@@ -24,6 +39,10 @@ export const userSlice = createSlice({
         email,
         role,
         imageUrl,
+        aboutMe,
+        socialMediaLinks,
+        education,
+        birth,
       }
     },
     clearUser(state, action) {
@@ -35,6 +54,10 @@ export const userSlice = createSlice({
         email: "",
         role: "",
         imageUrl: "",
+        aboutMe: "",
+        birth: "",
+        socialMediaLinks: {},
+        education: {},
       }
     },
     changeImage(state, action) {
