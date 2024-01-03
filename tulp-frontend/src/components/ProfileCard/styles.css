@@ -16,6 +16,7 @@
   height: 200px;
   border-radius: 50%;
   margin-bottom: 1rem;
+  object-fit: cover;
 }
 .profile-username {
   font-size: 18px;
@@ -58,4 +59,12 @@
   height: 30px;
   width: 30px;
   margin-block: 4px;
+}
+form.upload-pic {
+  position: relative;
+}
+input[type="file"].upload-pic {
+  position: absolute;
+  inset: 0 0 0 0;
+  opacity: 0;
 }
