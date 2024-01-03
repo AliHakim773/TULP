@@ -3,11 +3,13 @@ const {
   editUser,
   getCurrentUser,
   getUserById,
+  uploadImage,
 } = require("../controllers/user.controller")
 const upload = require("../middlewares/multer.middleware")
 const router = express.Router()
 
-router.patch("/", upload.single("image"), editUser)
+router.patch("/", editUser)
+router.patch("/", upload.single("image"), uploadImage)
 router.get("/:id", getUserById)
 router.get("/", getCurrentUser)
 

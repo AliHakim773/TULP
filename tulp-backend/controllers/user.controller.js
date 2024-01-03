@@ -17,26 +17,6 @@ const editUser = async (req, res) => {
   } = req.body
 
   try {
-    // let oldImageUrl = user.imageUrl
-    // let imageUrl = user.imageUrl
-    // let removeImage = false
-
-    // if (req.file) {
-    //   imageUrl = req.file.path
-    //   removeImage = true
-    // } else if (req.body.removeImage) {
-    //   imageUrl = "uploads/default.png"
-    //   removeImage = true
-    // }
-
-    // if (removeImage) {
-    //   if (oldImageUrl !== "uploads/default.png") {
-    //     fs.unlink(oldImageUrl, (err) => {
-    //       if (err) res.status(404).send({ error: e })
-    //     })
-    //   }
-    // }
-
     const prevUser = await User.findById(id)
     const degree = education.degree || prevUser.education.degree
     const university = education.university || prevUser.education.university
@@ -128,4 +108,37 @@ const getUserById = async (req, res) => {
   }
 }
 
-module.exports = { editUser, getCurrentUser, getUserById }
+const uploadImage = async (req, res) => {
+  const id = req.user._id
+
+  try {
+    const user = await User.findById(id)
+
+    let oldImageUrl = user.imageUrl
+    let imageUrl = user.imageUrl
+    let removeImage = false
+    if (req.file) {
+      imageUrl = req.file.path
+      removeImage = true
+    } else if (req.body.removeImage) {
+      imageUrl = "uploads/default.png"
+      removeImage = true
+    }
+    if (removeImage) {
+      if (oldImageUrl !== "uploads/default.png") {
+        fs.unlink(oldImageUrl, (err) => {
+          if (err) res.status(404).send({ error: e })
+        })
+      }
+    }
+
+    user.imageUrl = imageUrl
+    await user.save()
+
+    res.status(200).send({ imageUrl })
+  } catch (e) {
+    res.status(500).send({ error: e.message })
+  }
+}
+
+module.exports = { editUser, getCurrentUser, getUserById, uploadImage }
