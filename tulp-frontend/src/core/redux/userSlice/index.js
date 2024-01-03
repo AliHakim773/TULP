@@ -37,11 +37,18 @@ export const userSlice = createSlice({
         imageUrl: "",
       }
     },
+    changeImage(state, action) {
+      const { imageUrl } = action.payload
+      return {
+        ...state,
+        imageUrl,
+      }
+    },
   },
 })
 
 export default userSlice.reducer
-export const { setUser, clearUser } = userSlice.actions
+export const { setUser, clearUser, changeImage } = userSlice.actions
 export const user = userSlice.name
 export const extractUserSlice = (global) => {
   return global[user]
