@@ -7,7 +7,7 @@
 
 > A Web App for teaching and taking online classes, making it easier for people to get/give knowlage online.
 >
-> TULP aims to making the ultimate E-learning platform by providing a user-friendly interface that makes learning simple with no extra complications. We believe in enhancing the learning expirience so that instructors can focus on instructing and studnets can focus on learning.
+> TULP aims to make the ultimate E-learning platform by providing a user-friendly interface that makes learning simple with no extra complications. We believe in enhancing the learning experience so that instructors can focus on instructing and students can focus on learning.
 
 ### User Stories
 
