@@ -16,8 +16,10 @@
 -   As an Instructor I want to communicate with others on the same platform, so that I don't have to downloads/use extra application.
 -   As an Instructor I want to easily manage my class, so that I have more time to prepare for the content.
 -   As an Instructor I want to have tools to help me teach, so that I can give a better learning experience.
+  
 -   As a student I want to join an online class, so that I can study more effectively.
 -   As a student I want to have an easy to manage class information, so that i can focus on my studies more.
+
 -   As an admin I want to an admin pannel, so that I can easily manage the website users/content.
 
 
