@@ -13,7 +13,8 @@ const PostField = () => {
           className='post-field-input border'
           name='post'
           id='post'
-          placeholder='Type Here'></textarea>
+          placeholder='Type Here'
+        />
       </form>
     </div>
   )
