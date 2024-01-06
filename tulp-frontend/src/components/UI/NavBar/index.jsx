@@ -4,6 +4,7 @@ import { Link } from "react-router-dom"
 import "./styles.css"
 import useNavBarLogic from "./useNavBarLogic"
 import PfpDropDown from "./PfpDropDown"
+import Button from "../../Base/Button"
 
 const NavBar = () => {
   const { user, isLoggedIn, isHidden, handleOnClickProfile } = useNavBarLogic()
@@ -20,10 +21,8 @@ const NavBar = () => {
           {!isLoggedIn ? (
             <>
               <li className='h-100'>
-                <Link
-                  to={"/register"}
-                  className='nav-link h-100 flex center blue-3-txt semi-bold'>
-                  Register
+                <Link to={"/register"}>
+                  <Button />
                 </Link>
               </li>
               <li className='h-100'>
