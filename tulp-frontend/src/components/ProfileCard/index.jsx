@@ -89,6 +89,7 @@ const ProfileCard = () => {
           ) : (
             ""
           )}
+          {/* FIXME: show only vailable links */}
           {userSlice.socialMediaLinks && (
             <div className='profile-social-media-links'>
               Social Media Links:
