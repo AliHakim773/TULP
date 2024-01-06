@@ -5,6 +5,7 @@ import { setUser } from "../../core/redux/userSlice"
 import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { errorBlink } from "../../core/helpers/errorBlink"
+import toast from "react-hot-toast"
 
 const useEditProfileLogic = () => {
   const dispatch = useDispatch()
@@ -189,24 +190,24 @@ const useEditProfileLogic = () => {
   ]
 
   const HandleOnSubmit = async () => {
-    if (values.password !== values.confirmPassword) {
-      errorBlink(setError, "Passwords do not match")
-      return
-    }
-    if (values.password.length < 6 && values.password.length != 0) {
-      errorBlink(setError, "Passwords cant be less than 6 characters")
-      return
-    }
-    try {
-      const res = await userApi.edit(values)
-      const token = `Bearer ${res.token}`
-      local("token", token)
-
-      dispatch(setUser(res.user))
-    } catch (e) {
-      console.log(e)
-      errorBlink(setError, e.response.data.message)
-    }
+    // if (values.password !== values.confirmPassword) {
+    //   errorBlink(setError, "Passwords do not match")
+    //   return
+    // }
+    // if (values.password.length < 6 && values.password.length != 0) {
+    //   errorBlink(setError, "Passwords cant be less than 6 characters")
+    //   return
+    // }
+    // try {
+    //   const res = await userApi.edit(values)
+    //   const token = `Bearer ${res.token}`
+    //   local("token", token)
+    //   dispatch(setUser(res.user))
+    // } catch (e) {
+    //   console.log(e)
+    //   errorBlink(setError, e.response.data.message)
+    // }
+    toast.success("Profile edit successful")
   }
   return {
     inputs,

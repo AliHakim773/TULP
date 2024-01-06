@@ -7,10 +7,14 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { store } from "./core/redux/store"
 import LoginPage from "./pages/LoginPage"
 import EditProfile from "./pages/EditProfile"
+import { Toaster } from "react-hot-toast"
 
 const App = () => {
   return (
     <div className='app'>
+      <div>
+        <Toaster />
+      </div>
       <Provider store={store}>
         <BrowserRouter>
           <Routes>
