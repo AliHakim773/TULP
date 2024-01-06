@@ -6,3 +6,21 @@
   border: none;
   border-radius: 5px;
 }
+.basic-btn.blue {
+  background-color: var(--blue-2);
+}
+.basic-btn.blue:hover {
+  background-color: var(--blue-3);
+}
+.basic-btn.orange {
+  background-color: var(--orange-2);
+}
+.basic-btn.orange:hover {
+  background-color: var(--orange-3);
+}
+.basic-btn.green {
+  background-color: var(--green-2);
+}
+.basic-btn.green:hover {
+  background-color: var(--green-3);
+}
