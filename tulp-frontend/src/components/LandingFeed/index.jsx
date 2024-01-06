@@ -5,7 +5,7 @@ import PostFeed from "./PostFeed"
 
 const LandingFeed = () => {
   return (
-    <main className='landing-feed-main border'>
+    <main className='landing-feed-main shadow'>
       <PostField />
       <PostFeed />
     </main>
