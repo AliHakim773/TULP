@@ -1,5 +1,5 @@
 .home-page {
-  height: calc(100vh - 358px);
+  /* height: max(calc(100vh - 360px), 600px); */
   width: min(100%, 1600px);
   margin-block: 2rem;
   padding-inline: 15px;
