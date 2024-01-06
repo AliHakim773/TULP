@@ -19,3 +19,13 @@
   width: 40px;
   font-size: 12px;
 }
+.post-footer {
+  gap: 0.3rem;
+}
+.post-footer-detail {
+  font-size: 14px;
+  gap: 2px;
+}
+.post-icon {
+  height: 14px;
+}

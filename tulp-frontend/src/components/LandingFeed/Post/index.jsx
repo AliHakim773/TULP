@@ -19,13 +19,13 @@ const Post = ({ post }) => {
       </div>
       <div className='post-body'>{content}</div>
       <div className='post-footer flex'>
-        <div className='likes flex'>
+        <div className='post-footer-detail flex center'>
           {likes}{" "}
           <div className='post-icon'>
             <img src={like} alt='likes' />
           </div>
         </div>
-        <div className='comments flex'>
+        <div className='post-footer-detail flex center'>
           {comments.length}{" "}
           <div className='post-icon'>
             <img src={comment} alt='comment' />
