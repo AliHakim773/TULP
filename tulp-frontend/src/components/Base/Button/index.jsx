@@ -1,9 +1,17 @@
 import React from "react"
 import "./styles.css"
 
-const Button = ({ text = "Button", color = "blue", onclick }) => {
+const Button = ({
+  type = "button",
+  text = "Button",
+  color = "blue",
+  onclick,
+}) => {
   return (
-    <button onClick={onclick} className={`basic-btn ${color} semi-bold`}>
+    <button
+      type={type}
+      onClick={onclick}
+      className={`basic-btn ${color} semi-bold`}>
       {text}
     </button>
   )
