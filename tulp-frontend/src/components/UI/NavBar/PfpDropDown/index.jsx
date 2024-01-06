@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { clearUser } from "../../../../core/redux/userSlice"
 import { useDispatch } from "react-redux"
 
-const PfpDropDown = ({ isHidden }) => {
+const PfpDropDown = ({ isHidden, user }) => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -16,6 +16,9 @@ const PfpDropDown = ({ isHidden }) => {
 
   return (
     <div className={isHidden ? "pfp-drop-down" : "pfp-drop-down pfp-show"}>
+      <Link to={"/profile"} className='pfp-drop-down-item'>
+        {user}
+      </Link>
       <Link to={"/edit-profile"} className='pfp-drop-down-item'>
         Edit Profile
       </Link>
