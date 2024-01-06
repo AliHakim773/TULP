@@ -10,8 +10,18 @@ const initialState = {
   imageUrl: "",
   aboutMe: "",
   birth: "",
-  socialMediaLinks: {},
-  education: {},
+  socialMediaLinks: {
+    github: "",
+    twitter: "",
+    facebook: "",
+    linkedin: "",
+    instagram: "",
+  },
+  education: {
+    degree: "",
+    university: "",
+    dateOfGraduation: "",
+  },
 }
 export const userSlice = createSlice({
   name: "user",
@@ -40,25 +50,13 @@ export const userSlice = createSlice({
         role,
         imageUrl,
         aboutMe,
-        socialMediaLinks,
-        education,
+        socialMediaLinks: { ...state.socialMediaLinks, ...socialMediaLinks },
+        education: { ...state.education, ...education },
         birth,
       }
     },
     clearUser(state, action) {
-      return {
-        _id: "",
-        username: "",
-        firstName: "",
-        lastName: "",
-        email: "",
-        role: "",
-        imageUrl: "",
-        aboutMe: "",
-        birth: "",
-        socialMediaLinks: {},
-        education: {},
-      }
+      return initialState
     },
     changeImage(state, action) {
       const { imageUrl } = action.payload
