@@ -8,11 +8,8 @@ import Error from "../Base/Error"
 const EditProfileForm = () => {
   const {
     inputs,
-    educationInputs,
     socailMediaInputs,
     HandleOnSocialMediaChange,
-    HandleOnInputChange,
-    HandleOnEducationChange,
     HandleOnSubmit,
     error,
   } = useEditProfileLogic()
@@ -21,40 +18,37 @@ const EditProfileForm = () => {
     <form className='w-100'>
       <h2>Edit Profile</h2>
       <div className='edit-inputs'>
-        {inputs.map((input) => (
-          <InputField
-            text={input.text}
-            id={input.id}
-            type={input.type}
-            placeholder={input.placeholder}
-            key={input.id}
-            value={input.value}
-            handleOnChange={HandleOnInputChange}
-          />
-        ))}
-        {educationInputs.map((input) => (
-          <InputField
-            text={input.text}
-            id={input.id}
-            type={input.type}
-            placeholder={input.placeholder}
-            key={input.id}
-            value={input.value}
-            handleOnChange={HandleOnEducationChange}
-          />
+        {inputs.map((pair, i) => (
+          <div key={i} className='edit-form-pair'>
+            {pair.map((input) => (
+              <InputField
+                text={input.text}
+                id={input.id}
+                type={input.type}
+                placeholder={input.placeholder}
+                key={input.id}
+                value={input.value}
+                handleOnChange={input.handleOnChange}
+              />
+            ))}
+          </div>
         ))}
         <div className='edit-social-media'>
           <h4>Social Media Links</h4>
-          {socailMediaInputs.map((input) => (
-            <InputField
-              text={input.text}
-              id={input.id}
-              type={input.type}
-              placeholder={input.placeholder}
-              key={input.id}
-              value={input.value}
-              handleOnChange={HandleOnSocialMediaChange}
-            />
+          {socailMediaInputs.map((pair, i) => (
+            <div key={i} className='edit-form-pair'>
+              {pair.map((input) => (
+                <InputField
+                  text={input.text}
+                  id={input.id}
+                  type={input.type}
+                  placeholder={input.placeholder}
+                  key={input.id}
+                  value={input.value}
+                  handleOnChange={input.handleOnChange}
+                />
+              ))}
+            </div>
           ))}
           <Error msg={error.msg} hidden={error.hidden} />
         </div>
