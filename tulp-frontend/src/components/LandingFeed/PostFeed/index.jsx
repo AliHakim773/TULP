@@ -1,11 +1,11 @@
 import React from "react"
 import "./styles.css"
-import Post from "../Post"
+import PostItem from "../PostItem"
 
 const PostFeed = () => {
   return (
     <div className='post-feed'>
-      <Post post={test_post} />
+      <PostItem post={test_post} />
     </div>
   )
 }
