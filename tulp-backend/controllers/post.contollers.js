@@ -27,7 +27,26 @@ const getPost = async (req, res) => {
   }
 }
 
+const addComment = async (req, res) => {
+  const id = req.user.id
+  const { postId, content } = req.body
+  const comment = {
+    user: id,
+    content,
+  }
+  try {
+    const post = await Post.findById(postId)
+    post.comments.push(comment)
+    await post.save()
+
+    return res.status(200).send({ post })
+  } catch (error) {
+    return res.status(500).send({ error })
+  }
+}
+
 module.exports = {
   addPost,
   getPost,
+  addComment,
 }
