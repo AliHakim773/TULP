@@ -20,16 +20,14 @@ const NavBar = () => {
         <ul className='nav-links flex h-100'>
           {!isLoggedIn ? (
             <>
-              <li className='h-100'>
+              <li className='h-100 flex center'>
                 <Link to={"/register"}>
-                  <Button />
+                  <Button text='Register' />
                 </Link>
               </li>
-              <li className='h-100'>
-                <Link
-                  to={"/login"}
-                  className='nav-link h-100 flex center blue-3-txt semi-bold'>
-                  Login
+              <li className='h-100 flex center'>
+                <Link to={"/login"}>
+                  <Button text='Login' color='orange' />
                 </Link>
               </li>
             </>

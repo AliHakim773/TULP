@@ -7,12 +7,9 @@
 .home-logo {
   padding: 5px 15px 5px;
 }
-.nav-link {
-  padding-inline: 15px;
-}
-.nav-link:hover {
-  cursor: pointer;
-  background-color: var(--grey-5);
+.nav-links {
+  gap: 10px;
+  padding-inline-end: 15px;
 }
 .pfp-img {
   width: 45px;
