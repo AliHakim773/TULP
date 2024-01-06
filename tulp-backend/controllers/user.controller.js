@@ -15,7 +15,6 @@ const editUser = async (req, res) => {
     education,
     socialMediaLinks,
   } = req.body
-
   try {
     const prevUser = await User.findById(id)
     const degree = education.degree || prevUser.education.degree
@@ -28,15 +27,16 @@ const editUser = async (req, res) => {
       university,
       dateOfGraduation,
     }
-    const github = socialMediaLinks.github || prevUser.socialMediaLinks.github
+
+    const github = socialMediaLinks.github || prevUser.socialMediaLinks?.github
     const twitter =
-      socialMediaLinks.twitter || prevUser.socialMediaLinks.twitter
+      socialMediaLinks.twitter || prevUser.socialMediaLinks?.twitter
     const linkedin =
-      socialMediaLinks.linkedin || prevUser.socialMediaLinks.linkedin
+      socialMediaLinks.linkedin || prevUser.socialMediaLinks?.linkedin
     const facebook =
-      socialMediaLinks.facebook || prevUser.socialMediaLinks.facebook
+      socialMediaLinks.facebook || prevUser.socialMediaLinks?.facebook
     const instagram =
-      socialMediaLinks.instagram || prevUser.socialMediaLinks.instagram
+      socialMediaLinks.instagram || prevUser.socialMediaLinks?.instagram
 
     const newLinks = {
       github,
