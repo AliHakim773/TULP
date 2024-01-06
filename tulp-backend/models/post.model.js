@@ -1,7 +1,7 @@
 const { default: mongoose } = require("mongoose")
 const CommentSchema = require("./comment.model")
 
-const PostSchema = mongoose.Schema({
+const PostSchema = new mongoose.Schema({
   user: {
     type: mongoose.Types.ObjectId,
     ref: "User",
