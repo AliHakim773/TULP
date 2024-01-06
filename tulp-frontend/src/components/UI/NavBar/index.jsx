@@ -33,11 +33,9 @@ const NavBar = () => {
             </>
           ) : (
             <>
-              <li className='h-100'>
-                <Link
-                  to={"/"}
-                  className='nav-link h-100 flex center blue-3-txt semi-bold'>
-                  My Classes
+              <li className='h-100 flex center'>
+                <Link to={"/"}>
+                  <Button text='Home' />
                 </Link>
               </li>
               <li className='h-100 flex center'>
