@@ -1,5 +1,5 @@
 .register-form {
-  width: 400px;
+  width: 600px;
 }
 
 .register-inputs > * {
@@ -15,4 +15,8 @@
 }
 .register-submit-btn {
   width: 70%;
+}
+.register-form-pair {
+  display: flex;
+  gap: 20px;
 }

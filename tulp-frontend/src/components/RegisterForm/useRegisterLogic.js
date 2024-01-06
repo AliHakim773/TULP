@@ -22,48 +22,55 @@ const useRegisterLogic = () => {
   })
 
   const inputs = [
-    {
-      text: "Username",
-      id: "username",
-      type: "text",
-      placeholder: "username",
-      value: values.username,
-    },
-    {
-      text: "Email",
-      id: "email",
-      type: "email",
-      placeholder: "example@email.com",
-      value: values.email,
-    },
-    {
-      text: "First Name",
-      id: "firstName",
-      type: "text",
-      placeholder: "John",
-      value: values.firstName,
-    },
-    {
-      text: "Last Name",
-      id: "lastName",
-      type: "text",
-      placeholder: "Doe",
-      value: values.lastName,
-    },
-    {
-      text: "Password",
-      id: "password",
-      type: "password",
-      placeholder: "------------",
-      value: values.password,
-    },
-    {
-      text: "Confirm Password",
-      id: "confirmPassword",
-      type: "password",
-      placeholder: "------------",
-      value: values.confirmPassword,
-    },
+    [
+      {
+        text: "Username",
+        id: "username",
+        type: "text",
+        placeholder: "username",
+        value: values.username,
+      },
+      {
+        text: "Email",
+        id: "email",
+        type: "email",
+        placeholder: "example@email.com",
+        value: values.email,
+      },
+    ],
+
+    [
+      {
+        text: "First Name",
+        id: "firstName",
+        type: "text",
+        placeholder: "John",
+        value: values.firstName,
+      },
+      {
+        text: "Last Name",
+        id: "lastName",
+        type: "text",
+        placeholder: "Doe",
+        value: values.lastName,
+      },
+    ],
+    [
+      {
+        text: "Password",
+        id: "password",
+        type: "password",
+        placeholder: "------------",
+        value: values.password,
+      },
+      {
+        text: "Confirm Password",
+        id: "confirmPassword",
+        type: "password",
+        placeholder: "------------",
+        value: values.confirmPassword,
+      },
+    ],
   ]
 
   const HandleOnInputChange = (e) => {

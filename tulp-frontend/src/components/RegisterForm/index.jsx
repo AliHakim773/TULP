@@ -17,19 +17,21 @@ const RegisterForm = () => {
         <h2 className='semmi-bold'>Register here</h2>
         <form className='register-form'>
           <div className='register-inputs'>
-            {inputs.map((input) => {
-              return (
-                <InputField
-                  text={input.text}
-                  id={input.id}
-                  type={input.type}
-                  placeholder={input.placeholder}
-                  key={input.id}
-                  value={input.value}
-                  handleOnChange={HandleOnInputChange}
-                />
-              )
-            })}
+            {inputs.map((pair, i) => (
+              <div key={i} className='register-form-pair'>
+                {pair.map((input) => (
+                  <InputField
+                    text={input.text}
+                    id={input.id}
+                    type={input.type}
+                    placeholder={input.placeholder}
+                    key={input.id}
+                    value={input.value}
+                    handleOnChange={HandleOnInputChange}
+                  />
+                ))}
+              </div>
+            ))}
             <RoleSelect onChange={HandleOnInputChange} />
             <Error msg={error.msg} hidden={error.hidden} />
           </div>
