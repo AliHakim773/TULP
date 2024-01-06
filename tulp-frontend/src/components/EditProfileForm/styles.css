@@ -12,3 +12,7 @@
   margin-top: 1rem;
   width: 10rem;
 }
+.edit-form-pair {
+  display: flex;
+  gap: 10px;
+}
