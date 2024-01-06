@@ -35,118 +35,6 @@ const useEditProfileLogic = () => {
     socialMediaLinks: socialMedia,
   })
 
-  const socailMediaInputs = [
-    {
-      text: "Github",
-      id: "github",
-      type: "text",
-      placeholder: "https://github.com/username",
-      value: socialMedia.github,
-    },
-    {
-      text: "Twitter",
-      id: "twitter",
-      type: "text",
-      placeholder: "https://twitter.com/username",
-      value: socialMedia.twitter,
-    },
-    {
-      text: "Linkedin",
-      id: "linkedin",
-      type: "text",
-      placeholder: "https://linkedin.com/in/username",
-      value: socialMedia.linkedin,
-    },
-    {
-      text: "Instagram",
-      id: "instagram",
-      type: "text",
-      placeholder: "https://instagram.com/username",
-      value: socialMedia.instagram,
-    },
-    {
-      text: "Facebook",
-      id: "facebook",
-      type: "text",
-      placeholder: "https://facebook.com/username",
-      value: socialMedia.facebook,
-    },
-  ]
-  const educationInputs = [
-    {
-      text: "Degree",
-      id: "degree",
-      type: "text",
-      placeholder: "Bachelor",
-      value: education.degree,
-    },
-    {
-      text: "University",
-      id: "university",
-      type: "text",
-      placeholder: "University of California, Berkeley",
-      value: education.university,
-    },
-    {
-      text: "Date of Graduation",
-      id: "dateOfGraduation",
-      type: "date",
-      placeholder: "2021/05/01",
-      value: education.dateOfGraduation,
-    },
-  ]
-  const inputs = [
-    {
-      text: "Username",
-      id: "username",
-      type: "text",
-      placeholder: "username",
-      value: values.username,
-    },
-    {
-      text: "Password",
-      id: "password",
-      type: "password",
-      placeholder: "------------",
-      value: values.password,
-    },
-    {
-      text: "Confirm Password",
-      id: "confirmPassword",
-      type: "password",
-      placeholder: "------------",
-      value: values.confirmPassword,
-    },
-    {
-      text: "First Name",
-      id: "firstName",
-      type: "text",
-      placeholder: "John",
-      value: values.firstName,
-    },
-    {
-      text: "Last Name",
-      id: "lastName",
-      type: "text",
-      placeholder: "Doe",
-      value: values.lastName,
-    },
-    {
-      text: "Birth",
-      id: "birth",
-      type: "date",
-      placeholder: "2000/01/01",
-      value: values.birth,
-    },
-    {
-      text: "About Me",
-      id: "aboutMe",
-      type: "text",
-      placeholder: "I am a software developer",
-      value: values.aboutMe,
-    },
-  ]
-
   const HandleOnInputChange = (e) => {
     setValues({ ...values, [e.target.id]: e.target.value })
   }
@@ -158,6 +46,148 @@ const useEditProfileLogic = () => {
     setEducation({ ...education, [e.target.id]: e.target.value })
     setValues({ ...values, education })
   }
+  const socailMediaInputs = [
+    [
+      {
+        text: "Github",
+        id: "github",
+        type: "text",
+        placeholder: "https://github.com/username",
+        value: socialMedia.github,
+        handleOnChange: HandleOnSocialMediaChange,
+      },
+      {
+        text: "Twitter",
+        id: "twitter",
+        type: "text",
+        placeholder: "https://twitter.com/username",
+        value: socialMedia.twitter,
+        handleOnChange: HandleOnSocialMediaChange,
+      },
+    ],
+    [
+      {
+        text: "Linkedin",
+        id: "linkedin",
+        type: "text",
+        placeholder: "https://linkedin.com/in/username",
+        value: socialMedia.linkedin,
+        handleOnChange: HandleOnSocialMediaChange,
+      },
+      {
+        text: "Instagram",
+        id: "instagram",
+        type: "text",
+        placeholder: "https://instagram.com/username",
+        value: socialMedia.instagram,
+        handleOnChange: HandleOnSocialMediaChange,
+      },
+    ],
+    [
+      {
+        text: "Facebook",
+        id: "facebook",
+        type: "text",
+        placeholder: "https://facebook.com/username",
+        value: socialMedia.facebook,
+        handleOnChange: HandleOnSocialMediaChange,
+      },
+    ],
+  ]
+
+  const inputs = [
+    [
+      {
+        text: "First Name",
+        id: "firstName",
+        type: "text",
+        placeholder: "John",
+        value: values.firstName,
+        handleOnChange: HandleOnInputChange,
+      },
+      {
+        text: "Last Name",
+        id: "lastName",
+        type: "text",
+        placeholder: "Doe",
+        value: values.lastName,
+        handleOnChange: HandleOnInputChange,
+      },
+    ],
+    [
+      {
+        text: "Password",
+        id: "password",
+        type: "password",
+        placeholder: "------------",
+        value: values.password,
+        handleOnChange: HandleOnInputChange,
+      },
+      {
+        text: "Confirm Password",
+        id: "confirmPassword",
+        type: "password",
+        placeholder: "------------",
+        value: values.confirmPassword,
+        handleOnChange: HandleOnInputChange,
+      },
+    ],
+    [
+      {
+        text: "Username",
+        id: "username",
+        type: "text",
+        placeholder: "username",
+        value: values.username,
+        handleOnChange: HandleOnInputChange,
+      },
+      {
+        text: "About Me",
+        id: "aboutMe",
+        type: "text",
+        placeholder: "I am a software developer",
+        value: values.aboutMe,
+        handleOnChange: HandleOnInputChange,
+      },
+    ],
+    [
+      {
+        text: "Birth",
+        id: "birth",
+        type: "date",
+        placeholder: "2000/01/01",
+        value: values.birth,
+        handleOnChange: HandleOnInputChange,
+      },
+      {
+        text: "Date of Graduation",
+        id: "dateOfGraduation",
+        type: "date",
+        placeholder: "2021/05/01",
+        value: education.dateOfGraduation,
+        handleOnChange: HandleOnEducationChange,
+      },
+    ],
+    [
+      {
+        text: "Degree",
+        id: "degree",
+        type: "text",
+        placeholder: "Bachelor",
+        value: education.degree,
+        handleOnChange: HandleOnEducationChange,
+      },
+      {
+        text: "University",
+        id: "university",
+        type: "text",
+        placeholder: "University of California, Berkeley",
+        value: education.university,
+        handleOnChange: HandleOnEducationChange,
+      },
+    ],
+  ]
+
   const HandleOnSubmit = async () => {
     if (values.password !== values.confirmPassword) {
       errorBlink(setError, "Passwords do not match")
@@ -173,7 +203,6 @@ const useEditProfileLogic = () => {
       local("token", token)
 
       dispatch(setUser(res.user))
-      navigate(0)
     } catch (e) {
       console.log(e)
       errorBlink(setError, e.response.data.message)
@@ -181,11 +210,8 @@ const useEditProfileLogic = () => {
   }
   return {
     inputs,
-    educationInputs,
     socailMediaInputs,
     HandleOnSocialMediaChange,
-    HandleOnInputChange,
-    HandleOnEducationChange,
     HandleOnSubmit,
     error,
   }
