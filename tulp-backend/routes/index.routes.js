@@ -5,6 +5,7 @@ const userRoutes = require("./user.routes")
 const classRoutes = require("./class.routes")
 const channelRoutes = require("./channel.routes")
 const assignmentRoutes = require("./assignment.routes")
+const postRoutes = require("./post.routes")
 
 const siteRoutes = async (app) => {
   //auth routes
@@ -17,6 +18,8 @@ const siteRoutes = async (app) => {
   app.use("/channel", authMiddleware, instructorMiddleware, channelRoutes)
   //assignment routes
   app.use("/assignment", authMiddleware, instructorMiddleware, assignmentRoutes)
+  //post routes
+  app.use("/post", authMiddleware, postRoutes)
 }
 
 module.exports = siteRoutes
