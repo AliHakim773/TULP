@@ -17,10 +17,15 @@ const addPost = async (req, res) => {
 
 const getPost = async (req, res) => {
   try {
-    const posts = await Post.find().populate({
-      path: "user",
-      select: "_id username imageUrl",
-    })
+    const posts = await Post.find()
+      .populate({
+        path: "user",
+        select: "_id username imageUrl",
+      })
+      .populate({
+        path: "comments.user",
+        select: "_id username imageUrl",
+      })
     return res.status(200).send({ posts })
   } catch (error) {
     return res.status(500).send({ error })
