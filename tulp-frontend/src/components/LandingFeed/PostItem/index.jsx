@@ -4,8 +4,11 @@ import Post from "../Post"
 
 const PostItem = ({ post }) => {
   return (
-    <div>
+    <div className='post-item'>
       <Post post={post} />
+      {post.comments.map((comment) => (
+        <Post key={comment._id} post={comment} main={false} />
+      ))}
     </div>
   )
 }
