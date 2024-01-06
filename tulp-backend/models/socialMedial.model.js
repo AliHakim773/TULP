@@ -3,24 +3,24 @@ const { default: mongoose } = require("mongoose")
 const SocialMediaSchema = mongoose.Schema({
   github: {
     type: String,
-    trim: true,
+    default: "",
   },
   twitter: {
     type: String,
-    trim: true,
+    default: "",
   },
   facebook: {
     type: String,
-    trim: true,
+    default: "",
   },
   instagram: {
     type: String,
-    trim: true,
+    default: "",
   },
   linkedin: {
     type: String,
-    trim: true,
+    default: "",
   },
 })
 
-module.exports= SocialMediaSchema
+module.exports = SocialMediaSchema
