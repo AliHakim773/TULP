@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { userApi } from "../../core/api/user"
 import { local } from "../../core/helpers/localstorage"
 import { setUser } from "../../core/redux/userSlice"
@@ -41,12 +41,16 @@ const useEditProfileLogic = () => {
   }
   const HandleOnSocialMediaChange = (e) => {
     setSocialMedia({ ...socialMedia, [e.target.id]: e.target.value })
-    setValues({ ...values, socialMediaLinks: socialMedia })
   }
+  useEffect(() => {
+    setValues({ ...values, socialMediaLinks: socialMedia })
+  }, [socialMedia])
   const HandleOnEducationChange = (e) => {
     setEducation({ ...education, [e.target.id]: e.target.value })
-    setValues({ ...values, education })
   }
+  useEffect(() => {
+    setValues({ ...values, education })
+  }, [education])
   const socailMediaInputs = [
     [
       {
