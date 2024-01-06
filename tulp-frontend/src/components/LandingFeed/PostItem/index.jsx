@@ -7,7 +7,9 @@ const PostItem = ({ post }) => {
     <div className='post-item'>
       <Post post={post} />
       {post.comments.map((comment) => (
-        <Post key={comment._id} post={comment} main={false} />
+        <div key={comment._id} className='post-comment'>
+          <Post post={comment} main={false} />
+        </div>
       ))}
     </div>
   )

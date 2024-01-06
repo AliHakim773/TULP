@@ -1,0 +1,18 @@
+.post-comment {
+  margin-left: 4rem;
+  margin-top: 1rem;
+  position: relative;
+}
+.post-comment::before {
+  content: "";
+  position: absolute;
+  display: block;
+  background-color: none;
+  border-left: 1px solid var(--blue-3);
+  border-bottom: 1px solid var(--blue-3);
+  border-bottom-left-radius: 10px;
+  width: 30px;
+  height: 60%;
+  left: -30px;
+  bottom: 50%;
+}
