@@ -8,8 +8,14 @@
 }
 .post-id {
   gap: 6px;
-  font-size: 14px;
+  font-size: 16px;
+  align-items: center;
 }
 .post-time {
   font-weight: 200;
+}
+.post-img {
+  height: 40px;
+  width: 40px;
+  font-size: 12px;
 }

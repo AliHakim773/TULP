@@ -13,7 +13,7 @@ const Post = ({ post }) => {
           <div className='blue-3-txt semi-bold'>{username}</div>
           <div className='post-time grey-1-txt'>- {created_at} ago</div>
         </div>
-        <div className='post-img'>
+        <div className='post-img circle'>
           <img src={image_url} alt='user Image' />
         </div>
       </div>
