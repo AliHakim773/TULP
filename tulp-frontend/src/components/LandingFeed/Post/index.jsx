@@ -4,8 +4,8 @@ import comment from "../../../assets/svgs/comment.svg"
 import like from "../../../assets/svgs/like.svg"
 import liked from "../../../assets/svgs/liked.svg"
 
-const Post = ({ post }) => {
-  const { username, created_at, content, likes, comments, image_url } = post
+const Post = ({ post, main = true }) => {
+  const { username, created_at, content, likes, image_url } = post
   return (
     <div className='post w-100 shadow flex column'>
       <div className='post-header flex'>
@@ -25,12 +25,14 @@ const Post = ({ post }) => {
             <img src={like} alt='likes' />
           </div>
         </div>
-        <div className='post-footer-detail flex center'>
-          {comments.length}{" "}
-          <div className='post-icon'>
-            <img src={comment} alt='comment' />
+        {post.comments && (
+          <div className='post-footer-detail flex center'>
+            {post.comments.length}{" "}
+            <div className='post-icon'>
+              <img src={comment} alt='comment' />
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   )
