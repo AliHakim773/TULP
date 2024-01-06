@@ -190,24 +190,24 @@ const useEditProfileLogic = () => {
   ]
 
   const HandleOnSubmit = async () => {
-    // if (values.password !== values.confirmPassword) {
-    //   errorBlink(setError, "Passwords do not match")
-    //   return
-    // }
-    // if (values.password.length < 6 && values.password.length != 0) {
-    //   errorBlink(setError, "Passwords cant be less than 6 characters")
-    //   return
-    // }
-    // try {
-    //   const res = await userApi.edit(values)
-    //   const token = `Bearer ${res.token}`
-    //   local("token", token)
-    //   dispatch(setUser(res.user))
-    // } catch (e) {
-    //   console.log(e)
-    //   errorBlink(setError, e.response.data.message)
-    // }
-    toast.success("Profile edit successful")
+    if (values.password !== values.confirmPassword) {
+      errorBlink(setError, "Passwords do not match")
+      return
+    }
+    if (values.password.length < 6 && values.password.length != 0) {
+      errorBlink(setError, "Passwords cant be less than 6 characters")
+      return
+    }
+    try {
+      const res = await userApi.edit(values)
+      const token = `Bearer ${res.token}`
+      local("token", token)
+      dispatch(setUser(res.user))
+      toast.success("Profile edit successful")
+    } catch (e) {
+      toast.error("Error")
+      errorBlink(setError, e.response.data.message)
+    }
   }
   return {
     inputs,
