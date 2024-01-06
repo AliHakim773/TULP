@@ -9,7 +9,7 @@ const LandingPage = () => {
       <BasicLayout>
         <div className='flex w-100 center'>
           <div className='home-page flex'>
-            <aside>aside</aside>
+            <aside className='landing-aside'>aside</aside>
             <LandingFeed />
           </div>
         </div>
