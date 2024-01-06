@@ -65,36 +65,67 @@ const ProfileCard = () => {
           <div className='profile-item'>
             Full Name: {userSlice.firstName} {userSlice.lastName}
           </div>
-          <div className='profile-item'>Birth Date: {userSlice.birth}</div>
-          <div className='profile-item'>
-            University: {userSlice.education.university}
-          </div>
-          <div className='profile-item'>
-            Graduation Date: {userSlice.education.dateOfGraduation}
-          </div>
-          <div className='profile-item'>
-            Degree: {userSlice.education.degree}
-          </div>
-          <div className='profile-social-media-links'>
-            Social Media Links:
-            <div className='profile-links flex row'>
-              <Link to={userSlice.socialMedialLinks} className='sml-icon'>
-                <img src={github} alt='github' />
-              </Link>
-              <Link className='sml-icon'>
-                <img src={linkedin} alt='linkedin' />
-              </Link>
-              <Link className='sml-icon'>
-                <img src={instagram} alt='instagram' />
-              </Link>
-              <Link className='sml-icon'>
-                <img src={twitter} alt='twitter' />
-              </Link>
-              <Link className='sml-icon'>
-                <img src={facebook} alt='facebook' />
-              </Link>
+          {userSlice.birth && (
+            <div className='profile-item'>Birth Date: {userSlice.birth}</div>
+          )}
+          {userSlice.education ? (
+            <>
+              {userSlice.education.university && (
+                <div className='profile-item'>
+                  University: {userSlice.education.university}
+                </div>
+              )}
+              {userSlice.education.dateOfGraduation && (
+                <div className='profile-item'>
+                  Graduation Date: {userSlice.education.dateOfGraduation}
+                </div>
+              )}
+              {userSlice.education.degree && (
+                <div className='profile-item'>
+                  Degree: {userSlice.education.degree}
+                </div>
+              )}
+            </>
+          ) : (
+            ""
+          )}
+          {userSlice.socialMediaLinks && (
+            <div className='profile-social-media-links'>
+              Social Media Links:
+              <div className='profile-links flex row'>
+                <a
+                  target='_blank'
+                  href={userSlice.socialMediaLinks.github}
+                  className='sml-icon'>
+                  <img src={github} alt='github' />
+                </a>
+                <a
+                  target='_blank'
+                  href={userSlice.socialMediaLinks.linkedin}
+                  className='sml-icon'>
+                  <img src={linkedin} alt='linkedin' />
+                </a>
+                <a
+                  target='_blank'
+                  href={userSlice.socialMediaLinks.instagram}
+                  className='sml-icon'>
+                  <img src={instagram} alt='instagram' />
+                </a>
+                <a
+                  target='_blank'
+                  href={userSlice.socialMediaLinks.twitter}
+                  className='sml-icon'>
+                  <img src={twitter} alt='twitter' />
+                </a>
+                <a
+                  target='_blank'
+                  href={userSlice.socialMediaLinks.facebook}
+                  className='sml-icon'>
+                  <img src={facebook} alt='facebook' />
+                </a>
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </div>
