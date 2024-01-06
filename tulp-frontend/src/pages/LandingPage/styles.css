@@ -1,3 +1,5 @@
-main {
+.home-page {
   height: calc(100vh - 358px);
+  width: min(100%, 1600px);
+  gap: 20px;
 }

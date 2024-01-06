@@ -6,7 +6,12 @@ const LandingPage = () => {
   return (
     <>
       <BasicLayout>
-        <main className='hi'>hi</main>
+        <div className='flex w-100 center'>
+          <div className='home-page flex'>
+            <aside>aside</aside>
+            <main>main</main>
+          </div>
+        </div>
       </BasicLayout>
     </>
   )
