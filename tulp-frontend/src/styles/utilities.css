@@ -61,6 +61,12 @@ img {
 .section-body {
   width: 100%;
 }
+.shadow {
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+}
+.border {
+  border: 1px solid var(--grey-4);
+}
 .section {
   display: flex;
   justify-content: center;
