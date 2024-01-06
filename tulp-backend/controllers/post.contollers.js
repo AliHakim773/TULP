@@ -50,8 +50,29 @@ const addComment = async (req, res) => {
   }
 }
 
+const postLike = async (req, res) => {
+  // return res.status(200).send("hi")
+
+  const id = req.user._id
+  const { postId } = req.body
+  try {
+    const post = await Post.findById(postId)
+    if (post.likes.includes(id)) {
+      post.likes.pop(id)
+      await post.save()
+    } else {
+      post.likes.push(id)
+      await post.save()
+    }
+    return res.status(200).send({ post })
+  } catch (error) {
+    return res.status(500).send({ error })
+  }
+}
+
 module.exports = {
   addPost,
   getPost,
   addComment,
+  postLike,
 }
