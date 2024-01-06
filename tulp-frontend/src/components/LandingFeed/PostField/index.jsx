@@ -1,7 +1,6 @@
 import React from "react"
 import "./styles.css"
 import Button from "../../Base/Button"
-import InputField from "../../Base/InputField"
 
 const PostField = () => {
   return (
@@ -11,7 +10,7 @@ const PostField = () => {
           <Button text='Post' type='submit' color='blue' />
         </div>
         <textarea
-          className='post-field-input shadow'
+          className='post-field-input border'
           name='post'
           id='post'
           placeholder='Type Here'></textarea>
