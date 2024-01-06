@@ -25,7 +25,7 @@ const Post = ({ post, main = true }) => {
             <img src={like} alt='likes' />
           </div>
         </div>
-        {post.comments && (
+        {main && (
           <div className='post-footer-detail flex center'>
             {post.comments.length}{" "}
             <div className='post-icon'>
