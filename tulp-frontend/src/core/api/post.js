@@ -16,4 +16,12 @@ export const postAPI = {
     })
     return response
   },
+  like: async (data) => {
+    const response = await sendRequest({
+      route: "post/like",
+      method: "POST",
+      body: data,
+    })
+    return response
+  },
 }
