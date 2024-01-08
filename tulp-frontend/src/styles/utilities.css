@@ -2,6 +2,11 @@
   --section-inline-p: 2rem;
   --section-block-p: 3rem;
 }
+textarea {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+}
 .page {
   width: 100vw;
   height: 100vh;
