@@ -51,22 +51,33 @@ const addComment = async (req, res) => {
 }
 
 const postLike = async (req, res) => {
-  // return res.status(200).send("hi")
-
   const id = req.user._id
-  const { postId } = req.body
+  const { postId, commentId } = req.body
   try {
     const post = await Post.findById(postId)
-    if (post.likes.includes(id)) {
-      post.likes.pop(id)
-      await post.save()
+    if (commentId) {
+      const comment = post.comments.id(commentId)
+
+      if (comment.likes.includes(id)) {
+        comment.likes.pop(id)
+        await post.save()
+      } else {
+        comment.likes.push(id)
+        await post.save()
+      }
+      return res.status(200).send({ post })
     } else {
-      post.likes.push(id)
-      await post.save()
+      if (post.likes.includes(id)) {
+        post.likes.pop(id)
+        await post.save()
+      } else {
+        post.likes.push(id)
+        await post.save()
+      }
+      return res.status(200).send({ post })
     }
-    return res.status(200).send({ post })
   } catch (error) {
-    return res.status(500).send({ error })
+    return res.status(500).send({ error: error })
   }
 }
 
