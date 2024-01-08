@@ -1,0 +1,15 @@
+.class-card {
+  background-color: var(--white);
+  height: 300px;
+  padding: 1rem;
+}
+.class-card-header {
+  gap: 5px;
+  font-size: 14px;
+}
+.class-card-header > h4 {
+  font-size: 18px;
+}
+.class-card-body {
+  margin-top: 2rem;
+}
