@@ -1,0 +1,23 @@
+.class-name-input {
+  width: 400px;
+}
+.class-description {
+  width: 700px;
+  gap: 10px;
+}
+.class-description > label {
+  color: var(--black);
+  font-size: 16px;
+  font-weight: 600;
+}
+.class-description-textarea {
+  height: 70px;
+  border: 1px solid var(--black);
+  border-radius: 10px;
+  resize: none;
+  padding: 12px;
+  font-size: 14px;
+}
+.class-create-form {
+  gap: 10px;
+}
