@@ -22,6 +22,10 @@ const PfpDropDown = ({ isHidden, user }) => {
       <Link to={"/edit-profile"} className='pfp-drop-down-item'>
         Edit Profile
       </Link>
+      {/* TODO: authorize this */}
+      <Link to={"/create-class"} className='pfp-drop-down-item'>
+        Create A Class
+      </Link>
       <Link className='pfp-drop-down-item' onClick={handleOnClick}>
         Log out
       </Link>
