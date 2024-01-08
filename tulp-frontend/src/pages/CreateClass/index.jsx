@@ -6,7 +6,11 @@ import ProfileCard from "../../components/ProfileCard"
 const CreateClass = () => {
   return (
     <BasicLayout>
-      <ProfileCard />
+      <div className='profile-section w-100 flex'>
+        <div className='main-profile w-100 flex'>
+          <ProfileCard />
+        </div>
+      </div>
     </BasicLayout>
   )
 }
