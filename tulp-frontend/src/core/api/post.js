@@ -24,4 +24,12 @@ export const postAPI = {
     })
     return response
   },
+  comment: async (data) => {
+    const response = await sendRequest({
+      route: "post/comment",
+      method: "POST",
+      body: data,
+    })
+    return response
+  },
 }
