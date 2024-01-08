@@ -1,0 +1,26 @@
+.search-form {
+  position: relative;
+  height: 35px;
+}
+.search-result,
+.search-input {
+  border-radius: 20px;
+  /* border: 1px solid var(--grey-2); */
+  border: none;
+  padding-inline: 10px 20px;
+}
+.search-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10px;
+}
+.search {
+  gap: 10px;
+}
+.search-result {
+  height: 35px;
+  font-size: 14px;
+  align-items: center;
+  justify-content: space-between;
+}
