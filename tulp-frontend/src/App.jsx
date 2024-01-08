@@ -1,14 +1,17 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { Provider } from "react-redux"
+import { store } from "./core/redux/store"
+import { Toaster } from "react-hot-toast"
+
+import "./styles/index.css"
+
 import LandingPage from "./pages/LandingPage"
 import PageNotFound from "./pages/PageNotFound"
 import RegisterPage from "./pages/RegisterPage"
-import "./styles/index.css"
-import { BrowserRouter, Route, Routes } from "react-router-dom"
-import { store } from "./core/redux/store"
 import LoginPage from "./pages/LoginPage"
 import EditProfile from "./pages/EditProfile"
-import { Toaster } from "react-hot-toast"
 import Profile from "./pages/Profile"
+import CreateClass from "./pages/CreateClass"
 
 const App = () => {
   return (
@@ -24,6 +27,7 @@ const App = () => {
             <Route path='/login' element={<LoginPage />} />
             <Route path='/profile/:id?' element={<Profile />} />
             <Route path='/edit-profile' element={<EditProfile />} />
+            <Route path='/create-class' element={<CreateClass />} />
             <Route path='*' element={<PageNotFound />} />
           </Routes>
         </BrowserRouter>
