@@ -11,7 +11,7 @@
   font-weight: 600;
 }
 .class-description-textarea {
-  height: 70px;
+  height: 110px;
   border: 1px solid var(--black);
   border-radius: 10px;
   resize: none;
