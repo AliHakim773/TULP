@@ -81,7 +81,9 @@ const searchClass = async (req, res) => {
   try {
     const result = await Class.find({
       name: regex,
-    }).limit(4)
+    })
+      .limit(4)
+      .populate({ path: "owner", select: "username" })
 
     return res.status(200).send({ result })
   } catch (e) {
