@@ -2,8 +2,12 @@ import React from "react"
 import "./styles.css"
 import BasicLayout from "../../components/UI/BasicLayout"
 import ProfileCard from "../../components/ProfileCard"
+import ClassCard from "../../components/ClassCard"
+import useProfileLogic from "./useProfileLogic"
 
 const Profile = () => {
+  const { test_class } = useProfileLogic()
+
   return (
     <BasicLayout>
       <div className='profile-section w-100 flex'>
