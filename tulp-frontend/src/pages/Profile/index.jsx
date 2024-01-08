@@ -26,7 +26,19 @@ const Profile = () => {
               </p>
             </div>
             <div className='profile-classes'>
-              <h3>Open Classe</h3>
+              <h3>Open Classe</h3>{" "}
+              <div className='classes-grid'>
+                {test_class.map((classObject) => {
+                  return (
+                    <ClassCard
+                      key={classObject.id}
+                      name={classObject.name}
+                      description={classObject.descriptiom}
+                      owner={classObject.owner}
+                    />
+                  )
+                })}
+              </div>
             </div>
           </div>
         </div>
