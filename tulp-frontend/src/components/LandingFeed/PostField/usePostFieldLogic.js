@@ -6,10 +6,12 @@ const usePostFieldLogic = () => {
   const postRef = useRef()
   const handleonClick = async () => {
     try {
-      const res = await postAPI.post({ content: postRef.current.value })
+      await postAPI.post({ content: postRef.current.value })
       toast.success("Post Successful")
-      console.log(res)
+      postRef.current.value = ""
+      // TODO make post show when click not when reload
     } catch (e) {
+      toast.error("There was an arror with your post")
       console.log(e)
     }
   }
