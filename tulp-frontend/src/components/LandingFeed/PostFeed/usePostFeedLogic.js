@@ -19,7 +19,7 @@ const LoadingPost = {
   user: {
     _id: "none",
     username: "Loading",
-    imageUrl: "defualt.jpg",
+    imageUrl: "uploads/default.png",
   },
   likes: ["asdadas"],
   content: "Loading",
@@ -29,7 +29,7 @@ const LoadingPost = {
       user: {
         _id: "none",
         username: "Loading",
-        imageUrl: "defualt.jpg",
+        imageUrl: "uploads/default.png",
       },
       likes: ["asdadas"],
       content: "Loading",
