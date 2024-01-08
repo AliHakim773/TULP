@@ -1,0 +1,14 @@
+.main-profile {
+  width: min(100%, 1600px);
+  gap: 3rem;
+}
+.profile-section {
+  justify-content: center;
+  margin-block: 5rem;
+  padding-inline: 1rem;
+}
+.about-me-section > p {
+  margin-block: 2rem;
+  font-size: 18px;
+  padding-inline-end: 3rem;
+}
