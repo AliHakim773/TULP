@@ -5,22 +5,26 @@ import like from "../../../assets/svgs/like.svg"
 import liked from "../../../assets/svgs/liked.svg"
 
 const Post = ({ post, main = true }) => {
-  const { username, created_at, content, likes, image_url } = post
+  const { user, content, likes } = post
   return (
     <div className='post w-100 shadow flex column'>
       <div className='post-header flex'>
         <div className='post-id flex'>
-          <div className='blue-3-txt semi-bold'>{username}</div>
-          <div className='post-time grey-1-txt'>- {created_at} ago</div>
+          <div className='blue-3-txt semi-bold'>{user.username}</div>
+          <div className='post-time grey-1-txt'>- {/*created_at*/} ago</div>
         </div>
         <div className='post-img circle'>
-          <img src={image_url} alt='user Image' />
+          <img
+            className='circle'
+            src={`http://localhost:8000/${user.imageUrl}`}
+            alt='user Image'
+          />
         </div>
       </div>
       <div className='post-body'>{content}</div>
       <div className='post-footer flex'>
         <div className='post-footer-detail flex center'>
-          {likes}{" "}
+          {likes.length}{" "}
           <div className='post-icon'>
             <img src={like} alt='likes' />
           </div>
