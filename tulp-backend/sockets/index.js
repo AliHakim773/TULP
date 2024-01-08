@@ -3,8 +3,8 @@ const registerChatHandler = require("./registerChatHandler")
 
 const onConnection = (socket) => {
   console.log("User connected with id: ", socket.id)
-  const token = socket.handshake.headers.token
-  console.log("token: ", token)
+  // const token = socket.handshake.query.token
+  // console.log("token: ", token.slice(" ")[0])
   socket.on("disconnect", () => console.log("User disconnected"))
 
   registerChatHandler(io, socket)
