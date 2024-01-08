@@ -7,6 +7,7 @@ const usePostLogic = (likes, postId, currentId) => {
   const { _id } = useSelector(extractUserSlice)
   const [isLiked, toggleIsLiked] = useState(likes.includes(_id))
   const [likesCount, setLikesCount] = useState(likes.length)
+  const [isShowen, toggleIsShowen] = useState(false)
 
   const handleOnLike = async () => {
     let data
@@ -24,8 +25,14 @@ const usePostLogic = (likes, postId, currentId) => {
     setLikesCount(res.likes.length)
     toggleIsLiked(res.likes.includes(_id))
   }
+  const closeModal = () => {
+    toggleIsShowen(false)
+  }
+  const openModal = () => {
+    toggleIsShowen(true)
+  }
 
-  return { isLiked, handleOnLike, likesCount }
+  return { isLiked, handleOnLike, likesCount, isShowen, openModal, closeModal }
 }
 
 export default usePostLogic
