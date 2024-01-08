@@ -5,9 +5,9 @@ import like from "../../../assets/svgs/like.svg"
 import liked from "../../../assets/svgs/liked.svg"
 import usePostLogic from "./usePostLogic"
 
-const Post = ({ post, main = true }) => {
-  const { user, content, likes } = post
-  const { isLiked, handleOnLike, likesCount } = usePostLogic(likes)
+const Post = ({ post, postId }) => {
+  const { _id, user, content, likes } = post
+  const { isLiked, handleOnLike, likesCount } = usePostLogic(likes, postId, _id)
 
   return (
     <div className='post w-100 shadow flex column'>
@@ -32,7 +32,7 @@ const Post = ({ post, main = true }) => {
             <img src={isLiked ? liked : like} alt='likes' />
           </div>
         </div>
-        {main && (
+        {!postId && (
           <div className='post-footer-detail flex center'>
             {post.comments.length}{" "}
             <div className='post-icon'>

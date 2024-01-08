@@ -8,7 +8,7 @@ const PostItem = ({ post }) => {
       <Post post={post} />
       {post.comments.toReversed().map((comment) => (
         <div key={comment._id} className='post-comment'>
-          <Post post={comment} main={false} />
+          <Post post={comment} postId={post._id} />
         </div>
       ))}
     </div>
