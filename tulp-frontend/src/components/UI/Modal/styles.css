@@ -1,8 +1,13 @@
-.modal {
+.tulp-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   inset: 0 0 0 0;
+  z-index: 1;
   background-color: rgba(0, 0, 0, 0.1);
 }
-.modal.hidden {
-  display: none;
+.tulp-modal-hidden {
+  display: none !important;
+  visibility: hidden !important;
 }

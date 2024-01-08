@@ -1,9 +1,14 @@
 import React from "react"
 import "./styles.css"
 
-const Modal = ({ children, isShowen = false }) => {
+const Modal = ({ children, isShowen, closeModal }) => {
   return (
-    <div className={`modal flex center ${!isShowen && "hidden"}`}>
+    <div
+      id='modal-bg'
+      className={`${isShowen ? "tulp-modal" : "tulp-modal-hidden"}`}
+      onClick={(e) => {
+        if (e.target.id === "modal-bg") closeModal()
+      }}>
       {children}
     </div>
   )
