@@ -24,3 +24,7 @@
   align-items: center;
   justify-content: space-between;
 }
+.search-class-owner,
+.search-class-name {
+  text-transform: capitalize;
+}
