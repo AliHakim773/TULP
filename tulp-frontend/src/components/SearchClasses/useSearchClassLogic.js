@@ -13,7 +13,6 @@ const useSearchClassLogic = () => {
 
     const res = await classAPI.search({ payload })
     setResult(res.result)
-    console.log(res.result)
   }
   return { handleSearch, result }
 }
