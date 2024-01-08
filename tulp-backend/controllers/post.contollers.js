@@ -65,7 +65,7 @@ const postLike = async (req, res) => {
         comment.likes.push(id)
         await post.save()
       }
-      return res.status(200).send({ post })
+      return res.status(200).send({ likes: comment.likes })
     } else {
       if (post.likes.includes(id)) {
         post.likes.pop(id)
@@ -74,7 +74,7 @@ const postLike = async (req, res) => {
         post.likes.push(id)
         await post.save()
       }
-      return res.status(200).send({ post })
+      return res.status(200).send({ likes: post.likes })
     }
   } catch (error) {
     return res.status(500).send({ error: error })
