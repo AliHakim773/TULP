@@ -43,11 +43,13 @@ const ProfileCard = () => {
       </div>
       <div className='profile-line' />
       <div className='profile-card-2 flex column center w-100'>
-        {window.location.pathname !== "/edit-profile" ? (
-          <Link to={"/edit-profile"} className='profile-card-2-btn semi-bold'>
+        {window.location.pathname === "/profile" ? (
+          <Link
+            to={"/edit-profile"}
+            className='profile-card-2-btn semi-bold flex center'>
             Edit Profile
           </Link>
-        ) : (
+        ) : window.location.pathname === "/edit-profile" ? (
           <form className='profile-card-2-btn upload-pic semi-bold flex center'>
             <input
               onChange={(e) => {
@@ -59,6 +61,8 @@ const ProfileCard = () => {
             />
             Uplaod Pic
           </form>
+        ) : (
+          ""
         )}
 
         <div className='profile-info flex column'>
