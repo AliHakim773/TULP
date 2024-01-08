@@ -8,6 +8,7 @@ import { store } from "./core/redux/store"
 import LoginPage from "./pages/LoginPage"
 import EditProfile from "./pages/EditProfile"
 import { Toaster } from "react-hot-toast"
+import Profile from "./pages/Profile"
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
             <Route path='/' element={<LandingPage />} />
             <Route path='/register' element={<RegisterPage />} />
             <Route path='/login' element={<LoginPage />} />
+            <Route path='/profile/:id?' element={<Profile />} />
             <Route path='/edit-profile' element={<EditProfile />} />
             <Route path='*' element={<PageNotFound />} />
           </Routes>
