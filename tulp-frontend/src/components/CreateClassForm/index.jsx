@@ -12,12 +12,22 @@ const CreateClassForm = () => {
           placeholder='Class Name'
         />
       </div>
-      <div className='class-description flex column'>
+      <div className='class-create-input flex column'>
         <label htmlFor='class-description'>Class Description</label>
         <textarea
           id='class-description'
-          className='class-description-textarea'
+          className='class-create-input-textarea'
           placeholder='Enter Class Description'
+        />
+      </div>
+      {/* TODO: adding instructors */}
+      <div className='class-create-input instructor-input flex column'>
+        <label htmlFor='class-description'>Add Instructors</label>
+        <input
+          type='text'
+          id='class-description'
+          className='class-create-input-field'
+          placeholder='Enter Instructors name'
         />
       </div>
     </form>

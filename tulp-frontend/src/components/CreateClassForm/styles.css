@@ -1,16 +1,16 @@
 .class-name-input {
   width: 400px;
 }
-.class-description {
+.class-create-input {
   width: 700px;
   gap: 10px;
 }
-.class-description > label {
+.class-create-input > label {
   color: var(--black);
   font-size: 16px;
   font-weight: 600;
 }
-.class-description-textarea {
+.class-create-input-textarea {
   height: 110px;
   border: 1px solid var(--black);
   border-radius: 10px;
@@ -20,4 +20,14 @@
 }
 .class-create-form {
   gap: 10px;
+}
+.class-create-input-field {
+  width: 400px;
+  height: 45px;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid var(--black);
+}
+.instructor-input {
+  position: relative;
 }
