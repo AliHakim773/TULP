@@ -14,7 +14,7 @@ const addClass = async (req, res) => {
   const logoUrl = image ? image.path : ""
 
   try {
-    if (instructors?.length !== 0) {
+    if (!instructors && instructors?.length !== 0) {
       const instructorsCheck = await roleChecker(instructors, "instructor")
       if (!instructorsCheck.result) {
         const users = await populateUsersArray(instructorsCheck.rejected)
@@ -70,10 +70,26 @@ const addClass = async (req, res) => {
       .status(200)
       .send({ class: classObject, message: "Class created successfully" })
   } catch (e) {
-    res.status(500).send({ message: `something wen't wrong: ${e}` })
+    res.status(500).send({ message: `something went wrong: ${e}` })
+  }
+}
+
+// NOTE: Check Auth
+const searchClass = async (req, res) => {
+  const payload = req.body.payload.trim()
+  const regex = new RegExp(payload, "i")
+  try {
+    const result = await Class.find({
+      name: regex,
+    }).limit(4)
+
+    return res.status(200).send({ result })
+  } catch (e) {
+    res.status(500).send({ message: `something went wrong: ${e}` })
   }
 }
 
 module.exports = {
   addClass,
+  searchClass,
 }
