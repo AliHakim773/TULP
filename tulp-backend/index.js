@@ -24,7 +24,11 @@ const server = app.listen(port, () => {
   connectToMongoDB()
 })
 
-const io = new Server(server)
+const io = new Server(server, {
+  cors: {
+    origin: ["http://localhost:5173"],
+  },
+})
 io.on("connection", onConnection)
 
 instrument(io, {
