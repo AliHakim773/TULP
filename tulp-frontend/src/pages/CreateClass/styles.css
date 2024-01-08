@@ -1,0 +1,10 @@
+.create-class-section {
+  justify-content: center;
+  margin-block: 5rem;
+  padding-inline: 1rem;
+}
+.create-class-main {
+  justify-content: space-between;
+  width: min(100%, 1600px);
+  gap: 3rem;
+}
