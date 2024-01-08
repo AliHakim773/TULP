@@ -12,3 +12,10 @@
   font-size: 18px;
   padding-inline-end: 3rem;
 }
+.classes-grid {
+  padding-block: 1rem;
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
