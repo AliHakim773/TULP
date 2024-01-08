@@ -3,9 +3,12 @@ import "./styles.css"
 import comment from "../../../assets/svgs/comment.svg"
 import like from "../../../assets/svgs/like.svg"
 import liked from "../../../assets/svgs/liked.svg"
+import usePostLogic from "./usePostLogic"
 
 const Post = ({ post, main = true }) => {
   const { user, content, likes } = post
+  const { isLiked, handleOnLike, likesCount } = usePostLogic(likes)
+
   return (
     <div className='post w-100 shadow flex column'>
       <div className='post-header flex'>
@@ -24,9 +27,9 @@ const Post = ({ post, main = true }) => {
       <div className='post-body'>{content}</div>
       <div className='post-footer flex'>
         <div className='post-footer-detail flex center'>
-          {likes.length}{" "}
-          <div className='post-icon'>
-            <img src={like} alt='likes' />
+          {likesCount}{" "}
+          <div className='post-icon' onClick={handleOnLike}>
+            <img src={isLiked ? liked : like} alt='likes' />
           </div>
         </div>
         {main && (
