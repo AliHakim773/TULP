@@ -8,7 +8,7 @@ const PostFeed = () => {
 
   return (
     <div className='post-feed'>
-      {posts.map((post) => (
+      {posts.toReversed().map((post) => (
         <PostItem key={post._id} post={post} />
       ))}
     </div>
