@@ -10,15 +10,15 @@ const Post = ({ post, main = true }) => {
     <div className='post w-100 shadow flex column'>
       <div className='post-header flex'>
         <div className='post-id flex'>
+          <div className='post-img circle'>
+            <img
+              className='circle'
+              src={`http://localhost:8000/${user.imageUrl}`}
+              alt='user Image'
+            />
+          </div>
           <div className='blue-3-txt semi-bold'>{user.username}</div>
           <div className='post-time grey-1-txt'>- {/*created_at*/} ago</div>
-        </div>
-        <div className='post-img circle'>
-          <img
-            className='circle'
-            src={`http://localhost:8000/${user.imageUrl}`}
-            alt='user Image'
-          />
         </div>
       </div>
       <div className='post-body'>{content}</div>

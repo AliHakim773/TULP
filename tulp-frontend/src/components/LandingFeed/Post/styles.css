@@ -16,14 +16,18 @@
   font-weight: 200;
 }
 .post-img {
-  height: 40px;
-  width: 40px;
+  height: 35px;
+  width: 35px;
   font-size: 12px;
 }
-
+.post-img > img {
+  object-fit: cover;
+}
+.post-body {
+  margin-block: 1rem 1.35rem;
+}
 .post-footer {
   gap: 0.3rem;
-  margin-top: 0.35rem;
 }
 .post-footer-detail {
   font-size: 14px;
