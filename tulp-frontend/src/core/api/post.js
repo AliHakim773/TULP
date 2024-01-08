@@ -8,4 +8,12 @@ export const postAPI = {
     })
     return response
   },
+  post: async (data) => {
+    const response = await sendRequest({
+      route: "post",
+      method: "POST",
+      body: data,
+    })
+    return response
+  },
 }
