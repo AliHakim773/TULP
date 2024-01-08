@@ -42,7 +42,7 @@ const Post = ({ post, postId }) => {
               <img src={comment} alt='comment' />
             </div>
             <Modal isShowen={isShowen} closeModal={closeModal}>
-              <CommentForm closeModal={closeModal} postId={postId} />
+              <CommentForm closeModal={closeModal} postId={_id} />
             </Modal>
           </div>
         )}
