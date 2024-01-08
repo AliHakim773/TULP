@@ -6,9 +6,10 @@ import liked from "../../../assets/svgs/liked.svg"
 import usePostLogic from "./usePostLogic"
 import Modal from "../../UI/Modal"
 import CommentForm from "../CommentForm"
+import timeSince from "../../../core/helpers/timeSince"
 
 const Post = ({ post, postId }) => {
-  const { _id, user, content, likes } = post
+  const { _id, user, content, likes, createdAt } = post
   const { isLiked, handleOnLike, likesCount, isShowen, closeModal, openModal } =
     usePostLogic(likes, postId, _id)
 
@@ -24,7 +25,7 @@ const Post = ({ post, postId }) => {
             />
           </div>
           <div className='blue-3-txt semi-bold'>{user.username}</div>
-          <div className='post-time grey-1-txt'>- {/*created_at*/} ago</div>
+          <div className='post-time grey-1-txt'>- {timeSince(createdAt)}</div>
         </div>
       </div>
       <div className='post-body'>{content}</div>
