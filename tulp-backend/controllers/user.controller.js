@@ -141,4 +141,27 @@ const uploadImage = async (req, res) => {
   }
 }
 
-module.exports = { editUser, getCurrentUser, getUserById, uploadImage }
+const searchInstructors = async (req, res) => {
+  const payload = req.body.payload.trim()
+  const regex = new RegExp(payload, "i")
+  try {
+    const result = await User.find({
+      username: regex,
+      role: "instructor",
+    })
+      .select("username imageUrl _id")
+      .limit(5)
+
+    return res.status(200).send({ result })
+  } catch (error) {
+    res.status(500).send({ error })
+  }
+}
+
+module.exports = {
+  editUser,
+  getCurrentUser,
+  getUserById,
+  uploadImage,
+  searchInstructors,
+}
