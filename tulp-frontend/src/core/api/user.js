@@ -26,4 +26,12 @@ export const userApi = {
 
     return response.data
   },
+  searchInstructors: async (data) => {
+    const response = await sendRequest({
+      route: "user/search",
+      method: "POST",
+      body: data,
+    })
+    return response
+  },
 }
