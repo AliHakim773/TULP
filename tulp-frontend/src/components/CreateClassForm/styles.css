@@ -27,7 +27,17 @@
   padding: 12px;
   border-radius: 10px;
   border: 1px solid var(--black);
+  background-color: var(--white);
 }
 .instructor-input {
   position: relative;
+}
+.instructor-search {
+  gap: 10px;
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+}
+.instructors-list {
+  gap: 10px;
 }
