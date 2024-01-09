@@ -1,8 +1,13 @@
 import React from "react"
 import "./styles.css"
 import InputField from "../Base/InputField"
+import useCreateClassFormLogic from "./useCreateClassFormLogic"
+import InstructorItem from "./InstructorItem/inde"
 
 const CreateClassForm = () => {
+  const { handleInstructorSearch, result, handleOnAccept } =
+    useCreateClassFormLogic()
+
   return (
     <form className='class-create-form flex column'>
       <div className='class-name-input'>
@@ -28,7 +33,22 @@ const CreateClassForm = () => {
           id='class-description'
           className='class-create-input-field'
           placeholder='Enter Instructors name'
+          onChange={handleInstructorSearch}
         />
+        <div className='instructor-search flex column'>
+          {result.map((instructor) => (
+            <InstructorItem
+              key={instructor._id}
+              username={instructor.username}
+              onAccept={handleOnAccept}
+            />
+          ))}
+        </div>
+      </div>
+      <div className='instructors-list flex column'>
+        <InstructorItem />
+        <InstructorItem />
+        <InstructorItem />
       </div>
     </form>
   )
