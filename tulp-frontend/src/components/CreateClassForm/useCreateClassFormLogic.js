@@ -1,10 +1,13 @@
-import { useState } from "react"
+import { useRef, useState } from "react"
 import { userApi } from "../../core/api/user"
 
 const useCreateClassFormLogic = () => {
   const [result, setResult] = useState([])
-  const handleInstructorSearch = async (e) => {
-    const payload = e.target.value
+  const [instructors, setInstructors] = useState([])
+  const instructorRef = useRef()
+
+  const handleInstructorSearch = async () => {
+    const payload = instructorRef.current.value
 
     if (payload === "") {
       setResult([])
@@ -14,9 +17,27 @@ const useCreateClassFormLogic = () => {
     setResult(res.result)
   }
 
-  const handleOnAccept = () => {}
+  const handleOnAccept = (instructor) => {
+    if (
+      !instructors.some(
+        (existingInstructor) => existingInstructor._id === instructor._id
+      )
+    ) {
+      setInstructors((prev) => {
+        return [...prev, instructor]
+      })
+    }
+    setResult([])
+    instructorRef.current.value = ""
+  }
 
-  return { handleInstructorSearch, result, handleOnAccept }
+  return {
+    result,
+    instructors,
+    instructorRef,
+    handleInstructorSearch,
+    handleOnAccept,
+  }
 }
 
 export default useCreateClassFormLogic

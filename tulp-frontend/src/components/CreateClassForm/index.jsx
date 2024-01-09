@@ -2,11 +2,16 @@ import React from "react"
 import "./styles.css"
 import InputField from "../Base/InputField"
 import useCreateClassFormLogic from "./useCreateClassFormLogic"
-import InstructorItem from "./InstructorItem/inde"
+import InstructorItem from "./InstructorItem"
 
 const CreateClassForm = () => {
-  const { handleInstructorSearch, result, handleOnAccept } =
-    useCreateClassFormLogic()
+  const {
+    instructors,
+    handleInstructorSearch,
+    result,
+    instructorRef,
+    handleOnAccept,
+  } = useCreateClassFormLogic()
 
   return (
     <form className='class-create-form flex column'>
@@ -25,7 +30,6 @@ const CreateClassForm = () => {
           placeholder='Enter Class Description'
         />
       </div>
-      {/* TODO: adding instructors */}
       <div className='class-create-input instructor-input flex column'>
         <label htmlFor='class-description'>Add Instructors</label>
         <input
@@ -34,21 +38,27 @@ const CreateClassForm = () => {
           className='class-create-input-field'
           placeholder='Enter Instructors name'
           onChange={handleInstructorSearch}
+          ref={instructorRef}
         />
         <div className='instructor-search flex column'>
           {result.map((instructor) => (
             <InstructorItem
               key={instructor._id}
-              username={instructor.username}
+              instructor={instructor}
               onAccept={handleOnAccept}
             />
           ))}
         </div>
       </div>
       <div className='instructors-list flex column'>
-        <InstructorItem />
-        <InstructorItem />
-        <InstructorItem />
+        {instructors &&
+          instructors.map((instructor) => (
+            <InstructorItem
+              key={instructor._id}
+              instructor={instructor}
+              onAccept={handleOnAccept}
+            />
+          ))}
       </div>
     </form>
   )
