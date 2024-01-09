@@ -1,0 +1,8 @@
+.instructor-item {
+  width: 400px;
+  height: 45px;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid var(--black);
+  background-color: var(--white);
+}
