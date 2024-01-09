@@ -33,7 +33,7 @@ const ProfileCard = () => {
   }, [file])
 
   return (
-    <div className='profile-card'>
+    <div className='profile-card shadow'>
       <div className='profile-card-1 flex column center w-100'>
         <div className='profile-role'>{userSlice.role}</div>
         <div className='profile-img'>
