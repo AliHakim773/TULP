@@ -4,7 +4,13 @@ import "./styles.css"
 const SelectedInstructorItem = ({ instructor, onRemove }) => {
   return (
     <div className='instructor-selected flex'>
-      {instructor.username} <span>X</span>
+      {instructor.username}{" "}
+      <span
+        onClick={() => {
+          onRemove(instructor)
+        }}>
+        X
+      </span>
     </div>
   )
 }

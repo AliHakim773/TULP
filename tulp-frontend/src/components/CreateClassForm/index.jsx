@@ -12,6 +12,7 @@ const CreateClassForm = () => {
     result,
     instructorRef,
     handleOnAccept,
+    handleOnRemove,
   } = useCreateClassFormLogic()
 
   return (
@@ -56,6 +57,7 @@ const CreateClassForm = () => {
           <SelectedInstructorItem
             key={instructor._id}
             instructor={instructor}
+            onRemove={handleOnRemove}
           />
         ))}
       </div>

@@ -31,12 +31,21 @@ const useCreateClassFormLogic = () => {
     instructorRef.current.value = ""
   }
 
+  const handleOnRemove = (instructorToRemove) => {
+    setInstructors((prev) => {
+      return prev.filter(
+        (instructor) => instructor._id !== instructorToRemove._id
+      )
+    })
+  }
+
   return {
     result,
     instructors,
     instructorRef,
     handleInstructorSearch,
     handleOnAccept,
+    handleOnRemove,
   }
 }
 
