@@ -1,8 +1,23 @@
 .instructor-item {
-  width: 400px;
+  width: 700px;
   height: 45px;
   padding: 12px;
   border-radius: 10px;
   border: 1px solid var(--black);
   background-color: var(--white);
+  align-items: center;
+  text-transform: capitalize;
+}
+.instructor-item:hover {
+  cursor: pointer;
+  background-color: var(--grey-5);
+}
+.instructor-img {
+  margin-right: 0.5rem;
+}
+.instructor-img,
+.instructor-img img {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
 }
