@@ -1,0 +1,20 @@
+.instructor-selected {
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: capitalize;
+  border-radius: 40px;
+  background-color: var(--orange-3);
+  padding: 0.25rem 0.75rem;
+  width: fit-content;
+  align-items: center;
+  color: var(--white);
+}
+.instructor-selected > span {
+  font-size: 12px;
+  margin-left: 1rem;
+  cursor: pointer;
+}
+.instructor-selected:has(span:hover) {
+  background-color: rgb(245, 79, 79);
+  transition: all 0.3s ease-in;
+}

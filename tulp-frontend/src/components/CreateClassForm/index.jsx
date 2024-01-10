@@ -3,6 +3,7 @@ import "./styles.css"
 import InputField from "../Base/InputField"
 import useCreateClassFormLogic from "./useCreateClassFormLogic"
 import InstructorItem from "./InstructorItem"
+import SelectedInstructorItem from "./SelectedInstructorItem"
 
 const CreateClassForm = () => {
   const {
@@ -50,15 +51,13 @@ const CreateClassForm = () => {
           ))}
         </div>
       </div>
-      <div className='instructors-list flex column'>
-        {instructors &&
-          instructors.map((instructor) => (
-            <InstructorItem
-              key={instructor._id}
-              instructor={instructor}
-              onAccept={handleOnAccept}
-            />
-          ))}
+      <div className='instructors-list flex'>
+        {instructors.map((instructor) => (
+          <SelectedInstructorItem
+            key={instructor._id}
+            instructor={instructor}
+          />
+        ))}
       </div>
     </form>
   )
