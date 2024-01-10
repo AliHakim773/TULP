@@ -7,7 +7,7 @@
 .post-field-input {
   resize: none;
   padding: 1rem;
-  height: 6rem;
+  height: 5rem;
   border-radius: 10px;
-  background-color: var(--grey-5);
+  background-color: var(--white);
 }
