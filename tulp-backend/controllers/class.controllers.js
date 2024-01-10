@@ -75,6 +75,8 @@ const getClassesIn = async (req, res) => {
     const classes = await Class.find({
       $or: [{ owner: id }, { instructors: id }],
     })
+      .select("owner name description _id")
+      .populate({ path: "owner", select: "username _id" })
 
     res.status(200).send({ classes })
   } catch (error) {
