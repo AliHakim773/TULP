@@ -142,10 +142,12 @@ const uploadImage = async (req, res) => {
 }
 
 const searchInstructors = async (req, res) => {
+  const id = req.user._id
   const payload = req.body.payload.trim()
   const regex = new RegExp(payload, "i")
   try {
     const result = await User.find({
+      _id: { $ne: id },
       username: regex,
       role: "instructor",
     })
