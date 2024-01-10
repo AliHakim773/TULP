@@ -6,7 +6,7 @@ import ClassCard from "../../components/ClassCard"
 import useProfileLogic from "./useProfileLogic"
 
 const Profile = () => {
-  const { test_class } = useProfileLogic()
+  const { classes } = useProfileLogic()
 
   return (
     <BasicLayout>
@@ -28,13 +28,13 @@ const Profile = () => {
             <div className='profile-classes'>
               <h3>Open Classe</h3>{" "}
               <div className='classes-grid'>
-                {test_class.map((classObject) => {
+                {classes.map((classObject) => {
                   return (
                     <ClassCard
-                      key={classObject.id}
+                      key={classObject._id}
                       name={classObject.name}
-                      description={classObject.descriptiom}
-                      owner={classObject.owner}
+                      description={classObject.description}
+                      owner={classObject.owner.username}
                     />
                   )
                 })}
