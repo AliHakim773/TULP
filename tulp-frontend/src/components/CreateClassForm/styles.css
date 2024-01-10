@@ -33,6 +33,7 @@
   position: relative;
 }
 .instructor-search {
+  backdrop-filter: blur(10px);
   gap: 10px;
   position: absolute;
   top: calc(100% + 10px);
