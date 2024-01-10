@@ -12,9 +12,15 @@ const ClassSchema = new mongoose.Schema({
   name: {
     type: String,
     required: "A class must have a name",
+    unique: "Class name must be unique",
     minlength: [2, "A class name length must be more than 3 characters"],
     trim: true,
     lowercase: true,
+  },
+  slug: {
+    type: String,
+    slug: "name",
+    unique: true,
   },
   description: {
     type: String,
@@ -46,6 +52,11 @@ const ClassSchema = new mongoose.Schema({
       ref: "Channel",
     },
   ],
+})
+
+ClassSchema.pre("save", function (next) {
+  this.slug = this.name.split(" ").join("-")
+  next()
 })
 
 const Class = mongoose.model("Class", ClassSchema)
