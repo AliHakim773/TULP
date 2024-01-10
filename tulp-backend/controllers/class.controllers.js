@@ -6,12 +6,9 @@ const User = require("../models/user.model")
 
 const addClass = async (req, res) => {
   const id = req.user._id
-  const { name, description, isPrivate, instructors } = req.body
+  const { name, description, instructors } = req.body
 
   if (!name) return res.status(400).send({ message: "Class name is required" })
-
-  const image = req.file
-  const logoUrl = image ? image.path : ""
 
   try {
     if (!instructors && instructors?.length !== 0) {
@@ -29,8 +26,6 @@ const addClass = async (req, res) => {
       owner: id,
       name,
       description,
-      isPrivate: isPrivate,
-      logoUrl,
       instructors: instructors?.map((id) => id),
     })
 

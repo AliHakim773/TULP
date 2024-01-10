@@ -25,10 +25,6 @@ const ClassSchema = new mongoose.Schema({
     type: String,
     default: "uploads/defualt.png",
   },
-  isPrivate: {
-    type: Boolean,
-    default: false,
-  },
   instructors: [
     {
       type: mongoose.Types.ObjectId,
