@@ -1,5 +1,7 @@
 import { useRef, useState } from "react"
 import { userApi } from "../../core/api/user"
+import classAPI from "../../core/api/class"
+import toast from "react-hot-toast"
 
 const useCreateClassFormLogic = () => {
   const [result, setResult] = useState([])
@@ -47,11 +49,12 @@ const useCreateClassFormLogic = () => {
   }
 
   const handleOnCreateClass = async () => {
-    console.log({
+    const res = await classAPI.add({
       name,
       description: descriptionRef.current.value,
       instructors,
     })
+    toast.success("Class Created")
   }
 
   return {
