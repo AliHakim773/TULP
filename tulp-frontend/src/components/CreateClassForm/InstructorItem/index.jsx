@@ -1,12 +1,12 @@
 import React from "react"
 import "./styles.css"
 
-const InstructorItem = ({ instructor, onAccept = undefined }) => {
+const InstructorItem = ({ instructor, onAccept }) => {
   return (
     <div
       className='instructor-item'
       onClick={() => {
-        if (onAccept != undefined) onAccept(instructor)
+        onAccept(instructor)
       }}>
       {instructor.username}
     </div>
