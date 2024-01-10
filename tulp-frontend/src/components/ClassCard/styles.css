@@ -4,6 +4,7 @@
   padding: 1rem;
 }
 .class-card-header {
+  text-transform: capitalize;
   gap: 5px;
   font-size: 14px;
 }
