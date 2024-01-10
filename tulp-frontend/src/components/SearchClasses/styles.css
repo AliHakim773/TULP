@@ -2,10 +2,9 @@
   position: relative;
   height: 35px;
 }
-.search-result,
 .search-input {
   border-radius: 20px;
-  /* border: 1px solid var(--grey-2); */
+  height: 40px;
   border: none;
   padding-inline: 10px 20px;
 }
@@ -19,12 +18,17 @@
   gap: 10px;
 }
 .search-result {
-  height: 35px;
+  height: 40px;
   font-size: 14px;
+  padding-inline: 10px 20px;
   align-items: center;
   justify-content: space-between;
 }
 .search-class-owner,
 .search-class-name {
   text-transform: capitalize;
+}
+.search-results {
+  margin-top: 10px;
+  gap: 13px;
 }
