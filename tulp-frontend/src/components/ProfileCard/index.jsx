@@ -59,7 +59,7 @@ const ProfileCard = () => {
               type='file'
               className='profile-card-2-btn upload-pic semi-bold flex center'
             />
-            Uplaod Pic
+            Uplaod Photo
           </form>
         ) : (
           ""
