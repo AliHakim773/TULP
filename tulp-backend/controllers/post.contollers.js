@@ -48,7 +48,17 @@ const addComment = async (req, res) => {
     post.comments.push(comment)
     await post.save()
 
-    return res.status(200).send({ post })
+    const newPost = await Post.findById(postId)
+      .populate({
+        path: "user",
+        select: "_id username imageUrl",
+      })
+      .populate({
+        path: "comments.user",
+        select: "_id username imageUrl",
+      })
+
+    return res.status(200).send({ post: newPost })
   } catch (error) {
     return res.status(500).send({ error })
   }
