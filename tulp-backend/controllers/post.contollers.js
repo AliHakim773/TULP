@@ -9,7 +9,11 @@ const addPost = async (req, res) => {
       user: id,
       content,
     })
-    return res.status(200).send({ post })
+    const newPost = await Post.findById(post._id).populate({
+      path: "user",
+      select: "_id username imageUrl",
+    })
+    return res.status(200).send({ post: newPost })
   } catch (error) {
     return res.status(500).send({ error })
   }
