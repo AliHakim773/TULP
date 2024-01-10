@@ -4,6 +4,9 @@ import { userApi } from "../../core/api/user"
 const useCreateClassFormLogic = () => {
   const [result, setResult] = useState([])
   const [instructors, setInstructors] = useState([])
+  const [name, setName] = useState("")
+
+  const descriptionRef = useRef()
   const instructorRef = useRef()
 
   const handleInstructorSearch = async () => {
@@ -15,6 +18,10 @@ const useCreateClassFormLogic = () => {
     }
     const res = await userApi.searchInstructors({ payload })
     setResult(res.result)
+  }
+
+  const onNameChange = (e) => {
+    setName(e.target.value)
   }
 
   const handleOnAccept = (instructor) => {
@@ -39,12 +46,23 @@ const useCreateClassFormLogic = () => {
     })
   }
 
+  const handleOnCreateClass = async () => {
+    console.log({
+      name,
+      description: descriptionRef.current.value,
+      instructors,
+    })
+  }
+
   return {
     result,
     instructors,
     instructorRef,
+    descriptionRef,
+    onNameChange,
     handleInstructorSearch,
     handleOnAccept,
+    handleOnCreateClass,
     handleOnRemove,
   }
 }

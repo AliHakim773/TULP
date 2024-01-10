@@ -41,3 +41,6 @@
 .instructors-list {
   gap: 10px;
 }
+.craete-btn {
+  width: fit-content;
+}

@@ -4,6 +4,7 @@ import InputField from "../Base/InputField"
 import useCreateClassFormLogic from "./useCreateClassFormLogic"
 import InstructorItem from "./InstructorItem"
 import SelectedInstructorItem from "./SelectedInstructorItem"
+import Button from "../Base/Button"
 
 const CreateClassForm = () => {
   const {
@@ -11,6 +12,9 @@ const CreateClassForm = () => {
     handleInstructorSearch,
     result,
     instructorRef,
+    descriptionRef,
+    handleOnCreateClass,
+    onNameChange,
     handleOnAccept,
     handleOnRemove,
   } = useCreateClassFormLogic()
@@ -22,6 +26,7 @@ const CreateClassForm = () => {
           text='Class Name'
           id={"classname"}
           placeholder='Class Name'
+          handleOnChange={onNameChange}
         />
       </div>
       <div className='class-create-input flex column'>
@@ -30,6 +35,7 @@ const CreateClassForm = () => {
           id='class-description'
           className='class-create-input-textarea'
           placeholder='Enter Class Description'
+          ref={descriptionRef}
         />
       </div>
       <div className='class-create-input instructor-input flex column'>
@@ -60,6 +66,9 @@ const CreateClassForm = () => {
             onRemove={handleOnRemove}
           />
         ))}
+      </div>
+      <div className='craete-btn'>
+        <Button text='Create Class' onclick={handleOnCreateClass} />
       </div>
     </form>
   )
