@@ -69,7 +69,20 @@ const addClass = async (req, res) => {
   }
 }
 
-// NOTE: Check Auth
+const getClassesIn = async (req, res) => {
+  const id = req.user._id
+  try {
+    const classes = await Class.find({
+      $or: [{ owner: id }, { instructors: id }],
+    })
+
+    res.status(200).send({ classes })
+  } catch (error) {
+    res.status(500).send({ error })
+  }
+}
+
+// TODO: Check Auth
 const searchClass = async (req, res) => {
   const payload = req.body.payload.trim()
   const regex = new RegExp(payload, "i")
@@ -89,4 +102,5 @@ const searchClass = async (req, res) => {
 module.exports = {
   addClass,
   searchClass,
+  getClassesIn,
 }
