@@ -17,6 +17,12 @@ const classAPI = {
     })
     return response
   },
+  getClassesIn: async () => {
+    const response = await sendRequest({
+      route: "class/in",
+    })
+    return response
+  },
 }
 
 export default classAPI
