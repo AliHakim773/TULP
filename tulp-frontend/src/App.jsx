@@ -12,6 +12,7 @@ import LoginPage from "./pages/LoginPage"
 import EditProfile from "./pages/EditProfile"
 import Profile from "./pages/Profile"
 import CreateClass from "./pages/CreateClass"
+import ClassHomePage from "./pages/ClassHomePage"
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
             <Route path='/profile/:id?' element={<Profile />} />
             <Route path='/edit-profile' element={<EditProfile />} />
             <Route path='/create-class' element={<CreateClass />} />
+            <Route path='/class/:slug' element={<ClassHomePage />} />
             <Route path='*' element={<PageNotFound />} />
           </Routes>
         </BrowserRouter>
