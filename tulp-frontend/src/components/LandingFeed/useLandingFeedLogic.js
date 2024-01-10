@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { postAPI } from "../../../core/api/post"
+import { postAPI } from "../../core/api/post"
 
 const usePostFeedLogic = () => {
   const [posts, setPosts] = useState([LoadingPost])
@@ -11,7 +11,7 @@ const usePostFeedLogic = () => {
     getPosts()
   }, [])
 
-  return { posts }
+  return { posts, setPosts }
 }
 
 const LoadingPost = {

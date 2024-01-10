@@ -3,8 +3,8 @@ import "./styles.css"
 import Button from "../../Base/Button"
 import usePostFieldLogic from "./usePostFieldLogic"
 
-const PostField = () => {
-  const { postRef, handleonClick } = usePostFieldLogic()
+const PostField = ({ setPosts }) => {
+  const { postRef, handleonClick } = usePostFieldLogic(setPosts)
   return (
     <div className='post-field'>
       <form className='flex column'>
