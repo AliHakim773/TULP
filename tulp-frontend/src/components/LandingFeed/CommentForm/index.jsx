@@ -3,8 +3,8 @@ import "./styles.css"
 import Button from "../../Base/Button"
 import useComentFormLogic from "./useComentFormLogic"
 
-const CommentForm = ({ closeModal, postId }) => {
-  const { commentRef, handleOnClick } = useComentFormLogic(postId)
+const CommentForm = ({ closeModal, postId, setPosts }) => {
+  const { commentRef, handleOnClick } = useComentFormLogic(postId, setPosts)
 
   return (
     <div className='comment-field'>

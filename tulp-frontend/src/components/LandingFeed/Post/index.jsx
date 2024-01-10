@@ -8,7 +8,7 @@ import Modal from "../../UI/Modal"
 import CommentForm from "../CommentForm"
 import timeSince from "../../../core/helpers/timeSince"
 
-const Post = ({ post, postId }) => {
+const Post = ({ post, postId, setPosts }) => {
   const { _id, user, content, likes, createdAt } = post
   const { isLiked, handleOnLike, likesCount, isShowen, closeModal, openModal } =
     usePostLogic(likes, postId, _id)
@@ -43,7 +43,11 @@ const Post = ({ post, postId }) => {
               <img src={comment} alt='comment' />
             </div>
             <Modal isShowen={isShowen} closeModal={closeModal}>
-              <CommentForm closeModal={closeModal} postId={_id} />
+              <CommentForm
+                closeModal={closeModal}
+                postId={_id}
+                setPosts={setPosts}
+              />
             </Modal>
           </div>
         )}

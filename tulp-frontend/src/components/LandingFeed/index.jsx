@@ -10,7 +10,7 @@ const LandingFeed = () => {
   return (
     <main className='landing-feed-main shadow'>
       <PostField setPosts={setPosts} />
-      <PostFeed posts={posts} />
+      <PostFeed posts={posts} setPosts={setPosts} />
     </main>
   )
 }

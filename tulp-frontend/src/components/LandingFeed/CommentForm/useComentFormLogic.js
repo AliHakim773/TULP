@@ -2,13 +2,16 @@ import { useRef } from "react"
 import toast from "react-hot-toast"
 import { postAPI } from "../../../core/api/post"
 
-const useComentFormLogic = (postId) => {
+const useComentFormLogic = (postId, setPosts) => {
   const commentRef = useRef()
   const handleOnClick = async () => {
     try {
-      await postAPI.comment({
+      const res = await postAPI.comment({
         postId,
         content: commentRef.current.value,
+      })
+      setPosts((prev) => {
+        return prev.map((post) => (post._id == res.post._id ? res.post : post))
       })
       commentRef.current.value = ""
     } catch (e) {
