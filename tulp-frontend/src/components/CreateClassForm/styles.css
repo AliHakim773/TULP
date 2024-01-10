@@ -1,5 +1,5 @@
 .class-name-input {
-  width: 400px;
+  width: 700px;
 }
 .class-create-input {
   width: 700px;
@@ -22,7 +22,7 @@
   gap: 10px;
 }
 .class-create-input-field {
-  width: 400px;
+  width: 700px;
   height: 45px;
   padding: 12px;
   border-radius: 10px;
