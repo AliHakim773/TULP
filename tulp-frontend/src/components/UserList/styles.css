@@ -1,0 +1,26 @@
+.user-item-pfp {
+  height: 30px;
+  width: 30px;
+}
+.user-item-pfp > img {
+  object-fit: fill;
+}
+.user-list {
+  text-align: center;
+  padding: 0.5rem 1rem;
+}
+.user-list > h4 {
+  margin-bottom: 1rem;
+  text-transform: capitalize;
+}
+.user-item {
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+.user-item-name {
+  text-transform: capitalize;
+}
+.users {
+  gap: 15px;
+}
