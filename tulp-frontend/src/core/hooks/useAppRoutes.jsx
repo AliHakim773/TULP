@@ -14,6 +14,8 @@ import {
 } from "react-router-dom"
 import NavLayout from "../../components/UI/NavLayout"
 import FooterLayout from "../../components/UI/FooterLayout"
+import Stream from "../../components/ClassHome/Stream"
+import Assignments from "../../components/ClassHome/Assignments"
 
 const useAppRoutes = () => {
   const router = createBrowserRouter(
@@ -30,7 +32,10 @@ const useAppRoutes = () => {
         <Route path='class/:slug'>
           <Route element={<NavLayout />}>
             <Route element={<FooterLayout />}>
-              <Route index element={<ClassHomePage />} />
+              <Route element={<ClassHomePage />}>
+                <Route index element={<Stream />} />
+                <Route path='assignments' element={<Assignments />} />
+              </Route>
             </Route>
           </Route>
         </Route>

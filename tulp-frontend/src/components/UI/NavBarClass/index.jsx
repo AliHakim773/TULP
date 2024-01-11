@@ -1,4 +1,4 @@
-import { Link, NavLink, Navigate } from "react-router-dom"
+import { Link, NavLink, Navigate, useParams } from "react-router-dom"
 import PfpDropDown from "../../PfpDropDown"
 import "./styles.css"
 import Logo from "../../../assets/images/logo.png"
@@ -7,6 +7,7 @@ import Button from "../../Base/Button"
 
 const NavBarClass = () => {
   const { isLoggedIn } = useNavBarLogic()
+  const { slug } = useParams()
 
   if (!isLoggedIn) return <Navigate to={"/login"} replace={true} />
   return (
@@ -19,7 +20,7 @@ const NavBarClass = () => {
         </div>
         <ul className='nav-links flex h-100'>
           <li className='h-100 flex center'>
-            <NavLink to={"/class/asda"}>
+            <NavLink to={`/class/${slug}`}>
               <Button text={"Home"} />
             </NavLink>
           </li>
