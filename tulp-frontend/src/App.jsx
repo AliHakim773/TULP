@@ -1,4 +1,10 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom"
+import {
+  BrowserRouter,
+  Route,
+  RouterProvider,
+  Routes,
+  createBrowserRouter,
+} from "react-router-dom"
 import { Provider } from "react-redux"
 import { store } from "./core/redux/store"
 import { Toaster } from "react-hot-toast"
@@ -13,6 +19,52 @@ import EditProfile from "./pages/EditProfile"
 import Profile from "./pages/Profile"
 import CreateClass from "./pages/CreateClass"
 import ClassHomePage from "./pages/ClassHomePage"
+import BasicLayout from "./components/UI/BasicLayout"
+
+const router = createBrowserRouter([
+  {
+    element: <BasicLayout />,
+    children: [
+      {
+        path: "/",
+        element: <LandingPage />,
+      },
+      {
+        path: "/register",
+        element: <RegisterPage />,
+      },
+      {
+        path: "/login",
+        element: <LoginPage />,
+      },
+      {
+        path: "/profile/:id?",
+        element: <Profile />,
+      },
+      {
+        path: "/edit-profile",
+        element: <EditProfile />,
+      },
+      {
+        path: "/create-class",
+        element: <CreateClass />,
+      },
+    ],
+  },
+  {
+    element: <BasicLayout />,
+    children: [
+      {
+        path: "/class/:slug",
+        element: <ClassHomePage />,
+      },
+    ],
+  },
+  {
+    path: "/*",
+    element: <PageNotFound />,
+  },
+])
 
 const App = () => {
   return (
@@ -21,7 +73,8 @@ const App = () => {
         <Toaster />
       </div>
       <Provider store={store}>
-        <BrowserRouter>
+        <RouterProvider router={router} />
+        {/* <BrowserRouter>
           <Routes>
             <Route path='/' element={<LandingPage />} />
             <Route path='/register' element={<RegisterPage />} />
@@ -32,7 +85,7 @@ const App = () => {
             <Route path='/class/:slug' element={<ClassHomePage />} />
             <Route path='*' element={<PageNotFound />} />
           </Routes>
-        </BrowserRouter>
+        </BrowserRouter> */}
       </Provider>
     </div>
   )
