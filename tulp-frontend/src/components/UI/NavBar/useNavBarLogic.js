@@ -8,26 +8,16 @@ const navLinksLoggedOut = [
   {
     to: "/register",
     text: "Register",
-    color: "orange",
   },
   {
     to: "/login",
     text: "Login",
-    color: "blue",
   },
 ]
 const navLinksLoggedIn = [
   {
     to: "/",
     text: "home",
-    color: "blue",
-  },
-]
-const navLinksClass = [
-  {
-    to: "/class/lol",
-    text: "Class",
-    color: "blue",
   },
 ]
 const useNavBarLogic = () => {

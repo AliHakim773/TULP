@@ -1,6 +1,6 @@
 import React from "react"
 import Logo from "../../../assets/images/logo.png"
-import { Link } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
 import "./styles.css"
 import useNavBarLogic from "./useNavBarLogic"
 import PfpDropDown from "../../PfpDropDown"
@@ -20,9 +20,9 @@ const NavBar = () => {
         <ul className='nav-links flex h-100'>
           {navLinks.map((link) => (
             <li key={link.to} className='h-100 flex center'>
-              <Link to={link.to}>
-                <Button text={link.text} color={link.color} />
-              </Link>
+              <NavLink to={link.to}>
+                <Button text={link.text} />
+              </NavLink>
             </li>
           ))}
 
