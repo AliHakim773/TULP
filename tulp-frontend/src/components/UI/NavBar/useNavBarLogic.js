@@ -3,6 +3,7 @@ import { authAPI } from "../../../core/api/auth"
 import { local } from "../../../core/helpers/localstorage"
 import { useDispatch } from "react-redux"
 import { setUser } from "../../../core/redux/userSlice"
+import { useLocation } from "react-router-dom"
 
 const navLinksLoggedOut = [
   {
@@ -21,6 +22,7 @@ const navLinksLoggedIn = [
   },
 ]
 const useNavBarLogic = () => {
+  const { pathname } = useLocation()
   const [navLinks, setNavLinks] = useState(navLinksLoggedOut)
   const dispatch = useDispatch()
 
@@ -42,7 +44,7 @@ const useNavBarLogic = () => {
       else setNavLinks(navLinksLoggedOut)
     }
     if (isLoggedIn) refresh()
-  }, [])
+  }, [pathname])
   return { isLoggedIn, navLinks }
 }
 
