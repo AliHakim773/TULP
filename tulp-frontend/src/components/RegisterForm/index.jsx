@@ -13,8 +13,8 @@ const RegisterForm = () => {
 
   return (
     <section className='register-section w-100 flex column center'>
-      <div className='form-wrapper'>
-        <h2 className='semmi-bold'>Register here</h2>
+      <div className='form-wrapper shadow'>
+        <h2 className='semmi-bold'>Register</h2>
         <form className='register-form'>
           <div className='register-inputs'>
             {inputs.map((pair, i) => (
