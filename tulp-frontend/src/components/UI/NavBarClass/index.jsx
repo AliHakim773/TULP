@@ -1,8 +1,9 @@
-import { Link, Navigate } from "react-router-dom"
+import { Link, NavLink, Navigate } from "react-router-dom"
 import PfpDropDown from "../../PfpDropDown"
 import "./styles.css"
 import Logo from "../../../assets/images/logo.png"
 import useNavBarLogic from "../NavBar/useNavBarLogic"
+import Button from "../../Base/Button"
 
 const NavBarClass = () => {
   const { isLoggedIn } = useNavBarLogic()
@@ -17,6 +18,11 @@ const NavBarClass = () => {
           </Link>
         </div>
         <ul className='nav-links flex h-100'>
+          <li className='h-100 flex center'>
+            <NavLink to={"/class/asda"}>
+              <Button text={"Home"} />
+            </NavLink>
+          </li>
           <li className='h-100 flex center'>
             <PfpDropDown />
           </li>

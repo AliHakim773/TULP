@@ -24,3 +24,9 @@
 .basic-btn.green:hover {
   background-color: var(--green-3);
 }
+a.active > .basic-btn {
+  background-color: var(--orange-2);
+}
+a.active > .basic-btn:hover {
+  background-color: var(--orange-2);
+}
