@@ -1,3 +1,4 @@
 .class-page {
-  min-height: calc(100vh - 357px);
+  min-height: calc(100vh - 358px);
+  padding: 1.5rem 2rem;
 }
