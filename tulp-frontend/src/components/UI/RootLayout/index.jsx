@@ -4,7 +4,7 @@ import "./styles.css"
 import Footer from "../Footer"
 import { Outlet } from "react-router-dom"
 
-const BasicLayout = () => {
+const RootLayout = () => {
   return (
     <div className='page'>
       <NavBar />
@@ -14,4 +14,4 @@ const BasicLayout = () => {
   )
 }
 
-export default BasicLayout
+export default RootLayout
