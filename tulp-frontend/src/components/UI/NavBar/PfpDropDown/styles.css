@@ -41,3 +41,13 @@
 .pfp-drop-down-item:last-child {
   border-radius: 0 0 5px 5px;
 }
+.pfp-img {
+  width: 45px;
+  height: 45px;
+  margin-right: 15px;
+  position: relative;
+}
+.pfp-img img {
+  border-radius: 50%;
+  object-fit: cover;
+}
