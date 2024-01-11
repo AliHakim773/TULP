@@ -7,9 +7,11 @@ const ClassHomePage = () => {
   return (
     <BasicLayout>
       <div className='class-page flex w-100'>
-        <aside>
+        <aside className='flex column'>
+          <UserList />
           <UserList />
         </aside>
+        <div className='class-page-main'></div>
       </div>
     </BasicLayout>
   )
