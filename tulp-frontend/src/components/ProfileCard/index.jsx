@@ -9,6 +9,7 @@ import instagram from "../../assets/svgs/instagram.svg"
 import twitter from "../../assets/svgs/x-twitter.svg"
 import linkedin from "../../assets/svgs/linkedin.svg"
 import { userApi } from "../../core/api/user"
+import toast from "react-hot-toast"
 
 const ProfileCard = () => {
   const dispatch = useDispatch()
@@ -26,7 +27,7 @@ const ProfileCard = () => {
         const res = await userApi.upload(formData)
         dispatch(changeImage(res))
       } catch (e) {
-        console.log(e)
+        toast.error("File extension not supported")
       }
     }
     upload()
