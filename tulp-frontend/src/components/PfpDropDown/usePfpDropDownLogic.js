@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux"
-import { clearUser, extractUserSlice } from "../../../../core/redux/userSlice"
+import { clearUser, extractUserSlice } from "../../core/redux/userSlice"
 import { useNavigate } from "react-router-dom"
 import { useState } from "react"
 

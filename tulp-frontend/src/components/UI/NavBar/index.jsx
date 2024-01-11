@@ -3,7 +3,7 @@ import Logo from "../../../assets/images/logo.png"
 import { Link } from "react-router-dom"
 import "./styles.css"
 import useNavBarLogic from "./useNavBarLogic"
-import PfpDropDown from "./PfpDropDown"
+import PfpDropDown from "../../PfpDropDown"
 import Button from "../../Base/Button"
 
 const NavBar = () => {

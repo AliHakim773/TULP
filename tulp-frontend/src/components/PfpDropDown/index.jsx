@@ -1,8 +1,6 @@
 import React from "react"
 import "./styles.css"
-import { Link, useNavigate } from "react-router-dom"
-import { clearUser } from "../../../../core/redux/userSlice"
-import { useDispatch } from "react-redux"
+import { Link } from "react-router-dom"
 import usePfpDropDownLogic from "./usePfpDropDownLogic"
 
 const PfpDropDown = () => {
