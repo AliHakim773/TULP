@@ -74,7 +74,9 @@ const useRegisterLogic = () => {
   ]
 
   const HandleOnInputChange = (e) => {
-    setValues({ ...values, [e.target.id]: e.target.value })
+    if (e.target.name === "role")
+      setValues({ ...values, [e.target.name]: e.target.value })
+    else setValues({ ...values, [e.target.id]: e.target.value })
   }
 
   const HandleOnSubmit = async () => {

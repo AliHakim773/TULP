@@ -1,14 +1,13 @@
 .role-select {
   margin-top: 0.5rem;
 }
-.role-select label {
+.role-select > label {
   margin-right: 5px;
   font-weight: 600;
 }
-.role-select select {
-  width: 100px;
-  border: 1px solid var(--black);
-  background-color: #fff;
-  border-radius: 5px;
-  padding: 0.1rem;
+.role-item {
+  margin-inline: 1rem;
+}
+.role-item > label {
+  margin-inline-start: 0.5rem;
 }
