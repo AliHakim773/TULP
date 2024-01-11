@@ -7,7 +7,7 @@ import PfpDropDown from "./PfpDropDown"
 import Button from "../../Base/Button"
 
 const NavBar = () => {
-  const { user, isLoggedIn, isHidden, handleOnClickProfile } = useNavBarLogic()
+  const { isLoggedIn, navLinks } = useNavBarLogic()
 
   return (
     <nav className='home-nav flex center border-bottom'>
@@ -18,36 +18,18 @@ const NavBar = () => {
           </Link>
         </div>
         <ul className='nav-links flex h-100'>
-          {!isLoggedIn ? (
-            <>
-              <li className='h-100 flex center'>
-                <Link to={"/register"}>
-                  <Button text='Register' />
-                </Link>
-              </li>
-              <li className='h-100 flex center'>
-                <Link to={"/login"}>
-                  <Button text='Login' color='orange' />
-                </Link>
-              </li>
-            </>
-          ) : (
-            <>
-              <li className='h-100 flex center'>
-                <Link to={"/"}>
-                  <Button text='Home' />
-                </Link>
-              </li>
-              <li className='h-100 flex center'>
-                <div className='pfp-img' onClick={handleOnClickProfile}>
-                  <img
-                    src={`http://localhost:8000/${user.imageUrl}`}
-                    alt={user.username}
-                  />
-                  <PfpDropDown isHidden={isHidden} user={user.username} />
-                </div>
-              </li>
-            </>
+          {navLinks.map((link) => (
+            <li key={link.to} className='h-100 flex center'>
+              <Link to={link.to}>
+                <Button text={link.text} color={link.color} />
+              </Link>
+            </li>
+          ))}
+
+          {isLoggedIn && (
+            <li className='h-100 flex center'>
+              <PfpDropDown />
+            </li>
           )}
         </ul>
       </div>

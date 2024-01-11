@@ -1,16 +1,39 @@
 import { useEffect, useState } from "react"
 import { authAPI } from "../../../core/api/auth"
 import { local } from "../../../core/helpers/localstorage"
-import { useDispatch, useSelector } from "react-redux"
-import { extractUserSlice, setUser } from "../../../core/redux/userSlice"
+import { useDispatch } from "react-redux"
+import { setUser } from "../../../core/redux/userSlice"
 
+const navLinksLoggedOut = [
+  {
+    to: "/register",
+    text: "Register",
+    color: "orange",
+  },
+  {
+    to: "/login",
+    text: "Login",
+    color: "blue",
+  },
+]
+const navLinksLoggedIn = [
+  {
+    to: "/",
+    text: "home",
+    color: "blue",
+  },
+]
+const navLinksClass = [
+  {
+    to: "/class/lol",
+    text: "Class",
+    color: "blue",
+  },
+]
 const useNavBarLogic = () => {
+  const [navLinks, setNavLinks] = useState(navLinksLoggedOut)
   const dispatch = useDispatch()
-  const [isHidden, setIsHidden] = useState(true)
-  const handleOnClickProfile = () => {
-    setIsHidden((prev) => !prev)
-  }
-  const user = useSelector(extractUserSlice)
+
   let isLoggedIn =
     local("token") == null || local("token") == undefined ? false : true
 
@@ -25,10 +48,12 @@ const useNavBarLogic = () => {
       }
       isLoggedIn =
         local("token") == null || local("token") == undefined ? false : true
+      if (isLoggedIn) setNavLinks(navLinksLoggedIn)
+      else setNavLinks(navLinksLoggedOut)
     }
     refresh()
   }, [])
-  return { user, isLoggedIn, isHidden, handleOnClickProfile }
+  return { isLoggedIn, navLinks }
 }
 
 export default useNavBarLogic
