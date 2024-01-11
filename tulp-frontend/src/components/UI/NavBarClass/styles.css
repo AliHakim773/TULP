@@ -1,0 +1,18 @@
+.class-nav-wrapper {
+  height: 60px;
+  align-items: center;
+  justify-content: space-between;
+  width: min(100%, 1600px);
+}
+.class-logo {
+  padding: 5px 15px 5px;
+}
+.nav-links {
+  gap: 10px;
+  padding-inline-end: 15px;
+}
+
+.nav-username {
+  margin-inline-end: 0.25rem;
+  padding-inline: 0.25rem;
+}

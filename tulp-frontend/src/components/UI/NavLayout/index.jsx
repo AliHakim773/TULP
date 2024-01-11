@@ -1,11 +1,11 @@
 import { Outlet } from "react-router-dom"
-import NavBar from "../NavBar"
 import "./styles.css"
+import NavBarClass from "../NavBarClass"
 
 const NavLayout = () => {
   return (
     <div className='page'>
-      <NavBar />
+      <NavBarClass />
       <Outlet />
     </div>
   )
