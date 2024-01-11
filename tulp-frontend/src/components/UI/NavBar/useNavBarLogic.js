@@ -51,7 +51,7 @@ const useNavBarLogic = () => {
       if (isLoggedIn) setNavLinks(navLinksLoggedIn)
       else setNavLinks(navLinksLoggedOut)
     }
-    refresh()
+    if (isLoggedIn) refresh()
   }, [])
   return { isLoggedIn, navLinks }
 }
