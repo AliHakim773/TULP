@@ -11,8 +11,8 @@ const LoginForm = () => {
 
   return (
     <section className='login-section w-100 flex column center'>
-      <div className='form-wrapper'>
-        <h2 className='semmi-bold'>Login here</h2>
+      <div className='form-wrapper shadow'>
+        <h2 className='semi-bold w-100'>Log In</h2>
         <form className='login-form'>
           <div className='login-inputs'>
             {inputs.map((input) => {
