@@ -13,7 +13,7 @@ const ClassHomePage = () => {
         <UserList />
         <UserList />
       </aside>
-      <div className='class-page-main'>
+      <div className='class-page-main w-100'>
         <div className='class-page-nav flex'>
           <Link
             className={pathname === `/class/${slug}` && "active"}
@@ -22,7 +22,7 @@ const ClassHomePage = () => {
           </Link>
           <NavLink to={`/class/${slug}/assignments`}>Assignments</NavLink>
         </div>
-        <section>
+        <section className='w-100'>
           <Outlet />
         </section>
       </div>

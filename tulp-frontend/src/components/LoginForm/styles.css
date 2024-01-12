@@ -1,9 +1,9 @@
 .login-form {
-  width: 400px;
+  width: 300px;
 }
 
 .login-inputs > * {
-  margin-top: 5px;
+  margin-top: 10px;
 }
 
 .login-section {

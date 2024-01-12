@@ -4,11 +4,11 @@
 }
 .profile-section {
   justify-content: center;
-  margin-block: 5rem;
+  margin-block: 3rem;
   padding-inline: 1rem;
 }
 .about-me-section > p {
-  margin-block: 2rem;
+  margin-block: 1rem;
   font-size: 18px;
   padding-inline-end: 3rem;
 }
