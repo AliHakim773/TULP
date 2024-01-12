@@ -1,0 +1,31 @@
+.stream-item {
+  padding: 1rem;
+}
+.stream-files {
+  margin-left: auto;
+}
+.file-img {
+  height: 60px;
+  user-select: none;
+}
+.download-btn {
+  cursor: pointer;
+  font-size: 14px;
+  background-color: var(--blue-2);
+  color: var(--white);
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  font-weight: 600px;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+.download-btn:hover {
+  background-color: var(--blue-3);
+}
+.stream-title {
+  font-weight: 600;
+}
+.stream-content {
+  margin-top: 0.5rem;
+  font-size: 15px;
+}
