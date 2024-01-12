@@ -16,7 +16,8 @@ const upload = multer({
   fileFilter: (req, file, cb) => {
     const ext = path.extname(file.originalname)
     if (ext !== ".png" && ext !== ".jpg" && ext !== ".jpeg") {
-      return cb(new Error(`${ext} is not supported`))
+      req.fileValidationError = `${ext} is not supported`
+      return cb(null, false, req.fileValidationError)
     }
     cb(null, true)
   },

@@ -109,6 +109,9 @@ const getUserById = async (req, res) => {
 }
 
 const uploadImage = async (req, res) => {
+  if (req.fileValidationError) {
+    return res.status(400).send({ error: req.fileValidationError })
+  }
   const id = req.user._id
 
   try {
