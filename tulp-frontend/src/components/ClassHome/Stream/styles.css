@@ -1,7 +1,13 @@
 .class-stream-header {
   width: fit-content;
-  margin-left: auto;
+  position: absolute;
+  right: 0%;
+  top: 0;
+  transform: translateY(-100%);
 }
 .stream-main {
   margin-top: 2rem;
+}
+.class-stream {
+  position: relative;
 }
