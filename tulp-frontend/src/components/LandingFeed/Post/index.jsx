@@ -28,7 +28,10 @@ const Post = ({ post, postId, setPosts }) => {
           <div className='post-time grey-1-txt'>- {timeSince(createdAt)}</div>
         </div>
       </div>
-      <div className='post-body'>{content}</div>
+      <div
+        className='post-body'
+        dangerouslySetInnerHTML={{ __html: content }}
+      />
       <div className='post-footer flex'>
         <div className='post-footer-detail flex center'>
           {likesCount}{" "}
