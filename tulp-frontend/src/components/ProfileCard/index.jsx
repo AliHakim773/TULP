@@ -27,7 +27,8 @@ const ProfileCard = () => {
         const res = await userApi.upload(formData)
         dispatch(changeImage(res))
       } catch (e) {
-        toast.error("File extension not supported")
+        console.log(e)
+        toast.error(e.response.data.error)
       }
     }
     upload()
