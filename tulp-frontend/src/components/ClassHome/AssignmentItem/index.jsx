@@ -5,7 +5,7 @@ const AssignmentItem = () => {
   const { slug } = useParams()
   return (
     <Link
-      to={`/class/${slug}/assignments/asd`}
+      to={`asd`}
       className='stream-item assignment-item w-100 flex column border rounded-1'>
       <div className='stream-header flex '>
         <div className='stream-title'>Title</div>

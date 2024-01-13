@@ -15,13 +15,11 @@ const ClassHomePage = () => {
       </aside>
       <div className='class-page-main w-100'>
         <div className='class-page-nav flex'>
-          <Link
-            className={pathname === `/class/${slug}` && "active"}
-            to={`/class/${slug}`}>
+          <Link className={pathname === `/class/${slug}` && "active"} to={``}>
             Class Stream
           </Link>
-          <NavLink to={`/class/${slug}/assignments`}>Assignments</NavLink>
-          <NavLink to={`/class/${slug}/schedule`}>Schedule</NavLink>
+          <NavLink to={`assignments`}>Assignments</NavLink>
+          <NavLink to={`schedule`}>Schedule</NavLink>
         </div>
         <section className='w-100'>
           <Outlet />
