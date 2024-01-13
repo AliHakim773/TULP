@@ -1,0 +1,11 @@
+.schedule {
+  position: relative;
+  padding-top: 2rem;
+}
+.schedule-header {
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: translateY(-70%);
+  gap: 20px;
+}
