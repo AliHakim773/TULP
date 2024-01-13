@@ -21,6 +21,7 @@ const ClassHomePage = () => {
             Class Stream
           </Link>
           <NavLink to={`/class/${slug}/assignments`}>Assignments</NavLink>
+          <NavLink to={`/class/${slug}/schedule`}>Schedule</NavLink>
         </div>
         <section className='w-100'>
           <Outlet />
