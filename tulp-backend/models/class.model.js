@@ -1,7 +1,6 @@
 const { default: mongoose } = require("mongoose")
 const ClassFeedSchema = require("./classFeed.model")
 const ScheduleSchema = require("./schedule.model")
-const AssignmentSchema = require("./assignment.model")
 
 const ClassSchema = new mongoose.Schema({
   owner: {
@@ -19,7 +18,6 @@ const ClassSchema = new mongoose.Schema({
   },
   slug: {
     type: String,
-    slug: "name",
     unique: true,
   },
   description: {
@@ -63,11 +61,6 @@ ClassSchema.pre("save", function (next) {
   this.slug = this.name.split(" ").join("-")
   next()
 })
-
-// ClassSchema.path("assignments").validate(function (value) {
-//   const names = value.map((assignment) => assignment.name)
-//   return new Set(names).size === names.length
-// }, "Duplicate assignment names found within the same document.")
 
 const Class = mongoose.model("Class", ClassSchema)
 
