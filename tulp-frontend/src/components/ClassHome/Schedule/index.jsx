@@ -1,11 +1,10 @@
-import { Outlet, useNavigate, useParams } from "react-router-dom"
+import { Outlet, useNavigate } from "react-router-dom"
 import Button from "../../Base/Button"
 import ScheduleItem from "../ScheduleItem"
 import "./styles.css"
 
 const Schedule = () => {
   const navigate = useNavigate()
-  const { slug } = useParams()
 
   return (
     <>
