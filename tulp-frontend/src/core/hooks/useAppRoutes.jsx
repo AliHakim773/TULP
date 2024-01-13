@@ -17,6 +17,7 @@ import FooterLayout from "../../components/UI/FooterLayout"
 import Stream from "../../components/ClassHome/Stream"
 import Assignments from "../../components/ClassHome/Assignments"
 import AssignmentView from "../../components/ClassHome/AssignmentView"
+import Schedule from "../../components/ClassHome/Schedule"
 
 const useAppRoutes = () => {
   const router = createBrowserRouter(
@@ -35,6 +36,7 @@ const useAppRoutes = () => {
             <Route element={<FooterLayout />}>
               <Route element={<ClassHomePage />}>
                 <Route index element={<Stream />} />
+                <Route path='schedule' element={<Schedule />} />
                 <Route path='assignments'>
                   <Route index element={<Assignments />} />
                   <Route path=':titleSlug' element={<AssignmentView />} />
