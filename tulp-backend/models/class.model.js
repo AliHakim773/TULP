@@ -45,7 +45,12 @@ const ClassSchema = new mongoose.Schema({
   ],
   classFeed: [ClassFeedSchema],
   schedule: [ScheduleSchema],
-  assignments: [AssignmentSchema],
+  assignments: [
+    {
+      type: mongoose.Types.ObjectId,
+      ref: "Assignment",
+    },
+  ],
   channels: [
     {
       type: mongoose.Types.ObjectId,
@@ -58,6 +63,11 @@ ClassSchema.pre("save", function (next) {
   this.slug = this.name.split(" ").join("-")
   next()
 })
+
+// ClassSchema.path("assignments").validate(function (value) {
+//   const names = value.map((assignment) => assignment.name)
+//   return new Set(names).size === names.length
+// }, "Duplicate assignment names found within the same document.")
 
 const Class = mongoose.model("Class", ClassSchema)
 

@@ -21,12 +21,10 @@ const AssignmentSchema = new mongoose.Schema({
     type: String,
     // TODO: add datetime formating
   },
-  files: [
-    {
-      type: String,
-    },
-  ],
+  files: [String],
   submissions: [SubmissionSchema],
 })
 
-module.exports = AssignmentSchema
+const Assignment = mongoose.model("Assignment", AssignmentSchema)
+
+module.exports = Assignment
