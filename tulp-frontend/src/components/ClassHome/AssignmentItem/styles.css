@@ -1,0 +1,11 @@
+.stream-header {
+  justify-content: space-between;
+}
+.stream-due {
+  font-size: 14px;
+}
+.assignment-item:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  border-color: var(--white);
+}
