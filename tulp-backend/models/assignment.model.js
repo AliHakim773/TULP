@@ -8,6 +8,9 @@ const AssignmentSchema = new mongoose.Schema({
     minlength: [3, "Title length must be more than 3"],
     maxlength: [40, "Title length must be less than 40"],
   },
+  slug: {
+    type: String,
+  },
   content: {
     type: String,
     maxlength: [400, "Can't be more than 400 chars"],
@@ -23,6 +26,11 @@ const AssignmentSchema = new mongoose.Schema({
   },
   files: [String],
   submissions: [SubmissionSchema],
+})
+
+AssignmentSchema.pre("save", function (next) {
+  this.slug = this.title.split(" ").join("-")
+  next()
 })
 
 const Assignment = mongoose.model("Assignment", AssignmentSchema)
