@@ -1,0 +1,17 @@
+.schedule-table {
+  margin-bottom: 2rem;
+}
+.schedule-cell {
+  flex: 1;
+}
+.schedule-cell {
+  padding: 1rem;
+  border-right: 1px solid var(--grey-4);
+  border-bottom: 1px solid var(--grey-4);
+}
+.schedule-row:last-child > .schedule-cell {
+  border-bottom: none;
+}
+.schedule-row > .schedule-cell:last-child {
+  border-right: none;
+}
