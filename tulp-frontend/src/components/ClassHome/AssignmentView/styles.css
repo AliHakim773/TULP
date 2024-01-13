@@ -1,0 +1,27 @@
+.assignment-view {
+  padding: 1rem;
+  margin-top: 2rem;
+}
+.assignment-body .title {
+  font-size: 18px;
+  text-transform: capitalize;
+}
+.assignment-body > p {
+  margin-top: 1rem;
+  font-size: 14px;
+}
+.assignment-file {
+  width: 100px;
+  margin-top: 2rem;
+}
+.assignment-upload {
+  margin-left: auto;
+  gap: 20px;
+  align-items: flex-end;
+}
+.assignment-upload > span {
+  color: var(--blue-3);
+}
+.assignment-file > .file-img {
+  height: 50px;
+}
