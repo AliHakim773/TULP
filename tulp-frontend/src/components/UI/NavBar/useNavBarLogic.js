@@ -18,7 +18,11 @@ const navLinksLoggedOut = [
 const navLinksLoggedIn = [
   {
     to: "/",
-    text: "home",
+    text: "Home",
+  },
+  {
+    to: "/class/asd",
+    text: "Class",
   },
 ]
 const useNavBarLogic = () => {
