@@ -1,3 +1,4 @@
+const Assignment = require("../models/assignment.model")
 const AssignmentSchema = require("../models/assignment.model")
 const Class = require("../models/class.model")
 
@@ -6,20 +7,28 @@ const addAssignment = async (req, res) => {
   const { classId } = req.params
   const { title, content, dueDate } = req.body
   try {
-    const assignment = new AssignmentSchema({
+    const classObjectvalidate = await Class.findById(classId).populate(
+      "assignments"
+    )
+
+    const assignments = classObjectvalidate.assignments
+
+    if (assignments.some((assignment) => assignment.title === title))
+      return res.status(400).send({ error: "cant have duplicate titles" })
+
+    const assignment = await Assignment.create({
       title,
       content,
       dueDate,
       sender: id,
     })
-
     const classObject = await Class.findById(classId)
-    classObject.assignments.push(assignment)
+    classObject.assignments.push(assignment._id)
     await classObject.save()
 
-    res.status(201).send(assignment)
+    return res.status(201).send({ assignment })
   } catch (error) {
-    res.status(500).send(error)
+    return res.status(500).send({ error })
   }
 }
 
