@@ -41,7 +41,7 @@ img {
   border-radius: 10px;
 }
 .border-bottom {
-  border-bottom: 1px solid var(--black);
+  border-bottom: 1px solid var(--grey-4);
 }
 .w-100 {
   width: 100%;
