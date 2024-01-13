@@ -1,0 +1,14 @@
+.class-assignment-header {
+  width: fit-content;
+  position: absolute;
+  right: 0%;
+  top: 0;
+  transform: translateY(-100%);
+}
+.assignment-main {
+  margin-top: 2rem;
+  gap: 20px;
+}
+.class-assignment {
+  position: relative;
+}
