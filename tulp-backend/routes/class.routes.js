@@ -13,7 +13,7 @@ router.post("/", addClass)
 router.get("/in", getClassesIn)
 router.post("/search", searchClass)
 router.post("/schedule", addSchedule)
-router.get("/instructors/:slug", getClassInstructors)
+router.get("/:slug/instructors", getClassInstructors)
 router.get("/:slug/profile", getClassProfile)
 
 module.exports = router
