@@ -18,7 +18,7 @@ import Stream from "../../components/ClassHome/Stream"
 import Assignments from "../../components/ClassHome/Assignments"
 import AssignmentView from "../../components/ClassHome/AssignmentView"
 import Schedule from "../../components/ClassHome/Schedule"
-import ModalForm from "../../components/ClassHome/ModalForm"
+import ModalForm from "../../components/UI/ModalForm"
 
 const useAppRoutes = () => {
   const router = createBrowserRouter(
