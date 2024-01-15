@@ -23,7 +23,7 @@ const classAPI = {
     })
     return response
   },
-  addSchedule: async () => {
+  addSchedule: async (data) => {
     const response = await sendRequest({
       route: "class/schedule",
       method: "POST",
