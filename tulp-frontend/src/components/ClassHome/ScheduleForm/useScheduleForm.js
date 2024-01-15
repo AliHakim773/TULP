@@ -1,8 +1,10 @@
 import { useState } from "react"
 import classAPI from "../../../core/api/class"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
+import toast from "react-hot-toast"
 
 const useScheduleForm = () => {
+  const navigate = useNavigate()
   const { slug } = useParams()
   const [values, setValues] = useState({
     title: "",
@@ -52,12 +54,12 @@ const useScheduleForm = () => {
 
   const handleOnClick = async () => {
     try {
-      // TODO: test
-      const res = await classAPI.addSchedule({
+      await classAPI.addSchedule({
         slug,
         ...values,
       })
-      console.log(res)
+      toast.success("Schedule added")
+      navigate(-1)
     } catch (e) {
       console.log(e)
     }
