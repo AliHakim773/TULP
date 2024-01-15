@@ -101,8 +101,30 @@ const searchClass = async (req, res) => {
   }
 }
 
+const addSchedule = async (req, res) => {
+  const { slug, title, startTime, endTime, description } = req.body
+  try {
+    const classObject = await Class.findOne({ slug })
+
+    const schedule = await classObject.schedule.create({
+      title,
+      startTime,
+      endTime,
+      description,
+    })
+
+    classObject.schedule.push(schedule)
+    await classObject.save()
+
+    res.status(200).send({ schedule })
+  } catch (error) {
+    res.status(500).send({ error })
+  }
+}
+
 module.exports = {
   addClass,
   searchClass,
   getClassesIn,
+  addSchedule,
 }
