@@ -4,23 +4,10 @@ import classAPI from "../../core/api/class"
 import toast from "react-hot-toast"
 
 const useCreateClassFormLogic = () => {
-  const [result, setResult] = useState([])
   const [instructors, setInstructors] = useState([])
   const [name, setName] = useState("")
 
   const descriptionRef = useRef()
-  const instructorRef = useRef()
-
-  const handleInstructorSearch = async () => {
-    const payload = instructorRef.current.value
-
-    if (payload === "") {
-      setResult([])
-      return
-    }
-    const res = await userApi.searchInstructors({ payload })
-    setResult(res.result)
-  }
 
   const onNameChange = (e) => {
     setName(e.target.value)
@@ -36,8 +23,6 @@ const useCreateClassFormLogic = () => {
         return [...prev, instructor]
       })
     }
-    setResult([])
-    instructorRef.current.value = ""
   }
 
   const handleOnRemove = (instructorToRemove) => {
@@ -58,12 +43,9 @@ const useCreateClassFormLogic = () => {
   }
 
   return {
-    result,
     instructors,
-    instructorRef,
     descriptionRef,
     onNameChange,
-    handleInstructorSearch,
     handleOnAccept,
     handleOnCreateClass,
     handleOnRemove,

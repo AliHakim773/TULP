@@ -5,13 +5,11 @@ import useCreateClassFormLogic from "./useCreateClassFormLogic"
 import InstructorItem from "./InstructorItem"
 import SelectedInstructorItem from "./SelectedInstructorItem"
 import Button from "../Base/Button"
+import SearchInstructor from "../SearchInstructor"
 
 const CreateClassForm = () => {
   const {
     instructors,
-    handleInstructorSearch,
-    result,
-    instructorRef,
     descriptionRef,
     handleOnCreateClass,
     onNameChange,
@@ -38,26 +36,7 @@ const CreateClassForm = () => {
           ref={descriptionRef}
         />
       </div>
-      <div className='class-create-input instructor-input flex column'>
-        <label htmlFor='class-description'>Add Instructors</label>
-        <input
-          type='text'
-          id='class-description'
-          className='class-create-input-field'
-          placeholder='Enter Instructors name'
-          onChange={handleInstructorSearch}
-          ref={instructorRef}
-        />
-        <div className='instructor-search flex column'>
-          {result.map((instructor) => (
-            <InstructorItem
-              key={instructor._id}
-              instructor={instructor}
-              onAccept={handleOnAccept}
-            />
-          ))}
-        </div>
-      </div>
+      <SearchInstructor handleOnAccept={handleOnAccept} />
       <div className='instructors-list flex'>
         {instructors.map((instructor) => (
           <SelectedInstructorItem
