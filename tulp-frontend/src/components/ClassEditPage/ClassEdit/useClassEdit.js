@@ -13,7 +13,6 @@ const useClassEdit = () => {
     try {
       const res = await classAPI.editClassProfile(slug, values)
       toast.success("Class Information Updated")
-      console.log(res.slug)
       navigate(`/class/${res.slug}/edit`)
     } catch (e) {
       toast.error("There was an error")
