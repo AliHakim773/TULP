@@ -1,10 +1,9 @@
 const { default: mongoose } = require("mongoose")
 
 const ScheduleSchema = new mongoose.Schema({
-  content: {
+  title: {
     type: String,
-    maxlength: [200, "Can't be more than 200 chars"],
-    requiered: "Feed content cant be empty",
+    requiered: "title cant be empty",
   },
   startTime: {
     type: String,
@@ -13,6 +12,9 @@ const ScheduleSchema = new mongoose.Schema({
   endTime: {
     type: String,
     requiered: "You need to specify a end time",
+  },
+  description: {
+    type: String,
   },
 })
 
