@@ -22,6 +22,7 @@ const ClassHomePage = () => {
           </Link>
           <NavLink to={`assignments`}>Assignments</NavLink>
           <NavLink to={`schedule`}>Schedule</NavLink>
+          <NavLink to={`settings/edit`}>Settings</NavLink>
         </div>
         <section className='w-100'>
           <Outlet />

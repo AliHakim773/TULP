@@ -24,7 +24,9 @@ import ClassEditPage from "../../pages/ClassEditPage"
 import ClassEdit, {
   classEditLoader,
 } from "../../components/ClassEditPage/ClassEdit"
-import ManageInstructors from "../../components/ClassEditPage/ManageInstructors"
+import ManageInstructors, {
+  manageInstructorsLoader,
+} from "../../components/ClassEditPage/ManageInstructors"
 import ManageStudents from "../../components/ClassEditPage/ManageStudents"
 import ManageRequests from "../../components/ClassEditPage/ManageRequests"
 
@@ -55,9 +57,17 @@ const useAppRoutes = () => {
                   <Route path=':titleSlug' element={<AssignmentView />} />
                 </Route>
               </Route>
-              <Route path='edit' element={<ClassEditPage />}>
-                <Route index element={<ClassEdit />} loader={classEditLoader} />
-                <Route path='instructors' element={<ManageInstructors />} />
+              <Route path='settings' element={<ClassEditPage />}>
+                <Route
+                  path='edit'
+                  element={<ClassEdit />}
+                  loader={classEditLoader}
+                />
+                <Route
+                  path='instructors'
+                  element={<ManageInstructors />}
+                  loader={manageInstructorsLoader}
+                />
                 <Route path='students' element={<ManageStudents />} />
                 <Route path='requests' element={<ManageRequests />} />
               </Route>
