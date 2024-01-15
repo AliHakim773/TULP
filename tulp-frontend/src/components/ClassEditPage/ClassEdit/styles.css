@@ -3,6 +3,7 @@
 }
 .class-edit-main > form {
   gap: 20px;
+  width: 700px;
 }
 .class-edit-main > form > .btn {
   width: fit-content;
