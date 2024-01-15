@@ -23,6 +23,14 @@ const classAPI = {
     })
     return response
   },
+  addSchedule: async () => {
+    const response = await sendRequest({
+      route: "class/schedule",
+      method: "POST",
+      body: data,
+    })
+    return response
+  },
 }
 
 export default classAPI
