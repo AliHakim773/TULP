@@ -145,6 +145,22 @@ const getClassProfile = async (req, res) => {
   }
 }
 
+const editClassProfile = async (req, res) => {
+  const { slug } = req.params
+  const { name, description } = req.body
+  try {
+    const classObject = await Class.findOneAndUpdate(
+      { slug },
+      { name, description }
+    )
+    res
+      .status(200)
+      .send({ name: classObject.name, description: classObject.description })
+  } catch (error) {
+    res.status(500).send({ error })
+  }
+}
+
 module.exports = {
   addClass,
   searchClass,
@@ -152,4 +168,5 @@ module.exports = {
   addSchedule,
   getClassInstructors,
   getClassProfile,
+  editClassProfile,
 }

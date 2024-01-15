@@ -6,6 +6,7 @@ const {
   addSchedule,
   getClassInstructors,
   getClassProfile,
+  editClassProfile,
 } = require("../controllers/class.controllers")
 const router = express.Router()
 
@@ -15,5 +16,6 @@ router.post("/search", searchClass)
 router.post("/schedule", addSchedule)
 router.get("/:slug/instructors", getClassInstructors)
 router.get("/:slug/profile", getClassProfile)
+router.patch("/:slug/profile", editClassProfile)
 
 module.exports = router
