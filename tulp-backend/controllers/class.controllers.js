@@ -122,9 +122,22 @@ const addSchedule = async (req, res) => {
   }
 }
 
+const getClassInstructors = async (req, res) => {
+  console.log("slug")
+  const { slug } = req.params
+
+  try {
+    const classObject = await Class.findOne({ slug }).populate("instructors")
+    res.status(200).send({ instructors: classObject.instructors })
+  } catch (error) {
+    res.status(500).send({ error })
+  }
+}
+
 module.exports = {
   addClass,
   searchClass,
   getClassesIn,
   addSchedule,
+  getClassInstructors,
 }
