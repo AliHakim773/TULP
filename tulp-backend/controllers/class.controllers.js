@@ -123,12 +123,23 @@ const addSchedule = async (req, res) => {
 }
 
 const getClassInstructors = async (req, res) => {
-  console.log("slug")
   const { slug } = req.params
 
   try {
     const classObject = await Class.findOne({ slug }).populate("instructors")
     res.status(200).send({ instructors: classObject.instructors })
+  } catch (error) {
+    res.status(500).send({ error })
+  }
+}
+
+const getClassProfile = async (req, res) => {
+  const { slug } = req.params
+  try {
+    const classObject = await Class.findOne({ slug })
+    res
+      .status(200)
+      .send({ name: classObject.name, description: classObject.description })
   } catch (error) {
     res.status(500).send({ error })
   }
@@ -140,4 +151,5 @@ module.exports = {
   getClassesIn,
   addSchedule,
   getClassInstructors,
+  getClassProfile,
 }
