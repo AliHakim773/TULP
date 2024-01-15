@@ -128,7 +128,7 @@ const getClassInstructors = async (req, res) => {
   try {
     const classObject = await Class.findOne({ slug }).populate({
       path: "instructors",
-      select: "username _id email imageUrl",
+      select: "username _id email imageUrl firstName lastName",
     })
     res.status(200).send({ instructors: classObject.instructors })
   } catch (error) {
