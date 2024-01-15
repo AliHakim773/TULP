@@ -31,6 +31,12 @@ const classAPI = {
     })
     return response
   },
+  getClassProfile: async (slug) => {
+    const response = await sendRequest({
+      route: `class/${slug}/profile`,
+    })
+    return response
+  },
 }
 
 export default classAPI
