@@ -10,7 +10,10 @@ const Button = ({
   return (
     <button
       type={type}
-      onClick={onclick}
+      onClick={(e) => {
+        e.preventDefault()
+        onclick()
+      }}
       className={`basic-btn ${color} semi-bold`}>
       {text}
     </button>
