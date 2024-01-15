@@ -1,10 +1,9 @@
 import { useState } from "react"
+import { useLoaderData } from "react-router-dom"
 
 const useClassEdit = () => {
-  const [values, setValues] = useState({
-    name: "",
-    description: "",
-  })
+  const data = useLoaderData()
+  const [values, setValues] = useState(data)
   const handleSubmit = async () => {
     console.log(values)
   }
