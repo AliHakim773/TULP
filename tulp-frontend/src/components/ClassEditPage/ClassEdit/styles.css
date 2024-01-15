@@ -1,0 +1,9 @@
+.class-edit-main {
+  padding: 1rem 3rem;
+}
+.class-edit-main > form {
+  gap: 20px;
+}
+.class-edit-main > form > .btn {
+  width: fit-content;
+}
