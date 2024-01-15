@@ -1,0 +1,9 @@
+.schedule-form {
+  padding: 2rem 1.5rem;
+  gap: 15px;
+  width: 300px;
+}
+.form-title {
+  font-size: 1.25rem;
+  text-align: center;
+}

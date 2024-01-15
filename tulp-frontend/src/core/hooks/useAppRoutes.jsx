@@ -19,6 +19,7 @@ import Assignments from "../../components/ClassHome/Assignments"
 import AssignmentView from "../../components/ClassHome/AssignmentView"
 import Schedule from "../../components/ClassHome/Schedule"
 import ModalForm from "../../components/UI/ModalForm"
+import ScheduleForm from "../../components/ClassHome/ScheduleForm"
 
 const useAppRoutes = () => {
   const router = createBrowserRouter(
@@ -38,7 +39,9 @@ const useAppRoutes = () => {
               <Route element={<ClassHomePage />}>
                 <Route index element={<Stream />} />
                 <Route path='schedule' element={<Schedule />}>
-                  <Route path='add' element={<ModalForm />} />
+                  <Route element={<ModalForm />}>
+                    <Route path='add' element={<ScheduleForm />} />
+                  </Route>
                 </Route>
                 <Route path='assignments'>
                   <Route index element={<Assignments />} />
