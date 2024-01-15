@@ -1,10 +1,15 @@
 import { useLoaderData } from "react-router-dom"
 import classAPI from "../../../core/api/class"
 import "./styles.css"
+import Table from "../../UI/Table"
 
 const ManageInstructors = () => {
   const data = useLoaderData()
-  return <div className='w-100'>{JSON.stringify(data)}</div>
+  return (
+    <div className='instructors-table'>
+      <Table users={data.instructors} />
+    </div>
+  )
 }
 
 export default ManageInstructors
