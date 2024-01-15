@@ -15,7 +15,9 @@ const ClassHomePage = () => {
       </aside>
       <div className='class-page-main w-100'>
         <div className='class-page-nav flex'>
-          <Link className={pathname === `/class/${slug}` && "active"} to={``}>
+          <Link
+            className={pathname === `/class/${slug}` ? "active" : ""}
+            to={``}>
             Class Stream
           </Link>
           <NavLink to={`assignments`}>Assignments</NavLink>
