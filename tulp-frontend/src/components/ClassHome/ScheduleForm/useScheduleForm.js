@@ -1,10 +1,13 @@
 import { useState } from "react"
+import classAPI from "../../../core/api/class"
+import { useParams } from "react-router-dom"
 
 const useScheduleForm = () => {
+  const { slug } = useParams()
   const [values, setValues] = useState({
     title: "",
-    from: "",
-    to: "",
+    startTime: "",
+    endTime: "",
     description: "",
   })
 
@@ -22,19 +25,19 @@ const useScheduleForm = () => {
       handleOnChange,
     },
     {
-      text: "From",
+      text: "Start Time",
       type: "datetime-local",
       placeholder: "01/01/2000 12:00 PM",
-      id: "from",
-      value: values.from,
+      id: "startTime",
+      value: values.startTime,
       handleOnChange,
     },
     {
-      text: "To",
+      text: "End Time",
       type: "datetime-local",
       placeholder: "01/01/2000 12:00 PM",
-      id: "to",
-      value: values.to,
+      id: "endTime",
+      value: values.endTime,
       handleOnChange,
     },
     {
@@ -48,7 +51,16 @@ const useScheduleForm = () => {
   ]
 
   const handleOnClick = async () => {
-    console.log(values)
+    try {
+      // TODO: test
+      const res = await classAPI.addSchedule({
+        slug,
+        ...values,
+      })
+      console.log(res)
+    } catch (e) {
+      console.log(e)
+    }
   }
 
   return { inputValues, handleOnClick }
