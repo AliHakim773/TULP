@@ -45,6 +45,12 @@ const classAPI = {
     })
     return response
   },
+  getClassInstructors: async (slug) => {
+    const response = await sendRequest({
+      route: `class/${slug}/instructors`,
+    })
+    return response
+  },
 }
 
 export default classAPI
