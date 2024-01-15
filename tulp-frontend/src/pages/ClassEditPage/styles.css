@@ -1,8 +1,11 @@
 .class-edit-page {
   min-height: calc(100vh - 358px);
 }
+.class-edit-page > div {
+  width: calc(100vw - 240px);
+}
 .class-edit-nav {
-  flex-basis: 1;
+  width: 240px;
   border-right: 1px solid var(--grey-4);
 }
 .class-edit-nav > a {
