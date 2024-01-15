@@ -151,11 +151,10 @@ const editClassProfile = async (req, res) => {
   try {
     const classObject = await Class.findOneAndUpdate(
       { slug },
-      { name, description }
+      { name, description },
+      { new: true }
     )
-    res
-      .status(200)
-      .send({ name: classObject.name, description: classObject.description })
+    res.status(200).send({ slug: classObject.slug })
   } catch (error) {
     res.status(500).send({ error })
   }
