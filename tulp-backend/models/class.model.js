@@ -61,6 +61,11 @@ ClassSchema.pre("save", function (next) {
   this.slug = this.name.split(" ").join("-")
   next()
 })
+ClassSchema.pre("findOneAndUpdate", function (next) {
+  const updateData = this._update
+  if (updateData.name) this._update.slug = updateData.name.split(" ").join("-")
+  next()
+})
 
 const Class = mongoose.model("Class", ClassSchema)
 
