@@ -37,6 +37,14 @@ const classAPI = {
     })
     return response
   },
+  editClassProfile: async (slug, data) => {
+    const response = await sendRequest({
+      route: `class/${slug}/profile`,
+      method: "PATCH",
+      body: data,
+    })
+    return response
+  },
 }
 
 export default classAPI
