@@ -1,3 +1,5 @@
+import { useParams } from "react-router-dom"
+import classAPI from "../../../core/api/class"
 import Button from "../../Base/Button"
 import InputField from "../../Base/InputField"
 import "./styles.css"
@@ -34,3 +36,9 @@ const ClassEdit = () => {
 }
 
 export default ClassEdit
+
+export const classEditLoader = async ({ params }) => {
+  const { slug } = params
+  const res = await classAPI.getClassProfile(slug)
+  return res
+}
