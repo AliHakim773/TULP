@@ -1,0 +1,19 @@
+.instructor-input {
+  position: relative;
+}
+.instructor-search {
+  backdrop-filter: blur(10px);
+  gap: 10px;
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+}
+.class-create-input {
+  width: 700px;
+  gap: 10px;
+}
+.class-create-input > label {
+  color: var(--black);
+  font-size: 16px;
+  font-weight: 600;
+}
