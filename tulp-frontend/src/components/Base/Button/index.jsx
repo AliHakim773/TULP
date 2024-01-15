@@ -11,8 +11,8 @@ const Button = ({
     <button
       type={type}
       onClick={(e) => {
-        e.preventDefault()
-        onclick()
+        if (type === "submit") e.preventDefault()
+        if (onclick !== undefined) onclick()
       }}
       className={`basic-btn ${color} semi-bold`}>
       {text}
