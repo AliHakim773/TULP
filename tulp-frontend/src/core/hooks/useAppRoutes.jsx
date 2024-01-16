@@ -24,11 +24,11 @@ import ClassEditPage from "../../pages/ClassEditPage"
 import ClassEdit, {
   classEditLoader,
 } from "../../components/ClassEditPage/ClassEdit"
-import ManageInstructors, {
-  manageInstructorsLoader,
-} from "../../components/ClassEditPage/ManageInstructors"
+import ManageInstructors from "../../components/ClassEditPage/ManageInstructors"
 import ManageStudents from "../../components/ClassEditPage/ManageStudents"
 import ManageRequests from "../../components/ClassEditPage/ManageRequests"
+import AddInstructorForm from "../../components/ClassEditPage/ManageInstructors/AddInstructorForm"
+import { manageInstructorsLoader } from "../../components/ClassEditPage/ManageInstructors/useManageInstructors"
 
 const useAppRoutes = () => {
   const router = createBrowserRouter(
@@ -66,8 +66,11 @@ const useAppRoutes = () => {
                 <Route
                   path='instructors'
                   element={<ManageInstructors />}
-                  loader={manageInstructorsLoader}
-                />
+                  loader={manageInstructorsLoader}>
+                  <Route path='add' element={<ModalForm />}>
+                    <Route index element={<AddInstructorForm />} />
+                  </Route>
+                </Route>
                 <Route path='students' element={<ManageStudents />} />
                 <Route path='requests' element={<ManageRequests />} />
               </Route>
