@@ -75,10 +75,16 @@ const getClass = async (req, res) => {
     const classObject = await Class.findOne({ slug })
       .populate({
         path: "owner",
-        select: "_id username firstName lastName",
+        select: "_id username firstName lastName imageUrl",
       })
-      .populate({ path: "instructors", select: "username _id" })
-      .populate({ path: "students", select: "username _id" })
+      .populate({
+        path: "instructors",
+        select: "username _id firstName lastName imageUrl",
+      })
+      .populate({
+        path: "students",
+        select: "username _id firstName lastName imageUrl",
+      })
 
     res.status(200).send({ class: classObject })
   } catch (error) {
