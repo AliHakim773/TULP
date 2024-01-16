@@ -26,7 +26,7 @@ const Profile = () => {
           <div className='profile-classes'>
             <h3>Open Classes</h3>{" "}
             <div className='classes-grid'>
-              {classes.map((classObject) => {
+              {classes?.map((classObject) => {
                 return (
                   <ClassCard
                     key={classObject._id}
