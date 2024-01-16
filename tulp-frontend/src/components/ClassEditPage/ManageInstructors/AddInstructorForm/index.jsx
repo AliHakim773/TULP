@@ -7,8 +7,6 @@ const AddInstructorForm = () => {
   const navigate = useNavigate()
   const { slug } = useParams()
   const handleOnAccept = async (instructor) => {
-    console.log(instructor)
-    // TODO: Add the instructor
     try {
       const res = await classAPI.addClassInstructors(slug, {
         instructorId: instructor._id,
