@@ -30,3 +30,9 @@ a.active > .basic-btn {
 a.active > .basic-btn:hover {
   background-color: var(--orange-2);
 }
+.basic-btn.danger {
+  background-color: rgb(255, 60, 60);
+}
+.basic-btn.danger:hover {
+  background-color: rgb(255, 80, 80);
+}
