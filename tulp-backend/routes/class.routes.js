@@ -6,6 +6,7 @@ const {
   addSchedule,
   getClassInstructors,
   addClassInstructor,
+  removeClassInstructor,
   getClassProfile,
   editClassProfile,
 } = require("../controllers/class.controllers")
@@ -17,6 +18,7 @@ router.post("/search", searchClass)
 router.post("/schedule", addSchedule)
 router.get("/:slug/instructors", getClassInstructors)
 router.post("/:slug/instructors", addClassInstructor)
+router.delete("/:slug/instructors", removeClassInstructor)
 router.get("/:slug/profile", getClassProfile)
 router.patch("/:slug/profile", editClassProfile)
 
