@@ -37,6 +37,7 @@ import AddInstructorForm from "../../components/ClassEditPage/ManageInstructors/
 // Loaders
 import { manageInstructorsLoader } from "../../components/ClassEditPage/ManageInstructors/manageInstructorsLoader"
 import { classEditLoader } from "../../components/ClassEditPage/ClassEdit/classEditLoader"
+import { classLoader } from "../../pages/ClassHomePage/classLoader"
 
 const useAppRoutes = () => {
   const router = createBrowserRouter(
@@ -53,7 +54,7 @@ const useAppRoutes = () => {
         <Route path='class/:slug'>
           <Route element={<NavLayout />}>
             <Route element={<FooterLayout />}>
-              <Route element={<ClassHomePage />}>
+              <Route element={<ClassHomePage />} loader={classLoader}>
                 <Route index element={<Stream />} />
                 <Route path='schedule' element={<Schedule />}>
                   <Route element={<ModalForm />}>
