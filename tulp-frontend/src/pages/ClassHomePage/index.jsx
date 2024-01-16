@@ -1,11 +1,23 @@
-import React from "react"
+import React, { useEffect } from "react"
 import "./styles.css"
 import UserList from "../../components/UserList"
-import { Link, NavLink, Outlet, useLocation, useParams } from "react-router-dom"
+import {
+  Link,
+  NavLink,
+  Outlet,
+  useLoaderData,
+  useLocation,
+  useParams,
+} from "react-router-dom"
 
 const ClassHomePage = () => {
   const { slug } = useParams()
   const { pathname } = useLocation()
+  const data = useLoaderData()
+
+  useEffect(() => {
+    console.log(data)
+  }, [])
 
   return (
     <div className='class-page flex w-100'>
