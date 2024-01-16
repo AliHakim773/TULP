@@ -136,6 +136,23 @@ const getClassInstructors = async (req, res) => {
   }
 }
 
+const addClassInstructor = async (req, res) => {
+  const { slug } = req.params
+  const { instructorId } = req.body
+  try {
+    const classObject = await Class.findOne({ slug })
+    if (!classObject.instructors.includes(instructorId)) {
+      classObject.instructors.push(instructorId)
+      await classObject.save()
+      res.status(200).send({ message: "Instructor added successfully" })
+    } else {
+      res.status(200).send({ message: "Instructor already in class" })
+    }
+  } catch (error) {
+    res.status(500).send({ error })
+  }
+}
+
 const getClassProfile = async (req, res) => {
   const { slug } = req.params
   try {
@@ -171,4 +188,5 @@ module.exports = {
   getClassInstructors,
   getClassProfile,
   editClassProfile,
+  addClassInstructor,
 }
