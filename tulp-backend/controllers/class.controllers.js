@@ -69,6 +69,23 @@ const addClass = async (req, res) => {
   }
 }
 
+const getClass = async (req, res) => {
+  const slug = req.params.slug
+  try {
+    const classObject = await Class.findOne({ slug })
+      .populate({
+        path: "owner",
+        select: "_id username firstName lastName",
+      })
+      .populate({ path: "instructors", select: "username _id" })
+      .populate({ path: "students", select: "username _id" })
+
+    res.status(200).send({ class: classObject })
+  } catch (error) {
+    res.status(500).send({ error })
+  }
+}
+
 const getClassesIn = async (req, res) => {
   const id = req.user._id
   try {
@@ -206,4 +223,5 @@ module.exports = {
   editClassProfile,
   addClassInstructor,
   removeClassInstructor,
+  getClass,
 }
