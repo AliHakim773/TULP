@@ -2,8 +2,9 @@ import { useState } from "react"
 import "./styles.css"
 import Button from "../../Base/Button"
 
-const Table = ({ className = "", users }) => {
+const Table = ({ className = "", users, handleRemove }) => {
   const [confirmation, setConfirmation] = useState(false)
+  const [id, setId] = useState("")
 
   return (
     <div className={`table ${className}`}>
@@ -17,7 +18,14 @@ const Table = ({ className = "", users }) => {
         }`}>
         Are You sure
         <div className='flex'>
-          <Button text='Yes' color='green' />
+          <Button
+            text='Yes'
+            color='green'
+            onclick={() => {
+              handleRemove(id)
+              setConfirmation(false)
+            }}
+          />
           <Button
             text='No'
             color='danger'
@@ -47,6 +55,7 @@ const Table = ({ className = "", users }) => {
             <div
               className='table-cell'
               onClick={() => {
+                setId(user._id)
                 setConfirmation(true)
               }}>
               Remove
