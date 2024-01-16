@@ -21,14 +21,13 @@ import Schedule from "../../components/ClassHome/Schedule"
 import ModalForm from "../../components/UI/ModalForm"
 import ScheduleForm from "../../components/ClassHome/ScheduleForm"
 import ClassEditPage from "../../pages/ClassEditPage"
-import ClassEdit, {
-  classEditLoader,
-} from "../../components/ClassEditPage/ClassEdit"
+import ClassEdit from "../../components/ClassEditPage/ClassEdit"
 import ManageInstructors from "../../components/ClassEditPage/ManageInstructors"
 import ManageStudents from "../../components/ClassEditPage/ManageStudents"
 import ManageRequests from "../../components/ClassEditPage/ManageRequests"
 import AddInstructorForm from "../../components/ClassEditPage/ManageInstructors/AddInstructorForm"
 import { manageInstructorsLoader } from "../../components/ClassEditPage/ManageInstructors/useManageInstructors"
+import { classEditLoader } from "../../components/ClassEditPage/ClassEdit/useClassEdit"
 
 const useAppRoutes = () => {
   const router = createBrowserRouter(
