@@ -63,7 +63,8 @@ ClassSchema.pre("save", function (next) {
 })
 ClassSchema.pre("findOneAndUpdate", function (next) {
   const updateData = this._update
-  if (updateData.name) this._update.slug = updateData.name.split(" ").join("-")
+  if (updateData.name)
+    this._update.slug = updateData.name.trim().split(" ").join("-")
   next()
 })
 
