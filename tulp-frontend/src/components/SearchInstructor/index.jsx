@@ -2,13 +2,14 @@ import InstructorItem from "../CreateClassForm/InstructorItem"
 import "./styles.css"
 import useInstrucorSearch from "./useInstrucorSearch"
 
-const SearchInstructor = ({ handleOnAccept }) => {
+const SearchInstructor = ({ handleOnAccept, label = true }) => {
   const { handleInstructorSearch, setResult, result, instructorRef } =
     useInstrucorSearch()
 
   return (
     <div className='class-create-input instructor-input flex column'>
-      <label htmlFor='class-description'>Add Instructors</label>
+      {label && <label htmlFor='class-description'>Add Instructors</label>}
+
       <input
         type='text'
         className='class-create-input-field'
