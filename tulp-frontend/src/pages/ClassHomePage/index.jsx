@@ -15,15 +15,11 @@ const ClassHomePage = () => {
   const { pathname } = useLocation()
   const data = useLoaderData()
 
-  useEffect(() => {
-    console.log(data)
-  }, [])
-
   return (
     <div className='class-page flex w-100'>
       <aside className='flex column'>
-        <UserList />
-        <UserList />
+        <UserList title='Instructors' users={data.res.class.instructors} />
+        <UserList title='Studnets' users={data.res.class.students} />
       </aside>
       <div className='class-page-main w-100'>
         <div className='class-page-nav flex'>
