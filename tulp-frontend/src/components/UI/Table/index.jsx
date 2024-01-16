@@ -20,7 +20,7 @@ const Table = ({ className = "", users }) => {
           <Button text='Yes' color='green' />
           <Button
             text='No'
-            color='orange'
+            color='danger'
             onclick={() => {
               setConfirmation(false)
             }}
