@@ -1,9 +1,33 @@
+import { useState } from "react"
 import "./styles.css"
+import Button from "../../Base/Button"
 
-const Table = ({ className, users }) => {
+const Table = ({ className = "", users }) => {
+  const [confirmation, setConfirmation] = useState(false)
+
   return (
-    <div className={`${className} table`}>
-      <div className='table-row table-row-head'>
+    <div className={`table ${className}`}>
+      <div
+        id='table-confirmation'
+        onClick={(e) => {
+          if (e.target.id === "table-confirmation") setConfirmation(false)
+        }}
+        className={`table-confirmation flex column center rounded-2 white-bg shadow ${
+          confirmation ? "active" : ""
+        }`}>
+        Are You sure
+        <div className='flex'>
+          <Button text='Yes' color='green' />
+          <Button
+            text='No'
+            color='orange'
+            onclick={() => {
+              setConfirmation(false)
+            }}
+          />
+        </div>
+      </div>
+      <div className='table-row-head'>
         <div className='table-cell table-cell-head'>#</div>
         <div className='table-cell table-cell-head'>Username</div>
         <div className='table-cell table-cell-head'>Full Name</div>
@@ -20,7 +44,13 @@ const Table = ({ className, users }) => {
             </div>
             <div className='table-cell'>{user.email}</div>
 
-            <div className='table-cell'>Remove</div>
+            <div
+              className='table-cell'
+              onClick={() => {
+                setConfirmation(true)
+              }}>
+              Remove
+            </div>
           </div>
         )
       })}

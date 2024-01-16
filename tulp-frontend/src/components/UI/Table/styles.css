@@ -8,12 +8,25 @@
   border-radius: 5px;
   border: var(--border);
 }
-.table-row {
+.table-row,
+.table-row-head {
   display: flex;
   border-bottom: var(--border);
 }
-.table-row:not(:first-child):hover {
+.table-row:hover {
   background-color: rgba(0, 0, 0, 0.1);
+}
+
+.table-row > .table-cell:nth-child(5):hover {
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: red;
+}
+.table-row:first-child {
+  background-color: red;
+  height: 200px;
+  width: 200px;
 }
 .table-row:last-child {
   border: none;
@@ -21,6 +34,24 @@
 .table-cell-head {
   text-align: center;
   font-weight: 600;
+}
+
+.table-confirmation {
+  top: 5%;
+  position: absolute;
+  left: 50%;
+  width: 200px;
+  transform: translateX(-50%) translateY(-300%);
+  gap: 10px;
+  padding: 1rem;
+}
+.table-confirmation.active {
+  transform: translateX(-50%) translateY(0%);
+  transition: transform 0.1s ease-in;
+}
+
+.table-confirmation > div {
+  gap: 10px;
 }
 .table-cell {
   padding: 1rem;
@@ -33,28 +64,22 @@
   border-radius: 10px;
   object-fit: cover;
 }
-.table-row > .table-cell:last-child {
+.table .table-cell:last-child {
   border: none;
 }
-.table-row > .table-cell:nth-child(1) {
+.table .table-cell:nth-child(1) {
   flex: 0.5;
   text-align: center;
 }
-.table-row > .table-cell:nth-child(2) {
+.table .table-cell:nth-child(2) {
   flex: 2;
 }
-.table-row > .table-cell:nth-child(3) {
+.table .table-cell:nth-child(3) {
   flex: 2;
 }
-.table-row > .table-cell:nth-child(4) {
+.table .table-cell:nth-child(4) {
   flex: 3;
 }
-.table-row > .table-cell:nth-child(5) {
+.table .table-cell:nth-child(5) {
   flex: 1;
-}
-.table-row:not(:first-child) > .table-cell:nth-child(5):hover {
-  color: white;
-  font-weight: 600;
-  cursor: pointer;
-  background-color: red;
 }
