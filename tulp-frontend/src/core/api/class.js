@@ -9,6 +9,12 @@ const classAPI = {
     })
     return response
   },
+  get: async (slug) => {
+    const response = await sendRequest({
+      route: `class/${slug}`,
+    })
+    return response
+  },
   search: async (data) => {
     const response = await sendRequest({
       route: "class/search",
