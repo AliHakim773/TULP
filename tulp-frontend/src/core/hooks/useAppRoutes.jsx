@@ -1,19 +1,26 @@
-import RootLayout from "../../components/UI/RootLayout"
-import LandingPage from "../../pages/LandingPage"
-import PageNotFound from "../../pages/PageNotFound"
-import RegisterPage from "../../pages/RegisterPage"
-import LoginPage from "../../pages/LoginPage"
-import EditProfile from "../../pages/EditProfile"
-import Profile from "../../pages/Profile"
-import CreateClass from "../../pages/CreateClass"
-import ClassHomePage from "../../pages/ClassHomePage"
+// React Router
 import {
   Route,
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom"
+
+// Layouts
+import RootLayout from "../../components/UI/RootLayout"
 import NavLayout from "../../components/UI/NavLayout"
 import FooterLayout from "../../components/UI/FooterLayout"
+
+// Auth Pages
+import RegisterPage from "../../pages/RegisterPage"
+import LoginPage from "../../pages/LoginPage"
+
+// Pages
+import LandingPage from "../../pages/LandingPage"
+import PageNotFound from "../../pages/PageNotFound"
+import Profile from "../../pages/Profile"
+import EditProfile from "../../pages/EditProfile"
+import CreateClass from "../../pages/CreateClass"
+import ClassHomePage from "../../pages/ClassHomePage"
 import Stream from "../../components/ClassHome/Stream"
 import Assignments from "../../components/ClassHome/Assignments"
 import AssignmentView from "../../components/ClassHome/AssignmentView"
@@ -26,8 +33,10 @@ import ManageInstructors from "../../components/ClassEditPage/ManageInstructors"
 import ManageStudents from "../../components/ClassEditPage/ManageStudents"
 import ManageRequests from "../../components/ClassEditPage/ManageRequests"
 import AddInstructorForm from "../../components/ClassEditPage/ManageInstructors/AddInstructorForm"
-import { manageInstructorsLoader } from "../../components/ClassEditPage/ManageInstructors/useManageInstructors"
-import { classEditLoader } from "../../components/ClassEditPage/ClassEdit/useClassEdit"
+
+// Loaders
+import { manageInstructorsLoader } from "../../components/ClassEditPage/ManageInstructors/manageInstructorsLoader"
+import { classEditLoader } from "../../components/ClassEditPage/ClassEdit/classEditLoader"
 
 const useAppRoutes = () => {
   const router = createBrowserRouter(
