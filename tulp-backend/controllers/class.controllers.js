@@ -152,6 +152,22 @@ const addClassInstructor = async (req, res) => {
     res.status(500).send({ error })
   }
 }
+const removeClassInstructor = async (req, res) => {
+  const { slug } = req.params
+  const { instructorId } = req.body
+  try {
+    const classObject = await Class.findOne({ slug })
+    if (classObject.instructors.includes(instructorId)) {
+      classObject.instructors.pop(instructorId)
+      await classObject.save()
+      res.status(200).send({ message: "Instructor removed successfully" })
+    } else {
+      res.status(200).send({ message: "Instructor not in class" })
+    }
+  } catch (error) {
+    res.status(500).send({ error })
+  }
+}
 
 const getClassProfile = async (req, res) => {
   const { slug } = req.params
@@ -189,4 +205,5 @@ module.exports = {
   getClassProfile,
   editClassProfile,
   addClassInstructor,
+  removeClassInstructor,
 }
