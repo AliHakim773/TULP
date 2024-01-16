@@ -59,6 +59,14 @@ const classAPI = {
     })
     return response
   },
+  removeClassInstructors: async (slug, data) => {
+    const response = await sendRequest({
+      route: `class/${slug}/instructors`,
+      method: "DELETE",
+      body: data,
+    })
+    return response
+  },
 }
 
 export default classAPI
