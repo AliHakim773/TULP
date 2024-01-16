@@ -29,8 +29,4 @@ const useClassEdit = () => {
 
 export default useClassEdit
 
-export const classEditLoader = async ({ params }) => {
-  const { slug } = params
-  const res = await classAPI.getClassProfile(slug)
-  return res
-}
+
