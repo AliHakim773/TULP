@@ -8,31 +8,31 @@ const Footer = () => {
       <div className='footer-item flex column h-100'>
         <div className='footer-item-title'>Links:</div>
         <Link className='footer-item-link' to='/'>
-          ➜ Home
+          Home
         </Link>
         <Link className='footer-item-link' to='/'>
-          ➜ Profile
+          Profile
         </Link>
         <Link className='footer-item-link' to='/'>
-          ➜ About Us
+          About Us
         </Link>
         <Link className='footer-item-link' to='/'>
-          ➜ Contact Us
+          Contact Us
         </Link>
       </div>
       <div className='footer-item flex column h-100'>
         <div className='footer-item-title'>Socials:</div>
         <Link className='footer-item-link' to='/'>
-          ➜ Facebook
+          Facebook
         </Link>
         <Link className='footer-item-link' to='/'>
-          ➜ Twitter
+          Twitter
         </Link>
         <Link className='footer-item-link' to='/'>
-          ➜ Instagram
+          Instagram
         </Link>
         <Link className='footer-item-link' to='/'>
-          ➜ LinkedIn
+          LinkedIn
         </Link>
       </div>
       <div className='footer-item flex column h-100'>
