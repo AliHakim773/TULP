@@ -239,6 +239,23 @@ const requestToJoin = async (req, res) => {
   }
 }
 
+const getRequests = async (req, res) => {
+  const { slug } = req.params
+  try {
+    const classObject = await Class.findOne({ slug }).populate({
+      path: "studentRequests",
+      select: "-password",
+    })
+    if (!classObject) {
+      res.status(404).send({ message: "Class not found" })
+    }
+
+    res.status(200).send({ requests: classObject.studentRequests })
+  } catch (error) {
+    res.status(500).send({ message: `something went wrong` })
+  }
+}
+
 module.exports = {
   addClass,
   searchClass,
@@ -251,4 +268,5 @@ module.exports = {
   removeClassInstructor,
   getClass,
   requestToJoin,
+  getRequests,
 }
