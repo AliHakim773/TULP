@@ -9,7 +9,7 @@ const UserList = ({ title = "title", users }) => {
         {users && users.length !== 0
           ? users.map((user) => {
               return (
-                <div className='user-item flex'>
+                <div key={user._id} className='user-item flex'>
                   <div className='user-item-name'>{user.username}</div>
                   <div className='user-item-pfp circle'>
                     <img
