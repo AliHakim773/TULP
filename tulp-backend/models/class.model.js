@@ -25,10 +25,12 @@ const ClassSchema = new mongoose.Schema({
     maxlength: [400, "Cant have a long description can we? max chars is 400"],
     trim: true,
   },
-  logoUrl: {
-    type: String,
-    default: "uploads/defualt.png",
-  },
+  studentRequests: [
+    {
+      type: mongoose.Types.ObjectId,
+      ref: "User",
+    },
+  ],
   instructors: [
     {
       type: mongoose.Types.ObjectId,
