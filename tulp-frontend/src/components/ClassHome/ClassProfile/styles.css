@@ -1,0 +1,10 @@
+.class-page-main > section {
+  margin-top: 3rem;
+  gap: 40px;
+}
+.class-page-main > section > h2 {
+  text-transform: capitalize;
+}
+.class-page-main > section > button {
+  width: fit-content;
+}
