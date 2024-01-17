@@ -1,6 +1,6 @@
 import { redirect } from "react-router-dom"
-import classAPI from "../../core/api/class"
 import { store } from "../../core/redux/store"
+import classAPI from "../../core/api/class"
 
 export const classLoader = async ({ params }) => {
   const { _id } = store.getState().user
@@ -14,5 +14,5 @@ export const classLoader = async ({ params }) => {
   if (res.class.owner._id === _id || isInstructor || isStudnet) {
     return { res }
   }
-  return redirect("/profile")
+  return redirect(`/class-profile/${res.class.slug}`)
 }
