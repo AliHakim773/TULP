@@ -18,6 +18,7 @@ const ClassHomePage = () => {
   return (
     <div className='class-page flex w-100'>
       <aside className='flex column'>
+        <UserList title='Owner' users={[data.res.class.owner]} />
         <UserList title='Instructors' users={data.res.class.instructors} />
         <UserList title='Studnets' users={data.res.class.students} />
       </aside>
