@@ -33,11 +33,13 @@ import ManageInstructors from "../../components/ClassEditPage/ManageInstructors"
 import ManageStudents from "../../components/ClassEditPage/ManageStudents"
 import ManageRequests from "../../components/ClassEditPage/ManageRequests"
 import AddInstructorForm from "../../components/ClassEditPage/ManageInstructors/AddInstructorForm"
+import ClassProfile from "../../components/ClassHome/ClassProfile"
 
 // Loaders
 import { manageInstructorsLoader } from "../../components/ClassEditPage/ManageInstructors/manageInstructorsLoader"
 import { classEditLoader } from "../../components/ClassEditPage/ClassEdit/classEditLoader"
 import { classLoader } from "../../pages/ClassHomePage/classLoader"
+import { classProfileLoader } from "../../components/ClassHome/ClassProfile/classProfileLoader"
 
 const useAppRoutes = () => {
   const router = createBrowserRouter(
@@ -50,6 +52,11 @@ const useAppRoutes = () => {
           <Route path='profile/:id?' element={<Profile />} />
           <Route path='edit-profile' element={<EditProfile />} />
           <Route path='create-class' element={<CreateClass />} />
+          <Route
+            path='class-profile/:slug'
+            element={<ClassProfile />}
+            loader={classProfileLoader}
+          />
         </Route>
         <Route path='class/:slug'>
           <Route element={<NavLayout />}>
