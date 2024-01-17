@@ -219,6 +219,26 @@ const editClassProfile = async (req, res) => {
   }
 }
 
+const requestToJoin = async (req, res) => {
+  const { classId } = req.body
+  const { _id } = req.user
+  try {
+    const classObject = await Class.findById(classId)
+    if (!classObject) {
+      res.status(404).send({ message: "Class not found" })
+    }
+    if (classObject.students.includes(_id)) {
+      res.status(400).send({ message: "You are already in this class" })
+    }
+    classObject.studentRequests.push(_id)
+    await classObject.save()
+
+    res.status(200).send({ message: "Request sent successfully" })
+  } catch (error) {
+    res.status(500).send({ message: `something went wrong` })
+  }
+}
+
 module.exports = {
   addClass,
   searchClass,
@@ -230,4 +250,5 @@ module.exports = {
   addClassInstructor,
   removeClassInstructor,
   getClass,
+  requestToJoin,
 }

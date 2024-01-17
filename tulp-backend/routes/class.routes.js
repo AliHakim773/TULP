@@ -10,6 +10,7 @@ const {
   getClassProfile,
   editClassProfile,
   getClass,
+  requestToJoin,
 } = require("../controllers/class.controllers")
 const router = express.Router()
 
@@ -17,6 +18,7 @@ router.post("/", addClass)
 router.get("/:slug", getClass)
 router.get("/in", getClassesIn)
 router.post("/search", searchClass)
+router.post("/request-to-join", requestToJoin)
 router.post("/schedule", addSchedule)
 router.get("/:slug/instructors", getClassInstructors)
 router.post("/:slug/instructors", addClassInstructor)
