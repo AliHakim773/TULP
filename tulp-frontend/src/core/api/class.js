@@ -73,6 +73,14 @@ const classAPI = {
     })
     return response
   },
+  requestToJoin: async (data) => {
+    const response = await sendRequest({
+      route: `class/request-to-join`,
+      method: "POST",
+      body: data,
+    })
+    return response
+  },
 }
 
 export default classAPI
