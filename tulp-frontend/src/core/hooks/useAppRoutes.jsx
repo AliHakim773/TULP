@@ -35,6 +35,7 @@ import ManageRequests from "../../components/ClassEditPage/ManageRequests"
 import AddInstructorForm from "../../components/ClassEditPage/ManageInstructors/AddInstructorForm"
 import ClassProfile from "../../components/ClassHome/ClassProfile"
 import StreamForm from "../../components/ClassHome/ClassStream/StreamForm"
+import AssignmentForm from "../../components/ClassHome/Assignments/AssignmentForm"
 
 // Loaders
 import { manageInstructorsLoader } from "../../components/ClassEditPage/ManageInstructors/manageInstructorsLoader"
@@ -44,7 +45,6 @@ import { classProfileLoader } from "../../components/ClassHome/ClassProfile/clas
 import { manageRequestsLoader } from "../../components/ClassEditPage/ManageRequests/manageRequestsLoader"
 import { manageStudentsLoader } from "../../components/ClassEditPage/ManageStudents/ManageStudentsLoader"
 import { streamLoader } from "../../components/ClassHome/ClassStream/Stream/streamLoader"
-import AssignmentForm from "../../components/ClassHome/Assignments/AssignmentForm"
 import { assignmentLoader } from "../../components/ClassHome/Assignments/assignmentLoader"
 import { assignmentViewLoader } from "../../components/ClassHome/Assignments/AssignmentView/AssignmentViewLoader"
 
