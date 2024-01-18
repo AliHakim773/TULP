@@ -1,26 +1,25 @@
+import formatTime from "../../../../core/helpers/formatTime"
 import "./styles.css"
 
-const ScheduleItem = () => {
+const ScheduleItem = ({ schedule }) => {
   return (
     <div className='schedule-table border rounded-1 flex column'>
       <div className='schedule-row flex'>
-        <div className='schedule-cell'>Today</div>
+        <div className='schedule-cell'>{schedule.date}</div>
         <div className='schedule-cell'>From</div>
         <div className='schedule-cell'>To</div>
         <div className='schedule-cell'>Description</div>
       </div>
-      <div className='schedule-row flex'>
-        <div className='schedule-cell'>Some Class</div>
-        <div className='schedule-cell'>10:30 P.M.</div>
-        <div className='schedule-cell'>12:00 A.M.</div>
-        <div className='schedule-cell'>Night Club</div>
-      </div>
-      <div className='schedule-row flex'>
-        <div className='schedule-cell'>Some Class</div>
-        <div className='schedule-cell'>10:30 P.M.</div>
-        <div className='schedule-cell'>12:00 A.M.</div>
-        <div className='schedule-cell'>Night Club</div>
-      </div>
+      {schedule.schedules.map((s) => {
+        return (
+          <div className='schedule-row flex'>
+            <div className='schedule-cell'>{s.title}</div>
+            <div className='schedule-cell'>{formatTime(s.startTime)}</div>
+            <div className='schedule-cell'>{formatTime(s.endTime)}</div>
+            <div className='schedule-cell'>{s.description}</div>
+          </div>
+        )
+      })}
     </div>
   )
 }
