@@ -17,6 +17,9 @@ const {
   getStudentss,
   removeClassStudent,
 } = require("../controllers/class.controllers")
+const instructorMiddleware = require("../middlewares/instructor.middleware")
+const uploadFiles = require("../middlewares/multerFiles.middleware")
+const { postToFeed } = require("../controllers/classFeed.controllers")
 const router = express.Router()
 
 router.post("/", addClass)
@@ -35,5 +38,12 @@ router.post("/:slug/instructors", addClassInstructor)
 router.delete("/:slug/instructors", removeClassInstructor)
 router.get("/:slug/profile", getClassProfile)
 router.patch("/:slug/profile", editClassProfile)
+
+router.post(
+  "/:slug/feed",
+  instructorMiddleware,
+  uploadFiles.single("file"),
+  postToFeed
+)
 
 module.exports = router
