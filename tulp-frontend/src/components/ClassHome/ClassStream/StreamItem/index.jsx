@@ -1,5 +1,4 @@
 import "./styles.css"
-import filepic from "../../../../assets/svgs/file.svg"
 import DownloadFile from "../../../../assets/svgs/DownloadFile"
 
 const StreamItem = ({ post }) => {
@@ -9,12 +8,16 @@ const StreamItem = ({ post }) => {
       <div className='stream-body'>
         <div className='stream-title'>
           {title}
-          <a
-            target='_blank'
-            href={`http://localhost:8000/${file}`}
-            className='download-btn'>
-            <DownloadFile />
-          </a>
+          {file === "" ? (
+            ""
+          ) : (
+            <a
+              target='_blank'
+              href={`http://localhost:8000/${file}`}
+              className='download-btn'>
+              <DownloadFile />
+            </a>
+          )}
         </div>
         <div className='stream-content'>{content}</div>
       </div>

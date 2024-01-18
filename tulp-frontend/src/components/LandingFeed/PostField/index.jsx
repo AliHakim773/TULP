@@ -14,7 +14,6 @@ const PostField = ({ setPosts }) => {
             type='submit'
             color='blue'
             onclick={(e) => {
-              e.preventDefault()
               handleonClick()
             }}
           />

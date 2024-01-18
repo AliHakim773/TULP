@@ -25,3 +25,26 @@
 .assignment-file > .file-img {
   height: 50px;
 }
+.upload-assignment {
+  text-align: center;
+  width: 100px;
+  height: 30px;
+  position: relative;
+  padding: 0.35rem;
+  color: white;
+  font-weight: 400;
+}
+.upload-assignment:hover {
+  background-color: var(--blue-3);
+}
+.upload-assignment > input[type="file"] {
+  cursor: pointer;
+  position: absolute;
+  inset: 0 0 0 0;
+  opacity: 0;
+}
+.assignmrnt-submit-btn {
+  border: 0px;
+  background-color: var(--blue-2);
+  border-radius: 5px;
+}

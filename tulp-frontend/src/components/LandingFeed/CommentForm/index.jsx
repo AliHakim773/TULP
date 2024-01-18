@@ -16,7 +16,6 @@ const CommentForm = ({ closeModal, postId, setPosts }) => {
               type='submit'
               color='blue'
               onclick={async (e) => {
-                e.preventDefault()
                 await handleOnClick()
                 closeModal()
               }}

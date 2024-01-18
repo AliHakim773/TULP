@@ -1,31 +1,51 @@
-import { useParams } from "react-router-dom"
-import file from "../../../../assets/svgs/file.svg"
+import { useLoaderData } from "react-router-dom"
+import DownloadFile from "../../../../assets/svgs/DownloadFile"
 import "./styles.css"
+import { useState } from "react"
 
 const AssignmentView = () => {
-  const { titleSlug } = useParams()
+  const data = useLoaderData()
+  const [file, setFile] = useState()
+
+  const handleOnChange = (e) => {
+    setFile(e.target.files[0])
+  }
+  const handleSubmit = async () => {}
+
   return (
     <div className='assignment-view w-100 flex border rounded-1'>
       <div className='assignment-body'>
-        <div className='title'>asd</div>
-        <p>Some content Here</p>
-        <div className='assignment-file flex column center'>
-          <div className='file-img'>
-            <img src={file} alt='file' />
-          </div>
-          <a
-            target='_blank'
-            href={`http://localhost:8000/`}
-            className='download-btn'>
-            Download
-          </a>
+        <div className='title'>
+          {data.title}
+          {data.file === "" ? (
+            ""
+          ) : (
+            <a
+              target='_blank'
+              href={`http://localhost:8000/${data.file}`}
+              className='download-btn'>
+              <DownloadFile />
+            </a>
+          )}
         </div>
+        <p>{data.content}</p>
       </div>
-      <div className='assignment-upload flex column'>
-        <div className='stream-due grey-2-txt'>Due: jan 11 7:00 P.M.</div>
-        <a className='download-btn'>Upload File</a>
-        <span>Submited</span>
-      </div>
+      <form className='assignment-upload flex column'>
+        <div className='stream-due grey-2-txt'>Due: {data.dueDate}</div>
+        <div className='upload-assignment rounded-1 blue-2-bg'>
+          Upload File
+          <input type='file' id='uplaod-assigment' onChange={handleOnChange} />
+        </div>
+        <button
+          type='submit'
+          className='upload-assignment assignmrnt-submit-btn'
+          onClick={(e) => {
+            e.preventDefault()
+            handleSubmit()
+          }}>
+          Submit
+        </button>
+      </form>
     </div>
   )
 }
