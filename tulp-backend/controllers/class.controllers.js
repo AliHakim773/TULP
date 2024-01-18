@@ -145,6 +145,17 @@ const addSchedule = async (req, res) => {
   }
 }
 
+const getSchedule = async (req, res) => {
+  const { slug } = req.params
+  try {
+    const classObject = await Class.findOne({ slug })
+
+    return res.status(200).send({ schedule: classObject.schedule })
+  } catch (error) {
+    return res.status(500).send({ error })
+  }
+}
+
 const getClassInstructors = async (req, res) => {
   const { slug } = req.params
 
@@ -354,4 +365,5 @@ module.exports = {
   rejectRequest,
   getStudentss,
   removeClassStudent,
+  getSchedule,
 }

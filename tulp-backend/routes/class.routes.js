@@ -16,6 +16,7 @@ const {
   rejectRequest,
   getStudentss,
   removeClassStudent,
+  getSchedule,
 } = require("../controllers/class.controllers")
 const instructorMiddleware = require("../middlewares/instructor.middleware")
 const uploadFiles = require("../middlewares/multerFiles.middleware")
@@ -40,6 +41,7 @@ router.get("/:slug/get-request", getRequests)
 router.post("/:slug/accept-request", acceptRequest)
 router.post("/:slug/reject-request", rejectRequest)
 router.post("/schedule", addSchedule)
+router.get("/schedule/:slug", getSchedule)
 router.get("/:slug/instructors", getClassInstructors)
 router.post("/:slug/instructors", addClassInstructor)
 router.delete("/:slug/instructors", removeClassInstructor)
