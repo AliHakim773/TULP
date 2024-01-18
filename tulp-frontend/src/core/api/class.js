@@ -1,4 +1,6 @@
+import axios from "axios"
 import { sendRequest } from "../axios"
+import { local } from "../helpers/localstorage"
 
 const classAPI = {
   add: async (data) => {
@@ -116,6 +118,21 @@ const classAPI = {
       body: data,
     })
     return response
+  },
+  post: async (slug, data) => {
+    const token = local("token")
+
+    const response = await axios.request({
+      url: `class/${slug}/feed`,
+      method: "POST",
+      data,
+      headers: {
+        Authorization: token,
+        "Content-Type": "multipart/form-data",
+      },
+    })
+
+    return response.data
   },
 }
 
