@@ -22,6 +22,10 @@ const uploadFiles = require("../middlewares/multerFiles.middleware")
 const {
   postToFeed,
   getClassFeed,
+  addAssignment,
+  getClassAssignments,
+  getAssignment,
+  submitAssignment,
 } = require("../controllers/classFeed.controllers")
 const router = express.Router()
 
@@ -49,5 +53,13 @@ router.post(
   postToFeed
 )
 router.get("/:slug/feed", getClassFeed)
+router.post("/:slug/assignment", uploadFiles.single("file"), addAssignment)
+router.get("/:slug/assignment", getClassAssignments)
+router.get("/assignment/:slug", getAssignment)
+router.post(
+  "/assignment/:assignmentId",
+  uploadFiles.single("file"),
+  submitAssignment
+)
 
 module.exports = router
