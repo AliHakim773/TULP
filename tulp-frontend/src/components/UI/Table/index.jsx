@@ -21,8 +21,7 @@ const Table = ({ className = "", users, handleRemove, handleAccept }) => {
     })
   }
   const handleConfirmation = async () => {
-    console.log(typeof func)
-    await func(id)
+    await func(id, users)
     setConfirmation(false)
   }
 
