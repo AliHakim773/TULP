@@ -1,10 +1,11 @@
-import { Outlet, useNavigate } from "react-router-dom"
+import { Outlet, useLoaderData, useNavigate } from "react-router-dom"
 import Button from "../../Base/Button"
 import ScheduleItem from "./ScheduleItem"
 import "./styles.css"
 
 const Schedule = () => {
   const navigate = useNavigate()
+  const data = useLoaderData()
 
   return (
     <>
@@ -19,9 +20,10 @@ const Schedule = () => {
           />
           <Button text='Enter' />
         </div>
-        <ScheduleItem />
-        <ScheduleItem />
-        <ScheduleItem />
+        {data &&
+          data.map((schedule, i) => {
+            return <ScheduleItem key={i} schedule={schedule} />
+          })}
       </div>
     </>
   )
