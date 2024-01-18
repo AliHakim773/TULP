@@ -34,6 +34,7 @@ import ManageStudents from "../../components/ClassEditPage/ManageStudents"
 import ManageRequests from "../../components/ClassEditPage/ManageRequests"
 import AddInstructorForm from "../../components/ClassEditPage/ManageInstructors/AddInstructorForm"
 import ClassProfile from "../../components/ClassHome/ClassProfile"
+import StreamForm from "../../components/ClassHome/ClassStream/StreamForm"
 
 // Loaders
 import { manageInstructorsLoader } from "../../components/ClassEditPage/ManageInstructors/manageInstructorsLoader"
@@ -66,7 +67,7 @@ const useAppRoutes = () => {
               <Route element={<ClassHomePage />} loader={classLoader}>
                 <Route path='stream' element={<Stream />}>
                   <Route element={<ModalForm />}>
-                    <Route path='add' element={<ScheduleForm />} />
+                    <Route path='add' element={<StreamForm />} />
                   </Route>
                 </Route>
                 <Route path='schedule' element={<Schedule />}>
