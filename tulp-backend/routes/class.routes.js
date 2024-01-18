@@ -14,6 +14,8 @@ const {
   getRequests,
   acceptRequest,
   rejectRequest,
+  getStudentss,
+  removeClassStudent,
 } = require("../controllers/class.controllers")
 const router = express.Router()
 
@@ -22,6 +24,8 @@ router.get("/:slug", getClass)
 router.get("/in", getClassesIn)
 router.post("/search", searchClass)
 router.post("/request-to-join", requestToJoin)
+router.get("/:slug/students", getStudentss)
+router.delete("/:slug/students", removeClassStudent)
 router.get("/:slug/get-request", getRequests)
 router.post("/:slug/accept-request", acceptRequest)
 router.post("/:slug/reject-request", rejectRequest)

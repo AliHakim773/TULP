@@ -61,11 +61,11 @@ const addClass = async (req, res) => {
 
     await classObject.save()
 
-    res
+    return res
       .status(200)
       .send({ class: classObject, message: "Class created successfully" })
   } catch (e) {
-    res.status(500).send({ message: `something went wrong: ${e}` })
+    return res.status(500).send({ message: `something went wrong: ${e}` })
   }
 }
 
@@ -86,9 +86,9 @@ const getClass = async (req, res) => {
         select: "username _id firstName lastName imageUrl",
       })
 
-    res.status(200).send({ class: classObject })
+    return res.status(200).send({ class: classObject })
   } catch (error) {
-    res.status(500).send({ error })
+    return res.status(500).send({ error })
   }
 }
 
@@ -101,9 +101,9 @@ const getClassesIn = async (req, res) => {
       .select("owner name description _id")
       .populate({ path: "owner", select: "username _id" })
 
-    res.status(200).send({ classes })
+    return res.status(200).send({ classes })
   } catch (error) {
-    res.status(500).send({ error })
+    return res.status(500).send({ error })
   }
 }
 
@@ -120,7 +120,7 @@ const searchClass = async (req, res) => {
 
     return res.status(200).send({ result })
   } catch (e) {
-    res.status(500).send({ message: `something went wrong: ${e}` })
+    return res.status(500).send({ message: `something went wrong: ${e}` })
   }
 }
 
@@ -139,9 +139,9 @@ const addSchedule = async (req, res) => {
     classObject.schedule.push(schedule)
     await classObject.save()
 
-    res.status(200).send({ schedule })
+    return res.status(200).send({ schedule })
   } catch (error) {
-    res.status(500).send({ error })
+    return res.status(500).send({ error })
   }
 }
 
@@ -153,9 +153,9 @@ const getClassInstructors = async (req, res) => {
       path: "instructors",
       select: "username _id email imageUrl firstName lastName",
     })
-    res.status(200).send({ instructors: classObject.instructors })
+    return res.status(200).send({ instructors: classObject.instructors })
   } catch (error) {
-    res.status(500).send({ error })
+    return res.status(500).send({ error })
   }
 }
 
@@ -167,12 +167,12 @@ const addClassInstructor = async (req, res) => {
     if (!classObject.instructors.includes(instructorId)) {
       classObject.instructors.push(instructorId)
       await classObject.save()
-      res.status(200).send({ message: "Instructor added successfully" })
+      return res.status(200).send({ message: "Instructor added successfully" })
     } else {
-      res.status(200).send({ message: "Instructor already in class" })
+      return res.status(200).send({ message: "Instructor already in class" })
     }
   } catch (error) {
-    res.status(500).send({ error })
+    return res.status(500).send({ error })
   }
 }
 const removeClassInstructor = async (req, res) => {
@@ -183,12 +183,14 @@ const removeClassInstructor = async (req, res) => {
     if (classObject.instructors.includes(instructorId)) {
       classObject.instructors.pop(instructorId)
       await classObject.save()
-      res.status(200).send({ message: "Instructor removed successfully" })
+      return res
+        .status(200)
+        .send({ message: "Instructor removed successfully" })
     } else {
-      res.status(200).send({ message: "Instructor not in class" })
+      return res.status(200).send({ message: "Instructor not in class" })
     }
   } catch (error) {
-    res.status(500).send({ error })
+    return res.status(500).send({ error })
   }
 }
 
@@ -196,11 +198,11 @@ const getClassProfile = async (req, res) => {
   const { slug } = req.params
   try {
     const classObject = await Class.findOne({ slug })
-    res
+    return res
       .status(200)
       .send({ name: classObject.name, description: classObject.description })
   } catch (error) {
-    res.status(500).send({ error })
+    return res.status(500).send({ error })
   }
 }
 
@@ -213,9 +215,43 @@ const editClassProfile = async (req, res) => {
       { name, description },
       { new: true }
     )
-    res.status(200).send({ slug: classObject.slug })
+    return res.status(200).send({ slug: classObject.slug })
   } catch (error) {
-    res.status(500).send({ error })
+    return res.status(500).send({ error })
+  }
+}
+
+const getStudentss = async (req, res) => {
+  const { slug } = req.params
+  try {
+    const classObject = await Class.findOne({ slug }).populate({
+      path: "students",
+      select: "-password",
+    })
+    if (!classObject) {
+      return res.status(404).send({ message: "Class not found" })
+    }
+
+    return res.status(200).send({ students: classObject.students })
+  } catch (error) {
+    return res.status(500).send({ message: `something went wrong` })
+  }
+}
+
+const removeClassStudent = async (req, res) => {
+  const { slug } = req.params
+  const { studentId } = req.body
+  try {
+    const classObject = await Class.findOne({ slug })
+    if (classObject.students.includes(studentId)) {
+      classObject.students.pop(studentId)
+      await classObject.save()
+      return res.status(200).send({ message: "Student removed successfully" })
+    } else {
+      return res.status(200).send({ message: "Student not in class" })
+    }
+  } catch (error) {
+    return res.status(500).send({ error })
   }
 }
 
@@ -225,17 +261,17 @@ const requestToJoin = async (req, res) => {
   try {
     const classObject = await Class.findById(classId)
     if (!classObject) {
-      res.status(404).send({ message: "Class not found" })
+      return res.status(404).send({ message: "Class not found" })
     }
     if (classObject.students.includes(_id)) {
-      res.status(400).send({ message: "You are already in this class" })
+      return res.status(400).send({ message: "You are already in this class" })
     }
     classObject.studentRequests.push(_id)
     await classObject.save()
 
-    res.status(200).send({ message: "Request sent successfully" })
+    return res.status(200).send({ message: "Request sent successfully" })
   } catch (error) {
-    res.status(500).send({ message: `something went wrong` })
+    return res.status(500).send({ message: `something went wrong` })
   }
 }
 
@@ -247,12 +283,12 @@ const getRequests = async (req, res) => {
       select: "-password",
     })
     if (!classObject) {
-      res.status(404).send({ message: "Class not found" })
+      return res.status(404).send({ message: "Class not found" })
     }
 
-    res.status(200).send({ requests: classObject.studentRequests })
+    return res.status(200).send({ requests: classObject.studentRequests })
   } catch (error) {
-    res.status(500).send({ message: `something went wrong` })
+    return res.status(500).send({ message: `something went wrong` })
   }
 }
 
@@ -285,19 +321,19 @@ const rejectRequest = async (req, res) => {
   try {
     const classObject = await Class.findOne({ slug })
     if (!classObject) {
-      res.status(404).send({ message: "Class not found" })
+      return res.status(404).send({ message: "Class not found" })
     }
     if (!classObject.studentRequests.includes(_id)) {
-      res.status(404).send({ message: "User not found" })
+      return res.status(404).send({ message: "User not found" })
     }
 
     classObject.studentRequests.pop(_id)
 
     await classObject.save()
 
-    res.status(200).send({ message: "Request rejected successfully" })
+    return res.status(200).send({ message: "Request rejected successfully" })
   } catch (error) {
-    res.status(500).send({ message: error })
+    return res.status(500).send({ message: error })
   }
 }
 
@@ -316,4 +352,6 @@ module.exports = {
   getRequests,
   acceptRequest,
   rejectRequest,
+  getStudentss,
+  removeClassStudent,
 }
