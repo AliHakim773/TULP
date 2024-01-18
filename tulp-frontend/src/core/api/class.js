@@ -167,6 +167,19 @@ const classAPI = {
     })
     return response
   },
+  submitAssignment: async (id, data) => {
+    const token = local("token")
+    const response = await axios.request({
+      url: `class/assignment/${id}`,
+      method: "POST",
+      data,
+      headers: {
+        Authorization: token,
+        "Content-Type": "multipart/form-data",
+      },
+    })
+    return response.data
+  },
 }
 
 export default classAPI
