@@ -9,19 +9,16 @@
   user-select: none;
 }
 .download-btn {
+  margin-left: 1rem;
   cursor: pointer;
-  font-size: 14px;
-  background-color: var(--blue-2);
-  color: var(--white);
   display: inline-block;
-  padding: 0.25rem 0.5rem;
-  font-weight: 600px;
-  border-radius: 5px;
-  margin-top: 5px;
 }
-.download-btn:hover {
-  background-color: var(--blue-3);
+.download-btn,
+.download-btn svg {
+  height: 16px;
+  width: 16px;
 }
+
 .stream-title {
   font-weight: 600;
 }

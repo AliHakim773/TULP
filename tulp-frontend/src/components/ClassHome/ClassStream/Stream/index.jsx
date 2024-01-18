@@ -1,27 +1,11 @@
-import { Outlet, useNavigate } from "react-router-dom"
+import { Outlet, useLoaderData, useNavigate } from "react-router-dom"
 import Button from "../../../Base/Button"
 import StreamItem from "../StreamItem"
 import "./styles.css"
 
-const test_post = [
-  {
-    title: "Post 1",
-    content:
-      "Hello This is a Post Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia tempora, voluptas tempore aliquam praesentium consequuntur asperiores omnis magnam ab iste minus adipisci ea nesciunt nobis aut dolor? Nulla, libero officia!",
-    fileLink: "uploads/files/Ali_Hakim_CV_v0.docx",
-    id: "sfgdsfdgsdabgg",
-  },
-  {
-    title: "Post 2",
-    content:
-      "Hello This is another Post Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia tempora, voluptas tempore aliquam praesentium consequuntur asperiores omnis magnam ab iste minus adipisci ea nesciunt nobis aut dolor? Nulla, libero officia!",
-    fileLink: "uploads/files/Ali_Hakim_CV.pdf",
-    id: "sfgdsfdgsdasddabgg",
-  },
-]
-
 const Stream = () => {
   const navigate = useNavigate()
+  const data = useLoaderData()
 
   return (
     <>
@@ -31,8 +15,8 @@ const Stream = () => {
           <Button text='Post' onclick={() => navigate("add")} />
         </div>
         <div className='stream-main flex column w-100'>
-          {test_post.map((post) => {
-            return <StreamItem key={post.id} post={post} />
+          {data.feed.map((post) => {
+            return <StreamItem key={post._id} post={post} />
           })}
         </div>
       </div>
