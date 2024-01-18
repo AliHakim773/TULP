@@ -60,35 +60,43 @@ const Table = ({ className = "", users, handleRemove, handleAccept }) => {
         <div className='table-cell table-cell-head'>Email</div>
         <div className='table-cell table-cell-head'>Action</div>
       </div>
-      {users?.map((user, i) => {
-        return (
-          <div className='table-row' key={user._id}>
-            <div className='table-cell'>{i}</div>
-            <div className='table-cell'>{user.username}</div>
-            <div className='table-cell'>
-              {user.firstName} {user.lastName}
-            </div>
-            <div className='table-cell'>{user.email}</div>
-
-            <div className='table-cell table-cell-btns flex center'>
-              {typeof handleAccept === "function" && (
-                <div
-                  className='table-icon-btn table-icon-btn-accept'
-                  onClick={() => confirmAction(user._id, "accept")}>
-                  <CheckSVG />
-                </div>
-              )}
-              {typeof handleRemove === "function" && (
-                <div
-                  className='table-icon-btn table-icon-btn-remove'
-                  onClick={() => confirmAction(user._id, "remove")}>
-                  <TrashSVG />
-                </div>
-              )}
-            </div>
+      {users.length == 0 || !users ? (
+        <div className='table-row'>
+          <div className='table-cell-empty flex center w-100'>
+            This table is empty
           </div>
-        )
-      })}
+        </div>
+      ) : (
+        users.map((user, i) => {
+          return (
+            <div className='table-row' key={user._id}>
+              <div className='table-cell'>{i}</div>
+              <div className='table-cell'>{user.username}</div>
+              <div className='table-cell'>
+                {user.firstName} {user.lastName}
+              </div>
+              <div className='table-cell'>{user.email}</div>
+
+              <div className='table-cell table-cell-btns flex center'>
+                {typeof handleAccept === "function" && (
+                  <div
+                    className='table-icon-btn table-icon-btn-accept'
+                    onClick={() => confirmAction(user._id, "accept")}>
+                    <CheckSVG />
+                  </div>
+                )}
+                {typeof handleRemove === "function" && (
+                  <div
+                    className='table-icon-btn table-icon-btn-remove'
+                    onClick={() => confirmAction(user._id, "remove")}>
+                    <TrashSVG />
+                  </div>
+                )}
+              </div>
+            </div>
+          )
+        })
+      )}
     </div>
   )
 }

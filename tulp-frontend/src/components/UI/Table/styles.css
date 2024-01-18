@@ -20,6 +20,9 @@
 .table-row:last-child {
   border: none;
 }
+.table-cell-empty {
+  padding: 1rem;
+}
 .table-cell-head {
   text-align: center;
   font-weight: 600;
@@ -92,4 +95,8 @@
 }
 .table-icon-btn:hover {
   background-color: rgba(0, 0, 0, 0.1);
+}
+.table-row .table-cell {
+  display: flex;
+  align-items: center;
 }
