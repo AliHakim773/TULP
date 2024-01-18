@@ -17,17 +17,6 @@
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-.table-row > .table-cell:nth-child(5):hover {
-  color: white;
-  font-weight: 600;
-  cursor: pointer;
-  background-color: red;
-}
-.table-row:first-child {
-  background-color: red;
-  height: 200px;
-  width: 200px;
-}
 .table-row:last-child {
   border: none;
 }
@@ -82,4 +71,25 @@
 }
 .table .table-cell:nth-child(5) {
   flex: 1;
+}
+
+.table-icon-btn svg {
+  height: 16px;
+  width: 16px;
+}
+.table-icon-btn-accept:hover path {
+  fill: var(--green-1);
+}
+.table-icon-btn-remove:hover path {
+  fill: red;
+}
+.table-icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.3rem;
+  border-radius: 50%;
+}
+.table-icon-btn:hover {
+  background-color: rgba(0, 0, 0, 0.1);
 }

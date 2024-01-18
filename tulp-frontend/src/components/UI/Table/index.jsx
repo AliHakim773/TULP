@@ -1,10 +1,30 @@
 import { useState } from "react"
+import TrashSVG from "../../../assets/svgs/Trash.jsx"
 import "./styles.css"
 import Button from "../../Base/Button"
+import CheckSVG from "../../../assets/svgs/Check.jsx"
 
-const Table = ({ className = "", users, handleRemove }) => {
+const Table = ({ className = "", users, handleRemove, handleAccept }) => {
   const [confirmation, setConfirmation] = useState(false)
   const [id, setId] = useState("")
+  const [func, setFunc] = useState(undefined)
+
+  const confirmAction = (id, func) => {
+    setId(id)
+    setConfirmation(true)
+    setFunc(() => {
+      return func === "accept"
+        ? handleAccept
+        : func === "remove"
+        ? handleRemove
+        : () => {}
+    })
+  }
+  const handleConfirmation = async () => {
+    console.log(typeof func)
+    await func(id)
+    setConfirmation(false)
+  }
 
   return (
     <div className={`table ${className}`}>
@@ -20,10 +40,9 @@ const Table = ({ className = "", users, handleRemove }) => {
         <div className='flex'>
           <Button
             text='Yes'
-            color='green'
+            color='blue'
             onclick={() => {
-              handleRemove(id)
-              setConfirmation(false)
+              handleConfirmation()
             }}
           />
           <Button
@@ -52,13 +71,21 @@ const Table = ({ className = "", users, handleRemove }) => {
             </div>
             <div className='table-cell'>{user.email}</div>
 
-            <div
-              className='table-cell'
-              onClick={() => {
-                setId(user._id)
-                setConfirmation(true)
-              }}>
-              Remove
+            <div className='table-cell table-cell-btns flex center'>
+              {typeof handleAccept === "function" && (
+                <div
+                  className='table-icon-btn table-icon-btn-accept'
+                  onClick={() => confirmAction(user._id, "accept")}>
+                  <CheckSVG />
+                </div>
+              )}
+              {typeof handleRemove === "function" && (
+                <div
+                  className='table-icon-btn table-icon-btn-remove'
+                  onClick={() => confirmAction(user._id, "remove")}>
+                  <TrashSVG />
+                </div>
+              )}
             </div>
           </div>
         )
