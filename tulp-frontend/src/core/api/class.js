@@ -180,6 +180,12 @@ const classAPI = {
     })
     return response.data
   },
+  getSechdule: async (slug) => {
+    const response = await sendRequest({
+      route: `class/schedule/${slug}`,
+    })
+    return response
+  },
 }
 
 export default classAPI
