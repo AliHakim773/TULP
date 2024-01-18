@@ -41,6 +41,7 @@ import { classEditLoader } from "../../components/ClassEditPage/ClassEdit/classE
 import { classLoader } from "../../pages/ClassHomePage/classLoader"
 import { classProfileLoader } from "../../components/ClassHome/ClassProfile/classProfileLoader"
 import { manageRequestsLoader } from "../../components/ClassEditPage/ManageRequests/manageRequestsLoader"
+import { manageStudentsLoader } from "../../components/ClassEditPage/ManageStudents/ManageStudentsLoader"
 
 const useAppRoutes = () => {
   const router = createBrowserRouter(
@@ -88,7 +89,11 @@ const useAppRoutes = () => {
                     <Route index element={<AddInstructorForm />} />
                   </Route>
                 </Route>
-                <Route path='students' element={<ManageStudents />} />
+                <Route
+                  path='students'
+                  element={<ManageStudents />}
+                  loader={manageStudentsLoader}
+                />
                 <Route
                   path='requests'
                   element={<ManageRequests />}
