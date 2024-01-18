@@ -2,6 +2,8 @@ import { useLoaderData } from "react-router-dom"
 import DownloadFile from "../../../../assets/svgs/DownloadFile"
 import "./styles.css"
 import { useState } from "react"
+import toast from "react-hot-toast"
+import classAPI from "../../../../core/api/class"
 
 const AssignmentView = () => {
   const data = useLoaderData()
@@ -10,7 +12,16 @@ const AssignmentView = () => {
   const handleOnChange = (e) => {
     setFile(e.target.files[0])
   }
-  const handleSubmit = async () => {}
+  const handleSubmit = async () => {
+    const formData = new FormData()
+    formData.append("file", file)
+    try {
+      const res = await classAPI.submitAssignment(data._id, formData)
+      toast.success("Assignment Submited")
+    } catch (e) {
+      toast.error("Something went wrong")
+    }
+  }
 
   return (
     <div className='assignment-view w-100 flex border rounded-1'>

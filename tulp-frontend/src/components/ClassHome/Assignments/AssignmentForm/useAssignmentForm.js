@@ -61,6 +61,7 @@ const useAssignmentForm = () => {
       navigate(-1)
     } catch (e) {
       console.log(e)
+      toast.error("Something went wrong")
     }
   }
 
