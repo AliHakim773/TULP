@@ -3,14 +3,10 @@ const { default: mongoose } = require("mongoose")
 const SubmissionSchema = new mongoose.Schema({
   sender: {
     type: mongoose.Types.ObjectId,
+    ref: "User",
     requiered: "Sernder ID is requiered",
   },
-  files: [
-    {
-      type: String,
-      requiered: "Submissions must not be empty",
-    },
-  ],
+  file: String,
 })
 
 module.exports = SubmissionSchema
