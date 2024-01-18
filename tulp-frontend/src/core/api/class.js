@@ -87,6 +87,22 @@ const classAPI = {
     })
     return response
   },
+  acceptRequest: async (slug, data) => {
+    const response = await sendRequest({
+      route: `class/${slug}/accept-request`,
+      method: "POST",
+      body: data,
+    })
+    return response
+  },
+  rejectRequest: async (slug, data) => {
+    const response = await sendRequest({
+      route: `class/${slug}/reject-request`,
+      method: "POST",
+      body: data,
+    })
+    return response
+  },
 }
 
 export default classAPI
