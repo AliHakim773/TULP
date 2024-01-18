@@ -43,6 +43,7 @@ import { classLoader } from "../../pages/ClassHomePage/classLoader"
 import { classProfileLoader } from "../../components/ClassHome/ClassProfile/classProfileLoader"
 import { manageRequestsLoader } from "../../components/ClassEditPage/ManageRequests/manageRequestsLoader"
 import { manageStudentsLoader } from "../../components/ClassEditPage/ManageStudents/ManageStudentsLoader"
+import { streamLoader } from "../../components/ClassHome/ClassStream/Stream/streamLoader"
 
 const useAppRoutes = () => {
   const router = createBrowserRouter(
@@ -65,7 +66,7 @@ const useAppRoutes = () => {
           <Route element={<NavLayout />}>
             <Route element={<FooterLayout />}>
               <Route element={<ClassHomePage />} loader={classLoader}>
-                <Route path='stream' element={<Stream />}>
+                <Route path='stream' element={<Stream />} loader={streamLoader}>
                   <Route element={<ModalForm />}>
                     <Route path='add' element={<StreamForm />} />
                   </Route>
