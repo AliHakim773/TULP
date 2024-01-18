@@ -134,6 +134,12 @@ const classAPI = {
 
     return response.data
   },
+  getClassFeed: async (slug) => {
+    const response = await sendRequest({
+      route: `class/${slug}/feed`,
+    })
+    return response
+  },
 }
 
 export default classAPI
