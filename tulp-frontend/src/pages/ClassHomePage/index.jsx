@@ -2,18 +2,29 @@ import React, { useEffect } from "react"
 import "./styles.css"
 import UserList from "../../components/UserList"
 import {
-  Link,
   NavLink,
   Outlet,
   useLoaderData,
-  useLocation,
   useParams,
+  Navigate,
 } from "react-router-dom"
+import { useSelector } from "react-redux"
+import { extractUserSlice } from "../../core/redux/userSlice"
 
 const ClassHomePage = () => {
-  const { slug } = useParams()
-  const { pathname } = useLocation()
   const data = useLoaderData()
+  const { slug } = useParams()
+  const { _id } = useSelector(extractUserSlice)
+
+  const isInstructor = data.res.class.instructors.some((instructor) => {
+    return instructor._id === _id
+  })
+  const isStudnet = data.res.class.students.some((student) => {
+    return student._id === _id
+  })
+  if (data.res.class.owner._id !== _id && !isInstructor && !isStudnet) {
+    return <Navigate to={`/class-profile/${slug}`} />
+  }
 
   return (
     <div className='class-page flex w-100'>

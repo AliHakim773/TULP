@@ -14,7 +14,6 @@ const useAssignmentForm = () => {
   })
 
   const handleOnChange = (e) => {
-    console.log(e.target.id)
     setValues({ ...values, [e.target.id]: e.target.value })
   }
 

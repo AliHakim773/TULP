@@ -72,7 +72,14 @@ const addAssignment = async (req, res) => {
 const getClassAssignments = async (req, res) => {
   const { slug } = req.params
   try {
-    const classObject = await Class.findOne({ slug }).populate("assignments")
+    const classObject = await Class.findOne({ slug }).populate({
+      path: "assignments",
+      populate: {
+        path: "submissions.sender",
+        model: "User",
+        select: "username imageUrl _id",
+      },
+    })
     return res.status(200).send({ assignments: classObject.assignments })
   } catch (error) {
     res.status(500).send({ error })
@@ -82,7 +89,14 @@ const getClassAssignments = async (req, res) => {
 const getAssignment = async (req, res) => {
   const { slug } = req.params
   try {
-    const assignment = await Assignment.findOne({ slug })
+    const assignment = await Assignment.findOne({ slug }).populate({
+      path: "submissions",
+      populate: {
+        path: "sender",
+        model: "User",
+        select: "username _id imageUrl",
+      },
+    })
     return res.status(200).send({ assignment: assignment })
   } catch (error) {
     res.status(500).send({ error })
