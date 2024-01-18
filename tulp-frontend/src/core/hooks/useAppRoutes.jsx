@@ -47,6 +47,7 @@ import { manageStudentsLoader } from "../../components/ClassEditPage/ManageStude
 import { streamLoader } from "../../components/ClassHome/ClassStream/Stream/streamLoader"
 import { assignmentLoader } from "../../components/ClassHome/Assignments/assignmentLoader"
 import { assignmentViewLoader } from "../../components/ClassHome/Assignments/AssignmentView/AssignmentViewLoader"
+import { scheduleLoader } from "../../components/ClassHome/Schedule/secheduleLoader"
 
 const useAppRoutes = () => {
   const router = createBrowserRouter(
@@ -74,7 +75,10 @@ const useAppRoutes = () => {
                     <Route path='add' element={<StreamForm />} />
                   </Route>
                 </Route>
-                <Route path='schedule' element={<Schedule />}>
+                <Route
+                  path='schedule'
+                  element={<Schedule />}
+                  loader={scheduleLoader}>
                   <Route element={<ModalForm />}>
                     <Route path='add' element={<ScheduleForm />} />
                   </Route>
