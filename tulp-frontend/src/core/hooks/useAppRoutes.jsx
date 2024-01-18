@@ -44,6 +44,9 @@ import { classProfileLoader } from "../../components/ClassHome/ClassProfile/clas
 import { manageRequestsLoader } from "../../components/ClassEditPage/ManageRequests/manageRequestsLoader"
 import { manageStudentsLoader } from "../../components/ClassEditPage/ManageStudents/ManageStudentsLoader"
 import { streamLoader } from "../../components/ClassHome/ClassStream/Stream/streamLoader"
+import AssignmentForm from "../../components/ClassHome/Assignments/AssignmentForm"
+import { assignmentLoader } from "../../components/ClassHome/Assignments/assignmentLoader"
+import { assignmentViewLoader } from "../../components/ClassHome/Assignments/AssignmentView/AssignmentViewLoader"
 
 const useAppRoutes = () => {
   const router = createBrowserRouter(
@@ -77,8 +80,20 @@ const useAppRoutes = () => {
                   </Route>
                 </Route>
                 <Route path='assignments'>
-                  <Route index element={<Assignments />} />
-                  <Route path=':titleSlug' element={<AssignmentView />} />
+                  <Route
+                    path=''
+                    element={<Assignments />}
+                    loader={assignmentLoader}>
+                    <Route element={<ModalForm />}>
+                      <Route path='add' element={<AssignmentForm />} />
+                    </Route>
+                  </Route>
+
+                  <Route
+                    path=':titleSlug'
+                    element={<AssignmentView />}
+                    loader={assignmentViewLoader}
+                  />
                 </Route>
               </Route>
               <Route path='settings' element={<ClassEditPage />}>
