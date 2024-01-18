@@ -20,10 +20,6 @@ const navLinksLoggedIn = [
     to: "/",
     text: "Home",
   },
-  {
-    to: "/class/asd",
-    text: "Class",
-  },
 ]
 const useNavBarLogic = () => {
   const { pathname } = useLocation()
