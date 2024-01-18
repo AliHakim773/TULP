@@ -140,6 +140,33 @@ const classAPI = {
     })
     return response
   },
+  addAssignment: async (slug, data) => {
+    const token = local("token")
+
+    const response = await axios.request({
+      url: `class/${slug}/assignment`,
+      method: "POST",
+      data,
+      headers: {
+        Authorization: token,
+        "Content-Type": "multipart/form-data",
+      },
+    })
+
+    return response.data
+  },
+  getClassAssignments: async (slug) => {
+    const response = await sendRequest({
+      route: `class/${slug}/assignment`,
+    })
+    return response
+  },
+  getAssignment: async (slug) => {
+    const response = await sendRequest({
+      route: `class/assignment/${slug}`,
+    })
+    return response
+  },
 }
 
 export default classAPI
