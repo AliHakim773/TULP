@@ -18,8 +18,11 @@ const AddInstructorForm = () => {
     navigate(-1)
   }
   return (
-    <div className='add-inst-form'>
-      <SearchInstructor handleOnAccept={handleOnAccept} label={false} />
+    <div className='add-ins-wrapper rounded-2 shadow'>
+      <h4>Search Instructors</h4>
+      <div className='add-inst-form'>
+        <SearchInstructor handleOnAccept={handleOnAccept} label={false} />
+      </div>
     </div>
   )
 }
