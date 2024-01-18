@@ -93,20 +93,14 @@ const submitAssignment = async (req, res) => {
     return res.status(400).send({ message: "You need to upload a file" })
   }
   const filePath = req.file.path
-
+  // TODO: Check Student if in class
   try {
     const assignment = await Assignment.findById(assignmentId)
 
-    const existingAssignment = await Assignment.findOne({
-      _id: assignmentId,
-      submissions: _id,
-    })
-    if (existingAssignment) {
-      await Assignment.updateOne(
-        { _id: assignmentId },
-        { $pull: { submissions: { sender: _id } } }
-      )
-    }
+    await Assignment.updateOne(
+      { _id: assignmentId },
+      { $pull: { submissions: { sender: _id } } }
+    )
 
     const submission = await assignment.submissions.create({
       sender: _id,
@@ -117,7 +111,7 @@ const submitAssignment = async (req, res) => {
 
     await assignment.save()
 
-    res.status(200).send({ existingAssignment })
+    res.status(200).send({ submissions: assignment.submissions })
   } catch (error) {
     res.status(500).send({ message: error })
   }
