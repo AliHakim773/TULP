@@ -23,4 +23,14 @@ const postToFeed = async (req, res) => {
   }
 }
 
-module.exports = { postToFeed }
+const getClassFeed = async (req, res) => {
+  const { slug } = req.params
+  try {
+    const classObject = await Class.findOne({ slug })
+    return res.status(200).send({ feed: classObject.classFeed })
+  } catch (error) {
+    res.status(500).send({ error })
+  }
+}
+
+module.exports = { postToFeed, getClassFeed }

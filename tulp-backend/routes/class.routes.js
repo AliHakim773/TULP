@@ -19,7 +19,10 @@ const {
 } = require("../controllers/class.controllers")
 const instructorMiddleware = require("../middlewares/instructor.middleware")
 const uploadFiles = require("../middlewares/multerFiles.middleware")
-const { postToFeed } = require("../controllers/classFeed.controllers")
+const {
+  postToFeed,
+  getClassFeed,
+} = require("../controllers/classFeed.controllers")
 const router = express.Router()
 
 router.post("/", addClass)
@@ -45,5 +48,6 @@ router.post(
   uploadFiles.single("file"),
   postToFeed
 )
+router.get("/:slug/feed", getClassFeed)
 
 module.exports = router
