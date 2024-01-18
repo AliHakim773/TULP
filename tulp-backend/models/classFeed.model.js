@@ -1,20 +1,16 @@
 const { default: mongoose } = require("mongoose")
 
 const ClassFeedSchema = new mongoose.Schema({
+  title: {
+    type: String,
+    requiered: "Title is requiered",
+  },
   content: {
     type: String,
-    maxlength: [400, "Can't be more than 400 chars"],
+    maxlength: [800, "Can't be more than 800 chars"],
     requiered: "Feed content cant be empty",
   },
-  sender: {
-    type: mongoose.Types.ObjectId,
-    requiered: "Sernder ID is requiered",
-  },
-  files: [
-    {
-      type: String,
-    },
-  ],
+  file: String,
 })
 
 module.exports = ClassFeedSchema
