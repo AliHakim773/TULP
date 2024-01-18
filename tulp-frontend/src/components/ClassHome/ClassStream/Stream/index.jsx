@@ -1,3 +1,4 @@
+import { Outlet, useNavigate } from "react-router-dom"
 import Button from "../../../Base/Button"
 import StreamItem from "../StreamItem"
 import "./styles.css"
@@ -20,17 +21,22 @@ const test_post = [
 ]
 
 const Stream = () => {
+  const navigate = useNavigate()
+
   return (
-    <div className='class-stream flex column w-100'>
-      <div className='class-stream-header'>
-        <Button text='Post' />
+    <>
+      <Outlet />
+      <div className='class-stream flex column w-100'>
+        <div className='class-stream-header'>
+          <Button text='Post' onclick={() => navigate("add")} />
+        </div>
+        <div className='stream-main flex column w-100'>
+          {test_post.map((post) => {
+            return <StreamItem key={post.id} post={post} />
+          })}
+        </div>
       </div>
-      <div className='stream-main flex column w-100'>
-        {test_post.map((post) => {
-          return <StreamItem key={post.id} post={post} />
-        })}
-      </div>
-    </div>
+    </>
   )
 }
 
