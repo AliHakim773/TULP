@@ -21,12 +21,12 @@ import Profile from "../../pages/Profile"
 import EditProfile from "../../pages/EditProfile"
 import CreateClass from "../../pages/CreateClass"
 import ClassHomePage from "../../pages/ClassHomePage"
-import Stream from "../../components/ClassHome/Stream"
+import Stream from "../../components/ClassHome/ClassStream/Stream"
 import Assignments from "../../components/ClassHome/Assignments"
-import AssignmentView from "../../components/ClassHome/AssignmentView"
+import AssignmentView from "../../components/ClassHome/Assignments/AssignmentView"
 import Schedule from "../../components/ClassHome/Schedule"
 import ModalForm from "../../components/UI/ModalForm"
-import ScheduleForm from "../../components/ClassHome/ScheduleForm"
+import ScheduleForm from "../../components/ClassHome/Schedule/ScheduleForm"
 import ClassEditPage from "../../pages/ClassEditPage"
 import ClassEdit from "../../components/ClassEditPage/ClassEdit"
 import ManageInstructors from "../../components/ClassEditPage/ManageInstructors"
@@ -64,7 +64,11 @@ const useAppRoutes = () => {
           <Route element={<NavLayout />}>
             <Route element={<FooterLayout />}>
               <Route element={<ClassHomePage />} loader={classLoader}>
-                <Route index element={<Stream />} />
+                <Route path='stream' element={<Stream />}>
+                  <Route element={<ModalForm />}>
+                    <Route path='add' element={<ScheduleForm />} />
+                  </Route>
+                </Route>
                 <Route path='schedule' element={<Schedule />}>
                   <Route element={<ModalForm />}>
                     <Route path='add' element={<ScheduleForm />} />

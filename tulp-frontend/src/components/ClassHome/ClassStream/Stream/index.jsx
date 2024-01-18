@@ -1,4 +1,4 @@
-import Button from "../../Base/Button"
+import Button from "../../../Base/Button"
 import StreamItem from "../StreamItem"
 import "./styles.css"
 

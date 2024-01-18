@@ -12,7 +12,7 @@ const ClassEditPage = () => {
         <NavLink to={"instructors"}>Manage Instructors</NavLink>
         <NavLink to={"students"}>Manage Students</NavLink>
         <NavLink to={"requests"}>Manage Requests</NavLink>
-        <Link to={`/class/${slug}`}>Back to Class Page</Link>
+        <Link to={`/class/${slug}/stream`}>Back to Class Page</Link>
       </aside>
       <div className='w-100'>
         <Outlet />

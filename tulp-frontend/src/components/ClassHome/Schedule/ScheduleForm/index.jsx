@@ -1,7 +1,7 @@
 import "./styles.css"
-import InputField from "../../Base/InputField"
-import Button from "../../Base/Button"
 import useScheduleForm from "./useScheduleForm"
+import Button from "../../../Base/Button"
+import InputField from "../../../Base/InputField"
 
 const ScheduleForm = () => {
   const { inputValues, handleOnClick } = useScheduleForm()

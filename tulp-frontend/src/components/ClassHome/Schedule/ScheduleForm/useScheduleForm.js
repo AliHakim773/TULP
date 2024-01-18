@@ -1,7 +1,7 @@
 import { useState } from "react"
-import classAPI from "../../../core/api/class"
 import { useNavigate, useParams } from "react-router-dom"
 import toast from "react-hot-toast"
+import classAPI from "../../../../core/api/class"
 
 const useScheduleForm = () => {
   const navigate = useNavigate()

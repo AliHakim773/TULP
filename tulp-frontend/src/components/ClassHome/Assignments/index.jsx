@@ -1,5 +1,5 @@
 import Button from "../../Base/Button"
-import AssignmentItem from "../AssignmentItem"
+import AssignmentItem from "./AssignmentItem"
 import "./styles.css"
 
 const Assignments = () => {

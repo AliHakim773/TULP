@@ -22,7 +22,7 @@ const SearchClasses = () => {
         {result.map((res) => (
           <div
             key={res._id}
-            onClick={() => navigate(`/class/${res.slug}`)}
+            onClick={() => navigate(`/class/${res.slug}/stream`)}
             className='search-result rounded-1 flex w-100 shadow'>
             <div className='search-class-name'>{res.name}</div>
             <div className='search-class-owner'>By: {res.owner.username}</div>

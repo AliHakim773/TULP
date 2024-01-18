@@ -1,5 +1,5 @@
 import "./styles.css"
-import file from "../../../assets/svgs/file.svg"
+import file from "../../../../assets/svgs/file.svg"
 
 const StreamItem = ({ post }) => {
   const { title, content, fileLink, id } = post

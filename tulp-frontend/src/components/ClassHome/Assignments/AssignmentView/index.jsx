@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom"
-import file from "../../../assets/svgs/file.svg"
+import file from "../../../../assets/svgs/file.svg"
 import "./styles.css"
 
 const AssignmentView = () => {

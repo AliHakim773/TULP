@@ -1,6 +1,6 @@
 import { Outlet, useNavigate } from "react-router-dom"
 import Button from "../../Base/Button"
-import ScheduleItem from "../ScheduleItem"
+import ScheduleItem from "./ScheduleItem"
 import "./styles.css"
 
 const Schedule = () => {
