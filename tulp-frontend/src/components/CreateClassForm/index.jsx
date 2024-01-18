@@ -2,7 +2,6 @@ import React from "react"
 import "./styles.css"
 import InputField from "../Base/InputField"
 import useCreateClassFormLogic from "./useCreateClassFormLogic"
-import InstructorItem from "./InstructorItem"
 import SelectedInstructorItem from "./SelectedInstructorItem"
 import Button from "../Base/Button"
 import SearchInstructor from "../SearchInstructor"
@@ -36,7 +35,9 @@ const CreateClassForm = () => {
           ref={descriptionRef}
         />
       </div>
-      <SearchInstructor handleOnAccept={handleOnAccept} />
+      <div className='create-class-search'>
+        <SearchInstructor handleOnAccept={handleOnAccept} />
+      </div>
       <div className='instructors-list flex'>
         {instructors.map((instructor) => (
           <SelectedInstructorItem
@@ -46,7 +47,7 @@ const CreateClassForm = () => {
           />
         ))}
       </div>
-      <div className='craete-btn'>
+      <div className='create-btn'>
         <Button text='Create Class' onclick={handleOnCreateClass} />
       </div>
     </form>

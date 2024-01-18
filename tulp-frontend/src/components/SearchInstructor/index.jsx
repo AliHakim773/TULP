@@ -7,12 +7,12 @@ const SearchInstructor = ({ handleOnAccept, label = true }) => {
     useInstrucorSearch()
 
   return (
-    <div className='class-create-input instructor-input flex column'>
+    <div className='instructor-search-input instructor-input flex column'>
       {label && <label htmlFor='class-description'>Add Instructors</label>}
 
       <input
         type='text'
-        className='class-create-input-field'
+        className='instructor-search-input-field'
         placeholder='Enter Instructors name'
         onChange={handleInstructorSearch}
         ref={instructorRef}
