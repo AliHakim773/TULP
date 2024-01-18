@@ -103,6 +103,20 @@ const classAPI = {
     })
     return response
   },
+  getStudents: async (slug) => {
+    const response = await sendRequest({
+      route: `class/${slug}/students`,
+    })
+    return response
+  },
+  removeClassStudent: async (slug, data) => {
+    const response = await sendRequest({
+      route: `class/${slug}/students`,
+      method: "DELETE",
+      body: data,
+    })
+    return response
+  },
 }
 
 export default classAPI
