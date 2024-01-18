@@ -256,6 +256,51 @@ const getRequests = async (req, res) => {
   }
 }
 
+const acceptRequest = async (req, res) => {
+  const { slug } = req.params
+  const { _id } = req.body
+  try {
+    const classObject = await Class.findOne({ slug })
+    if (!classObject) {
+      return res.status(404).send({ message: "Class not found" })
+    }
+    if (!classObject.studentRequests.includes(_id)) {
+      return res.status(404).send({ message: "User not found" })
+    }
+
+    classObject.students.push(_id)
+    classObject.studentRequests.pop(_id)
+
+    await classObject.save()
+
+    return res.status(200).send({ message: "Request accepted successfully" })
+  } catch (error) {
+    return res.status(500).send({ error })
+  }
+}
+
+const rejectRequest = async (req, res) => {
+  const { slug } = req.params
+  const { _id } = req.body
+  try {
+    const classObject = await Class.findOne({ slug })
+    if (!classObject) {
+      res.status(404).send({ message: "Class not found" })
+    }
+    if (!classObject.studentRequests.includes(_id)) {
+      res.status(404).send({ message: "User not found" })
+    }
+
+    classObject.studentRequests.pop(_id)
+
+    await classObject.save()
+
+    res.status(200).send({ message: "Request rejected successfully" })
+  } catch (error) {
+    res.status(500).send({ message: error })
+  }
+}
+
 module.exports = {
   addClass,
   searchClass,
@@ -269,4 +314,6 @@ module.exports = {
   getClass,
   requestToJoin,
   getRequests,
+  acceptRequest,
+  rejectRequest,
 }
