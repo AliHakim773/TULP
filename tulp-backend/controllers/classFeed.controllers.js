@@ -41,9 +41,12 @@ const addAssignment = async (req, res) => {
   if (req.file) {
     filePath = req.file.path
   }
-  const { title, content, dueDate } = req.body
-  const formatedDueDate = formatDateTime(dueDate)
+  const { title, content } = req.body
+  const formatedDueDate = req.body.dueDate
+    ? formatDateTime(req.body.dueDate)
+    : "---"
   try {
+    console.log("yo")
     const classObject = await Class.findOne({ slug }).populate("assignments")
 
     if (classObject.assignments.some((ass) => ass.title === title)) {
