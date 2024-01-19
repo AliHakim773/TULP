@@ -33,24 +33,23 @@ const addClass = async (req, res) => {
     user.classes.push(classObject._id)
     await user.save()
 
-    const channel1 = new Channel({
-      classId: classObject._id,
-      name: "General",
-      readPermission: "all",
-      writePermission: "all",
-    })
     const channel2 = new Channel({
       classId: classObject._id,
-      name: "Staff",
+      name: "Instructors",
       readPermission: "instructor",
       writePermission: "instructor",
     })
-
     const channel3 = new Channel({
       classId: classObject._id,
       name: "Announcements",
       readPermission: "all",
       writePermission: "instructor",
+    })
+    const channel1 = new Channel({
+      classId: classObject._id,
+      name: "General",
+      readPermission: "all",
+      writePermission: "all",
     })
 
     const channels = await Channel.create([channel1, channel2, channel3])
