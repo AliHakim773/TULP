@@ -18,6 +18,9 @@
   cursor: default;
 }
 .chat-aside-item:hover {
+  background-color: rgba(255, 166, 0, 0.24);
+}
+.chat-aside-item.active {
   background-color: var(--orange-3);
   color: var(--white);
 }
@@ -31,6 +34,7 @@
 }
 .chat-aside-header {
   position: relative;
+  /* border-bottom: 1px solid var(--grey-4); */
 }
 .chat-aside-header:hover {
   background-color: var(--white);
@@ -64,10 +68,10 @@
   width: 100%;
   align-items: center;
   border-radius: 100px;
-  background-color: var(--grey-4);
+  background-color: rgb(214, 214, 214);
 }
 .chat-main-input textarea {
-  background-color: var(--grey-4);
+  background-color: rgb(214, 214, 214);
   height: 1.7rem;
   margin-left: 2rem;
   padding-top: 0.25rem;

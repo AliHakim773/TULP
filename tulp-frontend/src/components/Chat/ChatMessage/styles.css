@@ -8,7 +8,7 @@
   padding: 0.25rem 1rem;
 }
 .chat-message:hover {
-  background-color: rgba(241, 189, 91, 0.63);
+  background-color: rgba(255, 166, 0, 0.24);
 }
 .message-content {
   margin-left: 0.75rem;
@@ -16,7 +16,6 @@
 .message-header {
   text-transform: capitalize;
   font-weight: 600;
-  color: var(--orange-2);
   align-items: center;
   gap: 0.5rem;
 }
