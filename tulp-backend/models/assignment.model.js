@@ -25,7 +25,7 @@ const AssignmentSchema = new mongoose.Schema({
 })
 
 AssignmentSchema.pre("save", function (next) {
-  this.slug = this.title.trim().split(" ").join("-")
+  this.slug = this.title.trim().split(" ").join("-").toLowerCase()
   next()
 })
 
