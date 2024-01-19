@@ -10,6 +10,12 @@ const addChannel = async (req, res) => {
     return res.status(400).send({ message: "ClassId name is required" })
 
   try {
+    const classObject = await Class.findById(classId)
+
+    if (classObject.channels.some((ass) => ass.name === name)) {
+      return res.status(400).send({ message: "Name already exist" })
+    }
+
     const channel = await Channel.create({
       classId,
       name,
@@ -17,7 +23,6 @@ const addChannel = async (req, res) => {
       writePermission,
     })
 
-    const classObject = await Class.findById(classId)
     classObject.channels.push(channel._id)
     await classObject.save()
 
