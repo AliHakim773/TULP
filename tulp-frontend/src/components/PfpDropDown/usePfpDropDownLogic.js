@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
 import { clearUser, extractUserSlice } from "../../core/redux/userSlice"
 import { useNavigate } from "react-router-dom"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 const usePfpDropDownLogic = () => {
   const dispatch = useDispatch()
@@ -19,6 +19,19 @@ const usePfpDropDownLogic = () => {
     dispatch(clearUser())
     navigate(0)
   }
+
+  useEffect(() => {
+    document.addEventListener("click", (e) => {
+      if (e.target.id === "user-image" || e.target.id === "pfp-dropdown") return
+      setIsHidden(true)
+
+      return document.removeEventListener("click", (e) => {
+        if (e.target.id === "user-image" || e.target.id === "pfp-dropdown")
+          return
+        setIsHidden(true)
+      })
+    })
+  }, [])
   return { user, isHidden, handleOnClick, handleOnClickProfile }
 }
 

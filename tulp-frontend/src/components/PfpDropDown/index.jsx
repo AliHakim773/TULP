@@ -9,8 +9,14 @@ const PfpDropDown = () => {
 
   return (
     <div className='pfp-img' onClick={handleOnClickProfile}>
-      <img src={`http://localhost:8000/${user.imageUrl}`} alt={user.username} />
-      <div className={isHidden ? "pfp-drop-down" : "pfp-drop-down pfp-show"}>
+      <img
+        id='user-image'
+        src={`http://localhost:8000/${user.imageUrl}`}
+        alt={user.username}
+      />
+      <div
+        id='pfp-dropdown'
+        className={isHidden ? "pfp-drop-down" : "pfp-drop-down pfp-show"}>
         <Link to={"/profile"} className='pfp-drop-down-item'>
           {user.username}
         </Link>
