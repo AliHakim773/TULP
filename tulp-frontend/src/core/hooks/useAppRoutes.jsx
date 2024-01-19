@@ -48,6 +48,7 @@ import { streamLoader } from "../../components/ClassHome/ClassStream/Stream/stre
 import { assignmentLoader } from "../../components/ClassHome/Assignments/assignmentLoader"
 import { assignmentViewLoader } from "../../components/ClassHome/Assignments/AssignmentView/AssignmentViewLoader"
 import { scheduleLoader } from "../../components/ClassHome/Schedule/secheduleLoader"
+import Chat from "../../components/Chat"
 
 const useAppRoutes = () => {
   const router = createBrowserRouter(
@@ -126,6 +127,7 @@ const useAppRoutes = () => {
                 />
               </Route>
             </Route>
+            <Route path='chat' element={<Chat />}></Route>
           </Route>
         </Route>
         <Route path='*' element={<PageNotFound />} />
