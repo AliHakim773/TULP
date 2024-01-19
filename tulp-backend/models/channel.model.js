@@ -18,6 +18,10 @@ const ChannelSchema = new mongoose.Schema({
     minlength: [3, "Name length must be more than 3"],
     maxlength: [40, "Name length must be less than 40"],
   },
+  slug: {
+    type: String,
+    unique: true,
+  },
   readPermission: {
     type: String,
     enum: permission_enum,
@@ -33,6 +37,11 @@ const ChannelSchema = new mongoose.Schema({
   },
   // TODO: array of write permissions
   messages: [MessageSchema],
+})
+
+ChannelSchema.pre("save", function (next) {
+  this.slug = this.name.trim().split(" ").join("-").toLowerCase()
+  next()
 })
 
 const Channel = mongoose.model("Channel", ChannelSchema)
