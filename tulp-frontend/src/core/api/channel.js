@@ -7,4 +7,16 @@ export const channelAPI = {
     })
     return response
   },
+  getClassChannelMessages: async (slug, channelslug) => {
+    const response = await sendRequest({
+      route: `messages/${slug}/${channelslug}`,
+    })
+    return response
+  },
+  getUser: async (id) => {
+    const response = await sendRequest({
+      route: `messages/${id}`,
+    })
+    return response
+  },
 }
