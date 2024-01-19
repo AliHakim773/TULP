@@ -36,6 +36,8 @@ import AddInstructorForm from "../../components/ClassEditPage/ManageInstructors/
 import ClassProfile from "../../components/ClassHome/ClassProfile"
 import StreamForm from "../../components/ClassHome/ClassStream/StreamForm"
 import AssignmentForm from "../../components/ClassHome/Assignments/AssignmentForm"
+import Chat from "../../components/Chat"
+import ChatMain from "../../components/Chat/ChatMain"
 
 // Loaders
 import { manageInstructorsLoader } from "../../components/ClassEditPage/ManageInstructors/manageInstructorsLoader"
@@ -48,8 +50,7 @@ import { streamLoader } from "../../components/ClassHome/ClassStream/Stream/stre
 import { assignmentLoader } from "../../components/ClassHome/Assignments/assignmentLoader"
 import { assignmentViewLoader } from "../../components/ClassHome/Assignments/AssignmentView/AssignmentViewLoader"
 import { scheduleLoader } from "../../components/ClassHome/Schedule/secheduleLoader"
-import Chat from "../../components/Chat"
-import ChatMain from "../../components/Chat/ChatMain"
+import { chatLoader } from "../../components/Chat/chatLoader"
 
 const useAppRoutes = () => {
   const router = createBrowserRouter(
@@ -128,7 +129,7 @@ const useAppRoutes = () => {
                 />
               </Route>
             </Route>
-            <Route path='chat' element={<Chat />}>
+            <Route path='chat' element={<Chat />} loader={chatLoader}>
               <Route path=':channelslug' element={<ChatMain />} />
             </Route>
           </Route>
