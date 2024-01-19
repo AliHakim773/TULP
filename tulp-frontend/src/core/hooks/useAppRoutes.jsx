@@ -37,7 +37,8 @@ import ClassProfile from "../../components/ClassHome/ClassProfile"
 import StreamForm from "../../components/ClassHome/ClassStream/StreamForm"
 import AssignmentForm from "../../components/ClassHome/Assignments/AssignmentForm"
 import Chat from "../../components/Chat"
-import ChatMain from "../../components/Chat/ChatMain"
+import ChatChannelMain from "../../components/Chat/ChatChannelMain"
+import ChatDmMain from "../../components/Chat/ChatDmMain"
 
 // Loaders
 import { manageInstructorsLoader } from "../../components/ClassEditPage/ManageInstructors/manageInstructorsLoader"
@@ -130,7 +131,11 @@ const useAppRoutes = () => {
               </Route>
             </Route>
             <Route path='chat' element={<Chat />} loader={chatLoader}>
-              <Route path=':channelslug' element={<ChatMain />} />
+              <Route
+                path='channel/:channelslug'
+                element={<ChatChannelMain />}
+              />
+              <Route path='dm/:username' element={<ChatDmMain />} />
             </Route>
           </Route>
         </Route>

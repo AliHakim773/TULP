@@ -38,7 +38,7 @@ const ClassHomePage = () => {
           <NavLink to={`stream`}>Class Stream</NavLink>
           <NavLink to={`assignments`}>Assignments</NavLink>
           <NavLink to={`schedule`}>Schedule</NavLink>
-          <NavLink to={`chat/general`}>Chat</NavLink>
+          <NavLink to={`chat/channel/general`}>Chat</NavLink>
           <NavLink to={`settings/edit`}>Settings</NavLink>
         </div>
         <section className='w-100'>

@@ -18,7 +18,7 @@ const ChatAsideLeft = ({ channels }) => {
         return (
           <NavLink
             key={channel._id}
-            to={channel.name}
+            to={`channel/${channel.name}`}
             className='chat-aside-item'>
             {channel.name}
           </NavLink>

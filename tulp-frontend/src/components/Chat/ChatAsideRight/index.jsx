@@ -8,7 +8,7 @@ const ChatAsideRight = ({ people }) => {
         people.map((user) => {
           return (
             <NavLink
-              to={user.username}
+              to={`dm/${user.username}`}
               key={user._id}
               className='chat-aside-item'>
               {user.username}

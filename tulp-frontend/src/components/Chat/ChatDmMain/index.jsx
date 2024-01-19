@@ -2,7 +2,7 @@ import { useState } from "react"
 import ArrowSVG from "../../../assets/svgs/Arrow"
 import ChatMessage from "../ChatMessage"
 
-const ChatMain = () => {
+const ChatDmMain = () => {
   const [inputValue, setInputValue] = useState("")
   const someUser = {
     username: "ali",
@@ -20,12 +20,6 @@ const ChatMain = () => {
   return (
     <div className='border chat-main flex column'>
       <div className='chat-main-body flex'>
-        <ChatMessage
-          text={`"Hello dasda
-dadasdada
-dadasda"`}
-          user={someUser}
-        />
         <ChatMessage text={"Hello"} user={someUser} />
         <ChatMessage text={"Hello"} user={someUser} />
         <ChatMessage text={"Hello"} user={someUser} />
@@ -53,4 +47,4 @@ dadasda"`}
   )
 }
 
-export default ChatMain
+export default ChatDmMain
