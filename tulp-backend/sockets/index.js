@@ -4,15 +4,17 @@ const jwt = require("jsonwebtoken")
 const User = require("../models/user.model")
 
 const onConnection = async (socket) => {
-  console.log("User connected with id: ", socket.id)
-  const bearerToken = socket.handshake.headers.token
+  const bearerToken = socket.handshake.query.token
   if (bearerToken) {
     const token = bearerToken.split(" ")[1]
-    decode = jwt.verify(token, process.env.JWT_SECRET)
-    const user = await User.findOne({ _id: decode._id }).select("-password")
-    registerChatHandler(io, socket, user)
+    try {
+      decode = jwt.verify(token, process.env.JWT_SECRET)
+      const user = await User.findOne({ _id: decode._id }).select("-password")
+      registerChatHandler(io, socket, user)
+    } catch (e) {
+      return
+    }
   }
-  socket.on("disconnect", () => console.log("User disconnected"))
 }
 
 module.exports = onConnection
