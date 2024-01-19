@@ -12,7 +12,7 @@
   width: 3px;
   height: 3px;
   border-radius: 50%;
-  background-color: var(--white);
+  background-color: var(--black);
 }
 .settings-dots:hover {
   cursor: pointer;
