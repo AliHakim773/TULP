@@ -2,3 +2,88 @@
   height: calc(100vh - 61px);
   width: 100vw;
 }
+.chat-aside {
+  flex-basis: 20%;
+  overflow-y: scroll;
+}
+.chat-aside::-webkit-scrollbar {
+  display: none;
+}
+
+.chat-aside-item {
+  font-weight: 600;
+  width: 100%;
+  padding-left: 20%;
+  padding-block: 0.75rem;
+  cursor: default;
+}
+.chat-aside-item:hover {
+  background-color: var(--orange-3);
+  color: var(--white);
+}
+.chat-aside-nav {
+  position: relative;
+}
+.chat-aside-nav::before {
+  content: "← ";
+  position: absolute;
+  left: 12%;
+}
+.chat-aside-header {
+  position: relative;
+}
+.chat-aside-header:hover {
+  background-color: var(--white);
+  color: var(--black);
+}
+.chat-aside-settings {
+  opacity: 0;
+}
+.chat-aside-header:hover > .chat-aside-settings {
+  opacity: 1;
+  transition: 0.2s all ease-in;
+}
+.chat-main {
+  flex-basis: 60%;
+}
+.chat-main-body {
+  flex-basis: calc(100% - 70px);
+  overflow-y: scroll;
+  flex-direction: column-reverse;
+}
+.chat-main-body::-webkit-scrollbar {
+  display: none;
+}
+.chat-main-input {
+  flex-basis: 70px;
+  padding: 1rem;
+}
+.chat-main-input form {
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  border-radius: 100px;
+  background-color: var(--grey-4);
+}
+.chat-main-input input {
+  background-color: var(--grey-4);
+  height: 100%;
+  margin-left: 2rem;
+  width: 90%;
+  border: none;
+}
+.chat-main-input input::placeholder {
+  color: var(--black);
+}
+.chat-main-input button {
+  border: none;
+  background: none;
+  height: fit-content;
+  height: 16px;
+}
+.send-arrow {
+  height: 100%;
+}
+.send-arrow > path {
+  fill: var(--grey-1);
+}
