@@ -46,7 +46,6 @@ const addAssignment = async (req, res) => {
     ? formatDateTime(req.body.dueDate)
     : "---"
   try {
-    console.log("yo")
     const classObject = await Class.findOne({ slug }).populate("assignments")
 
     if (classObject.assignments.some((ass) => ass.title === title)) {
