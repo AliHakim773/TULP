@@ -10,7 +10,7 @@ const ChatMessage = ({ user, text }) => {
         <div className='message-header flex'>
           {user.username} <span className='message-time'>- {user.time}</span>
         </div>
-        <div className='message-body'>{text}</div>
+        <pre className='message-body'>{text}</pre>
       </div>
     </div>
   )
