@@ -83,7 +83,7 @@ const classAPI = {
     })
     return response
   },
-  requestToJoin: async (slug) => {
+  getClassRequests: async (slug) => {
     const response = await sendRequest({
       route: `class/${slug}/get-request`,
     })
