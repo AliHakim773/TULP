@@ -1,0 +1,26 @@
+.pfp-message,
+.pfp-message > img {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+.chat-message {
+  padding: 0.25rem 1rem;
+}
+.chat-message:hover {
+  background-color: rgba(241, 189, 91, 0.63);
+}
+.message-content {
+  margin-left: 0.75rem;
+}
+.message-header {
+  text-transform: capitalize;
+  font-weight: 600;
+  color: var(--orange-2);
+  align-items: center;
+  gap: 0.5rem;
+}
+.message-time {
+  color: var(--grey-3);
+  font-size: 10px;
+}
