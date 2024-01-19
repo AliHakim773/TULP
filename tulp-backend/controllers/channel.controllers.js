@@ -34,6 +34,7 @@ const addChannel = async (req, res) => {
 
 const getClassChannels = async (req, res) => {
   const { slug } = req.params
+  const { _id, role } = req.user
   try {
     const classObject = await Class.findOne({ slug })
       .populate({
@@ -55,14 +56,31 @@ const getClassChannels = async (req, res) => {
     if (!channels) {
       return res.status(404).send({ message: "Channel Not Found" })
     }
-    return res.status(200).send({
-      channels,
-      users: [
-        classObject.owner,
-        ...classObject.instructors,
-        ...classObject.students,
-      ],
+    const users = []
+    if (!classObject.owner.equals(_id)) {
+      users.push(classObject.owner)
+    }
+    classObject.instructors.map((i) => {
+      if (!i.equals(_id)) users.push(i)
     })
+    classObject.students.map((i) => {
+      if (!i.equals(_id)) users.push(i)
+    })
+
+    let filteredChannels = []
+    if (role === "student") {
+      channels.map((c) => {
+        if (c.readPermission === "all") filteredChannels.push(c)
+      })
+    } else {
+      filteredChannels = channels
+    }
+
+    const result = {
+      channels: filteredChannels,
+      users,
+    }
+    return res.status(200).send({ ...result })
   } catch (error) {
     res.status(500).send(error)
   }
