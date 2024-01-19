@@ -1,12 +1,21 @@
 import ArrowSVG from "../../../assets/svgs/Arrow"
+import ChatMessage from "../ChatMessage"
 
 const ChatMain = () => {
+  const someUser = {
+    username: "ali",
+    imageUrl: "uploads/default.png",
+    _id: "sdgf",
+    time: "Today",
+  }
   return (
     <div className='border chat-main flex column'>
       <div className='chat-main-body flex'>
-        <div className='text'>Hello</div>
-        <div className='text'>Hello</div>
-        <div className='text'>Hello</div>
+        <ChatMessage text={"Hello"} user={someUser} />
+        <ChatMessage text={"Hello"} user={someUser} />
+        <ChatMessage text={"Hello"} user={someUser} />
+        <ChatMessage text={"Hello"} user={someUser} />
+        <ChatMessage text={"Hello"} user={someUser} />
       </div>
       <div className='chat-main-input'>
         <form className='flex'>

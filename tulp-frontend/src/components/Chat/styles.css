@@ -50,6 +50,7 @@
   flex-basis: calc(100% - 70px);
   overflow-y: scroll;
   flex-direction: column-reverse;
+  gap: 10px;
 }
 .chat-main-body::-webkit-scrollbar {
   display: none;
