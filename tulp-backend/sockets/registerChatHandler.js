@@ -7,7 +7,6 @@ const registerChatHandler = (io, socket, user) => {
     const channel = await Channel.findById(room)
     if (!channel)
       return socket.emit("channel:join-room", false, "Channel doesnt exist")
-
     const [inClass, msg] = await isUserInClass(user._id, channel.classId)
 
     if (!inClass) return socket.emit("channel:join-room", false, "Not In Class")
@@ -27,7 +26,6 @@ const registerChatHandler = (io, socket, user) => {
 
   socket.on("channel:leave-room", (room, cb) => {
     socket.leave(room)
-    cb(`Left ${room}`)
     socket.emit("channel:leave-room", room)
   })
 
@@ -50,8 +48,8 @@ const registerChatHandler = (io, socket, user) => {
       )
 
     if (channel.writePermission === "all") {
-      sendMessage(room, user._id, message)
-      return socket.to(room).emit("channel:send-message", true, message)
+      const mes = await sendMessage(room, user._id, message)
+      return socket.to(room).emit("channel:send-message", true, mes)
     }
 
     if (channel.writePermission === "instructor") {
