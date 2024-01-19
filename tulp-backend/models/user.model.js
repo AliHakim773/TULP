@@ -19,11 +19,12 @@ const UserSchema = new mongoose.Schema({
     required: [true, "Username is required"],
     unique: {
       index: true,
-      message: "username must be unique.", // Customize the unique constraint error message
+      message: "username must be unique",
     },
     minlength: [3, "Username length must be more than 3"],
     maxlength: [40, "Username length must be less than 40"],
     trim: true,
+    lowercase: true,
   },
   email: {
     type: String,
@@ -90,6 +91,7 @@ const UserSchema = new mongoose.Schema({
 })
 
 UserSchema.pre("save", async function (next) {
+  this.username = this.username.split(" ").join("")
   if (this.isModified("password") || this.isNew) {
     try {
       const salt = await bcrypt.genSalt(10)
