@@ -12,6 +12,12 @@ const useChatChannel = () => {
   const [messages, setMessages] = useState(data.channel.messages)
   const { slug, channelslug } = useParams()
   const pathname = useLocation()
+  const disabled =
+    userSlice.role === "student"
+      ? data.channel.writePermission === "all"
+        ? false
+        : true
+      : false
 
   const sendMessageListener = async (res, body) => {
     try {
@@ -88,6 +94,7 @@ const useChatChannel = () => {
     handleKeyDown,
     inputValue,
     messages,
+    disabled,
   }
 }
 
