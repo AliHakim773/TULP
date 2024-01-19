@@ -129,7 +129,7 @@ const useAppRoutes = () => {
               </Route>
             </Route>
             <Route path='chat' element={<Chat />}>
-              <Route path=':channel-slug' element={<ChatMain />} />
+              <Route path=':channelslug' element={<ChatMain />} />
             </Route>
           </Route>
         </Route>
