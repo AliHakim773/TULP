@@ -28,10 +28,36 @@ const addChannel = async (req, res) => {
 }
 
 const getClassChannels = async (req, res) => {
-  const { classId } = req.params
+  const { slug } = req.params
   try {
-    const channels = await Channel.find({ classId })
-    res.status(200).send(channels)
+    const classObject = await Class.findOne({ slug })
+      .populate({
+        path: "owner",
+        select: "username _id imageUrl",
+      })
+      .populate({
+        path: "instructors",
+        select: "username _id imageUrl",
+      })
+      .populate({
+        path: "students",
+        select: "username _id imageUrl",
+      })
+    if (!classObject) {
+      return res.status(404).send({ message: "Class Not Found" })
+    }
+    const channels = await Channel.find({ classId: classObject })
+    if (!channels) {
+      return res.status(404).send({ message: "Channel Not Found" })
+    }
+    return res.status(200).send({
+      channels,
+      users: [
+        classObject.owner,
+        ...classObject.instructors,
+        ...classObject.students,
+      ],
+    })
   } catch (error) {
     res.status(500).send(error)
   }
