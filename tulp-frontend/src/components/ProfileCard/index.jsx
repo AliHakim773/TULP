@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import "./styles.css"
 import { useDispatch, useSelector } from "react-redux"
 import { changeImage, extractUserSlice } from "../../core/redux/userSlice"
-import { Link } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import facebook from "../../assets/svgs/facebook.svg"
 import github from "../../assets/svgs/github.svg"
 import instagram from "../../assets/svgs/instagram.svg"
@@ -13,6 +13,7 @@ import toast from "react-hot-toast"
 
 const ProfileCard = () => {
   const dispatch = useDispatch()
+  const { slug } = useParams() // TODO: profile with ID
   const userSlice = useSelector(extractUserSlice)
   const [file, setFile] = useState("")
 
