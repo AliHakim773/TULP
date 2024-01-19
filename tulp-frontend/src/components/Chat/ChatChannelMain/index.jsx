@@ -9,6 +9,7 @@ const ChatChannelMain = () => {
     handleOnInputChange,
     inputValue,
     messages,
+    disabled,
   } = useChatChannel()
 
   return (
@@ -21,7 +22,10 @@ const ChatChannelMain = () => {
       <div className='chat-main-input'>
         <form className='flex'>
           <textarea
-            placeholder={`Message general`}
+            disabled={disabled}
+            placeholder={
+              disabled ? "This is a Read Only Channel" : `Message general`
+            }
             type='text'
             value={inputValue}
             onChange={handleOnInputChange}
@@ -29,6 +33,7 @@ const ChatChannelMain = () => {
           />
           <button
             type='submit'
+            disabled={disabled}
             onClick={(e) => {
               e.preventDefault()
               handleSendMessage()
