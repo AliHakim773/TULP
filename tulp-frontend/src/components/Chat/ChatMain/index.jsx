@@ -34,7 +34,7 @@ dadasda"`}
       <div className='chat-main-input'>
         <form className='flex'>
           <textarea
-            placeholder={`Talk To me`}
+            placeholder={`Message general`}
             type='text'
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
