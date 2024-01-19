@@ -1,0 +1,20 @@
+.settings-dots {
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  gap: 2px;
+  position: absolute;
+  right: 10%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background-color: var(--white);
+}
+.settings-dots:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.2);
+}
