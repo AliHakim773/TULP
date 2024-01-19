@@ -10,7 +10,7 @@ const router = express.Router()
 
 router.post("/", addChannel)
 router.get("/:channelId", getChannel)
-router.get("/class/:classId", getClassChannels)
+router.get("/class/:slug", getClassChannels)
 router.patch("/:channelId", updateChannel)
 router.delete("/:channelId", deleteChannel)
 
