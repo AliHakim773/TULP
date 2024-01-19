@@ -3,6 +3,7 @@
   height: 40px;
   width: 40px;
   border-radius: 50%;
+  object-fit: cover;
 }
 .chat-message {
   padding: 0.25rem 1rem;
