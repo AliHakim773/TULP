@@ -56,8 +56,8 @@ const registerChatHandler = (io, socket, user) => {
       if (user.role !== "instructor")
         return socket.emit("channel:send-message", false, "You Have No Access")
 
-      sendMessage(room, user._id, message)
-      return socket.to(room).emit("channel:send-message", true, message)
+      const mes = await sendMessage(room, user._id, message)
+      return socket.to(room).emit("channel:send-message", true, mes)
     }
   })
 }
