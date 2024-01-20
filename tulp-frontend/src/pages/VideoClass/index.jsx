@@ -5,6 +5,7 @@ import HomeScreen from "../../components/VideoRoom/HomeScreen"
 import "./styles.css"
 import useVideoClassLogic from "./useVideoClassLogic"
 import { DailyProvider } from "@daily-co/daily-react"
+import HairCheck from "../../components/VideoRoom/HairCheck"
 
 const VideoClass = () => {
   const navigate = useNavigate()
@@ -42,6 +43,20 @@ const VideoClass = () => {
             </div>
           </div>
         </div>
+      )
+    }
+
+    if (showHairCheck || showCall) {
+      return (
+        <DailyProvider callObject={callObject}>
+          {showHairCheck ? (
+            // HariCheck
+            <HairCheck joinCall={joinCall} cancelCall={startLeavingCall} />
+          ) : (
+            // Join Call
+            <></>
+          )}
+        </DailyProvider>
       )
     }
 
