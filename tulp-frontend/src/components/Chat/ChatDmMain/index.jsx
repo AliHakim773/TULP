@@ -1,29 +1,25 @@
 import { useState } from "react"
 import ArrowSVG from "../../../assets/svgs/Arrow"
 import ChatMessage from "../ChatMessage"
+import useChatDM from "./useChatDM"
 
 const ChatDmMain = () => {
-  const [inputValue, setInputValue] = useState("")
-  const someUser = {
-    username: "ali",
-    imageUrl: "uploads/default.png",
-    _id: "sdgf",
-    time: "Today",
-  }
 
-  const handleKeyDown = (e) => {
-    if (e.ctrlKey && e.key === "Enter") {
-      e.preventDefault()
-    }
-  }
+  const {
+    handleSendMessage,
+    handleKeyDown,
+    handleOnInputChange,
+    inputValue,
+    messages,
+    disabled,
+  } = useChatDM()
 
   return (
     <div className='border chat-main flex column'>
       <div className='chat-main-body flex'>
-        <ChatMessage text={"Hello"} user={someUser} />
-        <ChatMessage text={"Hello"} user={someUser} />
-        <ChatMessage text={"Hello"} user={someUser} />
-        <ChatMessage text={"Hello"} user={someUser} />
+        {messages.toReversed().map((m) => {
+          return <ChatMessage key={m._id} text={m.content} user={m.senderId} />
+        })}
       </div>
       <div className='chat-main-input'>
         <form className='flex'>
@@ -31,13 +27,14 @@ const ChatDmMain = () => {
             placeholder={`Message general`}
             type='text'
             value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
+            onChange={handleOnInputChange}
             onKeyDown={handleKeyDown}
           />
           <button
             type='submit'
             onClick={(e) => {
               e.preventDefault()
+              handleSendMessage()
             }}>
             <ArrowSVG className='send-arrow' />
           </button>
