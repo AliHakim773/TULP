@@ -41,6 +41,13 @@ const useVideoClassLogic = () => {
     await newCallObject.startCamera()
   }, [])
 
+  const joinCall = useCallback(
+    (userName) => {
+      callObject.join({ url: roomUrl, userName })
+    },
+    [callObject, roomUrl]
+  )
+
   return {}
 }
 
