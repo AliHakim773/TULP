@@ -7,6 +7,7 @@ import classAPI from "../../../../core/api/class"
 import { extractUserSlice } from "../../../../core/redux/userSlice"
 import { useSelector } from "react-redux"
 import DownloadSVG from "../../../../assets/svgs/DownloadFile"
+import GLOBAL from "../../../../core/Global"
 
 const AssignmentView = () => {
   const data = useLoaderData()
@@ -38,7 +39,7 @@ const AssignmentView = () => {
             ) : (
               <a
                 target='_blank'
-                href={`http://localhost:8000/${data.file}`}
+                href={`${GLOBAL.BASE_URL}${data.file}`}
                 className='download-btn'>
                 <DownloadFile />
               </a>
@@ -74,13 +75,13 @@ const AssignmentView = () => {
               <div className='assignment-submit border rounded-1 flex'>
                 <div className='pfp-img'>
                   <img
-                    src={`http://localhost:8000/${submission.sender.imageUrl}`}
+                    src={`${GLOBAL.BASE_URL}${submission.sender.imageUrl}`}
                     alt={submission.sender.username}
                   />
                 </div>
                 <div className='username'>{submission.sender.username}</div>
                 <a
-                  href={`http://localhost:8000/${submission.file}`}
+                  href={`${GLOBAL.BASE_URL}${submission.file}`}
                   className='download-submission'>
                   <DownloadSVG />
                 </a>

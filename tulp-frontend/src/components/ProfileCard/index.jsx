@@ -10,6 +10,7 @@ import twitter from "../../assets/svgs/x-twitter.svg"
 import linkedin from "../../assets/svgs/linkedin.svg"
 import { userApi } from "../../core/api/user"
 import toast from "react-hot-toast"
+import GLOBAL from "../../core/Global"
 
 const ProfileCard = () => {
   const dispatch = useDispatch()
@@ -40,7 +41,7 @@ const ProfileCard = () => {
       <div className='profile-card-1 flex column center w-100'>
         <div className='profile-role'>{userSlice.role}</div>
         <div className='profile-img'>
-          <img src={`http://localhost:8000/${userSlice.imageUrl}`} alt='' />
+          <img src={`${GLOBAL.BASE_URL}${userSlice.imageUrl}`} alt='' />
         </div>
         <div className='profile-username'>{userSlice.username}</div>
       </div>

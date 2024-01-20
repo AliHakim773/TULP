@@ -1,7 +1,8 @@
 import axios from "axios"
 import { local } from "../helpers/localstorage"
+import GLOBAL from "../Global"
 
-axios.defaults.baseURL = "http://localhost:8000/"
+axios.defaults.baseURL = GLOBAL.BASE_URL
 
 export const sendRequest = async ({ route, method = "GET", body }) => {
   const token = local("token")

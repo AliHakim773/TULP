@@ -1,5 +1,6 @@
 import React from "react"
 import "./styles.css"
+import GLOBAL from "../../../core/Global"
 
 const InstructorItem = ({ instructor, onAccept }) => {
   return (
@@ -10,7 +11,7 @@ const InstructorItem = ({ instructor, onAccept }) => {
       }}>
       <div className='instructor-img'>
         <img
-          src={`http://localhost:8000/${instructor.imageUrl}`}
+          src={`${GLOBAL.BASE_URL}${instructor.imageUrl}`}
           alt={instructor.username}
         />
       </div>

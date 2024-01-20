@@ -7,6 +7,7 @@ import usePostLogic from "./usePostLogic"
 import Modal from "../../UI/Modal"
 import CommentForm from "../CommentForm"
 import timeSince from "../../../core/helpers/timeSince"
+import GLOBAL from "../../../core/Global"
 
 const Post = ({ post, postId, setPosts }) => {
   const { _id, user, content, likes, createdAt } = post
@@ -20,7 +21,7 @@ const Post = ({ post, postId, setPosts }) => {
           <div className='post-img circle'>
             <img
               className='circle'
-              src={`http://localhost:8000/${user.imageUrl}`}
+              src={`${GLOBAL.BASE_URL}${user.imageUrl}`}
               alt='user Image'
             />
           </div>
