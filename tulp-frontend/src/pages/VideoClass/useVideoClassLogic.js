@@ -37,7 +37,7 @@ const useVideoClassLogic = () => {
     setRoomUrl(url)
     setCallObject(newCallObject)
     setAppState(STATE_HAIRCHECK)
-    await newCallObject.preAuth({ url }) // add a meeting token here if your room is private
+    await newCallObject.preAuth({ url })
     await newCallObject.startCamera()
   }, [])
 
@@ -47,6 +47,21 @@ const useVideoClassLogic = () => {
     },
     [callObject, roomUrl]
   )
+
+  const startLeavingCall = useCallback(() => {
+    if (!callObject) return
+
+    if (appState === STATE_ERROR) {
+      callObject.destroy().then(() => {
+        setRoomUrl(null)
+        setCallObject(null)
+        setAppState(STATE_IDLE)
+      })
+    } else {
+      setAppState(STATE_LEAVING)
+      callObject.leave()
+    }
+  }, [callObject, appState])
 
   return {}
 }
