@@ -19,4 +19,10 @@ export const channelAPI = {
     })
     return response
   },
+  getDMs: async (slug, username) => {
+    const response = await sendRequest({
+      route: `messages/dm/${slug}/${username}`,
+    })
+    return response
+  },
 }
