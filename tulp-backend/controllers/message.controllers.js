@@ -75,6 +75,7 @@ const getDMMessages = async (req, res) => {
     const user = await User.findOne({ username })
 
     if (!user) return res.status(404).send({ message: "User Not Found" })
+
     const messages = await DirectMessage.findOne({
       classId: classObject._id,
       edges: { $all: [user._id, _id] },
@@ -87,10 +88,9 @@ const getDMMessages = async (req, res) => {
       },
     })
 
-    if (!messages)
-      return res.status(404).send({ message: "Messages not found" })
-
-    return res.status(200).send({ dms: messages, user })
+    return res
+      .status(200)
+      .send({ dms: messages, user, classId: classObject._id })
   } catch (error) {
     res.status(500).send({ message: error })
   }
