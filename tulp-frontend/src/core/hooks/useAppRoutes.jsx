@@ -54,6 +54,7 @@ import { scheduleLoader } from "../../components/ClassHome/Schedule/secheduleLoa
 import { chatLoader } from "../../components/Chat/chatLoader"
 import { chatChannelMainLoader } from "../../components/Chat/ChatChannelMain/ChatChannelMainLoader"
 import { chatDMMainLoader } from "../../components/Chat/ChatDmMain/ChatDMMainLoader"
+import VideoClass from "../../pages/VideoClass"
 
 const useAppRoutes = () => {
   const router = createBrowserRouter(
@@ -145,6 +146,7 @@ const useAppRoutes = () => {
               />
             </Route>
           </Route>
+          <Route path='room' element={<VideoClass />} />
         </Route>
         <Route path='*' element={<PageNotFound />} />
       </Route>

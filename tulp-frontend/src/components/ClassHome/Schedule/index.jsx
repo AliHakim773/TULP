@@ -1,4 +1,4 @@
-import { Outlet, useLoaderData, useNavigate } from "react-router-dom"
+import { Outlet, useLoaderData, useNavigate, useParams } from "react-router-dom"
 import Button from "../../Base/Button"
 import ScheduleItem from "./ScheduleItem"
 import "./styles.css"
@@ -8,6 +8,7 @@ import { extractUserSlice } from "../../../core/redux/userSlice"
 const Schedule = () => {
   const navigate = useNavigate()
   const data = useLoaderData()
+  const { slug } = useParams()
   const { role } = useSelector(extractUserSlice)
 
   return (
@@ -23,7 +24,12 @@ const Schedule = () => {
               }}
             />
           )}
-          <Button text='Join' />
+          <Button
+            text='Join'
+            onclick={() => {
+              navigate(`/class/${slug}/room`)
+            }}
+          />
         </div>
 
         {data &&
