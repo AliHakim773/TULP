@@ -5,3 +5,21 @@
 .home-screen .join-btn {
   width: fit-content;
 }
+.api-error {
+  height: 70%;
+}
+.api-error > h1 {
+  color: red;
+}
+.api-error > p {
+  width: 410px;
+  line-height: 2rem;
+  font-weight: 600;
+  margin-block: 1rem;
+}
+.api-error > p > a {
+  color: var(--blue-1);
+}
+.api-error > p > a:hover {
+  text-decoration: underline;
+}
