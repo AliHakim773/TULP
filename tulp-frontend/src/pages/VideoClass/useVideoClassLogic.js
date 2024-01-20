@@ -112,7 +112,12 @@ const useVideoClassLogic = () => {
     }
   }, [callObject])
 
-  return {}
+  const showCall =
+    !apiError && [STATE_JOINING, STATE_JOINED, STATE_ERROR].includes(appState)
+
+  const showHairCheck = !apiError && appState === STATE_HAIRCHECK
+
+  return { showCall, showHairCheck }
 }
 
 export default useVideoClassLogic
