@@ -53,6 +53,7 @@ import { assignmentViewLoader } from "../../components/ClassHome/Assignments/Ass
 import { scheduleLoader } from "../../components/ClassHome/Schedule/secheduleLoader"
 import { chatLoader } from "../../components/Chat/chatLoader"
 import { chatChannelMainLoader } from "../../components/Chat/ChatChannelMain/ChatChannelMainLoader"
+import { chatDMMainLoader } from "../../components/Chat/ChatDmMain/ChatDMMainLoader"
 
 const useAppRoutes = () => {
   const router = createBrowserRouter(
@@ -137,7 +138,11 @@ const useAppRoutes = () => {
                 element={<ChatChannelMain />}
                 loader={chatChannelMainLoader}
               />
-              <Route path='dm/:username' element={<ChatDmMain />} />
+              <Route
+                path='dm/:username'
+                element={<ChatDmMain />}
+                loader={chatDMMainLoader}
+              />
             </Route>
           </Route>
         </Route>
