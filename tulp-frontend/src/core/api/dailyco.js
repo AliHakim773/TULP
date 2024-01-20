@@ -8,8 +8,8 @@ const createRoom = async () => {
   }
 
   const isLocal =
-    import.meta.env.VITE__ROOM_ENDPOINT &&
-    import.meta.env.VITE__ROOM_ENDPOINT === "local"
+    import.meta.env.VITE_ROOM_ENDPOINT &&
+    import.meta.env.VITE_ROOM_ENDPOINT === "local"
   const endpoint = isLocal
     ? "https://api.daily.co/v1/rooms/"
     : `${window.location.origin}/api/rooms`
