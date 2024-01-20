@@ -14,7 +14,7 @@ const Assignments = () => {
     <>
       <Outlet />
       <div className='class-assignment flex column w-100'>
-        {role !== "studnet" && (
+        {role !== "student" && (
           <div className='class-assignment-header'>
             <Button text='Post' onclick={() => navigate("add")} />
           </div>
