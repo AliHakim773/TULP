@@ -5,7 +5,7 @@ const User = require("../models/user.model")
 const registerDMHandler = require("./registerDMHandler.js")
 
 const onConnection = async (socket) => {
-  const bearerToken = socket.handshake.headers.token
+  const bearerToken = socket.handshake.query.token
   if (bearerToken) {
     const token = bearerToken.split(" ")[1]
     try {
