@@ -3,7 +3,7 @@ const Class = require("../models/class.model")
 const isUserInClass = async (userId, classId) => {
   try {
     const classObject = await Class.findById(classId)
-    if (userId.equals(classObject.owner)) {
+    if (classObject.owner.equals(userId)) {
       return [true, "owner"]
     }
     if (classObject.students.some((objId) => objId.equals(userId))) {
