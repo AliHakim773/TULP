@@ -1,3 +1,4 @@
+const { default: mongoose } = require("mongoose")
 const isUserInClass = require("../helpers/isUserInClass")
 const DirectMessage = require("../models/directMessage.model")
 
@@ -5,9 +6,9 @@ const registerDMHandler = (io, socket, user) => {
   socket.on("dm:join-room", async (classId, userId, cb) => {
     try {
       const [user1, msg1] = await isUserInClass(user._id, classId)
-      if (!user1) return cb("User 1 is not in class")
+      if (!user1) return cb(msg1)
       const [user2, msg2] = await isUserInClass(userId, classId)
-      if (!user2) return cb("User 2 is not in class")
+      if (!user2) return cb(msg2)
 
       let dm = await DirectMessage.findOne({
         classId: classId,
@@ -20,8 +21,8 @@ const registerDMHandler = (io, socket, user) => {
         })
 
       socket.join(dm._id.toString())
-
-      return socket.emit("dm:join-room", `Joined Room ${dm._id}`)
+      // return socket.emit("dm:join-room", `Joined Room ${dm._id}`)
+      return cb(`Joined Room ${dm._id}`)
     } catch (e) {
       cb(e)
     }
@@ -50,7 +51,7 @@ const registerDMHandler = (io, socket, user) => {
 
   socket.on("dm:send-message", async (classId, userId, message, cb) => {
     const dm = await DirectMessage.findOne({
-      classId: classId,
+      //TODO: Check Class ID
       edges: { $all: [user._id, userId] },
     })
 
