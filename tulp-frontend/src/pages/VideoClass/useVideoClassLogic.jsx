@@ -1,4 +1,5 @@
-import { useState } from "react"
+import { useCallback, useState } from "react"
+import createRoom from "../../core/api/dailyco"
 
 // page state
 const STATE_IDLE = "STATE_IDLE"
@@ -11,6 +12,21 @@ const STATE_HAIRCHECK = "STATE_HAIRCHECK"
 
 const useVideoClassLogic = () => {
   const [appState, setAppState] = useState(STATE_IDLE)
+  const [roomUrl, setRoomUrl] = useState(null)
+  const [apiError, setApiError] = useState(false)
+
+  const createCall = useCallback(() => {
+    setAppState(STATE_CREATING)
+    return createRoom()
+      .then((room) => room.url)
+      .catch((error) => {
+        console.error("Error creating room", error)
+        setRoomUrl(null)
+        setAppState(STATE_IDLE)
+        setApiError(true)
+      })
+  }, [])
+
   return {}
 }
 
