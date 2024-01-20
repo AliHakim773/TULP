@@ -1,60 +1,23 @@
-const { sendMessage } = require("../controllers/message.controllers")
 const isUserInClass = require("../helpers/isUserInClass")
-const Channel = require("../models/channel.model")
+const DirectMessage = require("../models/directMessage.model")
 
-const registerChatHandler = (io, socket, user) => {
-  socket.on("dm:join-room", async (room, cb) => {
-    const channel = await Channel.findById(room)
-    if (!channel)
-      return socket.emit("dm:join-room", false, "Channel doesnt exist")
-    const [inClass, msg] = await isUserInClass(user._id, channel.classId)
+const registerDMHandler = (io, socket, user) => {
+  socket.on("dm:join-room", async (classId, userId, cb) => {
+    const [user1, msg1] = await isUserInClass(user._id, classId)
+    if (!user1) return cb("User 1 is not in class")
+    console.log(await isUserInClass(userId, classId))
+    const [user2, msg2] = await isUserInClass(userId, classId)
+    if (!user2) return cb("User 2 is not in class")
 
-    if (!inClass) return socket.emit("dm:join-room", false, "Not In Class")
+    let dm = await DirectMessage.findOne({
+      edges: { $all: [user._id, userId] },
+    })
+    if (!dm) dm = await DirectMessage.create({ edges: [user._id, userId] })
 
-    if (channel.readPermission === "all") {
-      socket.join(room)
-      return socket.emit("dm:join-room", true, "channel All")
-    }
-    if (channel.readPermission === "instructor") {
-      if (user.role !== "instructor")
-        return socket.emit("dm:join-room", false, "You Have No Access")
+    socket.join(dm._id)
 
-      socket.join(room)
-      socket.emit("dm:join-room", true, "channel instructors")
-    }
-  })
-
-  socket.on("dm:leave-room", (room, cb) => {
-    socket.leave(room)
-    socket.emit("dm:leave-room", room)
-  })
-
-  socket.on("dm:send-message", async (room, message, cb) => {
-    const channel = await Channel.findById(room)
-    if (!channel)
-      return socket.emit("dm:send-message", false, "Channel doesnt exist")
-
-    const [inClass, msg] = await isUserInClass(user._id, channel.classId)
-
-    if (!inClass) return socket.emit("dm:send-message", false, "Not In Class")
-
-    const isUserInRoom = socket.rooms.has(room)
-    if (!isUserInRoom)
-      return socket.emit("dm:send-message", false, "You are not in the room")
-
-    if (channel.writePermission === "all") {
-      const mes = await sendMessage(room, user._id, message)
-      return socket.to(room).emit("dm:send-message", true, mes)
-    }
-
-    if (channel.writePermission === "instructor") {
-      if (user.role !== "instructor")
-        return socket.emit("dm:send-message", false, "You Have No Access")
-
-      sendMessage(room, user._id, message)
-      return socket.to(room).emit("dm:send-message", true, message)
-    }
+    cb(`Joined Room ${dm._id}`)
   })
 }
 
-module.exports = registerChatHandler
+module.exports = registerDMHandler
