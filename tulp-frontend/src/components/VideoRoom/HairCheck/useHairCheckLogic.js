@@ -6,9 +6,12 @@ import {
   useParticipantProperty,
 } from "@daily-co/daily-react"
 import { useCallback, useEffect, useState } from "react"
+import { useSelector } from "react-redux"
+import { extractUserSlice } from "../../../core/redux/userSlice"
 
 const useHairCheckLogic = (joinCall) => {
   const localSessionId = useLocalSessionId()
+  const { username: userName } = useSelector(extractUserSlice)
   const initialUsername = useParticipantProperty(localSessionId, "user_name")
   const {
     currentCam,
@@ -22,7 +25,7 @@ const useHairCheckLogic = (joinCall) => {
     setSpeaker,
   } = useDevices()
   const callObject = useDaily()
-  const [username, setUsername] = useState(initialUsername)
+  const [username, setUsername] = useState(userName)
 
   const [getUserMediaError, setGetUserMediaError] = useState(false)
 
@@ -65,6 +68,8 @@ const useHairCheckLogic = (joinCall) => {
     updateMicrophone,
     handleJoin,
     handleChange,
+    username,
+    localSessionId,
     getUserMediaError,
     speakers,
     cameras,
