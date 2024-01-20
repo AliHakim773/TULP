@@ -1,9 +1,10 @@
 // React imports
-import { useCallback, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 // My imports
 import createRoom from "../../core/api/dailyco"
 // Dailyco imports
 import DailyIframe from "@daily-co/daily-js"
+import useRoomUrlFromPageUrl from "../../core/hooks/useRoomUrlFromPageUrl"
 
 // Page state
 const STATE_IDLE = "STATE_IDLE"
@@ -62,6 +63,13 @@ const useVideoClassLogic = () => {
       callObject.leave()
     }
   }, [callObject, appState])
+
+  useEffect(() => {
+    const url = useRoomUrlFromPageUrl()
+    if (url) {
+      startHairCheck(url)
+    }
+  }, [startHairCheck])
 
   return {}
 }
