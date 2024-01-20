@@ -78,6 +78,40 @@ const useVideoClassLogic = () => {
     window.history.replaceState(null, null, pageUrl)
   }, [roomUrl])
 
+  useEffect(() => {
+    if (!callObject) return
+
+    const events = ["joined-meeting", "left-meeting", "error", "camera-error"]
+
+    const handleNewMeetingState = () => {
+      switch (callObject.meetingState()) {
+        case "joined-meeting":
+          setAppState(STATE_JOINED)
+          break
+        case "left-meeting":
+          callObject.destroy().then(() => {
+            setRoomUrl(null)
+            setCallObject(null)
+            setAppState(STATE_IDLE)
+          })
+          break
+        case "error":
+          setAppState(STATE_ERROR)
+          break
+        default:
+          break
+      }
+    }
+
+    handleNewMeetingState()
+
+    events.forEach((event) => callObject.on(event, handleNewMeetingState))
+
+    return () => {
+      events.forEach((event) => callObject.off(event, handleNewMeetingState))
+    }
+  }, [callObject])
+
   return {}
 }
 
