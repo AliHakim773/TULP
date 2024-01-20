@@ -1,7 +1,11 @@
+// React imports
 import { useCallback, useState } from "react"
+// My imports
 import createRoom from "../../core/api/dailyco"
+// Dailyco imports
+import DailyIframe from "@daily-co/daily-js"
 
-// page state
+// Page state
 const STATE_IDLE = "STATE_IDLE"
 const STATE_CREATING = "STATE_CREATING"
 const STATE_JOINING = "STATE_JOINING"
@@ -14,6 +18,7 @@ const useVideoClassLogic = () => {
   const [appState, setAppState] = useState(STATE_IDLE)
   const [roomUrl, setRoomUrl] = useState(null)
   const [apiError, setApiError] = useState(false)
+  const [callObject, setCallObject] = useState(null)
 
   const createCall = useCallback(() => {
     setAppState(STATE_CREATING)
@@ -25,6 +30,15 @@ const useVideoClassLogic = () => {
         setAppState(STATE_IDLE)
         setApiError(true)
       })
+  }, [])
+
+  const startHairCheck = useCallback(async (url) => {
+    const newCallObject = DailyIframe.createCallObject()
+    setRoomUrl(url)
+    setCallObject(newCallObject)
+    setAppState(STATE_HAIRCHECK)
+    await newCallObject.preAuth({ url }) // add a meeting token here if your room is private
+    await newCallObject.startCamera()
   }, [])
 
   return {}
