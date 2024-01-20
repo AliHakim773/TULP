@@ -1,5 +1,7 @@
+const isUserInClass = require("../helpers/isUserInClass")
 const Channel = require("../models/channel.model")
 const Class = require("../models/class.model")
+const DirectMessage = require("../models/directMessage.model")
 const User = require("../models/user.model")
 
 const sendMessage = async (channelId, senderId, content) => {
@@ -65,4 +67,33 @@ const getUserByIdForChat = async (req, res) => {
   }
 }
 
-module.exports = { sendMessage, getChannelMessages, getUserByIdForChat }
+// TODO: in class middleware
+const getDMMessages = async (req, res) => {
+  const { slug, username } = req.params
+  const { _id } = req.user
+  try {
+    const classObject = await Class.findOne({ slug })
+    const user = await User.findOne({ username })
+
+    if (!user) return res.status(404).send({ message: "User Not Found" })
+    console.log({ classId: classObject._id, edges: [user._id, _id] })
+    const messages = await DirectMessage.findOne({
+      classId: classObject._id,
+      edges: { $all: [user._id, _id] },
+    })
+
+    if (!messages)
+      return res.status(404).send({ message: "Messages not found" })
+
+    return res.status(200).send({ dms: messages })
+  } catch (error) {
+    res.status(500).send({ message: error })
+  }
+}
+
+module.exports = {
+  sendMessage,
+  getChannelMessages,
+  getUserByIdForChat,
+  getDMMessages,
+}
