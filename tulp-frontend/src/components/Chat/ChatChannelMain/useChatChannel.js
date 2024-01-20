@@ -21,7 +21,6 @@ const useChatChannel = () => {
 
   const sendMessageListener = async (res, body) => {
     try {
-      console.log(body)
       const user = await channelAPI.getUser(body.message.senderId)
       setMessages((prev) => [
         ...prev,
