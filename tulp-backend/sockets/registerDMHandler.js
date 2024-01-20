@@ -1,4 +1,3 @@
-const { default: mongoose } = require("mongoose")
 const isUserInClass = require("../helpers/isUserInClass")
 const DirectMessage = require("../models/directMessage.model")
 
