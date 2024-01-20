@@ -117,7 +117,15 @@ const useVideoClassLogic = () => {
 
   const showHairCheck = !apiError && appState === STATE_HAIRCHECK
 
-  return { showCall, showHairCheck, apiError, callObject, startLeavingCall }
+  return {
+    showCall,
+    showHairCheck,
+    apiError,
+    callObject,
+    createCall,
+    startLeavingCall,
+    startHairCheck,
+  }
 }
 
 export default useVideoClassLogic
