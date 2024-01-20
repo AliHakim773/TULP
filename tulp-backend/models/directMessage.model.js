@@ -15,6 +15,6 @@ ChannelSchema.pre("save", function (next) {
   next()
 })
 
-const DirectMessage = mongoose.model("DM", DirectMessageSchema)
+const DirectMessage = mongoose.model("DirectMessage", DirectMessageSchema)
 
 module.exports = DirectMessage
