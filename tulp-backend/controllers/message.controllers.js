@@ -80,6 +80,13 @@ const getDMMessages = async (req, res) => {
     const messages = await DirectMessage.findOne({
       classId: classObject._id,
       edges: { $all: [user._id, _id] },
+    }).populate({
+      path: "messages",
+      populate: {
+        path: "senderId",
+        model: "User",
+        select: "username imageUrl _id created_at",
+      },
     })
 
     if (!messages)
