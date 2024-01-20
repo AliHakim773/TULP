@@ -18,6 +18,7 @@ const VideoClass = () => {
     createCall,
     startHairCheck,
     startLeavingCall,
+    joinCall,
   } = useVideoClassLogic()
 
   const renderApp = () => {
