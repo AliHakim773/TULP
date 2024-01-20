@@ -125,6 +125,7 @@ const useVideoClassLogic = () => {
     createCall,
     startLeavingCall,
     startHairCheck,
+    joinCall,
   }
 }
 
