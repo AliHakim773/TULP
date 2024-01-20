@@ -2,7 +2,6 @@ import React from "react"
 import "./styles.css"
 import { Link } from "react-router-dom"
 import usePfpDropDownLogic from "./usePfpDropDownLogic"
-import GLOBAL from "../../core/Global"
 
 const PfpDropDown = () => {
   const { user, isHidden, handleOnClick, handleOnClickProfile } =
@@ -12,7 +11,7 @@ const PfpDropDown = () => {
     <div className='pfp-img' onClick={handleOnClickProfile}>
       <img
         id='user-image'
-        src={`${GLOBAL.BASE_URL}${user.imageUrl}`}
+        src={`${import.meta.env.VITE_BASE_URL}${user.imageUrl}`}
         alt={user.username}
       />
       <div

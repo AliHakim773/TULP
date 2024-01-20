@@ -1,6 +1,5 @@
 import React from "react"
 import "./styles.css"
-import GLOBAL from "../../core/Global"
 
 const UserList = ({ title = "title", users }) => {
   return (
@@ -15,7 +14,7 @@ const UserList = ({ title = "title", users }) => {
                   <div className='user-item-pfp circle'>
                     <img
                       className='circle'
-                      src={`${GLOBAL.BASE_URL}${user.imageUrl}`}
+                      src={`${import.meta.env.VITE_BASE_URL}${user.imageUrl}`}
                       alt={user.username}
                     />
                   </div>

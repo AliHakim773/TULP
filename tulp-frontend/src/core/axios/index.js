@@ -1,8 +1,7 @@
 import axios from "axios"
 import { local } from "../helpers/localstorage"
-import GLOBAL from "../Global"
 
-axios.defaults.baseURL = GLOBAL.BASE_URL
+axios.defaults.baseURL = import.meta.env.VITE_BASE_URL
 
 export const sendRequest = async ({ route, method = "GET", body }) => {
   const token = local("token")

@@ -1,5 +1,3 @@
-import GLOBAL from "../Global"
-
 const createRoom = async () => {
   const exp = Math.round(Date.now() / 1000) + 60 * 30
   // expiery date 30 min
@@ -10,7 +8,8 @@ const createRoom = async () => {
   }
 
   const isLocal =
-    GLOBAL.REACT_APP_ROOM_ENDPOINT && GLOBAL.REACT_APP_ROOM_ENDPOINT === "local"
+    import.meta.env.VITE__ROOM_ENDPOINT &&
+    import.meta.env.VITE__ROOM_ENDPOINT === "local"
   const endpoint = isLocal
     ? "https://api.daily.co/v1/rooms/"
     : `${window.location.origin}/api/rooms`
@@ -18,7 +17,7 @@ const createRoom = async () => {
   const headers = isLocal && {
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${GLOBAL.REACT_APP_DAILY_API_KEY}`,
+      Authorization: `Bearer ${import.meta.env.VITE_DAILY_API_KEY}`,
     },
   }
 

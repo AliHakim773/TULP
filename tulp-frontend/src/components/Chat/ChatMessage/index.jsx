@@ -1,11 +1,10 @@
-import GLOBAL from "../../../core/Global"
 import "./styles.css"
 
 const ChatMessage = ({ user, text }) => {
   return (
     <div className='chat-message flex'>
       <div className='pfp-message'>
-        <img src={`${GLOBAL.BASE_URL}${user.imageUrl}`} alt='' />
+        <img src={`${import.meta.env.VITE_BASE_URL}${user.imageUrl}`} alt='' />
       </div>
       <div className='message-content'>
         <div className='message-header flex'>

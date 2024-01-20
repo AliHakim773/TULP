@@ -1,6 +1,5 @@
 import "./styles.css"
 import DownloadFile from "../../../../assets/svgs/DownloadFile"
-import GLOBAL from "../../../../core/Global"
 
 const StreamItem = ({ post }) => {
   const { title, content, file, id } = post
@@ -14,7 +13,7 @@ const StreamItem = ({ post }) => {
           ) : (
             <a
               target='_blank'
-              href={`${GLOBAL.BASE_URL}${file}`}
+              href={`${import.meta.env.VITE_BASE_URL}${file}`}
               className='download-btn'>
               <DownloadFile />
             </a>

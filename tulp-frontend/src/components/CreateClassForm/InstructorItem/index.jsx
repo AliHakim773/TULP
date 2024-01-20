@@ -1,6 +1,5 @@
 import React from "react"
 import "./styles.css"
-import GLOBAL from "../../../core/Global"
 
 const InstructorItem = ({ instructor, onAccept }) => {
   return (
@@ -11,7 +10,7 @@ const InstructorItem = ({ instructor, onAccept }) => {
       }}>
       <div className='instructor-img'>
         <img
-          src={`${GLOBAL.BASE_URL}${instructor.imageUrl}`}
+          src={`${import.meta.env.VITE_BASE_URL}${instructor.imageUrl}`}
           alt={instructor.username}
         />
       </div>
