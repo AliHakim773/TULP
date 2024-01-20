@@ -4,22 +4,23 @@ import ChatMessage from "../ChatMessage"
 import useChatDM from "./useChatDM"
 
 const ChatDmMain = () => {
-
   const {
     handleSendMessage,
     handleKeyDown,
     handleOnInputChange,
     inputValue,
     messages,
-    disabled,
   } = useChatDM()
 
   return (
     <div className='border chat-main flex column'>
       <div className='chat-main-body flex'>
-        {messages.toReversed().map((m) => {
-          return <ChatMessage key={m._id} text={m.content} user={m.senderId} />
-        })}
+        {messages &&
+          messages.toReversed().map((m) => {
+            return (
+              <ChatMessage key={m._id} text={m.content} user={m.senderId} />
+            )
+          })}
       </div>
       <div className='chat-main-input'>
         <form className='flex'>

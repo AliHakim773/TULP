@@ -12,7 +12,7 @@ const useChatDM = () => {
   const { slug, username } = useParams()
 
   const [inputValue, setInputValue] = useState("")
-  const [messages, setMessages] = useState(data.dms.messages)
+  const [messages, setMessages] = useState(data.dms ? data.dms.messages : [])
 
   const sendMessageListener = async (body) => {
     try {
@@ -35,7 +35,7 @@ const useChatDM = () => {
     const getMessages = async () => {
       try {
         const res = await channelAPI.getDMs(slug, username)
-        setMessages(res.dms.messages)
+        setMessages(res.dms?.messages)
       } catch (e) {
         console.log(e)
       }
@@ -43,7 +43,7 @@ const useChatDM = () => {
     getMessages()
 
     socket.connect()
-    socket.emit("dm:join-room", data.dms.classId, data.user._id, (mes) => {
+    socket.emit("dm:join-room", data.classId, data.user._id, (mes) => {
       console.log(mes)
     })
     if (!socket.hasListeners("dm:send-message")) {
@@ -52,7 +52,7 @@ const useChatDM = () => {
 
     return () => {
       socket.removeListener("dm:send-message", sendMessageListener)
-      socket.emit("dm:leave-room", data.dms.classId, data.user._id, (msg) => {
+      socket.emit("dm:leave-room", data.classId, data.user._id, (msg) => {
         console.log(msg)
       })
       socket.disconnect()
@@ -62,7 +62,7 @@ const useChatDM = () => {
   const handleSendMessage = async () => {
     socket.emit(
       "dm:send-message",
-      data.dms._id,
+      data.dms?._id,
       data.user._id,
       inputValue.replace(/\n+$/, ""),
       (msg) => {
