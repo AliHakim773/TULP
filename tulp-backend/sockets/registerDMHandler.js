@@ -19,9 +19,9 @@ const registerDMHandler = (io, socket, user) => {
           edges: [user._id, userId],
         })
 
-      socket.join(dm._id)
+      socket.join(dm._id.toString())
 
-      cb(`Joined Room ${dm._id}`)
+      return socket.emit("dm:join-room", `Joined Room ${dm._id}`)
     } catch (e) {
       cb(e)
     }
@@ -34,15 +34,35 @@ const registerDMHandler = (io, socket, user) => {
         edges: { $all: [user._id, userId] },
       })
 
+      const isUserInRoom = socket.rooms.has(dm._id.toString())
+      if (!isUserInRoom) return cb(`Not in the room: ${dm._id.toString()}`)
+
       if (dm) {
-        socket.leave(dm._id)
-        return cb("Left Room")
+        socket.leave(dm._id.toString())
+        return socket.emit("dm:join-room", `Left Room ${dm._id.toString()}`)
       }
 
-      cb("Room doesnt exist")
+      return cb("Room doesnt exist")
     } catch (e) {
-      cb(e)
+      return cb(e)
     }
+  })
+
+  socket.on("dm:send-message", async (classId, userId, message, cb) => {
+    const dm = await DirectMessage.findOne({
+      classId: classId,
+      edges: { $all: [user._id, userId] },
+    })
+
+    if (!dm) return cb("Room not available")
+
+    const isUserInRoom = socket.rooms.has(dm._id.toString())
+    if (!isUserInRoom) return cb(`Not in the room: ${dm._id}`)
+
+    dm.messages.push({ senderId: user._id, content: message })
+    await dm.save()
+
+    return socket.to(dm._id.toString()).emit("dm:send-message", message)
   })
 }
 
