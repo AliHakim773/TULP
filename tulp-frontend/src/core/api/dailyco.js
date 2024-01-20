@@ -30,4 +30,4 @@ const createRoom = async () => {
   return response.json()
 }
 
-export default { createRoom }
+export default createRoom
