@@ -5,6 +5,7 @@ import createRoom from "../../core/api/dailyco"
 // Dailyco imports
 import DailyIframe from "@daily-co/daily-js"
 import useRoomUrlFromPageUrl from "../../core/hooks/useRoomUrlFromPageUrl"
+import usePageUrlFromRoomUrl from "../../core/hooks/usePageUrlFromRoomUrl"
 
 // Page state
 const STATE_IDLE = "STATE_IDLE"
@@ -70,6 +71,12 @@ const useVideoClassLogic = () => {
       startHairCheck(url)
     }
   }, [startHairCheck])
+
+  useEffect(() => {
+    const pageUrl = usePageUrlFromRoomUrl(roomUrl)
+    if (pageUrl === window.location.href) return
+    window.history.replaceState(null, null, pageUrl)
+  }, [roomUrl])
 
   return {}
 }
