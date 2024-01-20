@@ -1,10 +1,11 @@
 import {
   useDaily,
   useDailyEvent,
+  useDevices,
   useLocalSessionId,
   useParticipantProperty,
 } from "@daily-co/daily-react"
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 
 const useHairCheckLogic = (joinCall) => {
   const localSessionId = useLocalSessionId()
