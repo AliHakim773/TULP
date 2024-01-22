@@ -17,6 +17,9 @@
 .actions {
   margin-left: auto;
 }
+.actions > button {
+  padding-inline-start: 10px;
+}
 .tray-buttons-container button {
   background: none;
   border: none;

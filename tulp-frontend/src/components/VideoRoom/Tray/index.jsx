@@ -21,14 +21,20 @@ import {
   MicrophoneOn,
   Screenshare,
 } from "../../../assets/Icons"
+import CodeSVG from "../../../assets/svgs/Code"
+import { useSelector } from "react-redux"
+import { extractUserSlice } from "../../../core/redux/userSlice"
+import CompilerAside from "../CompilerAside"
 
 const Tray = ({ leaveCall }) => {
+  const { role } = useSelector(extractUserSlice)
   const callObject = useDaily()
   const { isSharingScreen, startScreenShare, stopScreenShare } =
     useScreenShare()
 
   const [showMeetingInformation, setShowMeetingInformation] = useState(false)
   const [showChat, setShowChat] = useState(false)
+  const [showCode, setShowCode] = useState(false)
   const [newChatMessage, setNewChatMessage] = useState(false)
 
   const localSessionId = useLocalSessionId()
@@ -62,14 +68,21 @@ const Tray = ({ leaveCall }) => {
 
   const toggleChat = () => {
     setShowChat(!showChat)
+    setShowCode(false)
     if (newChatMessage) {
       setNewChatMessage(!newChatMessage)
     }
   }
 
+  const toggleCode = () => {
+    setShowCode(!showCode)
+    setShowChat(false)
+  }
+
   return (
     <div className='tray'>
       <VideoChat showChat={showChat} toggleChat={toggleChat} />
+      <CompilerAside showCode={showCode} toggleCode={toggleCode} />
       <div className='tray-buttons-container'>
         <div className='controls flex'>
           <button
@@ -90,6 +103,12 @@ const Tray = ({ leaveCall }) => {
           </button>
         </div>
         <div className='actions'>
+          {role === "instructor" && (
+            <button onClick={toggleCode} type='button'>
+              <CodeSVG />
+            </button>
+          )}
+
           <button onClick={toggleChat} type='button'>
             {newChatMessage ? <ChatHighlighted /> : <ChatIcon />}
           </button>
