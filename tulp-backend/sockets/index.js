@@ -3,9 +3,10 @@ const registerChatHandler = require("./registerChatHandler")
 const jwt = require("jsonwebtoken")
 const User = require("../models/user.model")
 const registerDMHandler = require("./registerDMHandler.js")
+const registerRoomHandler = require("./registerRoomHandler.js")
 
 const onConnection = async (socket) => {
-  const bearerToken = socket.handshake.query.token
+  const bearerToken = socket.handshake.headers.token
   if (bearerToken) {
     const token = bearerToken.split(" ")[1]
     try {
@@ -13,6 +14,7 @@ const onConnection = async (socket) => {
       const user = await User.findOne({ _id: decode._id }).select("-password")
       registerChatHandler(io, socket, user)
       registerDMHandler(io, socket, user)
+      registerRoomHandler(io, socket, user)
     } catch (e) {
       return
     }
