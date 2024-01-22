@@ -39,6 +39,8 @@ import AssignmentForm from "../../components/ClassHome/Assignments/AssignmentFor
 import Chat from "../../components/Chat"
 import ChatChannelMain from "../../components/Chat/ChatChannelMain"
 import ChatDmMain from "../../components/Chat/ChatDmMain"
+import VideoClass from "../../pages/VideoClass"
+import ClassSocket from "../../components/ClassSocket"
 
 // Loaders
 import { manageInstructorsLoader } from "../../components/ClassEditPage/ManageInstructors/manageInstructorsLoader"
@@ -54,7 +56,6 @@ import { scheduleLoader } from "../../components/ClassHome/Schedule/secheduleLoa
 import { chatLoader } from "../../components/Chat/chatLoader"
 import { chatChannelMainLoader } from "../../components/Chat/ChatChannelMain/ChatChannelMainLoader"
 import { chatDMMainLoader } from "../../components/Chat/ChatDmMain/ChatDMMainLoader"
-import VideoClass from "../../pages/VideoClass"
 
 const useAppRoutes = () => {
   const router = createBrowserRouter(
@@ -73,7 +74,7 @@ const useAppRoutes = () => {
             loader={classProfileLoader}
           />
         </Route>
-        <Route path='class/:slug'>
+        <Route path='class/:slug' element={<ClassSocket />}>
           <Route element={<NavLayout />}>
             <Route element={<FooterLayout />}>
               <Route element={<ClassHomePage />} loader={classLoader}>
