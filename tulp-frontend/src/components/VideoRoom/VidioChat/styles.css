@@ -1,0 +1,54 @@
+.video-chat {
+  background-color: white;
+  position: absolute;
+  inset: 0 0 7% 80%;
+  padding-top: 1rem;
+}
+
+.video-chat-messages {
+  margin-top: auto;
+  overflow-y: scroll;
+}
+.video-chat-messages::-webkit-scrollbar {
+  display: none;
+}
+
+.video-chat > button {
+  margin-inline: 0.5rem;
+  background-color: var(--blue-2);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  padding: 0.35rem;
+}
+
+.video-chat > button:hover {
+  background-color: var(--blue-3);
+}
+.add-message .chat-form {
+  border-top: 1px solid var(--grey-4);
+  display: flex;
+  align-items: center;
+  height: 40px;
+}
+.add-message .chat-form .chat-input {
+  height: 100%;
+  flex: 1;
+  margin-inline: 0.5rem;
+
+  border: none;
+}
+.add-message .chat-form button {
+  background-color: none;
+  border: 1px solid var(--grey-4);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+}
+.chat-message-author {
+  text-transform: capitalize;
+  font-size: 13px;
+}
+.chat-message-body {
+  font-size: 13px;
+}
