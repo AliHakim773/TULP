@@ -58,12 +58,7 @@ const ClassSchema = new mongoose.Schema({
     },
   ],
   room: String,
-  participants: [
-    {
-      type: mongoose.Types.ObjectId,
-      ref: "User",
-    },
-  ],
+  participants: [String],
 })
 
 ClassSchema.pre("save", function (next) {
