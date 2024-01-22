@@ -7,6 +7,10 @@ import DailyIframe from "@daily-co/daily-js"
 import useRoomUrlFromPageUrl from "../../core/hooks/useRoomUrlFromPageUrl"
 import usePageUrlFromRoomUrl from "../../core/hooks/usePageUrlFromRoomUrl"
 import { useNavigate, useParams } from "react-router-dom"
+import { roomAPI } from "../../core/api/room"
+import { socket } from "../../core/socket"
+import { useSelector } from "react-redux"
+import { extractUserSlice } from "../../core/redux/userSlice"
 
 // Page state
 const STATE_IDLE = "STATE_IDLE"
@@ -18,6 +22,7 @@ const STATE_ERROR = "STATE_ERROR"
 const STATE_HAIRCHECK = "STATE_HAIRCHECK"
 
 const useVideoClassLogic = () => {
+  const { role } = useSelector(extractUserSlice)
   const navigate = useNavigate()
   const { slug } = useParams()
   const [appState, setAppState] = useState(STATE_IDLE)
@@ -52,8 +57,7 @@ const useVideoClassLogic = () => {
     },
     [callObject, roomUrl]
   )
-
-  const startLeavingCall = useCallback(() => {
+  const startLeavingCall = useCallback(async () => {
     if (!callObject) return
 
     if (appState === STATE_ERROR) {
@@ -65,6 +69,12 @@ const useVideoClassLogic = () => {
     } else {
       setAppState(STATE_LEAVING)
       callObject.leave()
+    }
+    if (role === "instructor") {
+      try {
+        await roomAPI.deleteRoom({ slug })
+        socket.emit("room:create", "", async (msg) => {})
+      } catch (e) {}
     }
     navigate(`/class/${slug}/stream`)
   }, [callObject, appState])
