@@ -16,12 +16,10 @@ const Schedule = () => {
 
   useEffect(() => {
     socket.on("room:create", (room) => {
-      console.log(room)
       setUrl(room)
     })
     return () => {
       socket.removeListener("room:create", (room) => {
-        console.log(room)
         setUrl(room)
       })
     }
