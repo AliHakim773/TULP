@@ -14,18 +14,16 @@ const Schedule = () => {
   const { role } = useSelector(extractUserSlice)
   const [url, setUrl] = useState(data.roomUrl)
 
-  const roomCreateListner = (room) => {
-    console.log(room)
-    setUrl(room)
-  }
-
   useEffect(() => {
-    if (!socket.hasListeners("room:create")) {
-      socket.on("room:create", roomCreateListner)
-    }
-    console.log("hello")
+    socket.on("room:create", (room) => {
+      console.log(room)
+      setUrl(room)
+    })
     return () => {
-      socket.removeListener("room:create", roomCreateListner)
+      socket.removeListener("room:create", (room) => {
+        console.log(room)
+        setUrl(room)
+      })
     }
   }, [])
 
