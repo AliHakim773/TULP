@@ -148,10 +148,10 @@ const getSchedule = async (req, res) => {
   const { slug } = req.params
   try {
     const classObject = await Class.findOne({ slug })
-
+    
     return res
       .status(200)
-      .send({ schedule: classObject.schedule, room: classObject.url })
+      .send({ schedule: classObject.schedule, room: classObject.room })
   } catch (error) {
     return res.status(500).send({ error })
   }
