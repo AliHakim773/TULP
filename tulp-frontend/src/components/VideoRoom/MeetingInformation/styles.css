@@ -1,0 +1,19 @@
+.meeting-information {
+  position: absolute;
+  align-items: flex-start;
+  bottom: 100%;
+  width: 400px;
+  padding: 0.5rem;
+}
+/* .meeting-information > h4 {
+
+} */
+.meeting-information ul {
+  display: flex;
+  margin-top: 5px;
+  flex-direction: column;
+  gap: 5px;
+}
+.meeting-information li {
+  text-align: start;
+}
