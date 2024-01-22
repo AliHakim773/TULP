@@ -6,6 +6,7 @@ import createRoom from "../../core/api/dailyco"
 import DailyIframe from "@daily-co/daily-js"
 import useRoomUrlFromPageUrl from "../../core/hooks/useRoomUrlFromPageUrl"
 import usePageUrlFromRoomUrl from "../../core/hooks/usePageUrlFromRoomUrl"
+import { useNavigate, useParams } from "react-router-dom"
 
 // Page state
 const STATE_IDLE = "STATE_IDLE"
@@ -17,6 +18,8 @@ const STATE_ERROR = "STATE_ERROR"
 const STATE_HAIRCHECK = "STATE_HAIRCHECK"
 
 const useVideoClassLogic = () => {
+  const navigate = useNavigate()
+  const { slug } = useParams()
   const [appState, setAppState] = useState(STATE_IDLE)
   const [roomUrl, setRoomUrl] = useState(null)
   const [apiError, setApiError] = useState(false)
@@ -63,6 +66,7 @@ const useVideoClassLogic = () => {
       setAppState(STATE_LEAVING)
       callObject.leave()
     }
+    navigate(`/class/${slug}/stream`)
   }, [callObject, appState])
 
   useEffect(() => {
