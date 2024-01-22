@@ -57,6 +57,13 @@ const ClassSchema = new mongoose.Schema({
       ref: "Channel",
     },
   ],
+  room: String,
+  participants: [
+    {
+      type: mongoose.Types.ObjectId,
+      ref: "User",
+    },
+  ],
 })
 
 ClassSchema.pre("save", function (next) {
