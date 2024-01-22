@@ -1,0 +1,36 @@
+.call-info-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20vw;
+  word-break: break-all;
+  position: absolute;
+  right: 3%;
+  top: 10%;
+  padding: 8px;
+}
+.call-info-box h3 {
+  margin-bottom: 5px;
+  text-transform: capitalize;
+}
+.call-info-box p {
+  font-weight: 600;
+  font-size: 0.9rem;
+  word-wrap: normal;
+}
+.call-info-box span {
+  font-size: 0.8rem;
+  margin-top: 10px;
+}
+.call-section {
+  height: 93vh;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  padding: 20px;
+}
+.call-section:has(.tile-video.alone) {
+  display: flex;
+  width: fit-content;
+}
