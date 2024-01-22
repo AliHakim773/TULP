@@ -10,6 +10,7 @@ const registerRoomHandler = (io, socket, user) => {
     if (!inClass) return
 
     socket.join(classObject._id.toString())
+    console.log("joined")
     cb("Joined Room")
   })
 
@@ -17,6 +18,7 @@ const registerRoomHandler = (io, socket, user) => {
     const classObject = await Class.findOne({ slug })
     socket.leave(classObject._id.toString())
     cb("left Room")
+    console.log("left")
   })
 
   socket.on("room:update-participants", async (slug, cb) => {
@@ -27,20 +29,31 @@ const registerRoomHandler = (io, socket, user) => {
   })
 
   socket.on("room:toggle-participants", async (slug, username, value, cb) => {
-    const classObject = await Class.findOne({ slug })
-    socket
-      .to(classObject._id.toString())
-      .emit("room:toggle-participants", username, value)
+    try {
+      const classObject = await Class.findOne({ slug })
+      socket
+        .to(classObject._id.toString())
+        .emit("room:toggle-participants", username, value)
+    } catch (e) {
+      return
+    }
   })
 
   socket.on("room:create", async (slug, cb) => {
-    const classObject = await Class.findOne({ slug })
-    socket.to(classObject._id.toString()).emit("room:create", classObject.room)
+    try {
+      const classObject = await Class.findOne({ slug })
+      socket
+        .to(classObject._id.toString())
+        .emit("room:create", classObject.room)
+      cb(classObject)
+    } catch {}
   })
 
   socket.on("room:get-output", async (slug, output, cb) => {
-    const classObject = await Class.findOne({ slug })
-    socket.to(classObject._id.toString()).emit("room:get-output", output)
+    try {
+      const classObject = await Class.findOne({ slug })
+      socket.to(classObject._id.toString()).emit("room:get-output", output)
+    } catch {}
   })
 }
 
