@@ -6,6 +6,7 @@ const classRoutes = require("./class.routes")
 const channelRoutes = require("./channel.routes")
 const postRoutes = require("./post.routes")
 const messagesRoutes = require("./messages.routes")
+const compileRoutes = require("./compile.routes")
 
 const siteRoutes = async (app) => {
   //auth routes
@@ -20,6 +21,8 @@ const siteRoutes = async (app) => {
   app.use("/post", authMiddleware, postRoutes)
   //messages routes
   app.use("/messages", authMiddleware, messagesRoutes)
+  //compile routes
+  app.use("/compile", compileRoutes)
 }
 
 module.exports = siteRoutes
