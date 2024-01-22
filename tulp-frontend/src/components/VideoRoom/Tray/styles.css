@@ -1,0 +1,29 @@
+.tray-buttons-container {
+  width: 100vw;
+  height: 7vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border-top: 1px solid var(--grey-3);
+  margin-top: auto;
+}
+.controls {
+  gap: 10px;
+  padding-inline: 10px;
+}
+.leave {
+  padding-inline: 10px;
+}
+.actions {
+  margin-left: auto;
+}
+.tray-buttons-container button {
+  background: none;
+  border: none;
+}
+.tray-buttons-container button svg {
+  height: 40px;
+}
+.meet-info-btn {
+  position: relative;
+}
