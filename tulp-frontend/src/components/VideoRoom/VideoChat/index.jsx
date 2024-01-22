@@ -7,7 +7,7 @@ import {
 } from "@daily-co/daily-react"
 import { Arrow } from "../../../assets/Icons"
 
-const VidioChat = ({ showChat, toggleChat }) => {
+const VideoChat = ({ showChat, toggleChat }) => {
   const [messages, setMessages] = useState([])
   const [inputValue, setInputValue] = useState("")
   const localSessionId = useLocalSessionId()
@@ -29,9 +29,6 @@ const VidioChat = ({ showChat, toggleChat }) => {
 
   const sendMessage = useCallback(
     (message) => {
-      /* Send the message to all participants in the chat - this does not include ourselves!
-       * See https://docs.daily.co/reference/daily-js/events/participant-events#app-message
-       */
       sendAppMessage(
         {
           msg: message,
@@ -39,10 +36,6 @@ const VidioChat = ({ showChat, toggleChat }) => {
         },
         "*"
       )
-
-      /* Since we don't receive our own messages, we will set our message in the messages array.
-       * This way _we_ can also see what we wrote.
-       */
       setMessages([
         ...messages,
         {
@@ -60,7 +53,7 @@ const VidioChat = ({ showChat, toggleChat }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    if (!inputValue.trim()) return // don't allow people to submit empty strings
+    if (!inputValue.trim()) return
     sendMessage(inputValue)
     setInputValue("")
   }
@@ -96,4 +89,4 @@ const VidioChat = ({ showChat, toggleChat }) => {
   ) : null
 }
 
-export default VidioChat
+export default VideoChat

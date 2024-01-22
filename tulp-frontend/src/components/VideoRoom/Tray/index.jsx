@@ -9,7 +9,7 @@ import {
 import "./styles.css"
 import { useCallback, useState } from "react"
 import MeetingInformation from "../MeetingInformation"
-import VidioChat from "../VidioChat"
+import VideoChat from "../VideoChat"
 import {
   CameraOff,
   CameraOn,
@@ -37,12 +37,8 @@ const Tray = ({ leaveCall }) => {
   const mutedVideo = localVideo.isOff
   const mutedAudio = localAudio.isOff
 
-  /* When a remote participant sends a message in the chat, we want to display a differently colored
-   * chat icon in the Tray as a notification. By listening for the `"app-message"` event we'll know
-   * when someone has sent a message. */
   useAppMessage({
     onAppMessage: useCallback(() => {
-      /* Only light up the chat icon if the chat isn't already open. */
       if (!showChat) {
         setNewChatMessage(true)
       }
@@ -73,14 +69,7 @@ const Tray = ({ leaveCall }) => {
 
   return (
     <div className='tray'>
-      {/*  The chat messages 'live' in the <Chat/> component's state. We can't just remove the component */}
-      {/*  from the DOM when hiding the chat, because that would cause us to lose that state. So we're */}
-      {/*  choosing a slightly different approach of toggling the chat: always render the component, but only */}
-      {/*  render its HTML when showChat is set to true. */}
-
-      {/*   We're also passing down the toggleChat() function to the component, so we can open and close the chat */}
-      {/*   from the chat UI and not just the Tray. */}
-      <VidioChat showChat={showChat} toggleChat={toggleChat} />
+      <VideoChat showChat={showChat} toggleChat={toggleChat} />
       <div className='tray-buttons-container'>
         <div className='controls flex'>
           <button

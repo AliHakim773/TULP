@@ -14,8 +14,6 @@ const Tile = ({ id, isScreenShare, isLocal, isAlone, className, onClick }) => {
     }
   }
 
-  /* If a participant's video is muted, hide their video and
-  add a different background color to their tile. */
   if (videoState.isOff) {
     containerCssClasses += " no-video"
   }

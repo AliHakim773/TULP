@@ -4,8 +4,10 @@ import NavBar from "../../components/UI/NavBar"
 import HomeScreen from "../../components/VideoRoom/HomeScreen"
 import "./styles.css"
 import useVideoClassLogic from "./useVideoClassLogic"
-import { DailyProvider } from "@daily-co/daily-react"
+import { DailyAudio, DailyProvider } from "@daily-co/daily-react"
 import HairCheck from "../../components/VideoRoom/HairCheck"
+import Call from "../../components/VideoRoom/Call"
+import Tray from "../../components/VideoRoom/Tray"
 
 const VideoClass = () => {
   const navigate = useNavigate()
@@ -51,17 +53,18 @@ const VideoClass = () => {
       return (
         <DailyProvider callObject={callObject}>
           {showHairCheck ? (
-            // HariCheck
             <HairCheck joinCall={joinCall} cancelCall={startLeavingCall} />
           ) : (
-            // Join Call
-            <></>
+            <div className='page-call'>
+              <Call />
+              <Tray leaveCall={startLeavingCall} />
+              <DailyAudio />
+            </div>
           )}
         </DailyProvider>
       )
     }
 
-    // The default view is the HomeScreen, from where we start the demo.
     return (
       <HomeScreen createCall={createCall} startHairCheck={startHairCheck} />
     )

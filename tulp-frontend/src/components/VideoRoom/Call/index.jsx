@@ -10,11 +10,8 @@ import UserMediaError from "../UserMediaError"
 import Tile from "../Tile"
 
 const Call = () => {
-  /* If a participant runs into a getUserMedia() error, we need to warn them. */
   const [getUserMediaError, setGetUserMediaError] = useState(false)
 
-  /* We can use the useDailyEvent() hook to listen for daily-js events. Here's a full list
-   * of all events: https://docs.daily.co/reference/daily-js/events */
   useDailyEvent(
     "camera-error",
     useCallback(() => {
@@ -22,11 +19,9 @@ const Call = () => {
     }, [])
   )
 
-  /* This is for displaying remote participants: this includes other humans, but also screen shares. */
   const { screens } = useScreenShare()
   const remoteParticipantIds = useParticipantIds({ filter: "remote" })
 
-  /* This is for displaying our self-view. */
   const localSessionId = useLocalSessionId()
   const isAlone = remoteParticipantIds.length < 1 && screens.length < 1
   const [Primary, setPrimary] = useState(localSessionId)
@@ -64,30 +59,8 @@ const Call = () => {
       className={`call-section ${
         screens.length > 0 ? "is-screenshare" : "call"
       }`}>
-      {/* Your self view */}
-      {/* Videos of remote participants and screen shares */}
-
       {remoteParticipantIds.length > 0 || screens.length > 0 ? (
         <>
-          {/* {remoteParticipantIds.map((id) => (
-            <Tile
-              className={
-                Primary === id && !isSharingScreen(id) ? "primary-item" : ""
-              }
-              onClick={() => handleOnClick(id)}
-              key={id}
-              id={id}
-            />
-          ))}
-          {screens.map((screen) => (
-            <Tile
-              onClick={() => handleOnClick(screen.session_id)}
-              className={Primary === screen.session_id ? "primary-item" : ""}
-              key={screen.screenId}
-              id={screen.session_id}
-              isScreenShare
-            />
-          ))} */}
           {tiles.slice(0, 3).map((tile, i) => (
             <Tile
               onClick={() => handleOnClick(tile.id)}
@@ -99,7 +72,6 @@ const Call = () => {
           ))}
         </>
       ) : (
-        // When there are no remote participants or screen shares
         <div className='call-info-box'>
           <h3>Waiting for others</h3>
           <p>Invite someone by sharing this link:</p>

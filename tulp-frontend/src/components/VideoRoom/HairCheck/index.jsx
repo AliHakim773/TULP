@@ -36,7 +36,6 @@ const HairCheck = ({ joinCall, cancelCall }) => {
           )}
         </div>
         <div className='setup-settings flex center column'>
-          {/* Username */}
           <div>
             <label htmlFor='username'>Your name:</label>
             <input
@@ -48,7 +47,6 @@ const HairCheck = ({ joinCall, cancelCall }) => {
             />
           </div>
 
-          {/* Microphone select */}
           <div>
             <label htmlFor='micOptions'>Microphone:</label>
             <select
@@ -66,7 +64,6 @@ const HairCheck = ({ joinCall, cancelCall }) => {
             </select>
           </div>
 
-          {/* Speakers select */}
           <div>
             <label htmlFor='speakersOptions'>Speakers:</label>
             <select
@@ -84,7 +81,6 @@ const HairCheck = ({ joinCall, cancelCall }) => {
             </select>
           </div>
 
-          {/* Camera select */}
           <div>
             <label htmlFor='cameraOptions'>Camera:</label>
             <select
