@@ -15,27 +15,3 @@ const useProfileLogic = () => {
 }
 
 export default useProfileLogic
-
-const loading_class = [
-  {
-    _id: "skdjuhf",
-    owner: { username: "Ali" },
-    name: "Computer Bro",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam eius eaque corporis consequuntur rem numquam similique nesciunt non, autem quasi labore quibusdam dolorum. Quia libero nostrum, quod nemo minus ullam ad odit amet repellat repellendus. Voluptatem tempore aliquam quasi qui?",
-  },
-  {
-    _id: "skdjasdasduhf",
-    owner: { username: "Mohamad" },
-    name: "Electrical Bro",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam eius eaque corporis consequuntur rem numquam similique nesciunt non, autem quasi labore quibusdam dolorum. Quia libero nostrum, quod nemo minus ullam ad odit amet repellat repellendus. Voluptatem tempore aliquam quasi qui?",
-  },
-  {
-    _id: "skdjasddasdaasduhf",
-    owner: { username: "Nour" },
-    name: "English Bro",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam eius eaque corporis consequuntur rem numquam similique nesciunt non, autem quasi labore quibusdam dolorum. Quia libero nostrum, quod nemo minus ullam ad odit amet repellat repellendus. Voluptatem tempore aliquam quasi qui?",
-  },
-]
