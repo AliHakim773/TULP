@@ -3,5 +3,5 @@ import saparateDates from "../../../core/helpers/saparateDates"
 
 export const scheduleLoader = async ({ params }) => {
   const res = await classAPI.getSechdule(params.slug)
-  return saparateDates(res.schedule)
+  return { schedule: saparateDates(res.schedule), roomUrl: res.room }
 }
