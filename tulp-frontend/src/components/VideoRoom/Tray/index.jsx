@@ -26,7 +26,7 @@ import { useSelector } from "react-redux"
 import { extractUserSlice } from "../../../core/redux/userSlice"
 import CompilerAside from "../CompilerAside"
 
-const Tray = ({ leaveCall }) => {
+const Tray = ({ leaveCall, showCode, setShowCode, setShowCompiler }) => {
   const { role } = useSelector(extractUserSlice)
   const callObject = useDaily()
   const { isSharingScreen, startScreenShare, stopScreenShare } =
@@ -34,7 +34,6 @@ const Tray = ({ leaveCall }) => {
 
   const [showMeetingInformation, setShowMeetingInformation] = useState(false)
   const [showChat, setShowChat] = useState(false)
-  const [showCode, setShowCode] = useState(false)
   const [newChatMessage, setNewChatMessage] = useState(false)
 
   const localSessionId = useLocalSessionId()
@@ -82,7 +81,11 @@ const Tray = ({ leaveCall }) => {
   return (
     <div className='tray'>
       <VideoChat showChat={showChat} toggleChat={toggleChat} />
-      <CompilerAside showCode={showCode} toggleCode={toggleCode} />
+      <CompilerAside
+        setShowCompiler={setShowCompiler}
+        showCode={showCode}
+        toggleCode={toggleCode}
+      />
       <div className='tray-buttons-container'>
         <div className='controls flex'>
           <button

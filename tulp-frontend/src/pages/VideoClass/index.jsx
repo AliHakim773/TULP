@@ -8,9 +8,12 @@ import { DailyAudio, DailyProvider } from "@daily-co/daily-react"
 import HairCheck from "../../components/VideoRoom/HairCheck"
 import Call from "../../components/VideoRoom/Call"
 import Tray from "../../components/VideoRoom/Tray"
+import { useState } from "react"
 
 const VideoClass = () => {
   const navigate = useNavigate()
+  const [showCode, setShowCode] = useState(false)
+  const [showCompiler, setShowCompiler] = useState(false)
 
   const {
     showCall,
@@ -57,7 +60,12 @@ const VideoClass = () => {
           ) : (
             <div className='page-call'>
               <Call />
-              <Tray leaveCall={startLeavingCall} />
+              <Tray
+                setShowCompiler={setShowCompiler}
+                showCode={showCode}
+                setShowCode={setShowCode}
+                leaveCall={startLeavingCall}
+              />
               <DailyAudio />
             </div>
           )}

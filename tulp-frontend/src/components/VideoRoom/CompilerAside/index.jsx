@@ -4,7 +4,7 @@ import {
   useParticipantProperty,
 } from "@daily-co/daily-react"
 
-const CompilerAside = ({ showCode, toggleCode }) => {
+const CompilerAside = ({ showCode, toggleCode, setShowCompiler }) => {
   const localSessionId = useLocalSessionId()
   const username = useParticipantProperty(localSessionId, "user_name")
 
