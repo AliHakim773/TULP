@@ -10,11 +10,13 @@ const registerRoomHandler = (io, socket, user) => {
     if (!inClass) return
 
     socket.join(classObject._id.toString())
+    cb("Joined Room")
   })
 
   socket.on("room:leave-room", async (slug, cb) => {
     const classObject = await Class.findOne({ slug })
     socket.leave(classObject._id.toString())
+    cb("left Room")
   })
 
   socket.on("room:update-participants", async (slug, cb) => {
