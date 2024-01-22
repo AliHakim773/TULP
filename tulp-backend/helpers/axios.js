@@ -6,7 +6,7 @@ const sendRequest = async ({ route, method = "GET", body }) => {
     method,
     data: body,
     headers: {
-      Authorization: "Toekn 647b691b-60c0-45d3-938f-dafb3a5a3149",
+      Authorization: `Toekn ${process.env.GLOT_API_KEY}`,
       "Content-Type": "application/json",
     },
   })
