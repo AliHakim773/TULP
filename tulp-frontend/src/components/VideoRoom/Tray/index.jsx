@@ -26,7 +26,8 @@ import { useSelector } from "react-redux"
 import { extractUserSlice } from "../../../core/redux/userSlice"
 import CompilerAside from "../CompilerAside"
 
-const Tray = ({ leaveCall, showCode, setShowCode, setShowCompiler }) => {
+const Tray = ({ leaveCall, setShowCompiler }) => {
+  const [showCode, setShowCode] = useState(false)
   const { role } = useSelector(extractUserSlice)
   const callObject = useDaily()
   const { isSharingScreen, startScreenShare, stopScreenShare } =
