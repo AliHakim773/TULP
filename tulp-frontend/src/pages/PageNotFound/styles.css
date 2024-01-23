@@ -4,3 +4,6 @@
   font-size: 32px;
   color: var(--grey-3);
 }
+.page-404 {
+  height: calc(100vh - 303px);
+}

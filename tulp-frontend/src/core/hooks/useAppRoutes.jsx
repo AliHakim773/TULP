@@ -154,9 +154,7 @@ const useAppRoutes = () => {
           </Route>
           <Route path='room' element={<VideoClass />} />
         </Route>
-        <Route element={<RootLayout />}>
-          <Route path='*' element={<PageNotFound />} />
-        </Route>
+        <Route path='*' element={<PageNotFound />} />
       </Route>
     )
   )
