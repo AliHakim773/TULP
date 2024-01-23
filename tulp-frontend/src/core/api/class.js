@@ -31,6 +31,12 @@ const classAPI = {
     })
     return response
   },
+  getUserProfile: async (slug) => {
+    const response = await sendRequest({
+      route: `class/get-user/${slug}`,
+    })
+    return response
+  },
   addSchedule: async (data) => {
     const response = await sendRequest({
       route: "class/schedule",
