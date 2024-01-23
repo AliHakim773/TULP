@@ -34,4 +34,10 @@ export const userApi = {
     })
     return response
   },
+  getClasses: async () => {
+    const response = await sendRequest({
+      route: "user/classes",
+    })
+    return response
+  },
 }
