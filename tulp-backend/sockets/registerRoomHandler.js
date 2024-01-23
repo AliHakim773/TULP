@@ -39,6 +39,15 @@ const registerRoomHandler = (io, socket, user) => {
     }
   })
 
+  socket.on("room:toggle-compiler", async (slug, value, cb) => {
+    try {
+      const classObject = await Class.findOne({ slug })
+      socket.to(classObject._id.toString()).emit("room:toggle-compiler", value)
+    } catch (e) {
+      return
+    }
+  })
+
   socket.on("room:create", async (slug, cb) => {
     try {
       const classObject = await Class.findOne({ slug })
