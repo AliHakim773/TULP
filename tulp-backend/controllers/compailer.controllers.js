@@ -58,6 +58,7 @@ const deleteRoom = async (req, res) => {
   try {
     const classObject = await Class.findOne({ slug })
     classObject.room = ""
+    classObject.participants = []
     await classObject.save()
 
     res.status(200).send({ message: "Room removed" })
