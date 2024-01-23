@@ -17,6 +17,7 @@ const {
   getStudentss,
   removeClassStudent,
   getSchedule,
+  getUserProfile,
 } = require("../controllers/class.controllers")
 const instructorMiddleware = require("../middlewares/instructor.middleware")
 const uploadFiles = require("../middlewares/multerFiles.middleware")
@@ -33,6 +34,7 @@ const router = express.Router()
 router.post("/", addClass)
 router.get("/in", getClassesIn)
 router.post("/search", searchClass)
+router.get("/get-user/:slug", getUserProfile)
 router.post("/request-to-join", requestToJoin)
 router.get("/:slug/students", getStudentss)
 router.get("/:slug", getClass)
