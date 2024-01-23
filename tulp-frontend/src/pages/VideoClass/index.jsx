@@ -9,6 +9,7 @@ import HairCheck from "../../components/VideoRoom/HairCheck"
 import Call from "../../components/VideoRoom/Call"
 import Tray from "../../components/VideoRoom/Tray"
 import { useState } from "react"
+import CollabrativeCompiler from "../../components/CollabrativeCompiler"
 
 const VideoClass = () => {
   const navigate = useNavigate()
@@ -58,7 +59,13 @@ const VideoClass = () => {
             <HairCheck joinCall={joinCall} cancelCall={startLeavingCall} />
           ) : (
             <div className='page-call'>
-              {showCompiler ? <h1>Hello</h1> : <Call />}
+              {showCompiler ? (
+                <div className='compiler-section'>
+                  <CollabrativeCompiler />
+                </div>
+              ) : (
+                <Call />
+              )}
 
               <Tray
                 setShowCompiler={setShowCompiler}
