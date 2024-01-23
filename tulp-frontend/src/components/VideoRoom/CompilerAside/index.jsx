@@ -1,3 +1,5 @@
+import { useParams } from "react-router-dom"
+import { socket } from "../../../core/socket"
 import "./styles.css"
 import {
   useLocalSessionId,
@@ -5,9 +7,13 @@ import {
 } from "@daily-co/daily-react"
 
 const CompilerAside = ({ showCode, toggleCode, setShowCompiler }) => {
+  const { slug } = useParams()
   const localSessionId = useLocalSessionId()
   const handleShowCompiler = () => {
-    setShowCompiler((prev) => !prev)
+    setShowCompiler((prev) => {
+      socket.emit("room:toggle-compiler", slug, !prev)
+      return !prev
+    })
   }
   const username = useParticipantProperty(localSessionId, "user_name")
 
