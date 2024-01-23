@@ -12,7 +12,6 @@ import { useState } from "react"
 
 const VideoClass = () => {
   const navigate = useNavigate()
-  const [showCode, setShowCode] = useState(false)
   const [showCompiler, setShowCompiler] = useState(false)
 
   const {
@@ -59,11 +58,10 @@ const VideoClass = () => {
             <HairCheck joinCall={joinCall} cancelCall={startLeavingCall} />
           ) : (
             <div className='page-call'>
-              <Call />
+              {showCompiler ? <h1>Hello</h1> : <Call />}
+
               <Tray
                 setShowCompiler={setShowCompiler}
-                showCode={showCode}
-                setShowCode={setShowCode}
                 leaveCall={startLeavingCall}
               />
               <DailyAudio />
