@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken")
 const fs = require("fs").promises
 const User = require("../models/user.model")
+const Class = require("../models/class.model")
 
 const editUser = async (req, res) => {
   const id = req.user._id
@@ -163,10 +164,25 @@ const searchInstructors = async (req, res) => {
   }
 }
 
+const getClasses = async (req, res) => {
+  const id = req.user._id
+  try {
+    const user = await User.findById(id).populate("enrolledClasses")
+    const classInstructor = await Class.find({ instructors: id })
+    const classOwned = await Class.find({ owner: id })
+    res.status(200).send({
+      classes: [...user.enrolledClasses, ...classInstructor, ...classOwned],
+    })
+  } catch (error) {
+    res.status(500).send({ error })
+  }
+}
+
 module.exports = {
   editUser,
   getCurrentUser,
   getUserById,
   uploadImage,
   searchInstructors,
+  getClasses,
 }
