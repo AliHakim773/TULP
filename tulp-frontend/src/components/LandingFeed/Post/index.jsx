@@ -7,9 +7,10 @@ import usePostLogic from "./usePostLogic"
 import Modal from "../../UI/Modal"
 import CommentForm from "../CommentForm"
 import timeSince from "../../../core/helpers/timeSince"
-
+import { useNavigate } from "react-router-dom"
 
 const Post = ({ post, postId, setPosts }) => {
+  const navigate = useNavigate()
   const { _id, user, content, likes, createdAt } = post
   const { isLiked, handleOnLike, likesCount, isShowen, closeModal, openModal } =
     usePostLogic(likes, postId, _id)
@@ -25,7 +26,11 @@ const Post = ({ post, postId, setPosts }) => {
               alt='user Image'
             />
           </div>
-          <div className='blue-3-txt semi-bold'>{user.username}</div>
+          <div
+            className='post-username blue-3-txt semi-bold'
+            onClick={() => navigate(`/profile/${user.username}`)}>
+            {user.username}
+          </div>
           <div className='post-time grey-1-txt'>- {timeSince(createdAt)}</div>
         </div>
       </div>

@@ -37,3 +37,9 @@
   height: 14px;
   cursor: pointer;
 }
+.post-username {
+  text-transform: capitalize;
+}
+.post-username:hover {
+  cursor: pointer;
+}

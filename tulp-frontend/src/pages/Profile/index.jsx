@@ -18,7 +18,7 @@ const Profile = () => {
             <h3>About</h3>
             <p>{aboutMe}</p>
           </div>
-          {!data.owner && (
+          {data.owner.length !== 0 && (
             <div className='profile-classes'>
               <h3>Classes Owned</h3>{" "}
               <div className='classes-grid'>
