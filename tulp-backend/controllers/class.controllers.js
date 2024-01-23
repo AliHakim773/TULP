@@ -93,7 +93,6 @@ const getClass = async (req, res) => {
 
 const getClassesIn = async (req, res) => {
   const id = req.user._id
-  console.log("object")
   try {
     const classesOwned = await Class.find({
       owner: id,
@@ -115,6 +114,38 @@ const getClassesIn = async (req, res) => {
       owner: classesOwned,
       instructor: classesInstruct,
       student: classesStudent,
+      user,
+    })
+  } catch (error) {
+    return res.status(500).send({ error })
+  }
+}
+
+const getUserProfile = async (req, res) => {
+  const { slug } = req.params
+  try {
+    const user = await User.findOne({ username: slug }).select("-password")
+    const classesOwned = await Class.find({
+      owner: user._id,
+    })
+      .populate({ path: "owner", select: "_id username imageUrl" })
+      .select("name _id slug description")
+    const classesInstruct = await Class.find({
+      instructors: user._id,
+    })
+      .populate({ path: "owner", select: "_id username imageUrl" })
+      .select("name _id slug description")
+    const classesStudent = await Class.find({
+      students: user._id,
+    })
+      .populate({ path: "owner", select: "_id username imageUrl" })
+      .select("name _id slug description")
+
+    return res.status(200).send({
+      owner: classesOwned,
+      instructor: classesInstruct,
+      student: classesStudent,
+      user,
     })
   } catch (error) {
     return res.status(500).send({ error })
@@ -382,4 +413,5 @@ module.exports = {
   getStudentss,
   removeClassStudent,
   getSchedule,
+  getUserProfile,
 }
