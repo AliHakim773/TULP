@@ -22,7 +22,7 @@ const STATE_ERROR = "STATE_ERROR"
 const STATE_HAIRCHECK = "STATE_HAIRCHECK"
 
 const useVideoClassLogic = () => {
-  const { role } = useSelector(extractUserSlice)
+  const { role, username } = useSelector(extractUserSlice)
   const navigate = useNavigate()
   const { slug } = useParams()
   const [appState, setAppState] = useState(STATE_IDLE)
@@ -73,9 +73,11 @@ const useVideoClassLogic = () => {
     if (role === "instructor") {
       try {
         await roomAPI.deleteRoom({ slug })
+        await roomAPI.removeParticipant({ slug, username })
         socket.emit("room:create", "", async (msg) => {})
       } catch (e) {}
     }
+    socket.emit("room:update-participants", slug)
     navigate(`/class/${slug}/stream`)
   }, [callObject, appState])
 

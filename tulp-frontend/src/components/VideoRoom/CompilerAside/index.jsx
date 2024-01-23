@@ -5,9 +5,11 @@ import {
   useLocalSessionId,
   useParticipantProperty,
 } from "@daily-co/daily-react"
+import { useEffect, useState } from "react"
 
 const CompilerAside = ({ showCode, toggleCode, setShowCompiler }) => {
   const { slug } = useParams()
+  const [participants, setParticipants] = useState([])
   const localSessionId = useLocalSessionId()
   const handleShowCompiler = () => {
     setShowCompiler((prev) => {
@@ -15,7 +17,23 @@ const CompilerAside = ({ showCode, toggleCode, setShowCompiler }) => {
       return !prev
     })
   }
-  const username = useParticipantProperty(localSessionId, "user_name")
+
+  const handleParticipantToggle = (e) => {
+    socket.emit("room:toggle-participants", slug, e.target.checked)
+  }
+
+  useEffect(() => {
+    if (!socket.hasListeners("room:update-participants")) {
+      socket.on("room:update-participants", (value) => {
+        setParticipants(value)
+      })
+    }
+    return () => {
+      socket.removeListener("room:update-participants", (value) => {
+        setParticipants(value)
+      })
+    }
+  }, [])
 
   return showCode ? (
     <aside className='video-chat flex column shadow'>
@@ -30,23 +48,21 @@ const CompilerAside = ({ showCode, toggleCode, setShowCompiler }) => {
             <span class='slider'></span>
           </label>
         </li>
-        <li>
+        {/* <li>
           <h4>Permissions</h4>
         </li>
-        <li>
-          <span>Start Compiler</span>
-          <label class='switch'>
-            <input type='checkbox' />
-            <span class='slider'></span>
-          </label>
-        </li>
-        <li>
-          <span>Start Compiler</span>
-          <label class='switch'>
-            <input type='checkbox' />
-            <span class='slider'></span>
-          </label>
-        </li>
+        {participants &&
+          participants.map((p) => {
+            return (
+              <li key={p}>
+                <span>{p}</span>
+                <label class='switch'>
+                  <input type='checkbox' onChange={handleParticipantToggle} />
+                  <span class='slider'></span>
+                </label>
+              </li>
+            )
+          })} */}
       </ul>
     </aside>
   ) : null

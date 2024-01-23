@@ -8,9 +8,13 @@ import {
 import { useCallback, useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import { extractUserSlice } from "../../../core/redux/userSlice"
+import { roomAPI } from "../../../core/api/room"
+import { useParams } from "react-router-dom"
+import { socket } from "../../../core/socket"
 
 const useHairCheckLogic = (joinCall) => {
   const localSessionId = useLocalSessionId()
+  const { slug } = useParams()
   const { username: userName } = useSelector(extractUserSlice)
   const initialUsername = useParticipantProperty(localSessionId, "user_name")
   const {
@@ -45,8 +49,12 @@ const useHairCheckLogic = (joinCall) => {
     callObject.setUserName(e.target.value)
   }
 
-  const handleJoin = (e) => {
+  const handleJoin = async (e) => {
     e.preventDefault()
+    try {
+      await roomAPI.addParticipant({ slug, username: userName })
+      socket.emit("room:update-participants", slug)
+    } catch {}
     joinCall(username.trim())
   }
 
