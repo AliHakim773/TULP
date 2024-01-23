@@ -6,6 +6,9 @@ import {
 
 const CompilerAside = ({ showCode, toggleCode, setShowCompiler }) => {
   const localSessionId = useLocalSessionId()
+  const handleShowCompiler = () => {
+    setShowCompiler((prev) => !prev)
+  }
   const username = useParticipantProperty(localSessionId, "user_name")
 
   return showCode ? (
@@ -13,7 +16,32 @@ const CompilerAside = ({ showCode, toggleCode, setShowCompiler }) => {
       <button onClick={toggleCode} className='close-chat' type='button'>
         Close
       </button>
-      <ul className='video-chat-messages '></ul>
+      <ul className='compiler-list flex column'>
+        <li>
+          <span>Start Compiler</span>
+          <label class='switch'>
+            <input type='checkbox' onChange={handleShowCompiler} />
+            <span class='slider'></span>
+          </label>
+        </li>
+        <li>
+          <h4>Permissions</h4>
+        </li>
+        <li>
+          <span>Start Compiler</span>
+          <label class='switch'>
+            <input type='checkbox' />
+            <span class='slider'></span>
+          </label>
+        </li>
+        <li>
+          <span>Start Compiler</span>
+          <label class='switch'>
+            <input type='checkbox' />
+            <span class='slider'></span>
+          </label>
+        </li>
+      </ul>
     </aside>
   ) : null
 }
