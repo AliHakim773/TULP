@@ -1,0 +1,16 @@
+.user-classes {
+  padding: 0.7rem;
+}
+.user-classes > h4 {
+  text-align: center;
+  margin-bottom: 5px;
+}
+.user-class-item {
+  text-transform: capitalize;
+  padding: 0.75rem 0.5rem;
+  cursor: default;
+  margin-block: 1.1rem;
+}
+.user-class-item:hover {
+  color: var(--orange-2);
+}
