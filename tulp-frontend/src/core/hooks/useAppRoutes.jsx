@@ -61,7 +61,7 @@ import { profileLoader } from "../../pages/Profile/profileLoader"
 const useAppRoutes = () => {
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path='/'>
+      <Route path='/' errorElement={<PageNotFound />}>
         <Route element={<RootLayout />}>
           <Route index element={<LandingPage />} />
           <Route path='register' element={<RegisterPage />} />
@@ -154,7 +154,9 @@ const useAppRoutes = () => {
           </Route>
           <Route path='room' element={<VideoClass />} />
         </Route>
-        <Route path='*' element={<PageNotFound />} />
+        <Route element={<RootLayout />}>
+          <Route path='*' element={<PageNotFound />} />
+        </Route>
       </Route>
     )
   )

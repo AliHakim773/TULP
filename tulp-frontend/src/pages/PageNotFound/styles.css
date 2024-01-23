@@ -1,0 +1,6 @@
+.not-found {
+  padding-top: 20vh;
+  font-weight: 900;
+  font-size: 32px;
+  color: var(--grey-3);
+}
