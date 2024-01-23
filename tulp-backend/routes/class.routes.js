@@ -31,11 +31,11 @@ const {
 const router = express.Router()
 
 router.post("/", addClass)
-router.get("/:slug", getClass)
 router.get("/in", getClassesIn)
 router.post("/search", searchClass)
 router.post("/request-to-join", requestToJoin)
 router.get("/:slug/students", getStudentss)
+router.get("/:slug", getClass)
 router.delete("/:slug/students", removeClassStudent)
 router.get("/:slug/get-request", getRequests)
 router.post("/:slug/accept-request", acceptRequest)
