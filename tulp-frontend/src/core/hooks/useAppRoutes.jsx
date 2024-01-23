@@ -56,6 +56,7 @@ import { scheduleLoader } from "../../components/ClassHome/Schedule/secheduleLoa
 import { chatLoader } from "../../components/Chat/chatLoader"
 import { chatChannelMainLoader } from "../../components/Chat/ChatChannelMain/ChatChannelMainLoader"
 import { chatDMMainLoader } from "../../components/Chat/ChatDmMain/ChatDMMainLoader"
+import { profileLoader } from "../../pages/Profile/profileLoader"
 
 const useAppRoutes = () => {
   const router = createBrowserRouter(
@@ -65,7 +66,11 @@ const useAppRoutes = () => {
           <Route index element={<LandingPage />} />
           <Route path='register' element={<RegisterPage />} />
           <Route path='login' element={<LoginPage />} />
-          <Route path='profile/:id?' element={<Profile />} />
+          <Route
+            path='profile/:slug?'
+            element={<Profile />}
+            loader={profileLoader}
+          />
           <Route path='edit-profile' element={<EditProfile />} />
           <Route path='create-class' element={<CreateClass />} />
           <Route

@@ -2,10 +2,13 @@ import React from "react"
 import "./styles.css"
 import ProfileCard from "../../components/ProfileCard"
 import ClassCard from "../../components/ClassCard"
-import useProfileLogic from "./useProfileLogic"
+import { useLoaderData } from "react-router-dom"
+import { useSelector } from "react-redux"
+import { extractUserSlice } from "../../core/redux/userSlice"
 
 const Profile = () => {
-  const { classes } = useProfileLogic()
+  const data = useLoaderData()
+  const { aboutMe } = useSelector(extractUserSlice)
 
   return (
     <div className='profile-section w-100 flex'>
@@ -16,17 +19,12 @@ const Profile = () => {
         <div className='profile'>
           <div className='about-me-section'>
             <h3>About</h3>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores
-              officiis quibusdam doloremque, vel accusamus eaque nemo deserunt
-              ad aliquam numquam rem porro dolore possimus animi laudantium
-              maiores consequatur laboriosam. Similique!
-            </p>
+            <p>{aboutMe}</p>
           </div>
           <div className='profile-classes'>
-            <h3>Open Classes</h3>{" "}
+            <h3>Classes Owned</h3>{" "}
             <div className='classes-grid'>
-              {classes?.map((classObject) => {
+              {data.owner?.map((classObject) => {
                 return (
                   <ClassCard
                     key={classObject._id}
@@ -38,6 +36,41 @@ const Profile = () => {
               })}
             </div>
           </div>
+          {data.instructor.length !== 0 && (
+            <div className='profile-classes'>
+              <h3>Classes Instructing</h3>{" "}
+              <div className='classes-grid'>
+                {data.instructor?.map((classObject) => {
+                  return (
+                    <ClassCard
+                      key={classObject._id}
+                      name={classObject.name}
+                      description={classObject.description}
+                      owner={classObject.owner.username}
+                    />
+                  )
+                })}
+              </div>
+            </div>
+          )}
+
+          {data.student.length !== 0 && (
+            <div className='profile-classes'>
+              <h3>Classes Studying In</h3>{" "}
+              <div className='classes-grid'>
+                {data.student?.map((classObject) => {
+                  return (
+                    <ClassCard
+                      key={classObject._id}
+                      name={classObject.name}
+                      description={classObject.description}
+                      owner={classObject.owner.username}
+                    />
+                  )
+                })}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>
