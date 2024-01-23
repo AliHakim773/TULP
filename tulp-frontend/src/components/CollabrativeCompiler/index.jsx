@@ -1,15 +1,19 @@
 import { Editor } from "@monaco-editor/react"
 import "./styles.css"
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { Doc } from "yjs"
 import { WebrtcProvider } from "y-webrtc"
 import { MonacoBinding } from "y-monaco"
 import axios from "axios"
 import "./styles.css"
 import { useParams } from "react-router-dom"
+import { useSelector } from "react-redux"
+import { extractUserSlice } from "../../core/redux/userSlice"
+import { socket } from "../../core/socket"
 
 const CollabrativeCompiler = ({ isdisabled = false }) => {
   const { slug } = useParams()
+  const { role } = useSelector(extractUserSlice)
   const [output, setOutput] = useState("// Output here")
 
   const [lang, setLang] = useState("python")
@@ -22,27 +26,26 @@ const CollabrativeCompiler = ({ isdisabled = false }) => {
     setInput(e.target.value)
   }
 
-  const [value, setValue] = useState("// Start Coding")
+  const [value, setValue] = useState("")
   const editorRef = useRef(null)
 
   const handleOnChange = (text, event) => {
     setValue(text)
+    socket.emit("room:compiler-change", slug, text)
   }
+
   const handleEditorDidMount = (editor, monaco) => {
     editorRef.current = editor
-
-    const doc = new Doc()
-
-    const provider = new WebrtcProvider(slug, doc)
-    const type = doc.getText("monaco")
-
-    const binding = new MonacoBinding(
-      type,
-      editorRef.current.getModel(),
-      new Set([editorRef.current]),
-      provider.awareness
-    )
   }
+
+  useEffect(() => {
+    socket.on("room:compiler-change", (text) => {
+      setValue(text)
+    })
+    socket.on("room:get-output", (outValue) => {
+      setOutput(outValue)
+    })
+  }, [])
 
   const handleOnCompaileClick = async () => {
     try {
@@ -55,6 +58,7 @@ const CollabrativeCompiler = ({ isdisabled = false }) => {
         },
       })
       setOutput(response.data.output.stdout)
+      socket.emit("room:get-output", slug, response.data.output.stdout)
     } catch (e) {
       console.log(e)
     }
