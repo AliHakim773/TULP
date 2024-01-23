@@ -367,6 +367,10 @@ const acceptRequest = async (req, res) => {
 
     await classObject.save()
 
+    const user = await User.findById(_id)
+    user.enrolledClasses.push(classObject._id)
+    await user.save()
+
     return res.status(200).send({ message: "Request accepted successfully" })
   } catch (error) {
     return res.status(500).send({ error })
