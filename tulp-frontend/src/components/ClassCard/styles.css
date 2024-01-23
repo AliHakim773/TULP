@@ -1,6 +1,6 @@
 .class-card {
   background-color: var(--white);
-  height: 300px;
+  height: 200px;
   padding: 1rem;
 }
 .class-card-header {
