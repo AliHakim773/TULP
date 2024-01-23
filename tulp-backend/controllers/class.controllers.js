@@ -93,14 +93,29 @@ const getClass = async (req, res) => {
 
 const getClassesIn = async (req, res) => {
   const id = req.user._id
+  console.log("object")
   try {
-    const classes = await Class.find({
-      $or: [{ owner: id }, { instructors: id }],
+    const classesOwned = await Class.find({
+      owner: id,
     })
-      .select("owner name description _id")
-      .populate({ path: "owner", select: "username _id" })
+      .populate({ path: "owner", select: "_id username imageUrl" })
+      .select("name _id slug description")
+    const classesInstruct = await Class.find({
+      instructors: id,
+    })
+      .populate({ path: "owner", select: "_id username imageUrl" })
+      .select("name _id slug description")
+    const classesStudent = await Class.find({
+      students: id,
+    })
+      .populate({ path: "owner", select: "_id username imageUrl" })
+      .select("name _id slug description")
 
-    return res.status(200).send({ classes })
+    return res.status(200).send({
+      owner: classesOwned,
+      instructor: classesInstruct,
+      student: classesStudent,
+    })
   } catch (error) {
     return res.status(500).send({ error })
   }
@@ -148,7 +163,7 @@ const getSchedule = async (req, res) => {
   const { slug } = req.params
   try {
     const classObject = await Class.findOne({ slug })
-    
+
     return res
       .status(200)
       .send({ schedule: classObject.schedule, room: classObject.room })
