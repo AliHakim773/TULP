@@ -136,6 +136,7 @@ const useVideoClassLogic = () => {
     showHairCheck,
     apiError,
     callObject,
+    slug,
     createCall,
     startLeavingCall,
     startHairCheck,
