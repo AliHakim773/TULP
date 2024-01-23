@@ -58,6 +58,14 @@ const registerRoomHandler = (io, socket, user) => {
     } catch {}
   })
 
+  socket.on("room:compiler-change", async (slug, value, cb) => {
+    try {
+      const classObject = await Class.findOne({ slug })
+      socket.to(classObject._id.toString()).emit("room:compiler-change", value)
+      cb("mounted")
+    } catch {}
+  })
+
   socket.on("room:get-output", async (slug, output, cb) => {
     try {
       const classObject = await Class.findOne({ slug })
