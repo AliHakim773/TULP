@@ -11,10 +11,12 @@ import linkedin from "../../assets/svgs/linkedin.svg"
 import { userApi } from "../../core/api/user"
 import toast from "react-hot-toast"
 
-const ProfileCard = () => {
+const ProfileCard = ({ otherUser }) => {
   const dispatch = useDispatch()
-  const { slug } = useParams() // TODO: profile with ID
-  const userSlice = useSelector(extractUserSlice)
+  let user = useSelector(extractUserSlice)
+  if (otherUser) {
+    user = otherUser
+  }
   const [file, setFile] = useState("")
 
   const handleOnChange = async (e) => {
@@ -38,14 +40,14 @@ const ProfileCard = () => {
   return (
     <div className='profile-card shadow'>
       <div className='profile-card-1 flex column center w-100'>
-        <div className='profile-role'>{userSlice.role}</div>
+        <div className='profile-role'>{user.role}</div>
         <div className='profile-img'>
           <img
-            src={`${import.meta.env.VITE_BASE_URL}${userSlice.imageUrl}`}
+            src={`${import.meta.env.VITE_BASE_URL}${user.imageUrl}`}
             alt=''
           />
         </div>
-        <div className='profile-username'>{userSlice.username}</div>
+        <div className='profile-username'>{user.username}</div>
       </div>
       <div className='profile-line' />
       <div className='profile-card-2 flex column center w-100'>
@@ -73,26 +75,26 @@ const ProfileCard = () => {
 
         <div className='profile-info flex column'>
           <div className='profile-item'>
-            Full Name: {userSlice.firstName} {userSlice.lastName}
+            Full Name: {user.firstName} {user.lastName}
           </div>
-          {userSlice.birth && (
-            <div className='profile-item'>Birth Date: {userSlice.birth}</div>
+          {user.birth && (
+            <div className='profile-item'>Birth Date: {user.birth}</div>
           )}
-          {userSlice.education ? (
+          {user.education ? (
             <>
-              {userSlice.education.university && (
+              {user.education.university && (
                 <div className='profile-item'>
-                  University: {userSlice.education.university}
+                  University: {user.education.university}
                 </div>
               )}
-              {userSlice.education.dateOfGraduation && (
+              {user.education.dateOfGraduation && (
                 <div className='profile-item'>
-                  Graduation Date: {userSlice.education.dateOfGraduation}
+                  Graduation Date: {user.education.dateOfGraduation}
                 </div>
               )}
-              {userSlice.education.degree && (
+              {user.education.degree && (
                 <div className='profile-item'>
-                  Degree: {userSlice.education.degree}
+                  Degree: {user.education.degree}
                 </div>
               )}
             </>
@@ -100,39 +102,33 @@ const ProfileCard = () => {
             ""
           )}
           {/* FIXME: show only vailable links */}
-          {userSlice.socialMediaLinks && (
+          {user.socialMediaLinks && (
             <div className='profile-social-media-links'>
               Social Media Links:
               <div className='profile-links flex row'>
                 <a
                   target='_blank'
-                  href={userSlice.socialMediaLinks.github}
+                  href={user.socialMediaLinks.github}
                   className='sml-icon'>
                   <img src={github} alt='github' />
                 </a>
                 <a
                   target='_blank'
-                  href={userSlice.socialMediaLinks.linkedin}
+                  href={user.socialMediaLinks.linkedin}
                   className='sml-icon'>
                   <img src={linkedin} alt='linkedin' />
                 </a>
                 <a
                   target='_blank'
-                  href={userSlice.socialMediaLinks.instagram}
+                  href={user.socialMediaLinks.instagram}
                   className='sml-icon'>
                   <img src={instagram} alt='instagram' />
                 </a>
                 <a
                   target='_blank'
-                  href={userSlice.socialMediaLinks.twitter}
+                  href={user.socialMediaLinks.twitter}
                   className='sml-icon'>
                   <img src={twitter} alt='twitter' />
-                </a>
-                <a
-                  target='_blank'
-                  href={userSlice.socialMediaLinks.facebook}
-                  className='sml-icon'>
-                  <img src={facebook} alt='facebook' />
                 </a>
               </div>
             </div>

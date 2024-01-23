@@ -12,7 +12,11 @@
   font-size: 18px;
   padding-inline-end: 3rem;
 }
+.profile-classes {
+  width: 100%;
+}
 .classes-grid {
+  width: 100%;
   padding-block: 1rem;
   display: grid;
   grid-template-rows: auto;
