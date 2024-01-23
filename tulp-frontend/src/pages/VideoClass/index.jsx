@@ -8,8 +8,9 @@ import { DailyAudio, DailyProvider } from "@daily-co/daily-react"
 import HairCheck from "../../components/VideoRoom/HairCheck"
 import Call from "../../components/VideoRoom/Call"
 import Tray from "../../components/VideoRoom/Tray"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import CollabrativeCompiler from "../../components/CollabrativeCompiler"
+import { socket } from "../../core/socket"
 
 const VideoClass = () => {
   const navigate = useNavigate()
@@ -20,11 +21,22 @@ const VideoClass = () => {
     showHairCheck,
     callObject,
     apiError,
+    slug,
     createCall,
     startHairCheck,
     startLeavingCall,
     joinCall,
   } = useVideoClassLogic()
+
+  useEffect(() => {
+    socket.on("room:toggle-compiler", (value) => {
+      setShowCompiler(value)
+    })
+
+    return () => {
+      socket.removeListener("room:toggle-compiler", (showCompiler) => {})
+    }
+  }, [])
 
   const renderApp = () => {
     if (apiError) {
