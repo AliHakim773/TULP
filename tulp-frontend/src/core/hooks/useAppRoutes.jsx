@@ -67,7 +67,7 @@ const useAppRoutes = () => {
           <Route path='register' element={<RegisterPage />} />
           <Route path='login' element={<LoginPage />} />
           <Route
-            path='profile/:slug?'
+            path='profile/:username?'
             element={<Profile />}
             loader={profileLoader}
           />
