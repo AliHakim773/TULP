@@ -2,6 +2,7 @@ import React from "react"
 import "./styles.css"
 import LandingFeed from "../../components/LandingFeed"
 import SearchClasses from "../../components/SearchClasses"
+import RightAside from "../../components/RightAside"
 
 const LandingPage = () => {
   return (
@@ -12,6 +13,9 @@ const LandingPage = () => {
             <SearchClasses />
           </aside>
           <LandingFeed />
+          <aside className='landing-aside'>
+            <RightAside />
+          </aside>
         </div>
       </div>
     </>

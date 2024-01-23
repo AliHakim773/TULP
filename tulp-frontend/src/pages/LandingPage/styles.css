@@ -1,10 +1,9 @@
 .home-page {
-  /* height: max(calc(100vh - 360px), 600px); */
   width: min(100%, 1600px);
   margin-block: 2rem;
   padding-inline: 15px;
   gap: 20px;
 }
 .landing-aside {
-  width: 23%;
+  width: 30%;
 }
