@@ -1,3 +1,11 @@
+.trey {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 122, 204, 1) 0%,
+    rgba(51, 173, 255, 1) 50%,
+    rgba(51, 173, 255, 1) 100%
+  );
+}
 .tray-buttons-container {
   width: 100vw;
   height: 7vh;
