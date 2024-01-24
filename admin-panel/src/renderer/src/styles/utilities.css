@@ -2,7 +2,9 @@
   --section-inline-p: 2rem;
   --section-block-p: 3rem;
 }
-
+.container {
+  width: calc(100vw - 200px);
+}
 .page {
   width: 100vw;
   height: 100vh;
