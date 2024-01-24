@@ -15,6 +15,7 @@ import RegisterPage from "../../pages/RegisterPage"
 import LoginPage from "../../pages/LoginPage"
 
 // Pages
+import HomePage from "../../pages/HomePage"
 import LandingPage from "../../pages/LandingPage"
 import PageNotFound from "../../pages/PageNotFound"
 import Profile from "../../pages/Profile"
@@ -62,6 +63,10 @@ const useAppRoutes = () => {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path='/' errorElement={<PageNotFound />}>
+        <Route element={<RootLayout />}>
+          <Route index element={<HomePage />} />
+        </Route>
+
         <Route element={<RootLayout />}>
           <Route path='home' element={<LandingPage />} />
           <Route path='register' element={<RegisterPage />} />
