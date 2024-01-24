@@ -1,6 +1,5 @@
 import { useLoaderData } from 'react-router-dom'
 import ClassTable from '../../components/Table/classTable'
-import './styles.css'
 
 const ClassesPage = () => {
   const data = useLoaderData()
