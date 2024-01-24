@@ -14,6 +14,7 @@ import NavLayout from './components/Layouts/NavLayout'
 
 // pages
 import HomePage from './pages/HomePage'
+import UsersPage from './pages/UsersPage'
 
 const router = createHashRouter(
   createRoutesFromElements(
@@ -22,6 +23,7 @@ const router = createHashRouter(
       <Route element={<AuthLayout />} errorElement={<Navigate to={'/home'} />}>
         <Route element={<NavLayout />}>
           <Route path="home" element={<HomePage />}></Route>
+          <Route path="users" element={<UsersPage />}></Route>
         </Route>
       </Route>
       <Route path="/*" element={<Navigate to={'/home'} />} />
