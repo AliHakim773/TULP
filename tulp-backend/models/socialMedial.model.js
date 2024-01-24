@@ -9,10 +9,6 @@ const SocialMediaSchema = mongoose.Schema({
     type: String,
     default: "",
   },
-  facebook: {
-    type: String,
-    default: "",
-  },
   instagram: {
     type: String,
     default: "",
