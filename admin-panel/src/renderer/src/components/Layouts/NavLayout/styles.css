@@ -1,5 +1,5 @@
 .nav-aside {
-  width: 200px;
+  width: 290px;
   background-color: var(--blue-3);
 }
 .nav-item {
@@ -10,7 +10,7 @@
   border-bottom-right-radius: 40px;
 }
 .nav-item a {
-  padding-block: 1rem;
+  padding-block: 0.5rem;
   padding-left: 1rem;
   color: var(--white);
   font-weight: 600;
@@ -28,4 +28,23 @@
 }
 .logout {
   margin-top: auto;
+}
+.nav-item a {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.nav-item path {
+  fill: var(--white);
+}
+.logo-image img,
+.logo-image {
+  display: flex;
+  height: 50px;
+  width: 50px;
+}
+.nav-item-logo {
+  color: var(--white);
+  font-weight: 600;
+  cursor: default;
 }
