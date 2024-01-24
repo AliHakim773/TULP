@@ -6,7 +6,6 @@ const Class = require("../models/class.model")
 const adminLogin = async (req, res) => {
   const { username, password } = req.body
   try {
-    console.log({ username, password })
     const user = await User.findOne({ username, role: "admin" })
     if (!user)
       return res.status(400).send({ message: "Wrong username or password" })
@@ -49,7 +48,6 @@ const getUsers = async (req, res) => {
 
 const deleteUsers = async (req, res) => {
   const { usersId } = req.body
-  console.log(usersId)
   try {
     await User.deleteMany({ _id: { $in: usersId } })
     res.status(200).send({ message: "success" })
