@@ -8,7 +8,6 @@ export const sendRequest = async ({ route, method = 'GET', body }) => {
 
   const authorizationHeader = token
 
-  console.log(import.meta.env.VITE_BASE_URL)
   const response = await axios.request({
     url: route,
     method,
