@@ -1,6 +1,7 @@
 const User = require("../models/user.model")
 const jwt = require("jsonwebtoken")
 const bcrypt = require("bcrypt")
+const Class = require("../models/class.model")
 
 const adminLogin = async (req, res) => {
   const { username, password } = req.body
@@ -46,4 +47,13 @@ const getUsers = async (req, res) => {
   }
 }
 
-module.exports = { adminLogin, getUsers }
+const getClasss = async (req, res) => {
+  try {
+    const users = await Class.find({})
+    res.status(200).send({ users })
+  } catch (error) {
+    res.status(500).send({ error })
+  }
+}
+
+module.exports = { adminLogin, getUsers, getClasss }
