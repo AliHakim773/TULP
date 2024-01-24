@@ -26,3 +26,6 @@
   text-decoration: underline;
   background-color: rgba(255, 162, 0, 0.7);
 }
+.logout {
+  margin-top: auto;
+}
