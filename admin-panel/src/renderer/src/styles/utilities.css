@@ -35,9 +35,39 @@ img {
 .row {
   flex-direction: row;
 }
+.gap-1 {
+  gap: 10px;
+}
+.gap-2 {
+  gap: 15px;
+}
+.gap-3 {
+  gap: 20px;
+}
 .center {
   justify-content: center;
   align-items: center;
+}
+.align-center {
+  align-items: center;
+}
+.justify-center {
+  justify-content: center;
+}
+.align-end {
+  align-items: flex-end;
+}
+.justify-end {
+  justify-content: flex-end;
+}
+.align-start {
+  align-items: flex-start;
+}
+.justify-start {
+  justify-content: flex-start;
+}
+.text-center {
+  text-align: center;
 }
 .circle {
   border-radius: 50%;
