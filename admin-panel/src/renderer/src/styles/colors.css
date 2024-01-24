@@ -1,0 +1,114 @@
+:root {
+  --white: #fcfcfc;
+  --black: #262626;
+  --grey-1: #4d4d4d;
+  --grey-2: #737373;
+  --grey-3: #999999;
+  --grey-4: #bfbfbf;
+  --grey-5: #e6e6e6;
+  --blue-1: #007acc;
+  --blue-2: #0099ff;
+  --blue-3: #33adff;
+  --orange-1: #c75300;
+  --orange-2: #fa6800;
+  --orange-3: #ff852e;
+  --green-1: #00cc1f;
+  --green-2: #00ff27;
+  --green-3: #33ff52;
+}
+.white-txt {
+  color: var(--white);
+}
+.white-bg {
+  background-color: var(--white);
+}
+.black-txt {
+  color: var(--black);
+}
+.black-bg {
+  background-color: var(--black);
+}
+.grey-1-txt {
+  color: var(--grey-1);
+}
+.grey-1-bg {
+  background-color: var(--grey-1);
+}
+.grey-2-txt {
+  color: var(--grey-2);
+}
+.grey-2-bg {
+  background-color: var(--grey-2);
+}
+.grey-3-txt {
+  color: var(--grey-3);
+}
+.grey-3-bg {
+  background-color: var(--grey-3);
+}
+.grey-4-txt {
+  color: var(--grey-4);
+}
+.grey-4-bg {
+  background-color: var(--grey-4);
+}
+.grey-5-txt {
+  color: var(--grey-5);
+}
+.grey-5-bg {
+  background-color: var(--grey-5);
+}
+.blue-1-txt {
+  color: var(--blue-1);
+}
+.blue-1-bg {
+  background-color: var(--blue-1);
+}
+.blue-2-txt {
+  color: var(--blue-2);
+}
+.blue-2-bg {
+  background-color: var(--blue-2);
+}
+.blue-3-txt {
+  color: var(--blue-3);
+}
+.blue-3-bg {
+  background-color: var(--blue-3);
+}
+.orange-1-txt {
+  color: var(--orange-1);
+}
+.orange-1-bg {
+  background-color: var(--orange-1);
+}
+.orange-2-txt {
+  color: var(--orange-2);
+}
+.orange-2-bg {
+  background-color: var(--orange-2);
+}
+.orange-3-txt {
+  color: var(--orange-3);
+}
+.orange-3-bg {
+  background-color: var(--orange-3);
+}
+.green-1-txt {
+  color: var(--green-1);
+}
+.green-1-bg {
+  background-color: var(--green-1);
+}
+.green-2-txt {
+  color: var(--green-2);
+}
+.green-2-bg {
+  background-color: var(--green-2);
+}
+.green-3-txt {
+  color: var(--green-3);
+}
+.green-3-bg {
+  background-color: var(--green-3);
+}

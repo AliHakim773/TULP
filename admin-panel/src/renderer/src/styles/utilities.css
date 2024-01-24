@@ -1,0 +1,116 @@
+:root {
+  --section-inline-p: 2rem;
+  --section-block-p: 3rem;
+}
+
+.page {
+  width: 100vw;
+  height: 100vh;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.p-1 {
+  padding: 1rem;
+}
+.p-2 {
+  padding: 2rem;
+}
+.m-1 {
+  margin: 1rem;
+}
+.m-2 {
+  margin: 2rem;
+}
+.flex {
+  display: flex;
+}
+.column {
+  flex-direction: column;
+}
+.row {
+  flex-direction: row;
+}
+.center {
+  justify-content: center;
+  align-items: center;
+}
+.circle {
+  border-radius: 50%;
+}
+.rounded-1 {
+  border-radius: 5px;
+}
+.rounded-2 {
+  border-radius: 10px;
+}
+.w-100 {
+  width: 100%;
+}
+.w-50 {
+  width: 50%;
+}
+.h-100 {
+  height: 100%;
+}
+.h-50 {
+  height: 50%;
+}
+.semi-bold {
+  font-weight: 600;
+}
+.bold {
+  font-weight: 800;
+}
+.section,
+.section-header,
+.section-body {
+  width: 100%;
+}
+.shadow {
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+}
+.border {
+  border: 1px solid var(--grey-4);
+}
+.section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.section-content {
+  flex: 1;
+  max-width: 1340px;
+  padding: var(--section-block-p) var(--section-inline-p);
+}
+.section-header {
+  display: flex;
+}
+.section-body {
+  display: flex;
+  flex-direction: column;
+}
+@media only screen and (max-width: 992px) {
+  :root {
+    --section-block-p: 2.5rem;
+  }
+  .section-content {
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 768px) {
+  :root {
+    --section-inline-p: 1.5rem;
+    --section-block-p: 2rem;
+  }
+}
+@media only screen and (max-width: 479px) {
+  :root {
+    --section-inline-p: 1rem;
+    --section-block-p: 1rem;
+  }
+}
