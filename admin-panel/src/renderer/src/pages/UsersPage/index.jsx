@@ -54,7 +54,6 @@ const UsersPage = () => {
   )
   return (
     <div className="users-page">
-      <h1>Users</h1>
       <UserTable rows={rows} headCells={headCells} />
     </div>
   )
