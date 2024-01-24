@@ -16,6 +16,8 @@ import NavLayout from './components/Layouts/NavLayout'
 import HomePage from './pages/HomePage'
 import UsersPage from './pages/UsersPage'
 import { userLoader } from './pages/UsersPage/usersLoader'
+import ClassesPage from './pages/ClassesPage'
+import { classLoader } from './pages/ClassesPage/classLoader'
 
 const router = createHashRouter(
   createRoutesFromElements(
@@ -25,6 +27,7 @@ const router = createHashRouter(
         <Route element={<NavLayout />}>
           <Route path="home" element={<HomePage />}></Route>
           <Route path="users" element={<UsersPage />} loader={userLoader}></Route>
+          <Route path="classes" element={<ClassesPage />} loader={classLoader}></Route>
         </Route>
       </Route>
       <Route path="/*" element={<Navigate to={'/home'} />} />
