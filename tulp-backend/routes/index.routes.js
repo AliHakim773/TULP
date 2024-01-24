@@ -25,7 +25,9 @@ const siteRoutes = async (app) => {
   //compile routes
   app.use("/compile", compileRoutes)
   //admin routes
+  //auth routes
   app.use("/admin", adminRoutes)
+  //admin routes
 }
 
 module.exports = siteRoutes
