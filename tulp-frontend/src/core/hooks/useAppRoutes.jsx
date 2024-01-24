@@ -11,6 +11,7 @@ import NavLayout from "../../components/UI/NavLayout"
 import FooterLayout from "../../components/UI/FooterLayout"
 
 // Auth Pages
+import AuthComponent from "../../components/AuthComponent"
 import RegisterPage from "../../pages/RegisterPage"
 import LoginPage from "../../pages/LoginPage"
 
@@ -65,99 +66,104 @@ const useAppRoutes = () => {
       <Route path='/' errorElement={<PageNotFound />}>
         <Route element={<RootLayout />}>
           <Route index element={<HomePage />} />
-        </Route>
-
-        <Route element={<RootLayout />}>
-          <Route path='home' element={<LandingPage />} />
           <Route path='register' element={<RegisterPage />} />
           <Route path='login' element={<LoginPage />} />
-          <Route
-            path='profile/:username?'
-            element={<Profile />}
-            loader={profileLoader}
-          />
-          <Route path='edit-profile' element={<EditProfile />} />
-          <Route path='create-class' element={<CreateClass />} />
-          <Route
-            path='class-profile/:slug'
-            element={<ClassProfile />}
-            loader={classProfileLoader}
-          />
         </Route>
-        <Route path='class/:slug' element={<ClassSocket />}>
-          <Route element={<NavLayout />}>
-            <Route element={<FooterLayout />}>
-              <Route element={<ClassHomePage />} loader={classLoader}>
-                <Route path='stream' element={<Stream />} loader={streamLoader}>
-                  <Route element={<ModalForm />}>
-                    <Route path='add' element={<StreamForm />} />
-                  </Route>
-                </Route>
-                <Route
-                  path='schedule'
-                  element={<Schedule />}
-                  loader={scheduleLoader}>
-                  <Route element={<ModalForm />}>
-                    <Route path='add' element={<ScheduleForm />} />
-                  </Route>
-                </Route>
-                <Route path='assignments'>
+
+        <Route element={<AuthComponent />}>
+          <Route element={<RootLayout />}>
+            <Route path='home' element={<LandingPage />} />
+            <Route
+              path='profile/:username?'
+              element={<Profile />}
+              loader={profileLoader}
+            />
+            <Route path='edit-profile' element={<EditProfile />} />
+            <Route path='create-class' element={<CreateClass />} />
+            <Route
+              path='class-profile/:slug'
+              element={<ClassProfile />}
+              loader={classProfileLoader}
+            />
+          </Route>
+          <Route path='class/:slug' element={<ClassSocket />}>
+            <Route element={<NavLayout />}>
+              <Route element={<FooterLayout />}>
+                <Route element={<ClassHomePage />} loader={classLoader}>
                   <Route
-                    path=''
-                    element={<Assignments />}
-                    loader={assignmentLoader}>
+                    path='stream'
+                    element={<Stream />}
+                    loader={streamLoader}>
                     <Route element={<ModalForm />}>
-                      <Route path='add' element={<AssignmentForm />} />
+                      <Route path='add' element={<StreamForm />} />
                     </Route>
                   </Route>
-
                   <Route
-                    path=':titleSlug'
-                    element={<AssignmentView />}
-                    loader={assignmentViewLoader}
+                    path='schedule'
+                    element={<Schedule />}
+                    loader={scheduleLoader}>
+                    <Route element={<ModalForm />}>
+                      <Route path='add' element={<ScheduleForm />} />
+                    </Route>
+                  </Route>
+                  <Route path='assignments'>
+                    <Route
+                      path=''
+                      element={<Assignments />}
+                      loader={assignmentLoader}>
+                      <Route element={<ModalForm />}>
+                        <Route path='add' element={<AssignmentForm />} />
+                      </Route>
+                    </Route>
+
+                    <Route
+                      path=':titleSlug'
+                      element={<AssignmentView />}
+                      loader={assignmentViewLoader}
+                    />
+                  </Route>
+                </Route>
+                <Route path='settings' element={<ClassEditPage />}>
+                  <Route
+                    path='edit'
+                    element={<ClassEdit />}
+                    loader={classEditLoader}
+                  />
+                  <Route
+                    path='instructors'
+                    element={<ManageInstructors />}
+                    loader={manageInstructorsLoader}>
+                    <Route path='add' element={<ModalForm />}>
+                      <Route index element={<AddInstructorForm />} />
+                    </Route>
+                  </Route>
+                  <Route
+                    path='students'
+                    element={<ManageStudents />}
+                    loader={manageStudentsLoader}
+                  />
+                  <Route
+                    path='requests'
+                    element={<ManageRequests />}
+                    loader={manageRequestsLoader}
                   />
                 </Route>
               </Route>
-              <Route path='settings' element={<ClassEditPage />}>
+              <Route path='chat' element={<Chat />} loader={chatLoader}>
                 <Route
-                  path='edit'
-                  element={<ClassEdit />}
-                  loader={classEditLoader}
+                  path='channel/:channelslug'
+                  element={<ChatChannelMain />}
+                  loader={chatChannelMainLoader}
                 />
                 <Route
-                  path='instructors'
-                  element={<ManageInstructors />}
-                  loader={manageInstructorsLoader}>
-                  <Route path='add' element={<ModalForm />}>
-                    <Route index element={<AddInstructorForm />} />
-                  </Route>
-                </Route>
-                <Route
-                  path='students'
-                  element={<ManageStudents />}
-                  loader={manageStudentsLoader}
-                />
-                <Route
-                  path='requests'
-                  element={<ManageRequests />}
-                  loader={manageRequestsLoader}
+                  path='dm/:username'
+                  element={<ChatDmMain />}
+                  loader={chatDMMainLoader}
                 />
               </Route>
             </Route>
-            <Route path='chat' element={<Chat />} loader={chatLoader}>
-              <Route
-                path='channel/:channelslug'
-                element={<ChatChannelMain />}
-                loader={chatChannelMainLoader}
-              />
-              <Route
-                path='dm/:username'
-                element={<ChatDmMain />}
-                loader={chatDMMainLoader}
-              />
-            </Route>
+            <Route path='room' element={<VideoClass />} />
           </Route>
-          <Route path='room' element={<VideoClass />} />
         </Route>
         <Route path='*' element={<PageNotFound />} />
       </Route>
