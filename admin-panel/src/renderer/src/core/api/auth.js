@@ -8,6 +8,12 @@ const authAPI = {
       body: data
     })
     return res
+  },
+  getUsers: async () => {
+    const res = sendRequest({
+      route: 'admin/user'
+    })
+    return res
   }
 }
 
