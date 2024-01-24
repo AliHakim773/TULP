@@ -7,6 +7,7 @@ const channelRoutes = require("./channel.routes")
 const postRoutes = require("./post.routes")
 const messagesRoutes = require("./messages.routes")
 const compileRoutes = require("./compile.routes")
+const adminRoutes = require("./admin.routes")
 
 const siteRoutes = async (app) => {
   //auth routes
@@ -23,6 +24,8 @@ const siteRoutes = async (app) => {
   app.use("/messages", authMiddleware, messagesRoutes)
   //compile routes
   app.use("/compile", compileRoutes)
+  //admin routes
+  app.use("/admin", adminRoutes)
 }
 
 module.exports = siteRoutes
