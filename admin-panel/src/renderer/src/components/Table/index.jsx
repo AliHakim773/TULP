@@ -18,17 +18,7 @@ import IconButton from '@mui/material/IconButton'
 import Tooltip from '@mui/material/Tooltip'
 import DeleteIcon from '@mui/icons-material/Delete'
 import { visuallyHidden } from '@mui/utils'
-
-function createData(id, username, email, role, firstName, lastName) {
-  return {
-    id,
-    username,
-    email,
-    role,
-    firstName,
-    lastName
-  }
-}
+import authAPI from '../../core/api/auth'
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -115,7 +105,7 @@ EnhancedTableHead.propTypes = {
 }
 
 function EnhancedTableToolbar(props) {
-  const { numSelected, selected, handleOnDelete } = props
+  const { numSelected, selected } = props
 
   return (
     <Toolbar
@@ -134,17 +124,20 @@ function EnhancedTableToolbar(props) {
         </Typography>
       ) : (
         <Typography sx={{ flex: '1 1 100%' }} variant="h6" id="tableTitle" component="div">
-          Nutrition
+          Users
         </Typography>
       )}
 
       {numSelected > 0 ? (
         <Tooltip title="Delete">
           <IconButton
-            onClick={() => {
-              // NOTE: onCLICK
-              console.log(selected)
-              handleOnDelete()
+            onClick={async () => {
+              try {
+                console.log(selected)
+                await authAPI.deleteUsers({ usersId: selected })
+              } catch (e) {
+                console.log(e)
+              }
             }}
           >
             <DeleteIcon />
@@ -161,7 +154,7 @@ EnhancedTableToolbar.propTypes = {
   numSelected: PropTypes.number.isRequired
 }
 
-export default function EnhancedTable({ rows, handleOnDelete, headCells }) {
+export default function EnhancedTable({ rows, headCells }) {
   const [order, setOrder] = React.useState('asc')
   const [orderBy, setOrderBy] = React.useState('calories')
   const [selected, setSelected] = React.useState([])
@@ -228,11 +221,7 @@ export default function EnhancedTable({ rows, handleOnDelete, headCells }) {
   return (
     <Box sx={{ width: '100%' }}>
       <Paper sx={{ width: '100%', mb: 2 }}>
-        <EnhancedTableToolbar
-          handleOnDelete={handleOnDelete}
-          selected={selected}
-          numSelected={selected.length}
-        />
+        <EnhancedTableToolbar selected={selected} numSelected={selected.length} />
         <TableContainer>
           <Table sx={{ minWidth: 750 }} aria-labelledby="tableTitle" size={'medium'}>
             <EnhancedTableHead
