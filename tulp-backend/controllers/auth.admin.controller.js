@@ -47,13 +47,37 @@ const getUsers = async (req, res) => {
   }
 }
 
+const deleteUsers = async (req, res) => {
+  const { usersId } = req.body
+  console.log(usersId)
+  try {
+    await User.deleteMany({ _id: { $in: usersId } })
+    res.status(200).send({ message: "success" })
+  } catch (error) {
+    res.status(500).send({ error })
+  }
+}
+
 const getClasss = async (req, res) => {
   try {
-    const classes = await Class.find({})
+    const classes = await Class.find({}).populate({
+      path: "owner",
+      select: "username",
+    })
     res.status(200).send({ classes })
   } catch (error) {
     res.status(500).send({ error })
   }
 }
 
-module.exports = { adminLogin, getUsers, getClasss }
+const deleteClasss = async (req, res) => {
+  const { classesId } = req.body
+  try {
+    await Class.deleteMany({ _id: { $in: classesId } })
+    res.status(200).send({ message: "success" })
+  } catch (error) {
+    res.status(500).send({ error })
+  }
+}
+
+module.exports = { adminLogin, getUsers, getClasss, deleteClasss, deleteUsers }
