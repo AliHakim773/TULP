@@ -14,6 +14,28 @@ const authAPI = {
       route: 'admin/user'
     })
     return res
+  },
+  getClasses: async () => {
+    const res = sendRequest({
+      route: 'admin/class'
+    })
+    return res
+  },
+  deleteUsers: async (data) => {
+    const res = sendRequest({
+      route: 'admin/user',
+      method: 'DELETE',
+      body: data
+    })
+    return res
+  },
+  deleteClasses: async (data) => {
+    const res = sendRequest({
+      route: 'admin/class',
+      method: 'DELETE',
+      body: data
+    })
+    return res
   }
 }
 
