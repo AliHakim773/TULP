@@ -16,7 +16,7 @@ const LoginPage = () => {
 
   return (
     <div className="page flex center">
-      <div className="login-page flex center">
+      <div className="login-page column flex center">
         <div className="logo-img ">
           <img src={logo} alt="TULP" />
         </div>
@@ -27,6 +27,7 @@ const LoginPage = () => {
             name="username"
             required
             label="Username"
+            className="login-input"
             variant="outlined"
             onChange={handleOnChange}
             error={error.state}
@@ -35,6 +36,7 @@ const LoginPage = () => {
             name="password"
             id="outlined-basic"
             error={error.state}
+            className="login-input"
             helperText={error.message}
             required
             type={showPassword ? 'text' : 'password'}
@@ -56,7 +58,7 @@ const LoginPage = () => {
             variant="outlined"
             onChange={handleOnChange}
           />
-          <Button type="submit" onClick={handleOnClick} variant="contained">
+          <Button className="login-btn" type="submit" onClick={handleOnClick} variant="contained">
             Login
           </Button>
         </form>
