@@ -1,7 +1,63 @@
 import './styles.css'
+import UserTable from '../../components/Table'
+import { useLoaderData } from 'react-router-dom'
 
 const UsersPage = () => {
-  return <div></div>
+  const data = useLoaderData()
+
+  function createData(id, username, email, role, firstName, lastName) {
+    return {
+      id,
+      username,
+      email,
+      role,
+      firstName,
+      lastName
+    }
+  }
+
+  const headCells = [
+    {
+      id: 'usename',
+      numeric: false,
+      disablePadding: true,
+      label: 'Username'
+    },
+    {
+      id: 'email',
+      numeric: true,
+      disablePadding: false,
+      label: 'Email'
+    },
+    {
+      id: 'role',
+      numeric: true,
+      disablePadding: false,
+      label: 'Role'
+    },
+    {
+      id: 'firstName',
+      numeric: true,
+      disablePadding: false,
+      label: 'First Name'
+    },
+    {
+      id: 'lastName',
+      numeric: true,
+      disablePadding: false,
+      label: 'Last Name'
+    }
+  ]
+
+  const rows = data.users.map((user) =>
+    createData(user._id, user.username, user.email, user.role, user.firstName, user.lastName)
+  )
+  return (
+    <div className="users-page">
+      <h1>Users</h1>
+      <UserTable rows={rows} headCells={headCells} />
+    </div>
+  )
 }
 
 export default UsersPage
