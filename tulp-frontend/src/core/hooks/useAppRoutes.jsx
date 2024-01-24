@@ -63,7 +63,7 @@ const useAppRoutes = () => {
     createRoutesFromElements(
       <Route path='/' errorElement={<PageNotFound />}>
         <Route element={<RootLayout />}>
-          <Route index element={<LandingPage />} />
+          <Route path='home' element={<LandingPage />} />
           <Route path='register' element={<RegisterPage />} />
           <Route path='login' element={<LoginPage />} />
           <Route

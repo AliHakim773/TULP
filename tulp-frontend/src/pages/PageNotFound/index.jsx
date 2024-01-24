@@ -14,7 +14,7 @@ const PageNotFound = () => {
         <div className='not-found flex column center'>
           <div>
             404 Page Not Found <br />{" "}
-            <Button text='Go to Home Page' onclick={() => navigate("/")} />
+            <Button text='Go to Home Page' onclick={() => navigate("/home")} />
           </div>
         </div>
       </div>

@@ -48,7 +48,7 @@ const useLoginLogic = () => {
       local("token", token)
 
       dispatch(setUser(res.user))
-      navigate("/")
+      navigate("/home")
     } catch (e) {
       errorBlink(setError, e.response.data.message)
     }

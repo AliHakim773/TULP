@@ -14,7 +14,7 @@ const NavBarClass = () => {
     <nav className='class-nav flex center border-bottom'>
       <div className='class-nav-wrapper flex'>
         <div className='class-logo h-100'>
-          <Link to={"/"} className='h-100'>
+          <Link to={"/home"} className='h-100'>
             <img src={Logo} alt='TULP Logo' />
           </Link>
         </div>

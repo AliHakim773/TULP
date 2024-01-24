@@ -17,7 +17,7 @@ const navLinksLoggedOut = [
 ]
 const navLinksLoggedIn = [
   {
-    to: "/",
+    to: "/home",
     text: "Home",
   },
 ]
