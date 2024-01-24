@@ -19,12 +19,12 @@
   border-bottom-right-radius: 40px;
   display: block;
 }
-.nav-item a.active {
-  background-color: var(--orange-3);
-}
 .nav-item a:hover {
   text-decoration: underline;
   background-color: rgba(255, 162, 0, 0.7);
+}
+.nav-item a.active {
+  background-color: var(--orange-3);
 }
 .logout {
   margin-top: auto;
