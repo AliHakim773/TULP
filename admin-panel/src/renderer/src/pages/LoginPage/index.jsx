@@ -56,7 +56,7 @@ const LoginPage = () => {
             variant="outlined"
             onChange={handleOnChange}
           />
-          <Button onClick={handleOnClick} variant="contained">
+          <Button type="submit" onClick={handleOnClick} variant="contained">
             Login
           </Button>
         </form>
