@@ -49,8 +49,8 @@ const getUsers = async (req, res) => {
 
 const getClasss = async (req, res) => {
   try {
-    const users = await Class.find({})
-    res.status(200).send({ users })
+    const classes = await Class.find({})
+    res.status(200).send({ classes })
   } catch (error) {
     res.status(500).send({ error })
   }
