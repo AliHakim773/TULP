@@ -1,0 +1,15 @@
+.stat-item {
+  border-radius: 18px;
+  padding: 1.5rem 1rem;
+  font-weight: 700;
+  color: var(--grey-1);
+
+  .stat-number {
+    font-size: 40px;
+    color: var(--black);
+
+    & span {
+      font-size: 14px;
+    }
+  }
+}
