@@ -20,6 +20,9 @@ const HomePage = () => {
   const [instructorCount, setInstructorCount] = useState(0)
   const [instructorCountLoading, setInstructorCountLoading] = useState(true)
 
+  const [instructorAVG, setInstructorAVG] = useState(0)
+  const [instructorAVGLoading, setInstructorAVGLoading] = useState(true)
+
   const [classCount, setClassCount] = useState(0)
   const [classCountLoading, setClassCountLoading] = useState(true)
 
@@ -69,6 +72,16 @@ const HomePage = () => {
       } catch {}
     }
     getStudentsAVG()
+
+    const getInstructorsAVG = async () => {
+      try {
+        const res = await statsAPI.getInstructorsPerClassAVG()
+        console.log(res)
+        setInstructorAVG(res.averageNumberOfInstructors)
+        setInstructorAVGLoading(false)
+      } catch {}
+    }
+    getInstructorsAVG()
   }, [])
   return (
     <div className="container">
@@ -113,6 +126,11 @@ const HomePage = () => {
           <StatItem text="Loading" number={0} />
         ) : (
           <StatItem text="Average Student Per Class" number={studentAVG} className="flex-2" />
+        )}
+        {instructorAVGLoading ? (
+          <StatItem text="Loading" number={0} />
+        ) : (
+          <StatItem text="Average Instructor Per Class" number={instructorAVG} className="flex-2" />
         )}
       </div>
     </div>
