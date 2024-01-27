@@ -12,6 +12,14 @@
   flex-direction: column;
   flex: 1;
 }
+.editor-actions button {
+  background-color: var(--blue-3);
+  color: var(--white);
+  font-weight: 600;
+}
+.editor-actions button:hover {
+  background-color: var(--blue-2);
+}
 .output {
   height: 60%;
   width: 100%;
