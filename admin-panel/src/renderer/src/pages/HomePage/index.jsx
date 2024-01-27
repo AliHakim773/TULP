@@ -11,15 +11,39 @@ const HomePage = () => {
   const [userCount, setUserCount] = useState(0)
   const [userCountLoading, setUserCountLoading] = useState(true)
 
+  const [studentCount, setStudentCount] = useState(0)
+  const [studentCountLoading, setStudentCountLoading] = useState(true)
+
+  const [instructorCount, setInstructorCount] = useState(0)
+  const [instructorCountLoading, setInstructorCountLoading] = useState(true)
+
   useEffect(() => {
     const getUserCount = async () => {
       try {
         const res = await statsAPI.getUsersCount()
-        setUserCount(res.numberOfUsers)
+        setUserCount(res.numberOfUsers - 1)
         setUserCountLoading(false)
       } catch {}
     }
     getUserCount()
+
+    const getStudentCount = async () => {
+      try {
+        const res = await statsAPI.getStudentsCount()
+        setStudentCount(res.numberOfStudents)
+        setStudentCountLoading(false)
+      } catch {}
+    }
+    getStudentCount()
+
+    const getInstructorCount = async () => {
+      try {
+        const res = await statsAPI.getInstructorsCount()
+        setInstructorCount(res.numberOfInstructors)
+        setInstructorCountLoading(false)
+      } catch {}
+    }
+    getInstructorCount()
   })
   return (
     <div className="container">
@@ -29,6 +53,26 @@ const HomePage = () => {
           <StatItem text="Loading" number={0} />
         ) : (
           <StatItem text="Users Count" number={userCount} />
+        )}
+        {studentCountLoading ? (
+          <StatItem text="Loading" number={0} />
+        ) : (
+          <StatItem
+            text="Students Count"
+            number={studentCount}
+            percentage={(studentCount / userCount) * 100}
+            percentageOf={'users'}
+          />
+        )}
+        {instructorCountLoading ? (
+          <StatItem text="Loading" number={0} />
+        ) : (
+          <StatItem
+            text="Instructor Count"
+            number={instructorCount}
+            percentage={(instructorCount / userCount) * 100}
+            percentageOf={'users'}
+          />
         )}
       </div>
     </div>
