@@ -20,7 +20,7 @@ const NavLayout = () => {
             <span>
               <Dashboard />
             </span>{' '}
-            Home
+            Dashboard
           </NavLink>
         </div>
         <div className="nav-item">
