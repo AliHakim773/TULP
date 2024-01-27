@@ -4,6 +4,7 @@ const Channel = require("../models/channel.model")
 
 const registerChatHandler = (io, socket, user) => {
   socket.on("channel:join-room", async (room, cb) => {
+    console.log(room)
     const channel = await Channel.findById(room)
     if (!channel)
       return socket.emit("channel:join-room", false, "Channel doesnt exist")
@@ -13,6 +14,7 @@ const registerChatHandler = (io, socket, user) => {
 
     if (channel.readPermission === "all") {
       socket.join(room)
+      cb(`Joined ${room}`)
       return socket.emit("channel:join-room", true, "channel All")
     }
     if (channel.readPermission === "instructor") {
