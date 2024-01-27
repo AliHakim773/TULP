@@ -17,7 +17,7 @@ const usePfpDropDownLogic = () => {
   const handleOnClick = () => {
     localStorage.removeItem("token")
     dispatch(clearUser())
-    navigate(0)
+    navigate("/")
   }
 
   useEffect(() => {
