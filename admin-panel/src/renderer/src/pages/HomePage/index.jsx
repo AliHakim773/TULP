@@ -14,6 +14,9 @@ const HomePage = () => {
   const [studentCount, setStudentCount] = useState(0)
   const [studentCountLoading, setStudentCountLoading] = useState(true)
 
+  const [studentAVG, setStudentAVG] = useState(0)
+  const [studentAVGLoading, setStudentAVGLoading] = useState(true)
+
   const [instructorCount, setInstructorCount] = useState(0)
   const [instructorCountLoading, setInstructorCountLoading] = useState(true)
 
@@ -56,11 +59,21 @@ const HomePage = () => {
       } catch {}
     }
     getClassesCount()
-  })
+
+    const getStudentsAVG = async () => {
+      try {
+        const res = await statsAPI.getStudentsPerClassAVG()
+        console.log(res)
+        setStudentAVG(res.averageNumberOfStudents)
+        setStudentAVGLoading(false)
+      } catch {}
+    }
+    getStudentsAVG()
+  }, [])
   return (
     <div className="container">
       <UserProfile user={JSON.parse(user)} />
-      <div className="stat-container p-2 flex wrap gap-3">
+      <div className="stat-container p-2 flex gap-3">
         {userCountLoading ? (
           <StatItem text="Loading" number={0} />
         ) : (
@@ -77,6 +90,7 @@ const HomePage = () => {
             className="flex-2"
           />
         )}
+
         {instructorCountLoading ? (
           <StatItem text="Loading" number={0} />
         ) : (
@@ -88,10 +102,17 @@ const HomePage = () => {
             className="flex-2"
           />
         )}
+      </div>
+      <div className="stat-container p-2 flex gap-3">
         {classCountLoading ? (
           <StatItem text="Loading" number={0} />
         ) : (
           <StatItem text="Classes Count" className="flex-1" number={classCount} />
+        )}
+        {studentAVGLoading ? (
+          <StatItem text="Loading" number={0} />
+        ) : (
+          <StatItem text="Average Student Per Class" number={studentAVG} className="flex-2" />
         )}
       </div>
     </div>
