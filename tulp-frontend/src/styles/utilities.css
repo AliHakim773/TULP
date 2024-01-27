@@ -7,6 +7,9 @@ textarea {
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
 }
+button {
+  text-transform: capitalize;
+}
 .page {
   width: 100vw;
   height: 100vh;
