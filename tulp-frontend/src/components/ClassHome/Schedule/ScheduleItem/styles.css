@@ -15,3 +15,8 @@
 .schedule-row > .schedule-cell:last-child {
   border-right: none;
 }
+.schedule-date {
+  font-size: 14px;
+  color: var(--grey-2);
+  margin-right: 0.5rem;
+}
