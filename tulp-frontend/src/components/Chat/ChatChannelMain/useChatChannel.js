@@ -45,15 +45,9 @@ const useChatChannel = () => {
     getMessages()
 
     socket.connect()
-    socket.emit("channel:join-room", data.channel._id)
+    socket.emit("channel:join-room", data.channel._id, (msg) => {})
     if (!socket.hasListeners("channel:send-message")) {
       socket.on("channel:send-message", sendMessageListener)
-    }
-
-    return () => {
-      socket.removeListener("channel:send-message", sendMessageListener)
-      socket.emit("channel:leave-room", data.channel._id)
-      socket.disconnect()
     }
   }, [pathname])
 

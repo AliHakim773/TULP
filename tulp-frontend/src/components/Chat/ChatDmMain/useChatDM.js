@@ -43,23 +43,24 @@ const useChatDM = () => {
     getMessages()
 
     socket.connect()
-    socket.emit("dm:join-room", data.classId, data.user._id, (mes) => {
-      console.log(mes)
-    })
+    socket.emit("dm:join-room", data.classId, data.user._id, (mes) => {})
     if (!socket.hasListeners("dm:send-message")) {
       socket.on("dm:send-message", sendMessageListener)
     }
+  }, [pathname])
+
+  useEffect(() => {
+    socket.connect()
+    socket.emit("dm:join-room", data.classId, data.user._id, (mes) => {})
 
     return () => {
-      socket.removeListener("dm:send-message", sendMessageListener)
-      socket.emit("dm:leave-room", data.classId, data.user._id, (msg) => {
-        console.log(msg)
-      })
+      socket.emit("dm:leave-room", data.classId, data.user._id, (msg) => {})
       socket.disconnect()
     }
   }, [pathname])
 
   const handleSendMessage = async () => {
+    if (inputValue.trim() === "") return
     socket.emit(
       "dm:send-message",
       data.dms?._id,
