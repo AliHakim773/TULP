@@ -31,7 +31,7 @@ const ClassHomePage = () => {
       <aside className='flex column'>
         <UserList title='Owner' users={[data.res.class.owner]} />
         <UserList title='Instructors' users={data.res.class.instructors} />
-        <UserList title='Studnets' users={data.res.class.students} />
+        <UserList title='Students' users={data.res.class.students} />
       </aside>
       <div className='class-page-main w-100'>
         <div className='class-page-nav flex'>
