@@ -46,6 +46,7 @@
   height: 45px;
   margin-right: 15px;
   position: relative;
+  cursor: pointer;
 }
 .pfp-img img {
   border-radius: 50%;
