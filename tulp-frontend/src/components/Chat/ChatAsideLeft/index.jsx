@@ -13,14 +13,14 @@ const ChatAsideLeft = ({ channels }) => {
         Back To Class
       </div>
       <div className='chat-aside-header chat-aside-item'>
-        Channels <SettingsDots className='chat-aside-settings' />
+        Channels: <SettingsDots className='chat-aside-settings' />
       </div>
       {channels.map((channel) => {
         return (
           <NavLink
             key={channel._id}
             to={`channel/${channel.name}`}
-            className='chat-aside-item'>
+            className='chat-aside-item channel-name'>
             {channel.name}
           </NavLink>
         )

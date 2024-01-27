@@ -4,6 +4,7 @@
 }
 .chat-aside {
   flex-basis: 20%;
+  text-transform: capitalize;
   overflow-y: scroll;
 }
 .chat-aside::-webkit-scrollbar {
@@ -102,4 +103,7 @@
 }
 .chat-main-input form:has(textarea:disabled) .send-arrow > path {
   fill: rgb(199, 199, 199);
+}
+.channel-name {
+  padding-left: 24%;
 }
