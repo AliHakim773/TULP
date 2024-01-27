@@ -22,7 +22,7 @@ const Assignments = () => {
         )}
 
         <div className='assignment-main flex column w-100'>
-          {data.assignment.length === 0 ? (
+          {data.assignments.length === 0 ? (
             <EmptyItem />
           ) : (
             <>
