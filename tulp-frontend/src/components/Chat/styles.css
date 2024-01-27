@@ -27,11 +27,6 @@
 .chat-aside-nav {
   position: relative;
 }
-.chat-aside-nav::before {
-  content: "← ";
-  position: absolute;
-  left: 12%;
-}
 .chat-aside-header {
   position: relative;
   /* border-bottom: 1px solid var(--grey-4); */
