@@ -5,8 +5,10 @@ const usePostFeedLogic = () => {
   const [posts, setPosts] = useState([LoadingPost])
   useEffect(() => {
     const getPosts = async () => {
-      const res = await postAPI.get()
-      setPosts(res.posts)
+      try {
+        const res = await postAPI.get()
+        setPosts(res.posts)
+      } catch (e) {}
     }
     getPosts()
   }, [])
