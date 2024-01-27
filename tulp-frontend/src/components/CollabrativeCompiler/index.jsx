@@ -1,9 +1,6 @@
 import { Editor } from "@monaco-editor/react"
 import "./styles.css"
 import { useEffect, useRef, useState } from "react"
-import { Doc } from "yjs"
-import { WebrtcProvider } from "y-webrtc"
-import { MonacoBinding } from "y-monaco"
 import axios from "axios"
 import "./styles.css"
 import { useParams } from "react-router-dom"
@@ -13,7 +10,6 @@ import { socket } from "../../core/socket"
 
 const CollabrativeCompiler = ({ isdisabled = false }) => {
   const { slug } = useParams()
-  const { role } = useSelector(extractUserSlice)
   const [output, setOutput] = useState("// Output here")
 
   const [lang, setLang] = useState("python")
@@ -65,7 +61,7 @@ const CollabrativeCompiler = ({ isdisabled = false }) => {
   }
 
   return (
-    <dev className='compiler'>
+    <div className='compiler'>
       <div className='editor'>
         <Editor
           theme='vs-dark'
@@ -81,7 +77,6 @@ const CollabrativeCompiler = ({ isdisabled = false }) => {
       </div>
       <div className='editor-actions'>
         <pre className='output'>{output}</pre>
-        <input onChange={handleInputChange} type='text' />
         <button onClick={handleOnCompaileClick}>Compile</button>
         <div className='choose-lang'>
           <label htmlFor='lang'>Choose Language:</label>
@@ -93,7 +88,7 @@ const CollabrativeCompiler = ({ isdisabled = false }) => {
           </select>
         </div>
       </div>
-    </dev>
+    </div>
   )
 }
 
