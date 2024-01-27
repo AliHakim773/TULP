@@ -1,12 +1,11 @@
 import { useLoaderData } from "react-router-dom"
-import DownloadFile from "../../../../assets/svgs/DownloadFile"
+import DownloadCloud from "../../../../assets/svgs/download-cloud"
 import "./styles.css"
 import { useState } from "react"
 import toast from "react-hot-toast"
 import classAPI from "../../../../core/api/class"
 import { extractUserSlice } from "../../../../core/redux/userSlice"
 import { useSelector } from "react-redux"
-import DownloadSVG from "../../../../assets/svgs/DownloadFile"
 
 const AssignmentView = () => {
   const data = useLoaderData()
@@ -31,7 +30,7 @@ const AssignmentView = () => {
     <>
       <div className='assignment-view w-100 flex border rounded-1'>
         <div className='assignment-body'>
-          <div className='title'>
+          <div className='title flex'>
             {data.title}
             {data.file === "" ? (
               ""
@@ -40,7 +39,7 @@ const AssignmentView = () => {
                 target='_blank'
                 href={`${import.meta.env.VITE_BASE_URL}${data.file}`}
                 className='download-btn'>
-                <DownloadFile />
+                <DownloadCloud />
               </a>
             )}
           </div>
@@ -48,30 +47,36 @@ const AssignmentView = () => {
         </div>
         <form className='assignment-upload flex column'>
           <div className='stream-due grey-2-txt'>Due: {data.dueDate}</div>
-          <div className='upload-assignment rounded-1 blue-2-bg'>
-            Upload File
-            <input
-              type='file'
-              id='uplaod-assigment'
-              onChange={handleOnChange}
-            />
-          </div>
-          <button
-            type='submit'
-            className='upload-assignment assignmrnt-submit-btn'
-            onClick={(e) => {
-              e.preventDefault()
-              handleSubmit()
-            }}>
-            Submit
-          </button>
+          {role === "student" && (
+            <>
+              <div className='upload-assignment rounded-1 blue-2-bg'>
+                Upload File
+                <input
+                  type='file'
+                  id='uplaod-assigment'
+                  onChange={handleOnChange}
+                />
+              </div>
+              <button
+                type='submit'
+                className='upload-assignment assignmrnt-submit-btn'
+                onClick={(e) => {
+                  e.preventDefault()
+                  handleSubmit()
+                }}>
+                Submit
+              </button>
+            </>
+          )}
         </form>
       </div>
       <div className='submissions flex'>
         {role !== "student" &&
           data.submissions.map((submission) => {
             return (
-              <div className='assignment-submit border rounded-1 flex'>
+              <div
+                key={submission._id}
+                className='assignment-submit border rounded-1 flex'>
                 <div className='pfp-img'>
                   <img
                     src={`${import.meta.env.VITE_BASE_URL}${
@@ -80,11 +85,13 @@ const AssignmentView = () => {
                     alt={submission.sender.username}
                   />
                 </div>
-                <div className='username'>{submission.sender.username}</div>
+                <div className='username-assignment'>
+                  {submission.sender.username}
+                </div>
                 <a
                   href={`${import.meta.env.VITE_BASE_URL}${submission.file}`}
                   className='download-submission'>
-                  <DownloadSVG />
+                  <DownloadCloud />
                 </a>
               </div>
             )

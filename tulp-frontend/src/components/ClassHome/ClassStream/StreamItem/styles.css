@@ -9,14 +9,15 @@
   user-select: none;
 }
 .download-btn {
-  margin-left: 1rem;
+  margin-inline: auto 1rem;
   cursor: pointer;
   display: inline-block;
-}
-.download-btn,
-.download-btn svg {
-  height: 16px;
-  width: 16px;
+  &,
+  > svg {
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+  }
 }
 
 .stream-title {

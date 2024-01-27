@@ -1,12 +1,12 @@
 import "./styles.css"
-import DownloadFile from "../../../../assets/svgs/DownloadFile"
+import DownloadFile from "../../../../assets/svgs/download-cloud"
 
 const StreamItem = ({ post }) => {
   const { title, content, file, id } = post
   return (
     <div className='stream-item w-100 flex border rounded-1'>
-      <div className='stream-body'>
-        <div className='stream-title'>
+      <div className='stream-body w-100'>
+        <div className='stream-title flex'>
           {title}
           {file === "" ? (
             ""
@@ -21,7 +21,6 @@ const StreamItem = ({ post }) => {
         </div>
         <div className='stream-content'>{content}</div>
       </div>
-      <div className='stream-files'></div>
     </div>
   )
 }

@@ -2,6 +2,9 @@
   padding: 1rem;
   margin-top: 2rem;
 }
+.assignment-body {
+  flex: 1;
+}
 .assignment-body .title {
   font-size: 18px;
   text-transform: capitalize;
@@ -63,4 +66,8 @@
 .download-submission {
   margin-left: auto;
   cursor: pointer;
+  & svg {
+    height: 40px;
+    width: 40px;
+  }
 }
