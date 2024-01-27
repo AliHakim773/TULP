@@ -86,10 +86,21 @@
   background-color: #c9e6f8;
 }
 .home-about .home-section-container {
-  width: 70%;
+  width: 100%;
 }
 .home-about-part {
+  flex-basis: 50%;
   text-align: justify;
+}
+.home-about-part-1 {
+  padding-inline: 10rem 0rem;
+}
+.home-about-1 {
+  display: flex;
+  justify-content: end;
+}
+.home-about-part-2 {
+  padding-inline: 2rem 10rem;
 }
 .about-img {
   width: 300px;
@@ -100,6 +111,10 @@
 }
 .enroll {
   gap: 40px;
+}
+
+.home-section-why {
+  background-color: var(--white);
 }
 @keyframes BorderRotate {
   0% {
