@@ -5,7 +5,12 @@ const ScheduleItem = ({ schedule }) => {
   return (
     <div className='schedule-table border rounded-1 flex column'>
       <div className='schedule-row flex'>
-        <div className='schedule-cell'>{schedule.date}</div>
+        <div className='schedule-cell'>
+          {schedule.date !== "today" ? (
+            <span className='schedule-date'>Date: </span>
+          ) : null}
+          {schedule.date}
+        </div>
         <div className='schedule-cell'>From</div>
         <div className='schedule-cell'>To</div>
         <div className='schedule-cell'>Description</div>
