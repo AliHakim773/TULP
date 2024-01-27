@@ -7,6 +7,7 @@ const {
   deleteUsers,
   getNumberOfUsers,
   getNumberOfStudents,
+  getAvgNumberOfStudents,
   getNumberOfInstructors,
   getNumberOfClasses,
 } = require("../controllers/auth.admin.controller")
@@ -20,6 +21,12 @@ router.get(
   authMiddleware,
   adminMiddleware,
   getNumberOfStudents
+)
+router.get(
+  "/students/avg",
+  authMiddleware,
+  adminMiddleware,
+  getAvgNumberOfStudents
 )
 router.get(
   "/instructors/count",

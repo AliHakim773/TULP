@@ -2,6 +2,7 @@ const User = require("../models/user.model")
 const jwt = require("jsonwebtoken")
 const bcrypt = require("bcrypt")
 const Class = require("../models/class.model")
+const Assignment = require("../models/assignment.model")
 
 const adminLogin = async (req, res) => {
   const { username, password } = req.body
@@ -86,10 +87,40 @@ const getNumberOfUsers = async (req, res) => {
     res.status(500).send({ error })
   }
 }
+
 const getNumberOfStudents = async (req, res) => {
   try {
     const users = await User.find({ role: "student" })
     res.status(200).send({ numberOfStudents: users.length })
+  } catch (error) {
+    res.status(500).send({ error })
+  }
+}
+
+const getAvgNumberOfStudents = async (req, res) => {
+  try {
+    const result = await Class.aggregate([
+      {
+        $project: {
+          numberOfStudents: { $size: "$students" }, // Project a field representing the number of students in each class
+        },
+      },
+      {
+        $group: {
+          _id: null,
+          totalStudents: { $sum: "$numberOfStudents" }, // Sum the total number of students across all classes
+          count: { $sum: 1 }, // Count the number of classes
+        },
+      },
+      {
+        $project: {
+          averageNumberOfStudents: { $divide: ["$totalStudents", "$count"] }, // Calculate the average
+        },
+      },
+    ])
+
+    const averageNumberOfStudents = result[0]?.averageNumberOfStudents || 0
+    res.status(200).send({ averageNumberOfStudents })
   } catch (error) {
     res.status(500).send({ error })
   }
@@ -113,6 +144,24 @@ const getNumberOfClasses = async (req, res) => {
   }
 }
 
+const getNumberOfAssignments = async (req, res) => {
+  try {
+    const assignments = await Assignment.find({})
+    res.status(200).send({ numberOfAssignments: assignments.length })
+  } catch (error) {
+    res.status(500).send({ error })
+  }
+}
+
+// const getAVGAssignmentSubmission = async (req, res) => {
+//   try {
+//     const assignments = await Assignment.find({})
+//     res.status(200).send({ numberOfAssignments: assignments.length })
+//   } catch (error) {
+//     res.status(500).send({ error })
+//   }
+// }
+
 module.exports = {
   adminLogin,
   getUsers,
@@ -123,4 +172,5 @@ module.exports = {
   getNumberOfStudents,
   getNumberOfInstructors,
   getNumberOfClasses,
+  getAvgNumberOfStudents,
 }
