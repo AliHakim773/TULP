@@ -1,8 +1,8 @@
 import "./styles.css"
 import onlineImage from "../../assets/images/online-teaching.jpg"
+import HIW from "../../assets/images/how-it-works-removebg-preview.png"
 import CodeSVG from "../../assets/svgs/Code"
 import { CameraOn, ChatIcon } from "../../assets/Icons"
-import Button from "../../components/Base/Button"
 
 const HomePage = () => {
   return (
@@ -58,13 +58,13 @@ const HomePage = () => {
         <div className='flex center column'>
           <h2>Who are we</h2>
           <div className='home-section-container flex center'>
-            <div className='home-about-part'>
+            <div className='home-about-part home-about-part-1'>
               TULP is the ultimate learning platform for teaching and taking
               classes online, we provide the best user experience so you can
               focus on taking classes or making them. With TULP you will never
               need any other platform or tool to host the best material online.
             </div>
-            <div className='home-about-part'>
+            <div className='home-about-part home-about-part-2'>
               <div className='about-img'>
                 <img src={onlineImage} alt='' />
               </div>
@@ -72,19 +72,20 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-      <section className='home-section flex center'>
+      <section className='home-section home-about home-section-why flex center'>
         <div className='flex center column'>
-          <h2>Register Now</h2>
-          <div className='home-section-container flex column center'>
-            What are you waiting for register now and start creating your own
-            online classes
-            <div className='enroll flex'>
-              <a href='/register'>
-                <Button text='Register' />
-              </a>
-              <a href='/login'>
-                <Button text='Login' />
-              </a>
+          <h2>What To Do Now</h2>
+          <div className='home-section-container flex center'>
+            <div className='home-about-part home-about-1'>
+              <div className='about-img'>
+                <img src={HIW} alt='' />
+              </div>
+            </div>
+            <div className='home-about-part home-about-part-2'>
+              When you decide to join out comunity all you need to do is to
+              register an account and choose if you want to be a student or an
+              instructor, after doing that you are free to start posting on the
+              home page and start joinning classes
             </div>
           </div>
         </div>
