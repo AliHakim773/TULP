@@ -8,7 +8,7 @@ const StatItem = ({ text = 'Default Text', number = 400, percentage, percentageO
         {number}{' '}
         {percentage ? (
           <span>
-            {percentage}% of {percentageOf}
+            {percentage.toFixed(2)}% of {percentageOf}
           </span>
         ) : null}
       </div>
