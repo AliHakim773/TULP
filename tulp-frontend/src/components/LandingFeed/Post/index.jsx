@@ -14,7 +14,7 @@ const Post = ({ post, postId, setPosts }) => {
   const { _id, user, content, likes, createdAt } = post
   const { isLiked, handleOnLike, likesCount, isShowen, closeModal, openModal } =
     usePostLogic(likes, postId, _id)
-
+  if (user === null || user === undefined) return
   return (
     <div className='post w-100 shadow flex column'>
       <div className='post-header flex'>
