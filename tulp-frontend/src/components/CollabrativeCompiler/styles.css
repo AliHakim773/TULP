@@ -47,3 +47,6 @@
   height: 100%;
   margin-left: 1rem;
 }
+.output-error {
+  color: red;
+}

@@ -1,5 +1,4 @@
 import { Editor } from "@monaco-editor/react"
-import "./styles.css"
 import { useEffect, useRef, useState } from "react"
 import axios from "axios"
 import "./styles.css"
@@ -11,6 +10,7 @@ import { socket } from "../../core/socket"
 const CollabrativeCompiler = ({ isdisabled = false }) => {
   const { slug } = useParams()
   const [output, setOutput] = useState("// Output here")
+  const [error, setError] = useState(false)
 
   const [lang, setLang] = useState("python")
   const handleLangChange = (e) => {
@@ -53,8 +53,18 @@ const CollabrativeCompiler = ({ isdisabled = false }) => {
           "Content-Type": "application/json",
         },
       })
+      setError(false)
       setOutput(response.data.output.stdout)
       socket.emit("room:get-output", slug, response.data.output.stdout)
+      if (
+        response.data.output.stdout === null ||
+        response.data.output.stdout === undefined ||
+        response.data.output.stdout === ""
+      ) {
+        setOutput(response.data.output.stderr)
+        setError(true)
+        socket.emit("room:get-output", slug, response.data.output.stderr)
+      }
     } catch (e) {
       console.log(e)
     }
@@ -76,7 +86,7 @@ const CollabrativeCompiler = ({ isdisabled = false }) => {
         />
       </div>
       <div className='editor-actions'>
-        <pre className='output'>{output}</pre>
+        <pre className={`output ${error ? "output-error" : ""}`}>{output}</pre>
         <button onClick={handleOnCompaileClick}>Compile</button>
         <div className='choose-lang'>
           <label htmlFor='lang'>Choose Language:</label>
