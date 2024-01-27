@@ -4,6 +4,7 @@ import StreamItem from "../StreamItem"
 import "./styles.css"
 import { useSelector } from "react-redux"
 import { extractUserSlice } from "../../../../core/redux/userSlice"
+import EmptyItem from "../../EmptyItem"
 
 const Stream = () => {
   const navigate = useNavigate()
@@ -21,9 +22,13 @@ const Stream = () => {
         )}
 
         <div className='stream-main flex column w-100'>
-          {data.feed.map((post) => {
-            return <StreamItem key={post._id} post={post} />
-          })}
+          {data.feed.length === 0 ? (
+            <EmptyItem />
+          ) : (
+            data.feed.toReversed().map((post) => {
+              return <StreamItem key={post._id} post={post} />
+            })
+          )}
         </div>
       </div>
     </>

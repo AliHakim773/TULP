@@ -4,6 +4,7 @@ import AssignmentItem from "./AssignmentItem"
 import "./styles.css"
 import { useSelector } from "react-redux"
 import { extractUserSlice } from "../../../core/redux/userSlice"
+import EmptyItem from "../EmptyItem"
 
 const Assignments = () => {
   const navigate = useNavigate()
@@ -21,11 +22,20 @@ const Assignments = () => {
         )}
 
         <div className='assignment-main flex column w-100'>
-          {data.assignments.map((assignment) => {
-            return (
-              <AssignmentItem key={assignment._id} assignment={assignment} />
-            )
-          })}
+          {data.assignment.length === 0 ? (
+            <EmptyItem />
+          ) : (
+            <>
+              {data.assignments.toReversed().map((assignment) => {
+                return (
+                  <AssignmentItem
+                    key={assignment._id}
+                    assignment={assignment}
+                  />
+                )
+              })}
+            </>
+          )}
         </div>
       </div>
     </>
