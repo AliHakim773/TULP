@@ -47,7 +47,7 @@
 <!-- Implementation -->
 <img src="./readme/title4.svg"/>
 
-> Using the wireframes and mockups as a guide, we implemented the Coffee Express app with the following features:
+> Using the wireframes and mockups as a guide, we implemented the TULP app with the following features:
 
 ### User Screens (Mobile)
 
@@ -70,7 +70,7 @@
 <!-- Tech stack -->
 <img src="./readme/title5.svg"/>
 
-### Coffee Express is built using the following technologies:
+### TULP is built using the following technologies:
 
 -   This project uses the [Flutter app development framework](https://flutter.dev/). Flutter is a cross-platform hybrid app development platform which allows us to use a single codebase for apps on mobile, desktop, and the web.
 -   For persistent storage (database), the app uses the [Hive](https://hivedb.dev/) package which allows the app to create a custom storage schema and save it to a local database.
