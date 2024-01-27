@@ -78,4 +78,20 @@ const deleteClasss = async (req, res) => {
   }
 }
 
-module.exports = { adminLogin, getUsers, getClasss, deleteClasss, deleteUsers }
+const getNumberOfUsers = async (req, res) => {
+  try {
+    const users = await User.find({})
+    res.status(200).send({ numberOfUsers: users.length })
+  } catch (error) {
+    res.status(500).send({ error })
+  }
+}
+
+module.exports = {
+  adminLogin,
+  getUsers,
+  getClasss,
+  deleteClasss,
+  deleteUsers,
+  getNumberOfUsers,
+}
