@@ -9,6 +9,7 @@ const {
   getNumberOfStudents,
   getAvgNumberOfStudents,
   getNumberOfInstructors,
+  getAvgNumberOfInstructors,
   getNumberOfClasses,
 } = require("../controllers/auth.admin.controller")
 const adminMiddleware = require("../middlewares/admin.middleware")
@@ -33,6 +34,12 @@ router.get(
   authMiddleware,
   adminMiddleware,
   getNumberOfInstructors
+)
+router.get(
+  "/instructors/avg",
+  authMiddleware,
+  adminMiddleware,
+  getAvgNumberOfInstructors
 )
 router.get("/user/count", authMiddleware, adminMiddleware, getNumberOfUsers)
 router.get("/user", authMiddleware, adminMiddleware, getUsers)

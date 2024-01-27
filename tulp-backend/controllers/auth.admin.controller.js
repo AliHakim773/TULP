@@ -135,6 +135,38 @@ const getNumberOfInstructors = async (req, res) => {
   }
 }
 
+const getAvgNumberOfInstructors = async (req, res) => {
+  try {
+    const result = await Class.aggregate([
+      {
+        $project: {
+          numberOfInstructors: { $size: "$instructors" }, // Project a field representing the number of students in each class
+        },
+      },
+      {
+        $group: {
+          _id: null,
+          totalInstructors: { $sum: "$numberOfInstructors" }, // Sum the total number of students across all classes
+          count: { $sum: 1 }, // Count the number of classes
+        },
+      },
+      {
+        $project: {
+          averageNumberOfInstructors: {
+            $divide: ["$totalInstructors", "$count"],
+          }, // Calculate the average
+        },
+      },
+    ])
+
+    const averageNumberOfInstructors =
+      result[0]?.averageNumberOfInstructors || 0
+    res.status(200).send({ averageNumberOfInstructors })
+  } catch (error) {
+    res.status(500).send({ error })
+  }
+}
+
 const getNumberOfClasses = async (req, res) => {
   try {
     const classes = await Class.find({})
@@ -173,4 +205,5 @@ module.exports = {
   getNumberOfInstructors,
   getNumberOfClasses,
   getAvgNumberOfStudents,
+  getAvgNumberOfInstructors,
 }
