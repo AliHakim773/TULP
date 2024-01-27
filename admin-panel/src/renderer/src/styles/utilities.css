@@ -34,6 +34,9 @@ img {
 .flex {
   display: flex;
 }
+.wrap {
+  flex-wrap: wrap;
+}
 .column {
   flex-direction: column;
 }
