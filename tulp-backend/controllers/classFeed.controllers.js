@@ -4,7 +4,10 @@ const Class = require("../models/class.model")
 
 const postToFeed = async (req, res) => {
   const { slug } = req.params
-  const filePath = req.file.path
+  let filePath = ""
+  if (req.file) {
+    filePath = req.file.path
+  }
   const { title, content } = req.body
 
   try {
