@@ -1,8 +1,14 @@
 import './styles.css'
 
-const StatItem = ({ text = 'Default Text', number = 400, percentage, percentageOf }) => {
+const StatItem = ({
+  text = 'Default Text',
+  number = 400,
+  percentage,
+  percentageOf,
+  className = ''
+}) => {
   return (
-    <div className="stat-item border flex column center gap-1">
+    <div className={`${className} stat-item border flex column center gap-1`}>
       <h3>{text}</h3>
       <div className="stat-number w-100 text-center">
         {number}{' '}
