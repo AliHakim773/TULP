@@ -7,6 +7,12 @@ const statsAPI = {
     })
     return res
   },
+  getClassesCount: async () => {
+    const res = sendRequest({
+      route: 'admin/class/count'
+    })
+    return res
+  },
   getStudentsCount: async () => {
     const res = sendRequest({
       route: 'admin/students/count'

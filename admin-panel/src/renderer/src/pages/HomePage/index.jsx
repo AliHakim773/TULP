@@ -17,6 +17,9 @@ const HomePage = () => {
   const [instructorCount, setInstructorCount] = useState(0)
   const [instructorCountLoading, setInstructorCountLoading] = useState(true)
 
+  const [classCount, setClassCount] = useState(0)
+  const [classCountLoading, setClassCountLoading] = useState(true)
+
   useEffect(() => {
     const getUserCount = async () => {
       try {
@@ -44,6 +47,15 @@ const HomePage = () => {
       } catch {}
     }
     getInstructorCount()
+
+    const getClassesCount = async () => {
+      try {
+        const res = await statsAPI.getClassesCount()
+        setClassCount(res.numberOfClasses)
+        setClassCountLoading(false)
+      } catch {}
+    }
+    getClassesCount()
   })
   return (
     <div className="container">
@@ -52,7 +64,7 @@ const HomePage = () => {
         {userCountLoading ? (
           <StatItem text="Loading" number={0} />
         ) : (
-          <StatItem text="Users Count" number={userCount} />
+          <StatItem text="Users Count" className="flex-1" number={userCount} />
         )}
         {studentCountLoading ? (
           <StatItem text="Loading" number={0} />
@@ -62,6 +74,7 @@ const HomePage = () => {
             number={studentCount}
             percentage={(studentCount / userCount) * 100}
             percentageOf={'users'}
+            className="flex-2"
           />
         )}
         {instructorCountLoading ? (
@@ -72,7 +85,13 @@ const HomePage = () => {
             number={instructorCount}
             percentage={(instructorCount / userCount) * 100}
             percentageOf={'users'}
+            className="flex-2"
           />
+        )}
+        {classCountLoading ? (
+          <StatItem text="Loading" number={0} />
+        ) : (
+          <StatItem text="Classes Count" className="flex-1" number={classCount} />
         )}
       </div>
     </div>
