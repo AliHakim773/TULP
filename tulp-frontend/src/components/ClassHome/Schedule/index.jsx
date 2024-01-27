@@ -6,6 +6,7 @@ import { useSelector } from "react-redux"
 import { extractUserSlice } from "../../../core/redux/userSlice"
 import { useEffect, useState } from "react"
 import { socket } from "../../../core/socket"
+import EmptyItem from "../EmptyItem"
 
 const Schedule = () => {
   const navigate = useNavigate()
@@ -15,16 +16,11 @@ const Schedule = () => {
   const [url, setUrl] = useState(data.roomUrl)
 
   useEffect(() => {
+    socket.emit("room:join-room", slug, (msg) => {})
     socket.on("room:create", (room) => {
       setUrl(room)
     })
-    return () => {
-      socket.removeListener("room:create", (room) => {
-        setUrl(room)
-      })
-    }
   }, [])
-
   return (
     <>
       <Outlet />
@@ -55,11 +51,15 @@ const Schedule = () => {
             />
           )}
         </div>
-
-        {data.schedule &&
-          data.schedule.map((schedule, i) => {
-            return <ScheduleItem key={i} schedule={schedule} />
-          })}
+        {data.schedule.length === 0 ? (
+          <EmptyItem />
+        ) : (
+          <>
+            {data.schedule.map((schedule, i) => {
+              return <ScheduleItem key={i} schedule={schedule} />
+            })}
+          </>
+        )}
       </div>
     </>
   )
