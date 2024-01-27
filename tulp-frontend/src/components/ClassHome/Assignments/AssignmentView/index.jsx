@@ -73,6 +73,8 @@ const AssignmentView = () => {
       <div className='submissions flex'>
         {role !== "student" &&
           data.submissions.map((submission) => {
+            if (submission.sender === null || submission.sender === undefined)
+              return
             return (
               <div
                 key={submission._id}
