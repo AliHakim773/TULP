@@ -19,6 +19,12 @@ const statsAPI = {
     })
     return res
   },
+  getStudentsPerClassAVG: async () => {
+    const res = sendRequest({
+      route: 'admin/students/avg'
+    })
+    return res
+  },
   getInstructorsCount: async () => {
     const res = sendRequest({
       route: 'admin/instructors/count'
