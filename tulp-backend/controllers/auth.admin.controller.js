@@ -104,6 +104,15 @@ const getNumberOfInstructors = async (req, res) => {
   }
 }
 
+const getNumberOfClasses = async (req, res) => {
+  try {
+    const classes = await Class.find({})
+    res.status(200).send({ numberOfClasses: classes.length })
+  } catch (error) {
+    res.status(500).send({ error })
+  }
+}
+
 module.exports = {
   adminLogin,
   getUsers,
@@ -113,4 +122,5 @@ module.exports = {
   getNumberOfUsers,
   getNumberOfStudents,
   getNumberOfInstructors,
+  getNumberOfClasses,
 }
