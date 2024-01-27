@@ -1,18 +1,19 @@
-import { NavLink, useNavigate } from "react-router-dom"
+import { NavLink, useNavigate, useParams } from "react-router-dom"
 import SettingsDots from "../../Base/SettingsDots"
 
 const ChatAsideLeft = ({ channels }) => {
   const navigate = useNavigate()
+  const { slug } = useParams()
 
   return (
     <div className='border chat-aside chat-aside-left flex column'>
       <div
         className='chat-aside-nav chat-aside-item'
-        onClick={() => navigate("/class/test-after/stream")}>
+        onClick={() => navigate(`/class/${slug}/stream`)}>
         Back To Class
       </div>
       <div className='chat-aside-header chat-aside-item'>
-        Channel <SettingsDots className='chat-aside-settings' />
+        Channels <SettingsDots className='chat-aside-settings' />
       </div>
       {channels.map((channel) => {
         return (
