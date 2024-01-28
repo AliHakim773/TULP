@@ -153,6 +153,33 @@ git clone https://github.com/AliHakim773/TULP.git
 
 <!-- Unit Testing -->
 <img src="./readme/title8.svg"/>
+
+- Testing apis and features is an essenial role in development since it makes bug catching and avoiding mistakes easier. That is why TDD (Test Driven Development) is a really popular approach that helps catching problems early in the development phase.
+- Although I didn't use the TDD approach I implemented tests to some apis to automate the testing proccess.
+
+##### Here is the result of the tests
+
+<img src="./readme/demo/Feature testing.png"/>
+
+##### This is the code of one of the tests
+
+```js
+it("testing get class schedule with incorrect slug ", async () => {
+  const authResponse = await request(app)
+    .post("/auth/login")
+    .send({ username: "saif", password: "password" })
+
+  const token = authResponse.body.token
+
+  const response = await request(app)
+    .post("/class/sef-ui-ux-design-bootcamp/assignment")
+    .send({ title: "tester", content: "test" })
+    .set("Authorization", `Bearer ${token}`)
+
+  expect(response.status).toBe(200)
+})
+```
+
 <br><br>
 
 <!-- How To Run -->
