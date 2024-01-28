@@ -76,23 +76,30 @@
 
 ### User Pages (Web)
 
-| Landing Page                                     | Register Page                             | Home Page                                |
-| ------------------------------------------------ | ----------------------------------------- | ---------------------------------------- |
-| ![Landing](./readme/demo/nding%20page.png)       | ![fsdaf](./readme/demo/Register.png)      | ![fsdaf](./readme/demo/Home%20Page.png)  |
-| Class Page                                       | Class Settings                            | Create a Class                           |
-| ![Landing](./readme/demo/classpage.gif)          | ![fsdaf](./readme/demo/settings.png)      | ![fsdaf](./readme/demo/create-class.png) |
-| Add Schedule                                     | Class Settings                            | Chatting                                 |
-| ![Landing](./readme/demo/add%20class%20time.png) | ![fsdaf](./readme/demo/Chatting.gif)      | ![fsdaf](./readme/demo/create-class.png) |
-| Hair Check Page                                  | Video Chatting                            | Collabrative Compiler                    |
-| ![Landing](./readme/demo/hair%20Check.png)       | ![fsdaf](./readme/demo/screensharing.gif) | ![fsdaf](./readme/demo/compiler.gif)     |
-| Real Time Collabrative Coding                    |
-| ![Code](./readme/demo/coding.gif)                |
+| Landing Page                                     | Register Page                              |
+| ------------------------------------------------ | ------------------------------------------ |
+| ![Landing](./readme/demo/nding%20page.png)       | ![fsdaf](./readme/demo/Register.png)       |
+| Home Page                                        | Class Page                                 |
+| ![fsdaf](./readme/demo/Home%20Page.png)          | ![Landing](./readme/demo/classpage.gif)    |
+| Class Settings                                   | Create a Class                             |
+| ![fsdaf](./readme/demo/settings.png)             | ![fsdaf](./readme/demo/create-class.png)   |
+| Add Schedule                                     | Class Settings                             |
+| ![Landing](./readme/demo/add%20class%20time.png) | ![fsdaf](./readme/demo/Chatting.gif)       |
+| Chatting                                         | Hair Check Page                            |
+| ![fsdaf](./readme/demo/Chatting.gif)             | ![Landing](./readme/demo/hair%20Check.png) |
+| Video Chatting                                   | Collabrative Compiler                      |
+| ![fsdaf](./readme/demo/screensharing.gif)        | ![fsdaf](./readme/demo/compiler.gif)       |
+
+| Real Time Collabrative Coding |
+| ![Code](./readme/demo/coding.gif) |
 
 ### Admin Panel (Desktop)
 
-| Login                                    | Dashboard                                | Manage Users                        |
-| ---------------------------------------- | ---------------------------------------- | ----------------------------------- |
-| ![Login](/readme/demo/admin%20login.png) | ![Dashboard](/readme/demo/dashboard.png) | ![Manage](/readme/demo/classes.png) |
+| Login                                    | Dashboard                                |
+| ---------------------------------------- | ---------------------------------------- |
+| ![Login](/readme/demo/admin%20login.png) | ![Dashboard](/readme/demo/dashboard.png) |
+| Manage Users                             |
+| ![Manage](/readme/demo/classes.png)      |
 
 <br><br>
 
