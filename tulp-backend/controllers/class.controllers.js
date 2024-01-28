@@ -85,6 +85,9 @@ const getClass = async (req, res) => {
         select: "username _id firstName lastName imageUrl",
       })
 
+    if (classObject === null || classObject === undefined)
+      return res.status(404), send({ error: "Class Not Found" })
+
     return res.status(200).send({ class: classObject })
   } catch (error) {
     return res.status(500).send({ error })
@@ -114,7 +117,6 @@ const getClassesIn = async (req, res) => {
       owner: classesOwned,
       instructor: classesInstruct,
       student: classesStudent,
-      user,
     })
   } catch (error) {
     return res.status(500).send({ error })
@@ -152,7 +154,6 @@ const getUserProfile = async (req, res) => {
   }
 }
 
-// TODO: Check Auth
 const searchClass = async (req, res) => {
   const payload = req.body.payload.trim()
   const regex = new RegExp(payload, "i")
