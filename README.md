@@ -75,6 +75,8 @@
 
 ### Architecting Data Excellence: Innovative Database Design Strategies:
 
+<img src="./readme/demo/db-daigram.png"/>
+
 <br><br>
 
 <!-- Implementation -->
@@ -84,16 +86,69 @@
 <!-- AWS Deployment -->
 <img src="./readme/title7.svg"/>
 
-### Efficient AI Deployment: Unleashing the Potential with AWS Integration:
+### Commands used to deploy this project on an EC2 server
 
-- This project leverages AWS deployment strategies to seamlessly integrate and deploy natural language processing models. With a focus on scalability, reliability, and performance, we ensure that AI applications powered by these models deliver robust and responsive solutions for diverse use cases.
-  <br><br>
+- Start superuser
+
+```sh
+sudo su
+```
+
+- Install node.js
+
+```sh
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+. ~/.nvm/nvm.sh
+nvm install node
+```
+
+- Install mongodb
+
+  - Make mongodb-org-7.0.repo file
+
+  ```sh
+  cd /etc/yum.repos.d
+  touch mongodb-org-7.0.repo
+  vi mongodb-org-7.0.repo
+  ```
+
+  - Copy paste this text in it
+
+  ```txt
+  [mongodb-org-7.0]
+  name=MongoDB Repository
+  baseurl=https://repo.mongodb.org/yum/amazon/2023/mongodb-org/7.0/x86_64/
+  gpgcheck=1
+  enabled=1
+  gpgkey=https://pgp.mongodb.com/server-7.0.asc
+  ```
+
+  - Enter this command to install.
+
+  ```sh
+  sudo yum install -y mongodb-org
+  ```
+
+- Now clone project files
+
+```sh
+cd /home/ec2-user
+git clone https://github.com/AliHakim773/TULP.git
+```
+
+<br><br>
+
+<!-- Unit Testing -->
+<img src="./readme/title8.svg"/>
+<br><br>
+
+<!-- How To Run -->
+<img src="./readme/title9.svg"/>
+<br><br>
 
 > To set up TULP locally, follow these steps:
 
 ### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
 
 - npm
   ```sh
@@ -103,35 +158,80 @@ This is an example of how to list things you need to use the software and how to
 
 ### Installation
 
-1. Get a free Glot API Key at [https://glot.io](https://glot.io/account/token). This is used to help with video chatting.
-2. Get a free Daily.co API Key at [https://docs.daily.co](https://docs.daily.co/guides/create-and-manage-rooms-with-the-rest-api). This is used for compiling code.
+1. Get a free Glot API Key at [https://glot.io](https://glot.io/account/token).
+2. Get a free Daily.co API Key at [https://docs.daily.co](https://docs.daily.co/guides/create-and-manage-rooms-with-the-rest-api).
+3. Clone the github repository
    ```sh
    git clone https://github.com/AliHakim773/TULP.git
    ```
-3. Setup the backtend.
-   ```sh
-   cd tulp-backend
-   npm install
-   ```
-   Then go to .env.example file, rename it to .env populate the values.
-   ```.env
-   GLOT_API_KEY="Your Glot api key"
-   JWT_SECRET="Your Secret JWT key (Can be what ever you want)"
-   ```
 4. Setup the frontend.
-   ```sh
-   cd ../tulp-frontend
-   npm install
-   ```
-   Then go to .env.example file, rename it to .env populate the values.
-   ```.env
-   VITE_DAILY_API_KEY="Your dailyco api key"
-   ```
-5. Setup your electron
-   ```sh
-   cd ../admin-panel
-   npm install
-   ```
-6. To run TULP you need to run the backend from the backend directory with npm start, then the frontend and electron also with npm start
 
-Now, you should be able to run TULP locally and explore its features.
+- Open the terminal from the tulp-frontend directory then
+
+  ```sh
+  npm install
+  ```
+
+- Then go to .env.example file, rename it to .env and edit it as shown.
+
+  ```.env
+  VITE_DAILY_API_KEY="Your dailyco api key"
+  ```
+
+- If the server is no longer on aws then change VITE_BASE_URL
+
+  ```.env
+  VITE_BASE_URL=http://localhost:8000/
+  ```
+
+5. Setup your electron
+
+- Open the terminal from the admin-panel directory then
+
+```sh
+npm install
+```
+
+- If the server is no longer on aws then change VITE_BASE_URL
+
+```.env
+VITE_BASE_URL=http://localhost:8000/
+```
+
+6. Setup the backend. (In case the website is no longer on aws or if you want to test it)
+
+- Open the terminal from the tulp-backend directory then
+
+  ```sh
+  npm install
+  ```
+
+Then go to .env.example file, rename it to .env populate the values.
+
+```.env
+GLOT_API_KEY="Your Glot api key"
+JWT_SECRET="Your Secret JWT key (Can be what ever you want)"
+```
+
+7. Now all left is to run the project.
+
+- From the tulp-frontend directory open terminal and run
+
+```sh
+npm start
+```
+
+- From the admin-panel directory open terminal and run
+
+```sh
+npm start
+```
+
+- From the tulp-backend directory open terminal and run (if you want to use it locally)
+
+```sh
+npm seeder/seeder.js
+npm start
+```
+
+Now you your TULP platform is up and running, enjoy.
