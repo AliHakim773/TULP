@@ -51,21 +51,13 @@
 
 - Project Figma design [figma](https://www.figma.com/file/XuTAPH2g4wbANsYssTglXT/Final-Project?type=design&node-id=3%3A3&mode=design&t=oafDRs7DoD5WRtMv-1)
 
-### User Screens (Web)
+### Mockups (Desktop)
 
-| Login screen                              | Register screen                         | Landing screen                          | Loading screen                          |
-| ----------------------------------------- | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| ![Landing](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) |
-| Home screen                               | Menu Screen                             | Order Screen                            | Checkout Screen                         |
-| ![Landing](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) |
-
-### Admin Screens (Desktop)
-
-| Login screen                            | Register screen                       | Landing screen                        |
-| --------------------------------------- | ------------------------------------- | ------------------------------------- |
-| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
-| Home screen                             | Menu Screen                           | Order Screen                          |
-| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
+| Log In Page                          | Home Page                                       |
+| ------------------------------------ | ----------------------------------------------- |
+| ![login](./readme/demo/Log%20in.png) | ![fsdaf](./readme/demo/loged%20out.png)         |
+| Chatting                             | Class Page                                      |
+| ![Landing](./readme/demo/Chat.png)   | ![fsdaf](./readme/demo/Class%20Home%20Page.png) |
 
 <br><br>
 
@@ -81,7 +73,28 @@
 
 <!-- Implementation -->
 <img src="./readme/title6.svg"/>
-  <br><br>
+
+### User Pages (Web)
+
+| Landing Page                                     | Register Page                             | Home Page                                |
+| ------------------------------------------------ | ----------------------------------------- | ---------------------------------------- |
+| ![Landing](./readme/demo/nding%20page.png)       | ![fsdaf](./readme/demo/Register.png)      | ![fsdaf](./readme/demo/Home%20Page.png)  |
+| Class Page                                       | Class Settings                            | Create a Class                           |
+| ![Landing](./readme/demo/classpage.gif)          | ![fsdaf](./readme/demo/settings.png)      | ![fsdaf](./readme/demo/create-class.png) |
+| Add Schedule                                     | Class Settings                            | Chatting                                 |
+| ![Landing](./readme/demo/add%20class%20time.png) | ![fsdaf](./readme/demo/Chatting.gif)      | ![fsdaf](./readme/demo/create-class.png) |
+| Hair Check Page                                  | Video Chatting                            | Collabrative Compiler                    |
+| ![Landing](./readme/demo/hair%20Check.png)       | ![fsdaf](./readme/demo/screensharing.gif) | ![fsdaf](./readme/demo/compiler.gif)     |
+| Real Time Collabrative Coding                    |
+| ![Code](./readme/demo/coding.gif)                |
+
+### Admin Panel (Desktop)
+
+| Login                                    | Dashboard                                | Manage Users                        |
+| ---------------------------------------- | ---------------------------------------- | ----------------------------------- |
+| ![Login](/readme/demo/admin%20login.png) | ![Dashboard](/readme/demo/dashboard.png) | ![Manage](/readme/demo/classes.png) |
+
+<br><br>
 
 <!-- AWS Deployment -->
 <img src="./readme/title7.svg"/>
