@@ -24,7 +24,8 @@
   height: 60%;
   width: 100%;
   padding: 1rem;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: scroll;
   background-color: black;
   color: green;
 }
