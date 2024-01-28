@@ -44,7 +44,7 @@
 
 <br><br>
 
-<!-- Implementation -->
+<!-- UIUX -->
 <img src="./readme/title4.svg"/>
 
 > We designed TULP using wireframes and mockups, iterating on the design until we reached the ideal layout for easy navigation and a seamless user experience.
