@@ -6,29 +6,29 @@
 <img src="./readme/title2.svg"/>
 <br><br>
 
-> A Web App for teaching and taking online classes, making it easier for people to get/give knowlage online.
+> A Web app for teaching and taking online classes, making it easier for people to get or give knowledge online.
 >
-> TULP aims to make the ultimate E-learning platform by providing a user-friendly interface that makes learning simple with no extra complications. We believe in enhancing the learning experience so that instructors can focus on instructing and students can focus on learning.
+> TULP aims to make the ultimate e-learning platform by providing a user-friendly interface that makes learning simple with no extra complications. We believe in enhancing the learning experience so that instructors can focus on instructing and students can focus on learning.
 
 ### User Stories
 
 #### Instructor
 
-- As an Instructor I want to communicate with others on the same platform, so that I don't have to downloads/use extra application.
-- As an Instructor I want to have an online classroom with video and screensharing functionality, so that I can enhance my way of teaching.
-- As an Instructor I want to have an online collabrative compiler, so that I can give a better learning experience.
+- As an instructor, I want to communicate with others on the same platform so that I don't have to download or use extra applications.
+- As an instructor, I want to have an online classroom with video and screensharing functionality so that I can enhance my way of teaching.
+- As an instructor, I want to have an online collaborative compiler so that I can provide a better learning experience.
 
 #### Studnet
 
-- As a student I want to join an online class, so that I can study more effectively.
-- As a student I want to have an easy to manage class information, so that i can focus on my studies more.
-- As a student I want to directly message instrctors, so that I can ask questions easily.
+- As a student, I want to join an online class so that I can study more effectively.
+- As a student, I want to have easy-to manage class information so that I can focus on my studies more.
+- As a student, I want to directly message instructors so that I can ask questions easily.
 
 #### Admin
 
-- As an admin I want to see website stats, so that I can reflect on them and act accordingly.
-- As an admin I want to see website users, so that I can easily manage the users.
-- As an admin I want be able to delete classes, so that I can manage website content.
+- As an admin, I want to see website stats so that I can reflect on them and act accordingly.
+- As an admin, I want to see website users so that I can easily manage them.
+- As an admin, I want to be able to delete classes so that I can manage website content.
 
 <br><br>
 
@@ -37,10 +37,10 @@
 
 ### TULP is built using the following technologies:
 
-- This website is build with [Vite](https://vitejs.dev), with its fast HMR (Hot Model Replacment), optimized build, and Instant Server Start, for faster developer experience.
-- This website uses [React Router v6.21](https://reactrouter.com/en/6.21.3/start/overview), for a robost routing and an access to the dataAPI.
-- To send messages in real time, the app uses the [Socket.IO](https://socket.io). Which a library that enables low-latency, bidirectional and event-based communication between a client and a server.
-- The app uses [electron-vite](https://electron-vite.org) for the adminestrative side, electron enables building desktop applications with web libraries and frameworks, here we used electron to build a desktop app with react.
+- This website is built with [Vite](https://vitejs.dev), with its fast HMR (hot model replacement), optimized build, and instant server start for a faster developer experience.
+- This website uses [React Router v6.21](https://reactrouter.com/en/6.21.3/start/overview), for robust routing and access to the data API.
+- To send messages in real time, the app uses the [Socket.IO](https://socket.io). a library that enables low-latency, bidirectional, and event-based communication between a client and a server.
+- The app uses [electron-vite](https://electron-vite.org) for the administrative side. Electron enables building desktop applications with web libraries and frameworks; here we used electron to build a desktop app with React.
 
 <br><br>
 
@@ -161,8 +161,8 @@ git clone https://github.com/AliHakim773/TULP.git
 <!-- Unit Testing -->
 <img src="./readme/title8.svg"/>
 
-- Testing apis and features is an essenial role in development since it makes bug catching and avoiding mistakes easier. That is why TDD (Test Driven Development) is a really popular approach that helps catching problems early in the development phase.
-- Although I didn't use the TDD approach I implemented tests to some apis to automate the testing proccess.
+- Testing APIs and features plays an essential role in development since it makes bug-catching and avoiding mistakes easier. That is why TDD (test-driven development) is a really popular approach that helps catch problems early in the development phase.
+- Although I didn't use the TDD approach, I implemented tests on some APIs to automate the testing process.
 
 ##### Here is the result of the tests
 
