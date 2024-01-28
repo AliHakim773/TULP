@@ -1,6 +1,7 @@
 const User = require("../models/user.model")
 const jwt = require("jsonwebtoken")
 const bcrypt = require("bcrypt")
+const commonPasswords = require("../data/commonPasswords")
 
 const login = async (rep, res) => {
   const { username, password } = rep.body
@@ -58,6 +59,9 @@ const register = async (rep, res) => {
     const uniqueEmailCheck = await User.findOne({ email })
     if (uniqueEmailCheck)
       return res.status(400).send({ error: "Email is taken" })
+
+    if (commonPasswords.includes(password))
+      return res.status(400).send({ error: "Cant have this password" })
 
     const user = await User.create({
       username,
