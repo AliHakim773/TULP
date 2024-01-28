@@ -25,7 +25,7 @@ const siteRoutes = async (app) => {
   //messages routes
   app.use("/messages", authMiddleware, messagesRoutes)
   //compile routes
-  app.use("/compile", compileRoutes)
+  app.use("/compile", authMiddleware, compileRoutes)
   //admin routes
   //auth routes
   app.use("/admin", adminRoutes)
