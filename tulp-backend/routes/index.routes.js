@@ -10,6 +10,8 @@ const compileRoutes = require("./compile.routes")
 const adminRoutes = require("./admin.routes")
 
 const siteRoutes = async (app) => {
+  //healty route
+  app.get("/health", (req, res) => res.status(200).send(true))
   //auth routes
   app.use("/auth", authRoutes)
   //user routes
