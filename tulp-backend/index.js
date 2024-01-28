@@ -36,4 +36,4 @@ instrument(io, {
   mode: "development",
 })
 
-module.exports = { io }
+module.exports = { io, app }
