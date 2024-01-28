@@ -50,7 +50,8 @@ const useLoginLogic = () => {
       dispatch(setUser(res.user))
       navigate("/home")
     } catch (e) {
-      errorBlink(setError, e.response.data.message)
+      console.log(e)
+      errorBlink(setError, "Wrong Credentials")
     }
   }
 
