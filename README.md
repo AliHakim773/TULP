@@ -39,6 +39,7 @@
 
 - The frontend was built using [React](https://react.dev). React is a front-end JavaScript library based on components; it is like creating building blocks and then stacking them on each other to build a website.
 - The backend was built using [Node.js](https://nodejs.org/en), which is a runtime environment for JavaScript that allows it to be used on the server, with the help of [Express.js](https://expressjs.com) to handle HTTP requests.
+- For the database, [MongoDB](https://www.mongodb.com) was used, and with its flexible schema design, indexes, and high performance, it was an obvious choice for an app that utilizes real-time features.
 - [Vite](https://vitejs.dev) was used to initiate the react app, with its fast HMR (hot model replacement), optimized build, and instant server start for a faster developer experience.
 - For the frontend routing, [React Router v6.21](https://reactrouter.com/en/6.21.3/start/overview) was used, which made routing on the frontend easier and working with data better with its data API.
 - To send messages in real time, the app uses the [Socket.IO](https://socket.io). a library that enables low-latency, bidirectional, and event-based communication between a client and a server.
