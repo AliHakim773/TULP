@@ -37,8 +37,10 @@
 
 ### TULP is built using the following technologies:
 
-- This website is built with [Vite](https://vitejs.dev), with its fast HMR (hot model replacement), optimized build, and instant server start for a faster developer experience.
-- This website uses [React Router v6.21](https://reactrouter.com/en/6.21.3/start/overview), for robust routing and access to the data API.
+- The frontend was built using [React](https://react.dev). React is a front-end JavaScript library based on components; it is like creating building blocks and then stacking them on each other to build a website.
+- The backend was built using [Node.js](https://nodejs.org/en), which is a runtime environment for JavaScript that allows it to be used on the server, with the help of [Express.js](https://expressjs.com) to handle HTTP requests.
+- [Vite](https://vitejs.dev) was used to initiate the react app, with its fast HMR (hot model replacement), optimized build, and instant server start for a faster developer experience.
+- For the frontend routing, [React Router v6.21](https://reactrouter.com/en/6.21.3/start/overview) was used, which made routing on the frontend easier and working with data better with its data API.
 - To send messages in real time, the app uses the [Socket.IO](https://socket.io). a library that enables low-latency, bidirectional, and event-based communication between a client and a server.
 - The app uses [electron-vite](https://electron-vite.org) for the administrative side. Electron enables building desktop applications with web libraries and frameworks; here we used electron to build a desktop app with React.
 
@@ -51,11 +53,9 @@
 
 ### Mockup Examples
 
-| Log In Page                          | Home Page                                       |
-| ------------------------------------ | ----------------------------------------------- |
-| ![login](./readme/demo/Log%20in.png) | ![fsdaf](./readme/demo/loged%20out.png)         |
-| Chatting                             | Class Page                                      |
-| ![Landing](./readme/demo/Chat.png)   | ![fsdaf](./readme/demo/Class%20Home%20Page.png) |
+| Log In Page                          | Home Page                               | Chatting                           |
+| ------------------------------------ | --------------------------------------- | ---------------------------------- |
+| ![login](./readme/demo/Log%20in.png) | ![fsdaf](./readme/demo/loged%20out.png) | ![Landing](./readme/demo/Chat.png) |
 
 #### Check more Mockups on [figma](https://www.figma.com/file/XuTAPH2g4wbANsYssTglXT/Final-Project?type=design&node-id=3%3A3&mode=design&t=oafDRs7DoD5WRtMv-1)
 
@@ -83,10 +83,10 @@
 | ![fsdaf](./readme/demo/Home%20Page.png)          | ![Landing](./readme/demo/classpage.gif)    |
 | Class Settings                                   | Create a Class                             |
 | ![fsdaf](./readme/demo/settings.png)             | ![fsdaf](./readme/demo/create-class.png)   |
-| Add Schedule                                     | Class Settings                             |
-| ![Landing](./readme/demo/add%20class%20time.png) | ![fsdaf](./readme/demo/Chatting.gif)       |
-| Chatting                                         | Hair Check Page                            |
-| ![fsdaf](./readme/demo/Chatting.gif)             | ![Landing](./readme/demo/hair%20Check.png) |
+| Add Schedule                                     | Hair Check Page                            |
+| ![Landing](./readme/demo/add%20class%20time.png) | ![Landing](./readme/demo/hair%20Check.png) |
+| Class Settings                                   | Chatting                                   |
+| ![fsdaf](./readme/demo/classpage.gif)            | ![fsdaf](./readme/demo/Chatting.gif)       |
 | Video Chatting                                   | Collabrative Compiler                      |
 | ![fsdaf](./readme/demo/screensharing.gif)        | ![fsdaf](./readme/demo/compiler.gif)       |
 
