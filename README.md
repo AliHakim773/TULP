@@ -46,18 +46,18 @@
 
 <!-- UIUX -->
 <img src="./readme/title4.svg"/>
-
+<br></br>
 > We designed TULP using wireframes and mockups, iterating on the design until we reached the ideal layout for easy navigation and a seamless user experience.
 
-- Project Figma design [figma](https://www.figma.com/file/XuTAPH2g4wbANsYssTglXT/Final-Project?type=design&node-id=3%3A3&mode=design&t=oafDRs7DoD5WRtMv-1)
-
-### Mockups (Desktop)
+### Mockup Examples
 
 | Log In Page                          | Home Page                                       |
 | ------------------------------------ | ----------------------------------------------- |
 | ![login](./readme/demo/Log%20in.png) | ![fsdaf](./readme/demo/loged%20out.png)         |
 | Chatting                             | Class Page                                      |
 | ![Landing](./readme/demo/Chat.png)   | ![fsdaf](./readme/demo/Class%20Home%20Page.png) |
+
+#### Check more Mockups on [figma](https://www.figma.com/file/XuTAPH2g4wbANsYssTglXT/Final-Project?type=design&node-id=3%3A3&mode=design&t=oafDRs7DoD5WRtMv-1)
 
 <br><br>
 
