@@ -67,7 +67,7 @@ const HomePage = () => {
       try {
         const res = await statsAPI.getStudentsPerClassAVG()
         console.log(res)
-        setStudentAVG(res.averageNumberOfStudents)
+        setStudentAVG(res.averageNumberOfStudents.toFixed(2))
         setStudentAVGLoading(false)
       } catch {}
     }
@@ -77,7 +77,7 @@ const HomePage = () => {
       try {
         const res = await statsAPI.getInstructorsPerClassAVG()
         console.log(res)
-        setInstructorAVG(res.averageNumberOfInstructors)
+        setInstructorAVG(res.averageNumberOfInstructors.toFixed(2))
         setInstructorAVGLoading(false)
       } catch {}
     }
