@@ -12,7 +12,7 @@ const HomePage = () => {
       </section>
       <section className='why-us home-section flex center'>
         <div>
-          <h2>Why Choose us</h2>
+          <h2>Why Choose Us</h2>
           <div className='home-section-container flex center'>
             <div className='why-us-item border rounded-1 flex column'>
               <div className='why-us-icon-wrapper flex center'>
@@ -35,7 +35,8 @@ const HomePage = () => {
               </div>
               <p>
                 We provide dedicated video rooms. These rooms include options
-                for screen sharing, camera/mic functionality, and a chat section
+                for screen sharing, camera/mic functionality, and a chat
+                section.
               </p>
             </div>
             <div className='why-us-item border rounded-1 flex column'>
@@ -48,7 +49,7 @@ const HomePage = () => {
                 One of our standout features is our online collaborative
                 compiler. During class, you can initiate this compiler, enabling
                 real-time collaborative coding for an enhanced learning
-                experience
+                experience.
               </p>
             </div>
           </div>
@@ -85,7 +86,7 @@ const HomePage = () => {
               When you decide to join out comunity all you need to do is to
               register an account and choose if you want to be a student or an
               instructor, after doing that you are free to start posting on the
-              home page and start joinning classes
+              home page and start joinning classes.
             </div>
           </div>
         </div>
