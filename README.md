@@ -91,7 +91,8 @@
 | Video Chatting                                   | Collabrative Compiler                      |
 | ![fsdaf](./readme/demo/screensharing.gif)        | ![fsdaf](./readme/demo/compiler.gif)       |
 
-| Real Time Collabrative Coding |
+| Real Time Collabrative Coding     |
+| --------------------------------- |
 | ![Code](./readme/demo/coding.gif) |
 
 ### Admin Panel (Desktop)
@@ -99,8 +100,8 @@
 | Login                                    | Dashboard                                |
 | ---------------------------------------- | ---------------------------------------- |
 | ![Login](/readme/demo/admin%20login.png) | ![Dashboard](/readme/demo/dashboard.png) |
-| Manage Users                             |
-| ![Manage](/readme/demo/classes.png)      |
+| Manage Users                             | Manage Classes                           |
+| ![Manage](/readme/demo/classes.png)      | ![Manage](/readme/demo/adminclasses.png) |
 
 <br><br>
 
