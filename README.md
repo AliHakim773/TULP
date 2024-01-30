@@ -90,10 +90,8 @@
 | ![fsdaf](./readme/demo/classpage.gif)            | ![fsdaf](./readme/demo/Chatting.gif)       |
 | Video Chatting                                   | Collabrative Compiler                      |
 | ![fsdaf](./readme/demo/screensharing.gif)        | ![fsdaf](./readme/demo/compiler.gif)       |
-
-| Real Time Collabrative Coding     |
-| --------------------------------- |
-| ![Code](./readme/demo/coding.gif) |
+| Real Time Collabrative Coding                    |
+| ![Code](./readme/demo/coding.gif)                |
 
 ### Admin Panel (Desktop)
 
