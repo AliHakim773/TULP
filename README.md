@@ -79,7 +79,7 @@
 
 | Landing Page                                     | Register Page                              |
 | ------------------------------------------------ | ------------------------------------------ |
-| ![Landing](./readme/demo/nding%20page.png)       | ![fsdaf](./readme/demo/Register.png)       |
+| ![Landing](./readme/demo/landingPage.png)        | ![fsdaf](./readme/demo/Register.png)       |
 | Home Page                                        | Class Page                                 |
 | ![fsdaf](./readme/demo/Home%20Page.png)          | ![Landing](./readme/demo/classpage.gif)    |
 | Class Settings                                   | Create a Class                             |
@@ -101,6 +101,9 @@
 | Manage Users                             | Manage Classes                           |
 | ![Manage](/readme/demo/classes.png)      | ![Manage](/readme/demo/adminclasses.png) |
 
+### Video Demo
+
+[![Demo](/readme/demo/landingPage.png)](https://www.youtube.com/watch?v=b68VIMuBevo)
 <br><br>
 
 <!-- AWS Deployment -->
