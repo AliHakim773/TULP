@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom"
 import { useSelector } from "react-redux"
 import { extractUserSlice } from "../../core/redux/userSlice"
 import { socket } from "../../core/socket"
+import { roomAPI } from "../../core/api/room"
 
 const CollabrativeCompiler = ({ isdisabled = false }) => {
   const { slug } = useParams()
@@ -45,25 +46,18 @@ const CollabrativeCompiler = ({ isdisabled = false }) => {
 
   const handleOnCompaileClick = async () => {
     try {
-      const response = await axios.request({
-        url: "http://localhost:8000/compile",
-        method: "POST",
-        data: { lang, content: value },
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
+      const response = await roomAPI.compile({ lang, content: value })
       setError(false)
-      setOutput(response.data.output.stdout)
-      socket.emit("room:get-output", slug, response.data.output.stdout)
+      setOutput(response.output.stdout)
+      socket.emit("room:get-output", slug, response.output.stdout)
       if (
-        response.data.output.stdout === null ||
-        response.data.output.stdout === undefined ||
-        response.data.output.stdout === ""
+        response.output.stdout === null ||
+        response.output.stdout === undefined ||
+        response.output.stdout === ""
       ) {
-        setOutput(response.data.output.stderr)
+        setOutput(response.output.stderr)
         setError(true)
-        socket.emit("room:get-output", slug, response.data.output.stderr)
+        socket.emit("room:get-output", slug, response.output.stderr)
       }
     } catch (e) {
       console.log(e)

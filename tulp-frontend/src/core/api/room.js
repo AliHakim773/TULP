@@ -41,4 +41,12 @@ export const roomAPI = {
     })
     return response
   },
+  compile: async (data) => {
+    const response = await sendRequest({
+      route: "compile",
+      method: "POST",
+      body: data,
+    })
+    return response
+  },
 }
